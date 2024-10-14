@@ -1,0 +1,101 @@
+.stats-wrapper {
+    position: relative;
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+.stats-container {
+    width: 100%;
+    border-radius: 20px;
+}
+
+.stats-info {
+    position: absolute;
+    left: 10%;
+}
+
+.stats-info h2 {
+    font-family:' Work Sans';
+font-size: 40px;
+font-weight: 600;
+line-height: 46.92px;
+text-align: left;
+color: #FFFFFF;
+text-align: left;
+width: 502px;
+height: 47px;
+margin-bottom: 3px;
+}
+
+.stats-info p {
+    font-family: Work Sans;
+font-size: 20px;
+font-weight: 500;
+line-height: 26px;
+letter-spacing: 0.01em;
+text-align: left;
+color: #D7D2D2;
+width: 445px;
+height: 56px;
+
+}
+
+.stats-details {
+    position: absolute;
+    right: 10%;
+    margin-top: 100px;
+}
+
+.stat-item {
+    width: 171.31px;
+height: 59px;
+margin-bottom: 50px;
+
+}
+
+.stat-item h3 {
+    font-family: Work Sans;
+font-size: 24px;
+font-weight: 700;
+line-height: 28.15px;
+text-align: left;
+color: #FFFFFF;
+margin-bottom: 5px;
+
+}
+
+.stat-item p {
+    font-family: Work Sans;
+font-size: 18px;
+font-weight: 400;
+line-height: 26px;
+letter-spacing: 0.01em;
+text-align: left;
+color: #D9D9D9;
+
+}
+
+.stats-details {
+    display: flex;
+    justify-content: space-between; /* Add space between the two sides */
+    align-items: flex-start; /* Align items at the top */
+    gap: 120px;
+}
+
+.stats-left {
+    flex: 1; /* Takes up equal space with the right side */
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Add space between items on the left */
+}
+
+/* Right side stats */
+.stats-right {
+    flex: 1; /* Takes up equal space with the left side */
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Add space between items on the right */
+}

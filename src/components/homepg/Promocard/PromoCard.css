@@ -1,0 +1,102 @@
+.wrapper {
+    position: relative;
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.videoContainer {
+    width: 100%;
+    border-radius: 20px;
+    position: 'relative';
+    overflow: hidden; /* Hide overflow to respect border-radius */
+    margin-top: 50px;
+}
+
+.heading-content {
+    position: absolute;
+    top: 10%; /* Vertically center */
+  right: 70px; /* Aligns the text to the right */
+  padding: 50px;
+  max-width: 40%; /* Control width of the heading and paragraph */
+}
+
+.heading-content h6 {
+    font-family: 'Work Sans';
+font-size: 40px;
+font-weight: 500;
+line-height: 46.92px;
+text-align: left;
+color: #FFFFFF;
+}
+
+.heading-content p {
+    font-family: 'Exo 2';
+font-size: 20px;
+font-weight: 500;
+line-height: 26px;
+letter-spacing: 0.01em;
+text-align: left;
+color: #BEBEBE;
+}
+
+.square-video {
+    width: 515px;
+          height: 235px;
+          overflow: hidden; 
+          cursor: 'pointer';
+          position: absolute;
+          /* margin-top: -465px;
+          margin-left: -465px; */
+          margin-top: -6%;
+          margin-left: -131.5%;
+          border-radius: 10px;
+          /* mask: radial-gradient(15px at 40px 40px, transparent 98%, black) -40px -40px;
+          mask-size: 150px 150px;
+          mask-position: top right; */
+}
+
+/* PromoCard.css */
+
+/* Container for the promo card section */
+.App {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 20px; /* Space around the card */
+  }
+  
+  /* Square Video Preview */
+  .video-preview {
+    width: 200px; /* Square box width */
+    height: 200px; /* Square box height */
+    overflow: hidden; 
+    cursor: pointer;
+    position: relative;
+    border: 2px solid #007bff; /* Optional: add a border to the video box */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+  }
+  
+  /* Play Button Overlay */
+  .play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: 24px;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    padding: 10px;
+    border-radius: 50%; /* Circular play button */
+    transition: background 0.3s; /* Smooth transition for hover effect */
+  }
+  
+  /* Change background color on hover */
+  .play-button:hover {
+    background: rgba(0, 0, 0, 0.8); /* Darker background on hover */
+  }
+  

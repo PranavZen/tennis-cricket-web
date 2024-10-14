@@ -1,30 +1,9 @@
 import React from 'react'
-import './Footer.css'
+import './socialIcons.scss'
 
-const Footer = () => {
+const socialIcons = () => {
   return (
-    <body>
-
-{/* <!-- Proudly Mentioned Section --> */}
-<div className="mentioned-section">
-    <p>Proudly Mentioned in</p>
-    <div className="mentioned-logos">
-            <img src="images\clientImg1.png" alt="Company 1"/>       
-            <img src="images\clientImg2.png" alt="Company 2"/>       
-            <img src="images\clientImg3.png" alt="Company 3"/>       
-            <img src="images\clientImg4.png" alt="Company 4"/>     
-            <img src="images\clientImg5.png" alt="Company 5"/>     
-            <img src="images\clientIng6.png" alt="Company 6"/>
-            <img src="images\clientImg7.png" alt="Company 7"/>
-    </div>
-</div>
-
-{/* <!-- Footer Section --> */}
-<footer>
-    <div className="footer-content">
-        <img src="images\tennisCricketImg.png" alt="tennisCricket"/>
-        <div className="followUs-container">
-        <p>Follow us on :</p>
+    <div>
         <div className="social-icons">
         <div className="circle-box">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" className="facebookIcon">
@@ -52,28 +31,8 @@ const Footer = () => {
             </svg>
         </div>
         </div>
-        </div>
     </div>
-
-    <div className="footer-links">
-        <a href="#">About</a>
-        <a href="#">Career</a>
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms of Use</a>
-        <a href="#">Feedback</a>
-        <a href="#">Contact Us</a>
-    </div>
-</footer>
-
-{/* <!-- Footer Bottom Section --> */}
-<div className="footer-bottom">
-    <p className="left-text">© TENNISCRICKET 2024 | All Rights Reserved</p>
-    <p className="right-text"><span>Crafted by : Version-Next</span></p>
-</div>
-
-
-</body>
   )
 }
 
-export default Footer;
+export default socialIcons;

@@ -1,0 +1,199 @@
+.feature-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.why-tenniscricket {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .why-tenniscricket h2 {
+    text-align: center;
+    padding: 20px;
+    display: flex; /* Add this to make the section a flex container */
+    flex-direction: column; /* Stack title and subtitle vertically */
+    align-items: center; /* Center horizontally */
+    font-family: 'Work Sans';
+    font-size: 40px;
+    font-weight: 500;
+    color: #416D3D;
+    margin-bottom: 3px;
+  }
+  
+  .tab-menu {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5px;
+    position: relative;
+  }
+  
+  .tab-menu a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #666;
+    font-size: 18px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid transparent;
+    border-bottom-color: #D9D9D9;
+  }
+  
+  .tab-menu a.active {
+    color: #0E5623;
+    border-bottom-color: #0E5623;
+  }
+  
+  /* .feature-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    color: radial-gradient(55.71% 50% at 50% 50%, #D0F4FF 0%, #D4FFE8 100%);
+    border-radius: 10px;
+  } */
+
+  .feature-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 50px;
+  }
+
+  .feature-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-right: 50px;
+  }
+  
+  .feature-card {
+    border-radius: 10px;
+    padding: 20px;
+    width: 200px;
+    text-align: center;
+    margin: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background: #D4FFE8;
+  }
+  
+  .feature-card .icon {
+    font-size: 40px;
+    margin-bottom: 10px;
+  }
+  
+  .feature-card h3 {
+    margin-bottom: 5px;
+    font-family: 'Work Sans';
+font-size: 22px;
+font-weight: 500;
+line-height: 25.81px;
+text-align: center;
+color: #0E5623;
+
+  }
+  
+  .feature-card p {
+    margin-bottom: 20px;
+    font-family: Work Sans;
+font-size: 16px;
+font-weight: 400;
+line-height: 22px;
+letter-spacing: 0.01em;
+text-align: center;
+color: #898989;
+
+  }
+  
+  .phone-display {
+    margin: 0 20px;
+    border-radius: 40px;
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+  }
+  
+  .phone-display img {
+    max-width: 100%;
+    border-radius: 30px;
+    
+  }
+  
+  @media screen and (max-width: 768px) {
+    .feature-section {
+      flex-direction: column;
+    }
+  
+    .phone-display {
+      width: 250px;
+      height: 400px;
+      margin-bottom: 20px;
+    }
+  
+    .feature-card {
+      width: 100%;
+      max-width: 300px;
+    }
+  }
+
+  /* ToggleSwitch.css */
+
+.toggle-container {
+    display: flex;
+  align-items: center;
+  justify-content: center; /* Center items horizontally */
+  flex-direction: column; /* Stack items vertically */
+  }
+  
+  .toggle-checkbox {
+    display: none; /* Hide the default checkbox */
+  }
+  
+  .toggle-label {
+    cursor: pointer; /* Pointer cursor for the label */
+    position: relative;
+    width: 50px; /* Width of the toggle switch */
+    height: 25px; /* Height of the toggle switch */
+    background-color: #ccc; /* Default background color */
+    border-radius: 30px; /* Rounded corners */
+    transition: background-color 0.2s; /* Smooth background transition */
+  }
+  
+  .toggle-inner {
+    display: none; /* Hide the inner span */
+  }
+  
+  .toggle-label .toggle-switch {
+    position: absolute;
+    top: 1px; /* Align vertically */
+    left: 1px; /* Align to the left */
+    width: 23px; /* Width of the toggle knob */
+    height: 23px; /* Height of the toggle knob */
+    background-color: white; /* Knob color */
+    border-radius: 50%; /* Round knob */
+    transition: transform 0.2s; /* Smooth transition for the knob */
+  }
+  
+  /* Change styles when the toggle is checked */
+  .toggle-checkbox:checked + .toggle-label {
+    background-color: #16921a; /* Change background color when checked */
+  }
+  
+  .toggle-checkbox:checked + .toggle-label .toggle-switch {
+    transform: translateX(30px); /* Move the knob to the right */
+  }
+
+  .container {
+    display: flex; /* Use flexbox to align items horizontally */
+    align-items: center; /* Vertically center the items */
+    justify-content: space-between; /* Optional: add space between items */
+  }
+
+  .image {
+    margin-right: 0;
+  }
+  
+  
+  
