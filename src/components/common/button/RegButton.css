@@ -12,23 +12,23 @@
     cursor: pointer; /* Change cursor to pointer */
 }
 
-.regButton span {
+/* .regButton span {
     font-family: 'Work Sans';
     font-size: 18px;
     font-weight: 600;
     line-height: 21.11px;
     text-align: center;
     color: #416D3D;
-    margin-left: 8px; /* Add space between image and text */
-}
+    margin-left: 8px;
+} */
 
 .button-icon {
     width: 20px; /* Set the desired width for the icon */
     height: 20px; /* Set the desired height for the icon */
 }
 
-.right-arrow {
-    width: 20px; /* Adjust as necessary */
-    height: 20px; /* Adjust as necessary */
-    margin-left: 8px; /* Space between text and arrow */
-}
+/* .right-arrow {
+    width: 20px;
+    height: 20px;
+    margin-left: 8px;
+} */

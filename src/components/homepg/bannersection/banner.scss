@@ -1,0 +1,84 @@
+#bannerSection{
+    background-image: url(../../../../public/images/Mask_group.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+ .contentonImg {
+     display: flex;
+     justify-content: center;
+     overflow: hidden;
+     flex-direction: column;
+}
+
+ .heading-text {
+    text-align: center;
+    margin-right: 400px;
+    margin: auto;
+}
+
+ .heading-text h6 {
+     font-family: 'Work Sans';
+     font-size: 72.35px;
+     font-weight: 700;
+     line-height: 84.87px;
+    text-align: center;
+    // width: 578px;
+    color: #FFFFFF;
+}
+
+.heading-text p {
+    font-family: 'Work Sans';
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 26px;
+    letter-spacing: 0.01em;
+    color: #D7D2D2;
+}
+
+.middleImg {
+    margin: auto;
+    display: flex;
+    gap: 10px;
+}
+
+.button-container {
+    margin: 10px auto;
+}
+
+// .regButton {
+//     width: 185px;
+//     height: 45px;
+//     border-radius: 20px;
+//     background: #FFFFFF;
+//     box-shadow: 0px 10px 20px 0px #9999991A;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+// }
+
+// .button-icon {
+//     width: 20px;
+//     height: 20px;
+// }
+
+.regButton span {
+    font-family: 'Work Sans';
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 21.11px;
+    text-align: center;
+    color: #416D3D;
+    margin-left: 8px;
+}
+
+.right-arrow {
+    width: 20px;
+    margin-left: 8px;
+}

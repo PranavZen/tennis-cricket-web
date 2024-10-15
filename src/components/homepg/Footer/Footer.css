@@ -68,12 +68,13 @@ footer {
     width: 203px;
     height: 52px;
     opacity: 0px;
-
+    margin-right: 95px;
 }
 
 .followUs-container {
     display: flex;
     margin-top: 15px;
+    margin-right: 95px;
 }
 
 .followUs-container p {
@@ -81,7 +82,7 @@ font-family: 'Work Sans';
     font-size: 18px;
     font-weight: 500;
     line-height: 21.11px;
-    text-align: center;
+    /* text-align: center; */
     color: #B7B7B7;
 
 }

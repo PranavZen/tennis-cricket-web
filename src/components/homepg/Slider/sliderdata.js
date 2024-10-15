@@ -69,7 +69,7 @@ const sliderData =[
       "team1": "Majhi Mumbai",
       "team2": "Tiigers Of Kolkata",
       "logo1": "/images/logo1.png",
-      "logo2": "src/images/kolkataTiger 1.png",
+      "logo2": "/images/kolkataTiger1.png",
       "score1": "58/9",
       "overs1": "10.0 OV",
       "score2": "60/0",

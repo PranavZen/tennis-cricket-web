@@ -33,7 +33,6 @@ const Slider = () => {
   // }, []);
 
   return (
-    <>
       <section id="topSection">
         <div id="cardCarousel" className="carousel-container">
           <button className="carousel-control prev" onClick={() => scroll(-1)}>‹</button>
@@ -76,7 +75,6 @@ const Slider = () => {
           <button className="carousel-control next" onClick={() => scroll(1)}>›</button>
         </div>
       </section>
-    </>
   );
 
   function scroll(direction: number) {
