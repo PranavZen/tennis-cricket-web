@@ -1,0 +1,252 @@
+.text-heading {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.dropdown {
+    font-size: 20px;
+    font-weight:normal;
+    color: #8C8C8C;
+    text-align: right;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    /* row-gap: 15px; */
+}
+
+/* .filter-card-section {
+    padding: 20px 0;
+} */
+
+.scoreboard {
+    height: 100%;
+    border-radius: 5px 0px 0px 0px;
+    background: #FFFFFF;
+    border: 1px solid #6CAC44;
+    box-shadow: 0px 10px 20px 0px #9999991A;
+}
+
+.category {
+    background: #EBF0FF;
+    text-align: center;
+    padding: 10px;
+}
+
+.category-text {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16.42px;
+    color: #555353;
+    margin-bottom: 0;
+}
+
+.match-info {
+    font-size: 16px;
+    margin-bottom: 6px;
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.team-name1 {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: #6C6C6C;
+    white-space: nowrap;
+    width: 145px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.team-vs {
+    font-size: 12px;
+    font-weight: 500;
+    color: #6C6C6C;
+    display: block;
+}
+
+.team-vs {
+    width: 16px;
+    height: 17px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #6C6C6C;
+}
+
+.team-name2 {
+    font-size: 14px;
+    font-weight: 500;
+    color: #6C6C6C;
+    white-space: nowrap;
+    width: 145px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.scores {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16.8px;
+    text-align: left;
+}
+
+.team-score {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.team-left {
+    flex-direction: row;
+}
+
+.team-score img {
+    margin-left: 10px;
+}
+
+.team-logo1 {
+    width: 42px;
+    height: 42px;
+    background: #FFFFFF;
+    border: 0.85px solid #4764DA;
+    border-radius: 50%;
+}
+
+.score-details {
+    margin-left: 10px;
+    text-align: left;
+    width: 59px;
+}
+
+.runs, .overs {
+    display: block;
+    text-align: center;
+}
+
+.runs {
+    font-family: Work Sans;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 21.11px;
+    letter-spacing: 0.02em;
+    text-align: left;
+    color: #231F20;
+    width: 48px;
+    height: 21px;
+    width: auto;
+    margin-bottom: 5px;
+}
+
+.overs {
+    font-family: Work Sans;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 18.77px;
+    color: #B7B7B7;
+    width: auto;
+    height: 19px;
+    margin-top: 5px;
+}
+
+.score-vs {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16.8px;
+    text-align: left;
+    color: #231F20;
+    width: 16px;
+    height: 17px;
+}
+
+.team-right {
+    flex-direction: row-reverse;
+}
+
+.team-score {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.team-score img {
+    margin-left: 10px;
+}
+
+.team-logo2 {
+    width: 42px;
+    height: 42px;
+    background: #FFFFFF;
+    border: 1px solid #6A0913;
+    border-radius: 50%;
+}
+
+.runs, .overs {
+    display: block;
+    text-align: left;
+}
+
+.runs {
+    font-family: Work Sans;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 21.11px;
+    letter-spacing: 0.02em;
+    color: #231F20;
+    height: 21px;
+    width: auto;
+    margin-bottom: 5px;
+}
+
+.overs {
+    font-family: Work Sans;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 18.77px;
+    text-align: left;
+    color: #B7B7B7;
+    width: auto;
+    height: 19px;
+    margin-top: 5px;
+}
+
+.stadium-info {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background: #EBF0FF;
+}
+
+.stadium-name {
+    font-family: Work Sans;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16.42px;
+    text-align: left;
+    color: #555353;
+    width: 176px;
+}
+
+.live-status {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16.8px;
+    text-align: left;
+    width: 35px;
+    height: 17px;
+    color: #E40B21;
+    margin-right: 15px;
+}
+
+  

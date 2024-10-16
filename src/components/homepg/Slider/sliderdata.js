@@ -10,7 +10,9 @@ const sliderData =[
       "score2": "60/0",
       "overs2": "7.4 OV",
       "stadium": "Dadoji Kondadev Stadium",
-      "liveStatus": "Live •"
+      "liveStatus": "Live •",
+      "winMsg": "abc",
+      "city": "Chennai",
     },
     {
       "id": 2,
@@ -23,7 +25,9 @@ const sliderData =[
       "score2": "60/0",
       "overs2": "7.4 OV",
       "stadium": "Dadoji Kondadev Stadium",
-      "liveStatus": "Live •"
+      "liveStatus": "Live •",
+      "winMsg": "abc",
+      "city": "Mumbai",
     },
     {
       "id": 3,
@@ -36,7 +40,9 @@ const sliderData =[
       "score2": "60/0",
       "overs2": "7.4 OV",
       "stadium": "Dadoji Kondadev Stadium",
-      "liveStatus": "Live •"
+      "liveStatus": "Live •",
+      "winMsg": "abc",
+      "city": "Kolkata",
     },
     {
       "id": 4,
@@ -49,7 +55,9 @@ const sliderData =[
       "score2": "60/0",
       "overs2": "7.4 OV",
       "stadium": "Dadoji Kondadev Stadium",
-      "liveStatus": "Live •"
+      "liveStatus": "Live •",
+      "winMsg": "abc",
+      "city": "Srinagar",
     },
     {
       "id": 5,
@@ -62,7 +70,9 @@ const sliderData =[
       "score2": "60/0",
       "overs2": "7.4 OV",
       "stadium": "Dadoji Kondadev Stadium",
-      "liveStatus": "Live •"
+      "liveStatus": "Live •",
+      "winMsg": "Tiigers Of Kolkata won the toss elected to bat",
+      "city": "Bangalore",
     },
     {
       "id": 6,
@@ -75,7 +85,54 @@ const sliderData =[
       "score2": "60/0",
       "overs2": "7.4 OV",
       "stadium": "Dadoji Kondadev Stadium",
-      "liveStatus": "Live •"
+      "liveStatus": "Live •",
+      "winMsg": "Tiigers Of Kolkata won the toss elected to bat",
+      "city": "Hydrabad",
+    },
+    {
+      "id": 7,
+      "team1": "Majhi Mumbai",
+      "team2": "Tiigers Of Kolkata",
+      "logo1": "/images/logo1.png",
+      "logo2": "/images/kolkataTiger1.png",
+      "score1": "58/9",
+      "overs1": "10.0 OV",
+      "score2": "60/0",
+      "overs2": "7.4 OV",
+      "stadium": "Dadoji Kondadev Stadium",
+      "liveStatus": "Live •",
+      "winMsg": "Tiigers Of Kolkata won the toss elected to bat",
+      "city": "Mumbai",
+    },
+    {
+      "id": 8,
+      "team1": "Majhi Mumbai",
+      "team2": "Tiigers Of Kolkata",
+      "logo1": "/images/logo1.png",
+      "logo2": "/images/kolkataTiger1.png",
+      "score1": "58/9",
+      "overs1": "10.0 OV",
+      "score2": "60/0",
+      "overs2": "7.4 OV",
+      "stadium": "Dadoji Kondadev Stadium",
+      "liveStatus": "Live •",
+      "winMsg": "Tiigers Of Kolkata won the toss elected to bat",
+      "city": "Mumbai",
+    },
+    {
+      "id": 9,
+      "team1": "Majhi Mumbai",
+      "team2": "Tiigers Of Kolkata",
+      "logo1": "/images/logo1.png",
+      "logo2": "/images/kolkataTiger1.png",
+      "score1": "58/9",
+      "overs1": "10.0 OV",
+      "score2": "60/0",
+      "overs2": "7.4 OV",
+      "stadium": "Dadoji Kondadev Stadium",
+      "liveStatus": "Live •",
+      "winMsg": "Tiigers Of Kolkata won the toss elected to bat",
+      "city": "Mumbai",
     }
 ]
 export default sliderData;

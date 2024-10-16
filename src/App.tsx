@@ -1,28 +1,17 @@
-import Feedback from "./components/homepg/Feedback/Feedback";
-import Footer from "./components/homepg/Footer/Footer";
-import Navigation from "./components/homepg/Navigation/Navigation";
-import PromoCard from "./components/homepg/Promocard/PromoCard";
-import Slider from "./components/homepg/Slider/Slider";
-import Videos from "./components/homepg/Videos/Videos";
-import AppDownload from "./components/homepg/AppDownload/DownloadBanner";
-import Featurepart from "./components/homepg/FeatureSection/Featurepart";
-import Banner from "./components/homepg/bannersection/Banner";
+import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import FilterCard from "./components/FilterPage/FilterCard";
+import { HomepageLayout } from "./components/homepg/HomepageLayout";
 
 function App() {
   return (
-    <section>
-      <Slider />
-      <div className="warp">
-        <Navigation />
-        <Banner />
-      </div>
-      <Featurepart />
-      <AppDownload />
-      <Videos />
-      <PromoCard />
-      <Feedback />
-      <Footer />
-    </section>
+    <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<HomepageLayout/>}/>
+      <Route path="/matches" element={<FilterCard />} />
+    </Routes>
+  </BrowserRouter>
+
   );
 }
 
