@@ -1,5 +1,5 @@
   import React, { useState, useEffect } from 'react';
-  import './Slider.css';
+  import './slider.css';
   import sliderData from './sliderdata';
   import PointCard from "../../common/pointCard/PointCard";
 
@@ -11,7 +11,7 @@
     score2: string;
     overs1: string;
     overs2: string;
-    logo1: number;
+    logo1: string;
     logo2: string;
     stadium: string;
     liveStatus: string;

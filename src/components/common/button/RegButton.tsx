@@ -1,5 +1,5 @@
 import React from 'react'
-import './RegButton.css'
+import './regButton.css'
 
 interface RegButtonProps {
     text: string;         // Prop to accept the button text

@@ -12,9 +12,9 @@
   .why-tenniscricket h2 {
     text-align: center;
     padding: 20px;
-    display: flex; /* Add this to make the section a flex container */
-    flex-direction: column; /* Stack title and subtitle vertically */
-    align-items: center; /* Center horizontally */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     font-family: 'Work Sans';
     font-size: 40px;
     font-weight: 500;
@@ -143,52 +143,52 @@ color: #898989;
 .toggle-container {
     display: flex;
   align-items: center;
-  justify-content: center; /* Center items horizontally */
-  flex-direction: column; /* Stack items vertically */
+  justify-content: center;
+  flex-direction: column;
   }
   
   .toggle-checkbox {
-    display: none; /* Hide the default checkbox */
+    display: none;
   }
   
   .toggle-label {
-    cursor: pointer; /* Pointer cursor for the label */
+    cursor: pointer;
     position: relative;
-    width: 50px; /* Width of the toggle switch */
-    height: 25px; /* Height of the toggle switch */
-    background-color: #ccc; /* Default background color */
-    border-radius: 30px; /* Rounded corners */
-    transition: background-color 0.2s; /* Smooth background transition */
+    width: 50px;
+    height: 25px;
+    background-color: #ccc;
+    border-radius: 30px;
+    transition: background-color 0.2s;
   }
   
   .toggle-inner {
-    display: none; /* Hide the inner span */
+    display: none;
   }
   
   .toggle-label .toggle-switch {
     position: absolute;
-    top: 1px; /* Align vertically */
-    left: 1px; /* Align to the left */
-    width: 23px; /* Width of the toggle knob */
-    height: 23px; /* Height of the toggle knob */
-    background-color: white; /* Knob color */
-    border-radius: 50%; /* Round knob */
-    transition: transform 0.2s; /* Smooth transition for the knob */
+    top: 1px;
+    left: 1px;
+    width: 23px;
+    height: 23px;
+    background-color: white;
+    border-radius: 50%;
+    transition: transform 0.2s;
   }
   
   /* Change styles when the toggle is checked */
   .toggle-checkbox:checked + .toggle-label {
-    background-color: #16921a; /* Change background color when checked */
+    background-color: #16921a;
   }
   
   .toggle-checkbox:checked + .toggle-label .toggle-switch {
-    transform: translateX(30px); /* Move the knob to the right */
+    transform: translateX(30px);
   }
 
   .container {
-    display: flex; /* Use flexbox to align items horizontally */
-    align-items: center; /* Vertically center the items */
-    justify-content: space-between; /* Optional: add space between items */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 
   .image {

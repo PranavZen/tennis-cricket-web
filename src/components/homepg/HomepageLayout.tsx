@@ -1,13 +1,13 @@
 import React from 'react'
-import Slider from './Slider/Slider'
-import Navigation from './Navigation/Navigation'
+import Slider from './sliderSection/Slider'
+import Navigation from './navigationSection/Navigation'
 import Banner from './bannersection/Banner'
-import Featurepart from './FeatureSection/Featurepart'
-import AppDownload from './AppDownload/DownloadBanner'
-import Videos from './Videos/Videos'
-import PromoCard from './Promocard/PromoCard'
-import Feedback from './Feedback/Feedback'
-import Footer from './Footer/Footer'
+import Featurepart from './featureSection/Featurepart'
+import AppDownload from './appDownloadSection/DownloadBanner'
+import Videos from './videoSliderSection/Videos'
+import PromoCard from './promocardSection/PromoCard'
+import Feedback from './feedbacksection/Feedback'
+import Footer from './footerSection/Footer'
 
 export const HomepageLayout = () => {
   return (

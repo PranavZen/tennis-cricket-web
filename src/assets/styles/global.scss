@@ -4,15 +4,19 @@
   box-sizing: border-box;
 }
 
-@media (min-width: 1200px) {
-  .container,
-  .container-lg,
-  .container-md,
-  .container-sm,
-  .container-xl {
-    // max-width: 1260px;
-  }
-}
+// .body {
+//   background-color: #F5F5F5;
+// }
+
+// @media (min-width: 1200px) {
+//   .container,
+//   .container-lg,
+//   .container-md,
+//   .container-sm,
+//   .container-xl {
+//     max-width: 1260px;
+//   }
+// }
 
 .warp{
   position: relative;

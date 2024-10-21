@@ -1,14 +1,17 @@
-import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import FilterCard from "./components/FilterPage/FilterCard";
+import AllMatches from "./components/allmatchesPage/AllMatches";
+import DomesticTournament from "./components/domesticTournamentPage/DomesticTournament";
 import { HomepageLayout } from "./components/homepg/HomepageLayout";
+import TournamentDashboard from "./components/tournamentDashboardPage/TournamentDashboard";
 
 function App() {
   return (
     <BrowserRouter>
     <Routes>
-      <Route path="/" element={<HomepageLayout/>}/>
-      <Route path="/matches" element={<FilterCard />} />
+      <Route path="/" element={<HomepageLayout/>} />
+      <Route path="/matches" element={<AllMatches />} />
+      <Route path="/tournamentDashboard" element={<TournamentDashboard/>} />
+      <Route path="/domesticTournament" element={<DomesticTournament/>} />
     </Routes>
   </BrowserRouter>
 

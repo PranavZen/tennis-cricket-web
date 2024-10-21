@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Videos.css'; // Custom CSS for styling
+import './videos.css'; // Custom CSS for styling
 
 const VideoSlider: React.FC = () => {
   // Array of video URLs directly in the component

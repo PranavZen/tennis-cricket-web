@@ -11,8 +11,8 @@ const sliderData =[
       "overs2": "7.4 OV",
       "stadium": "Dadoji Kondadev Stadium",
       "liveStatus": "Live •",
-      "winMsg": "abc",
-      "city": "Chennai",
+      "winMsg": "Tiigers Of Kolkata won the toss elected to bat",
+      "category": "FINAL"
     },
     {
       "id": 2,
@@ -26,8 +26,8 @@ const sliderData =[
       "overs2": "7.4 OV",
       "stadium": "Dadoji Kondadev Stadium",
       "liveStatus": "Live •",
-      "winMsg": "abc",
-      "city": "Mumbai",
+      "winMsg": "Tiigers Of Kolkata won the toss elected to bat",
+      "category": "FINAL"
     },
     {
       "id": 3,
@@ -41,8 +41,8 @@ const sliderData =[
       "overs2": "7.4 OV",
       "stadium": "Dadoji Kondadev Stadium",
       "liveStatus": "Live •",
-      "winMsg": "abc",
-      "city": "Kolkata",
+      "winMsg": "Tiigers Of Kolkata won the toss elected to bat",
+      "category": "FINAL"
     },
     {
       "id": 4,
@@ -56,8 +56,8 @@ const sliderData =[
       "overs2": "7.4 OV",
       "stadium": "Dadoji Kondadev Stadium",
       "liveStatus": "Live •",
-      "winMsg": "abc",
-      "city": "Srinagar",
+      "winMsg": "Tiigers Of Kolkata won the toss elected to bat",
+      "category": "FINAL"
     },
     {
       "id": 5,
@@ -72,7 +72,7 @@ const sliderData =[
       "stadium": "Dadoji Kondadev Stadium",
       "liveStatus": "Live •",
       "winMsg": "Tiigers Of Kolkata won the toss elected to bat",
-      "city": "Bangalore",
+      "category": "FINAL"
     },
     {
       "id": 6,
@@ -87,7 +87,7 @@ const sliderData =[
       "stadium": "Dadoji Kondadev Stadium",
       "liveStatus": "Live •",
       "winMsg": "Tiigers Of Kolkata won the toss elected to bat",
-      "city": "Hydrabad",
+      "category": "FINAL"
     },
     {
       "id": 7,
@@ -102,7 +102,7 @@ const sliderData =[
       "stadium": "Dadoji Kondadev Stadium",
       "liveStatus": "Live •",
       "winMsg": "Tiigers Of Kolkata won the toss elected to bat",
-      "city": "Mumbai",
+      "category": "FINAL"
     },
     {
       "id": 8,
@@ -117,7 +117,7 @@ const sliderData =[
       "stadium": "Dadoji Kondadev Stadium",
       "liveStatus": "Live •",
       "winMsg": "Tiigers Of Kolkata won the toss elected to bat",
-      "city": "Mumbai",
+      "category": "FINAL"
     },
     {
       "id": 9,
@@ -132,7 +132,7 @@ const sliderData =[
       "stadium": "Dadoji Kondadev Stadium",
       "liveStatus": "Live •",
       "winMsg": "Tiigers Of Kolkata won the toss elected to bat",
-      "city": "Mumbai",
+      "category": "FINAL"
     }
 ]
 export default sliderData;

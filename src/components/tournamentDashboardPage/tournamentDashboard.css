@@ -1,0 +1,72 @@
+/* * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  } */
+
+  body {
+    padding: 20px;
+  }
+
+  .tab-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .tabs-container {
+    background-color: #F5F5F5;
+  }
+
+  .tabs {
+    width: 1120px;
+    height: 44px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    border-radius: 22px;
+    background-color: #fff;
+    /* border: 1px solid black; */
+    margin: auto;
+  }
+
+  .tabs button {
+    flex: 1; /* Equal width for all buttons */
+    background-color: #fff;
+    color: #8C8C8C;
+    /* color: black; */
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    font-size: 18px;
+    font-family: Work Sans;
+    /* transition: background-color 0.3s, color 0.3s; */
+    border-radius: 22px;
+  }
+
+  .tabs button.active {
+    background-color: green;
+    color: white;
+    border-radius: 22px;
+  }
+
+  .tab-content {
+    padding: 20px;
+    /* background-color: #F5F5F5; */
+    margin-top: -1px;
+  }
+
+  .tab-content div {
+    display: none;
+  }
+
+  .tab-content div.active {
+    display: block;
+  }
+
+  .dropdown button {
+    background: none;
+    border: none;
+  }
+

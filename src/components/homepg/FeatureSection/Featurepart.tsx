@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Featurepart.css';
+import './featurepart.css';
 
 const Featurepart = () => {
   const [activeTab, setActiveTab] = useState<'live' | 'booking'>('live');
