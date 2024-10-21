@@ -1,0 +1,59 @@
+@import "../../../assets/scss/media";
+#banner {
+  position: relative;
+  &.homeBanner {
+    background-image: url(../../../../public/images/home_banner.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center;
+    width: 100%;
+    height: 65.5rem;
+    @include d-1366-desktop {
+      background-image: url(../../../../public/images/full-banner.png);
+    }
+    @include d-desktop {
+      height: 45rem;
+    }
+  }
+  .midContainer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    h1 {
+      font-size: 7.2rem;
+      font-weight: bold;
+      color: #fff;
+      line-height: 0.8;
+      @include d-desktop {
+        font-size: 5.2rem;
+      }
+    }
+    p {
+      font-size: 1.8rem;
+      color: #d7d2d2;
+      font-weight: 500;
+      @include d-desktop {
+        font-size: 1.6rem;
+      }
+    }
+    .storeIconWrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      @include d-desktop {
+        width: 45%;
+      }
+      a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
+}
