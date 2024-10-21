@@ -95,10 +95,10 @@ const AllMatches = () => {
         <div className="row">
           {filteredCards.length > 0 ? (
             filteredCards.map((item) => (
-              <div key={item.id} className="col-lg-4 col-md-6 col-sm-12 mb-4">
+              <div className="col-lg-4 col-md-6 col-sm-12 mb-4">
                 <div className="filter-card-container">
                   <PointCard
-                    id={item.id}
+                    key={item.id}
                     category={item.category_name}
                     team1={item.from_team_name}
                     team2={item.to_team_name}

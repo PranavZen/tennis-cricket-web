@@ -1,7 +1,5 @@
-import React, { useState } from 'react'
-import { Button } from 'react-bootstrap';
+import { useState } from 'react';
 import VideoModal from '../../common/videoModal/VideoModal';
-import './PromoCard.css'
 
 const PromoCard = () => {
 

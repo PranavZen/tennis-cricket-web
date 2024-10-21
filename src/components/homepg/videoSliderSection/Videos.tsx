@@ -22,7 +22,7 @@ const VideoSlider: React.FC = () => {
   const slidesPerView = 4; // Number of videos visible at once
   const slideGroups = 3; // Number of pagination lines
   const totalSlides = videos.length;
-  const groupSize = Math.ceil(totalSlides / slideGroups); // Adjust for the number of pagination lines
+  // const groupSize = Math.ceil(totalSlides / slideGroups);
 
   // Function to update pagination lines
   const updatePagination = (index: number) => {

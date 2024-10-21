@@ -1,15 +1,24 @@
-import Featurepart from "../components/homepg/FeatureSection/Featurepart";
+
+import Feedback from "react-bootstrap/esm/Feedback";
+import DownloadBanner from "../components/homepg/appDownloadSection/DownloadBanner";
+import Featurepart from "../components/homepg/featureSection/Featurepart";
 import PromoCard from "../components/homepg/Promocard/PromoCard";
-import VideoSlider from "../components/homepg/Videos/Videos";
+import VideoSlider from "../components/homepg/videoSliderSection/Videos";
+import Footer from "../components/homepg/footerSection/Footer";
+import Header from "../components/common/header/Header";
+import Slider from "../components/homepg/Slider/Slider";
 
 const HomePage = () => {
   return (
     <>
+    <Slider/>
+    <Header/>
       <Featurepart />
-      {/* <AppDownload /> */}
+      <DownloadBanner/>
       <VideoSlider />
       <PromoCard />
-      {/* <Feedback /> */}
+      <Feedback/>
+      <Footer/>
     </>
   );
 };

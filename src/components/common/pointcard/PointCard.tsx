@@ -1,6 +1,8 @@
 import React from "react";
 
 interface PointCardProps {
+  key: number;
+  category?: string;
   team1: string;
   team2: string;
   logo1: string;
@@ -11,10 +13,10 @@ interface PointCardProps {
   overs2: string;
   stadium: string;
   liveStatus: string;
-  winMsg: any;
+  winMsg?: any;
 }
 
-const PointCard: React.FC<PointCardProps> = ({
+const PointCard: React.FC<PointCardProps> = ({  
   team1,
   team2,
   logo1,
