@@ -1,5 +1,5 @@
 
-import Feedback from "react-bootstrap/esm/Feedback";
+import Feedback from "../components/homepg/feedbacksection/Feedback";
 import DownloadBanner from "../components/homepg/appDownloadSection/DownloadBanner";
 import Featurepart from "../components/homepg/featureSection/Featurepart";
 import PromoCard from "../components/homepg/Promocard/PromoCard";
@@ -17,7 +17,7 @@ const HomePage = () => {
       <DownloadBanner/>
       <VideoSlider />
       <PromoCard />
-      <Feedback/>
+      {/* <Feedback/> */}
       <Footer/>
     </>
   );

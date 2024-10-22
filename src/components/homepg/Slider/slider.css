@@ -15,7 +15,7 @@
     justify-content: space-between;
     padding: 0 60px;
   }
-  
+
   .carousel-inner {
     display: flex;
     overflow-x: auto; /* Enables horizontal scrolling */

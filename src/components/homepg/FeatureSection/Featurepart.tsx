@@ -67,7 +67,6 @@ const Featurepart = () => {
         </div>
       </div>
 
-      {/* Tab-specific content below the feature section */}
       <div className="tab-content">
         {activeTab === 'live'}
 

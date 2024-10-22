@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const LeftBox = () => {
   return (
-    <div className="col-md-3 col-12">
+    <div className="col-md-3 col">
       <div className="leftBox">
         <button className="searchWrap">
           <img

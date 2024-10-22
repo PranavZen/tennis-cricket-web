@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const MenuItems = () => {
   return (
-    <div className="col-md-6 col-12">
+    <div className="col-md-6 col">
       <div className="collapse navbar-collapse" id="navbarNav">
         <ul className="navbar-nav">
           <li className="nav-item dropdown">

@@ -4,10 +4,6 @@
     padding: 0;
   } */
 
-  body {
-    padding: 20px;
-  }
-
   .tab-header {
     display: flex;
     flex-direction: column;

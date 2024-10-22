@@ -1,0 +1,24 @@
+#VideoSlider {
+    padding: 8rem 0 13rem;
+  }
+  @media (max-width: 767px) {
+    #VideoSlider {
+      margin-top: 0;
+      padding: 5rem 1rem 7rem;
+    }
+  }
+  #VideoSlider .topSecWrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+    padding: 0 0.5rem;
+  }
+  @media (max-width: 767px) {
+    #VideoSlider .topSecWrap {
+      padding: 0 1rem;
+    }
+  }
+  #VideoSlider .shareBox .timeText {
+    display: none;
+  }/*# sourceMappingURL=heighlightsPage.css.map */

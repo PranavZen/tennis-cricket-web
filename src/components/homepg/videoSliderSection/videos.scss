@@ -1,0 +1,32 @@
+@import "../../../../assets/scss/media";
+#VideoSlider {
+  padding: 8rem 0 13rem;
+  // margin-top: -10rem;
+  // @include d-1366-desktop{
+  //   margin-top: -5rem;
+  // }
+  // @include d-desktop{
+  //   margin-top: -1rem;
+  //   padding: 0 1rem 7rem;
+  // }
+  @include x-767-tablet {
+    margin-top: 0;
+    padding: 5rem 1rem 7rem;
+  }
+
+  .topSecWrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+    padding: 0 0.5rem;
+    @include x-767-tablet {
+      padding: 0 1rem;
+    }
+  }
+  .shareBox {
+    .timeText {
+      display: none;
+    }
+  }
+}

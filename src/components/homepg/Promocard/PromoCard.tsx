@@ -12,7 +12,7 @@ const PromoCard = () => {
   return (
     <section className="wrapper">
       <div className="videoContainer">
-    <img src="images\VideoContainerImg.png" alt=""/>
+    <img src="images\VideoContainerImg.png" alt="" className='img-fluid'/>
     </div>
     <div className="heading-content">
     <h6>Join Tenniscricket Team</h6>

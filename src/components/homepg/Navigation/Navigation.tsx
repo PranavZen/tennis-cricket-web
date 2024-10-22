@@ -20,7 +20,7 @@ const Navigation = () => {
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="navWrap">
-            <div className="col-md-2 col-12">
+            <div className="col-md-2 col">
               <Link to="/" className="logoWrap">
                 <img
                   src="../images/tennis-cricket-logo.svg"

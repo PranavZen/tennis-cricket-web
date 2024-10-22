@@ -1,61 +1,81 @@
-import React, { useState } from 'react';
-import './videos.css'; // Custom CSS for styling
+import React, { useEffect, useState } from 'react';
+import "../videoSliderSection/video.css";
+import HeighlightsCard from '../../common/sliderCard/HighlightsCard';
+import CommonSlider from '../../common/commonSliderLayout/commonSlider';
+import SectionTitle from '../../common/sectionTitleText/sectionTitle';
+import data from './videoData';
+import SquareButton from '../../common/squareButton/SquareButton';
+import Spinner from '../../common/spinner/Spinner';
+
+interface VideoData {
+  id: number;
+  title: string;
+  thumbnail: string;
+  date: string;
+  url: string;
+}
 
 const VideoSlider: React.FC = () => {
-  // Array of video URLs directly in the component
-  const videos = [
-    'video1.mp4',
-    'video2.mp4',
-    'video3.mp4',
-    'video4.mp4',
-    'video5.mp4',
-    'video6.mp4',
-    'video7.mp4',
-    'video8.mp4',
-    'video9.mp4',
-    'video10.mp4',
-    'video11.mp4',
-    'video12.mp4',
-  ];
+  const [videos, setVideos] = useState<VideoData[]>(data);
+  const [loading, setLoading] = useState(true);
 
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const slidesPerView = 4; // Number of videos visible at once
-  const slideGroups = 3; // Number of pagination lines
-  const totalSlides = videos.length;
-  // const groupSize = Math.ceil(totalSlides / slideGroups);
-
-  // Function to update pagination lines
-  const updatePagination = (index: number) => {
-    setCurrentIndex(index * slidesPerView);
-  };
-
-  // Pagination click event handler
-  const handlePaginationClick = (index: number) => {
-    setCurrentIndex(index * slidesPerView);
-    updatePagination(index);
-  };
+  useEffect(() => {
+    // Uncomment this if you want to fetch videos
+    // fetch("https://my.ispl-t10.com/api/video-master/all-vedios")
+    //   .then((response) => response.json())
+    //   .then((data) => {
+    //     const filteredVideos = data.data["all-video"].filter(
+    //       (video) => video.category_names === "Highlights"
+    //     );
+    //     setVideos(filteredVideos);
+    //     setLoading(false);
+    //   });
+    
+    // For static data
+    setLoading(false); // Set loading to false after data is set
+  }, []);
 
   return (
-    <div className="slider-container">
-      <div className="slider" style={{ transform: `translateX(-${(currentIndex / totalSlides) * 100}%)` }}>
-        {videos.map((videoUrl, idx) => (
-          <div className="slide" key={idx}>
-            <video src={videoUrl} controls></video>
+    <section id="highlightsSection">
+      <div className="container">
+        <div className="row">
+          <div className="col-lg-10 col-md-12 col-12 mx-auto px-0">
+            <div className="topSecWrap">
+              <SectionTitle titleText="Match Highlights" />
+              <SquareButton
+                classNameText="sqrBtn"
+                btnName="View More"
+                svgFill="#263574"
+                textColor="#263574"
+                bordercolor="#263574"
+                btnLinkUrl="/video/highlights"
+              />
+            </div>
+            {loading ? (
+              <Spinner />
+            ) : (
+              <CommonSlider>
+                {videos.map((item: VideoData) => (
+                  <div className="col-md-3" key={item.id}>
+                    <HeighlightsCard
+                      mainTitle={item.title}
+                      backgroundImg={item.thumbnail}
+                      date={item.date}
+                      matchLink={item.url}
+                      datafancybox="data-fancybox"
+                      id={item.id} 
+                      title={item.title} 
+                      thumbnail={item.thumbnail} 
+                      url={item.url} 
+                    />
+                  </div>
+                ))}
+              </CommonSlider>
+            )}
           </div>
-        ))}
+        </div>
       </div>
-
-      {/* Pagination (lines) */}
-      <div className="pagination">
-        {Array.from({ length: slideGroups }).map((_, idx) => (
-          <span
-            key={idx}
-            className={`line ${currentIndex / slidesPerView === idx ? 'active' : ''}`}
-            onClick={() => handlePaginationClick(idx)}
-          ></span>
-        ))}
-      </div>
-    </div>
+    </section>
   );
 };
 

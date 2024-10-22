@@ -1,11 +1,10 @@
 import React from 'react'
-import './footer.css'
+import './footer.scss'
 
 const Footer = () => {
   return (
-    <body>
+    <section>
 
-{/* <!-- Proudly Mentioned Section --> */}
 <div className="mentioned-section">
     <p>Proudly Mentioned in</p>
     <div className="mentioned-logos">
@@ -19,7 +18,6 @@ const Footer = () => {
     </div>
 </div>
 
-{/* <!-- Footer Section --> */}
 <footer>
     <div className="footer-content">
         <img src="images\tennisCricketImg.png" alt="tennisCricket"/>
@@ -72,7 +70,7 @@ const Footer = () => {
 </div>
 
 
-</body>
+</section>
   )
 }
 
