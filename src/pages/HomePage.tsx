@@ -16,7 +16,7 @@ const HomePage = () => {
       <Featurepart />
       <DownloadBanner/>
       <VideoSlider />
-      <PromoCard />
+      {/* <PromoCard /> */}
       {/* <Feedback/> */}
       <Footer/>
     </>

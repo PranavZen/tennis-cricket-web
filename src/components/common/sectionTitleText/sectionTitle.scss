@@ -1,0 +1,22 @@
+.titleText {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.section-title {
+    font-family: Work Sans;
+    font-size: 40px;
+    font-weight: 500;
+    color: #416D3D;
+    margin-bottom: 3px;
+  }
+  
+  .section-subtitle {
+    font-family: 'Exo 2', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: #898989;
+    max-width: 443px;
+    margin: 0 auto;
+  }

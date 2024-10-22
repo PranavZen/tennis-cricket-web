@@ -47,12 +47,12 @@ const HighlightsCard: React.FC<CardProps> = ({
             </div>
           </div>
           <div className="midBox">
-            <p>{title}</p>
+            {/* <p>{title}</p> */}
             <h5>{mainTitle}</h5>
           </div>
-          <div className="footBox">
+          {/* <div className="footBox">
             <span className="dateBox">{date}</span>
-          </div>
+          </div> */}
         </Link>
       </div>
     </div>

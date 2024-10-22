@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import "../videoSliderSection/video.css";
-import HeighlightsCard from '../../common/sliderCard/HighlightsCard';
 import CommonSlider from '../../common/commonSliderLayout/commonSlider';
-import SectionTitle from '../../common/sectionTitleText/sectionTitle';
-import data from './videoData';
-import SquareButton from '../../common/squareButton/SquareButton';
+import SectionTitle from '../../common/sectionTitleText/SectionTitle';
+import HeighlightsCard from '../../common/sliderCard/HighlightsCard';
 import Spinner from '../../common/spinner/Spinner';
+import "../videoSliderSection/video.css";
+import data from './videoData';
 
 interface VideoData {
   id: number;
@@ -42,14 +41,14 @@ const VideoSlider: React.FC = () => {
           <div className="col-lg-10 col-md-12 col-12 mx-auto px-0">
             <div className="topSecWrap">
               <SectionTitle titleText="Match Highlights" />
-              <SquareButton
+              {/* <SquareButton
                 classNameText="sqrBtn"
                 btnName="View More"
                 svgFill="#263574"
                 textColor="#263574"
                 bordercolor="#263574"
                 btnLinkUrl="/video/highlights"
-              />
+              /> */}
             </div>
             {loading ? (
               <Spinner />

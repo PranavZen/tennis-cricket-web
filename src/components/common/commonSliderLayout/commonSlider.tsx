@@ -13,7 +13,7 @@ const CommonSlider: React.FC<CommonSliderProps> = ({ children }) => {
     dots: true,
     infinite: false,
     loop: false,
-    slidesToShow: 4,
+    slidesToShow: 3.5,
     slidesToScroll: 3,
     arrows: false,
     autoplay: true,
