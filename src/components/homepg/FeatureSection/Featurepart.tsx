@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import './featurepart.css';
+import { useState } from 'react';
+import '../FeatureSection/Featurepart.scss';
 
 const Featurepart = () => {
   const [activeTab, setActiveTab] = useState<'live' | 'booking'>('live');
@@ -67,6 +67,7 @@ const Featurepart = () => {
         </div>
       </div>
 
+      {/* Tab-specific content below the feature section */}
       <div className="tab-content">
         {activeTab === 'live'}
 

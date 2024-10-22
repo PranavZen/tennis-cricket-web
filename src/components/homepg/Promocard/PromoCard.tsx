@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import VideoModal from '../../common/videoModal/VideoModal';
+import VideoModal from '../../common/videoModal/videoModal';
 
 const PromoCard = () => {
 

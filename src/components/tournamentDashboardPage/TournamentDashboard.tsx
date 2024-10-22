@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./tournamentDashboard.css";
 import axios from "axios";
-import PointCard from "../common/pointCard/PointCard";
+import PointCardBox from "../common/pointcard/PointCardBox";
 
 interface MatchData {
   id: number;
@@ -164,7 +164,7 @@ const TournamentDashboard: React.FC = () => {
             filteredCards.map((item) => (
               <div className="col-lg-4 col-md-6 col-sm-12 mb-4">
                 <div className="filter-card-container">
-                  <PointCard
+                  <PointCardBox
                     key={item.id}
                     category={item.category_name}
                     team1={item.from_team_name}
