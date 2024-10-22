@@ -9,8 +9,8 @@ import DomesticTournament from "./components/domesticTournamentPage/DomesticTour
 function App() {
   return (
     <BrowserRouter>
-      {/* <Slider />
-      <Header /> */}
+      <Slider />
+      <Header />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/allMatches" element={<AllMatches/>} />

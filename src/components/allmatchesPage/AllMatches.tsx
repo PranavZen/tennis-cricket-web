@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import "./allMatches.css";
+import "../allmatchesPage/allMatches.scss";
 import axios from "axios";
-import PointCard from "../common/pointCard/PointCard";
+import PointCardBox from "../common/pointcard/PointCardBox";
 
 interface MatchData {
   id: number;
@@ -69,10 +69,8 @@ const AllMatches = () => {
   return (
     <section>
       <div className="header-div mb-4">
-      <div className="text-heading">
-        Live Cricket Matches
-      </div>
-      <div className="dropdown">
+        <div className="text-heading">Live Cricket Matches</div>
+        <div className="dropdown">
           Choose Location
           <select
             value={selectedCity}
@@ -88,8 +86,8 @@ const AllMatches = () => {
             <option value="KVN BANGALORE STRIKERS">Bangalore</option>
             <option value="FALCON RISERS HYDERABAD">Hyderabad</option>
           </select>
+        </div>
       </div>
-    </div>
 
       <div className="container">
         <div className="row">
@@ -97,7 +95,7 @@ const AllMatches = () => {
             filteredCards.map((item) => (
               <div className="col-lg-4 col-md-6 col-sm-12 mb-4">
                 <div className="filter-card-container">
-                  <PointCard
+                  <PointCardBox
                     key={item.id}
                     category={item.category_name}
                     team1={item.from_team_name}
@@ -117,11 +115,10 @@ const AllMatches = () => {
           ) : (
             <p>No match data available.</p>
           )}
-          </div>
+        </div>
       </div>
     </section>
   );
 };
 
 export default AllMatches;
-

@@ -1,24 +1,18 @@
-
-import Feedback from "../components/homepg/feedbacksection/Feedback";
 import DownloadBanner from "../components/homepg/appDownloadSection/DownloadBanner";
-import Featurepart from "../components/homepg/featureSection/Featurepart";
-import PromoCard from "../components/homepg/Promocard/PromoCard";
-import VideoSlider from "../components/homepg/videoSliderSection/Videos";
+import Featurepart from "../components/homepg/FeatureSection/Featurepart";
+import TestimonialsCarousel from "../components/homepg/feedbacksection/Feedback";
 import Footer from "../components/homepg/footerSection/Footer";
-import Header from "../components/common/header/Header";
-import Slider from "../components/homepg/Slider/Slider";
+import VideoSlider from "../components/homepg/videoSliderSection/Videos";
 
 const HomePage = () => {
   return (
     <>
-    <Slider/>
-    <Header/>
       <Featurepart />
-      <DownloadBanner/>
+      <DownloadBanner />
       <VideoSlider />
       {/* <PromoCard /> */}
-      {/* <Feedback/> */}
-      <Footer/>
+      <TestimonialsCarousel/>
+      <Footer />
     </>
   );
 };
