@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const LeftBox = () => {
   return (
-    <div className="col-md-3 col">
+    <div className="col-md-3 col deskBox">
       <div className="leftBox">
         <button className="searchWrap">
           <img
@@ -33,8 +33,8 @@ const LeftBox = () => {
             <img
               src="../images/register-icon.svg"
               alt="Apple Store"
-              width={16}
-              height={22}
+              // width={16}
+              // height={22}
             />
           </span>{" "}
           Register

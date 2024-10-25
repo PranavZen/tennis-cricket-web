@@ -57,3 +57,64 @@
     }
   }
 }
+
+.allMatchPages {
+  #banner {
+    &.homeBanner {
+      background-image: url(../../../../public/images/innerPageImg1.png);
+      height: 26rem;
+    }
+    .midContainer {
+      h2 {
+        font-size: 40px;
+      }
+      p {
+        display: none;
+      }
+      .storeIconWrap {
+        display: none;
+      }
+      .regButton {
+        display: none;
+      }
+    }
+  }
+}
+.tournamentDashPage {
+  #banner {
+    &.homeBanner {
+      background-image: url(../../../../public/images/innerPageImg1.png);
+      height: 26rem;
+    }
+    .midContainer {
+      p {
+        display: none;
+      }
+      .storeIconWrap {
+        display: none;
+      }
+      .regButton {
+        display: none;
+      }
+    }
+  }
+}
+.domesticTournamnet {
+  #banner {
+    &.homeBanner {
+      background-image: url(../../../../public/images/innerPageImg1.png);
+      height: 26rem;
+    }
+    .midContainer {
+      p {
+        display: none;
+      }
+      .storeIconWrap {
+        display: none;
+      }
+      .regButton {
+        display: none;
+      }
+    }
+  }
+}

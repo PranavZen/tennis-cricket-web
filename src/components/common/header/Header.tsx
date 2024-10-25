@@ -4,10 +4,12 @@ import "../header/header.scss";
 
 const Header = () => {
   return (
-    <header id="headerSection">
+    <>
       <Navigation />
-      <Banner />
-    </header>
+      <header id="headerSection">
+        <Banner />
+      </header>
+    </>
   );
 };
 

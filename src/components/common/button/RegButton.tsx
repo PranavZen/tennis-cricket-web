@@ -15,8 +15,9 @@ const RegButton: React.FC<RegButtonProps> = ({ text, icon, link }) => {
       className="regButton"
       style={{ position: "relative", cursor: "pointer" }}
     >
-      {icon && <div className="button-icon">{icon}</div>}
+      
       <span>{text}</span>
+      {icon && <div className="button-icon">{icon}</div>}
     </Link>
   );
 };

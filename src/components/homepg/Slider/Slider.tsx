@@ -1,4 +1,5 @@
-import PointCardBox from "../../common/pointcard/PointCardBox";
+
+import MatchPointCard from "../../common/pointCard/MatchPointCard";
 import "../Slider/slider.scss";
 import sliderData from "./sliderdata";
 
@@ -39,7 +40,7 @@ const Slider = () => {
         <div className="carousel-inner">
           <div className="d-flex">
             {sliderData.map((item) => (
-              <PointCardBox
+              <MatchPointCard
                 key={item.id}
                 team1={item.team1}
                 team2={item.team2}

@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "../allmatchesPage/allMatches.scss";
 import axios from "axios";
-import PointCardBox from "../common/pointcard/PointCardBox";
+import MatchPointCard from "../common/pointCard/MatchPointCard";
+import Header from "../common/header/Header";
 
 interface MatchData {
   id: number;
@@ -67,7 +68,9 @@ const AllMatches = () => {
   // console.log("filteredCards",filteredCards)
 
   return (
-    <section>
+    <section className="allMatchPages">
+      <Header />
+      <div className="matches">
       <div className="header-div mb-4">
         <div className="text-heading">Live Cricket Matches</div>
         <div className="dropdown">
@@ -95,7 +98,7 @@ const AllMatches = () => {
             filteredCards.map((item) => (
               <div className="col-lg-4 col-md-6 col-sm-12 mb-4">
                 <div className="filter-card-container">
-                  <PointCardBox
+                  <MatchPointCard
                     key={item.id}
                     category={item.category_name}
                     team1={item.from_team_name}
@@ -116,6 +119,7 @@ const AllMatches = () => {
             <p>No match data available.</p>
           )}
         </div>
+      </div>
       </div>
     </section>
   );

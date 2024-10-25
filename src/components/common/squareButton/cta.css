@@ -44,3 +44,323 @@
     transform: rotate(360deg);
   }
 }/*# sourceMappingURL=cta.css.map */
+
+
+/* @import "../../../assets/scss/media";
+.bg-img {
+  position: relative;
+  background-image: url(../../../../public//images/DownloadAppContainer.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  width: 100%;
+  height: 100%;
+  margin: -5.9rem 0 -10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10%;
+  @include d-desktop {
+    background-image: unset;
+    background: linear-gradient(
+      90deg,
+      rgba(58, 98, 62, 1) 19%,
+      rgba(84, 143, 57, 1) 100%
+    );
+    padding: 6rem 0 2rem;
+    margin: 5.1rem 0 0;
+  }
+  .midSectionWrap {
+    position: relative;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .bannerContentWrap {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 8rem;
+    width: 100%;
+    @include md-tablet{
+      flex-direction: column;
+    }
+  }
+  .stats-details {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.acheivement {
+  position: absolute;
+  left: 0.5rem;
+  top: -5%;
+  @include d-1280-desktop {
+    top: -2%;
+  }
+}
+
+.acheivement-btn {
+  width: 193px;
+  height: 46px;
+  border-radius: 22px;
+  border: 1px solid #0e5623;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @include d-desktop{
+    border-color: #fff;
+  }
+}
+
+.acheivement-btn button {
+  font-size: 20px;
+  font-family: Work Sans;
+  font-weight: 600;
+  color: #416d3d;
+  @include d-desktop{
+    color: #fff;
+  }
+}
+.stats-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 4rem;
+}
+
+h2 {
+  font-family: " Work Sans";
+  font-size: 40px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 1rem;
+}
+
+.stats-info p {
+  font-size: 20px;
+  font-weight: 500;
+  color: #d7d2d2;
+  margin-bottom: 2rem;
+  width: 80%;
+}
+
+.stat-item {
+  width: 171.31px;
+  height: 59px;
+  margin-bottom: 50px;
+}
+
+.stat-item h3 {
+  font-family: Work Sans;
+  font-size: 24px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 5px;
+}
+
+.stat-item p {
+  font-family: Work Sans;
+  font-size: 18px;
+  color: #d9d9d9;
+}
+
+.stats-left,
+.stats-right {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.download-button {
+  width: 197px;
+  height: 45px;
+  border-radius: 22px;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.download-button {
+  color: #416d3d;
+  font-size: 18px;
+  font-family: "Work Sans";
+  font-weight: 600;
+}
+
+.download-button img {
+  width: 18px;
+  height: 19px;
+  color: #416d3d;
+} */
+
+
+/* @import "../../../assets/scss/media";
+// @import "../../../assets/scss/mixin";
+.bg-img {
+  position: relative;
+  background-image: url(../../../../public//images/DownloadAppContainer.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  width: 100%;
+  height: 100%;
+  margin: -5.9rem 0 -10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10%;
+  @include d-desktop {
+    background-image: unset;
+    background: linear-gradient(
+      90deg,
+      rgba(58, 98, 62, 1) 19%,
+      rgba(84, 143, 57, 1) 100%
+    );
+    padding: 6rem 0 2rem;
+    margin: 5.1rem 0 0;
+  }
+  .midSectionWrap {
+    position: relative;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .bannerContentWrap {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 8rem;
+    width: 100%;
+    @include mid-991-tab{
+      flex-direction: column;
+    }
+  }
+  .stats-details {
+    display: flex;
+    justify-content: space-evenly;
+  }
+}
+
+.acheivement {
+  position: absolute;
+  left: 0.5rem;
+  top: -5%;
+  @include d-1280-desktop {
+    top: -2%;
+  }
+}
+
+.acheivement-btn {
+  width: 193px;
+  height: 46px;
+  border-radius: 22px;
+  border: 1px solid #0e5623;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @include d-desktop{
+    border-color: #fff;
+  }
+}
+
+.acheivement-btn button {
+  font-size: 20px;
+  font-family: Work Sans;
+  font-weight: 600;
+  color: #416d3d;
+  @include d-desktop{
+    color: #fff;
+  }
+}
+.stats-info {
+  @include mid-991-tab{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 4rem;
+}
+h2 {
+  font-family: " Work Sans";
+  font-size: 40px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 1rem;
+  @include mid-991-tab{
+    font-size: 3.2rem;
+  }
+}
+
+.stats-info p {
+  font-size: 20px;
+  font-weight: 500;
+  color: #d7d2d2;
+  margin-bottom: 2rem;
+  width: 80%;
+  @include mid-991-tab{
+    // @include subTitleTypo;
+    text-align: center;
+    font-size: 1.6rem;
+    color: #d7d2d2;
+  }
+}
+}
+
+.stat-item {
+  width: 171.31px;
+  height: 59px;
+  margin-bottom: 50px;
+}
+
+.stat-item h3 {
+  font-family: Work Sans;
+  font-size: 24px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 5px;
+}
+
+.stat-item p {
+  font-family: Work Sans;
+  font-size: 18px;
+  color: #d9d9d9;
+}
+
+.stats-left,
+.stats-right {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.download-button {
+  width: 197px;
+  height: 45px;
+  border-radius: 22px;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.download-button {
+  color: #416d3d;
+  font-size: 18px;
+  font-family: "Work Sans";
+  font-weight: 600;
+  @include mid-991-tab{
+    font-size: 1.6rem;
+   }
+}
+
+.download-button img {
+  width: 18px;
+  height: 19px;
+  color: #416d3d;
+} */

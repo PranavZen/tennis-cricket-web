@@ -1,7 +1,6 @@
 .header-div {
     display: flex;
     justify-content: space-between;
-    margin: 0 95px;
 }
 
 .text-heading {
@@ -35,21 +34,17 @@
     text-align: center;
 }
 
-.row {
-    width: 100%;
-}
+// .row {
+//     width: 100%;
+// }
 
-/* .filter-card-section {
-    padding: 20px 0;
-} */
-
-.scoreboard {
-    height: 100%;
-    border-radius: 5px 0px 0px 0px;
-    background: #FFFFFF;
-    border: 1px solid #6CAC44;
-    box-shadow: 0px 10px 20px 0px #9999991A;
-}
+// .scoreboard {
+//     height: 100%;
+//     border-radius: 5px 0px 0px 0px;
+//     background: #FFFFFF;
+//     border: 1px solid #6CAC44;
+//     box-shadow: 0px 10px 20px 0px #9999991A;
+// }
 
 .category {
     background: #EBF0FF;
@@ -60,20 +55,15 @@
 .category-text {
     font-size: 14px;
     font-weight: 500;
-    line-height: 16.42px;
     color: #555353;
-    margin-bottom: 0;
 }
 
 .match-info {
     font-size: 16px;
-    margin-bottom: 6px;
-    margin-top: 5px;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
     text-align: center;
-    margin-bottom: 10px;
 }
 
 .team-name1 {
@@ -264,9 +254,6 @@
     font-size: 14px;
     font-weight: 500;
     line-height: 16.8px;
-    text-align: left;
-    width: 35px;
-    height: 17px;
     color: #E40B21;
     margin-right: 15px;
 }   

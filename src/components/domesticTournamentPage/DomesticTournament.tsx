@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import TournamentCard from "../common/tournamentCard/TournamentCard";
 import './domesticTournament.css';
 import data from "./data";
+import Header from "../common/header/Header";
 
 interface TournamentData {
   id: number;
@@ -42,7 +43,8 @@ const DomesticTournament = () => {
   }, [selectedCity, selectedStatus]); // Re-run filtering when selected city or status changes
 
   return (
-    <section>
+    <section className="domesticTournamnet">
+      <Header/>
       <div className="header-div mb-4">
         <div className="dropdown">
           Choose Location

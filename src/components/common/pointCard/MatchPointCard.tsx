@@ -17,7 +17,7 @@ interface PointerCardProps {
   city?: any;
 }
 
-const PointCardBox: React.FC<PointerCardProps> = ({
+const MatchPointCard: React.FC<PointerCardProps> = ({
   category,
   team1,
   team2,
@@ -73,4 +73,4 @@ const PointCardBox: React.FC<PointerCardProps> = ({
   );
 };
 
-export default PointCardBox;
+export default MatchPointCard;

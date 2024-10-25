@@ -2,7 +2,7 @@
 
 .regButton {
   position: relative;
-  width: 185px;
+  width: 193px;
   height: 45px;
   border-radius: 20px;
   background: #ffffff;
@@ -12,19 +12,21 @@
   align-items: center;
   cursor: pointer;
   text-decoration: none;
-  @include d-desktop{
+  gap: 0.5rem;
+  align-items: center;
+  @include d-desktop {
     height: 3.5rem;
     width: 16.5rem;
   }
   span {
     font-family: "Work Sans";
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 600;
     line-height: 21.11px;
     text-align: center;
     color: #416d3d;
     margin-left: 8px;
-    @include d-desktop{
+    @include d-desktop {
       font-size: 1.6rem;
     }
   }
@@ -35,6 +37,5 @@
   .right-arrow {
     width: 20px;
     height: 20px;
-    margin-left: 8px;
   }
 }

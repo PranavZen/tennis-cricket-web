@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../sliderCard/highlightsCard.css";
+import "../sliderCard/highlightsCard.scss";
 
 interface CardProps {
   id: number;
@@ -18,17 +18,10 @@ interface CardProps {
 }
 
 const HighlightsCard: React.FC<CardProps> = ({
-  title,
   mainTitle,
   backgroundImg,
-  thumbnail,
-  date,
   matchLink,
-  shareLink,
-  timeText,
-  target,
   datafancybox,
-  url,
 }) => {
   return (
     <div className="position-relative">
@@ -41,18 +34,12 @@ const HighlightsCard: React.FC<CardProps> = ({
           <div className="imgWrap">
             <img src={backgroundImg} alt={mainTitle} className="img-fluid" loading="lazy" />
             <div className="playBtn">
-              <span>
-                {/* <img src={playIc} alt="Play" /> */}
-              </span>
+                <img src="images\playIcon.png" alt="play-icon"/>
             </div>
           </div>
           <div className="midBox">
-            {/* <p>{title}</p> */}
             <h5>{mainTitle}</h5>
           </div>
-          {/* <div className="footBox">
-            <span className="dateBox">{date}</span>
-          </div> */}
         </Link>
       </div>
     </div>
