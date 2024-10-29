@@ -7,8 +7,8 @@
   background-repeat: no-repeat;
   background-size: 100%;
   width: 100%;
-  height: 100%;
-  margin: -5.9rem 0 -10rem;
+  height: 450px;
+  margin-top: 4rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -20,11 +20,14 @@
       rgba(58, 98, 62, 1) 19%,
       rgba(84, 143, 57, 1) 100%
     );
-    padding: 6rem 0 2rem;
+    padding: 2rem 0 2rem;
     margin: 5.1rem 0 0;
-  }
-  @include mid-991-tab{
-    // padding: 2rem 0 4rem;
+    @include mid-991-tab {
+      height: 435px;
+    }
+    @include xss-mobile {
+      height: 404px;
+    }
   }
   .midSectionWrap {
     position: relative;
@@ -32,6 +35,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    @include mid-991-tab {
+      align-items: flex-start;
+    }
+    @include mobile {
+      display: inline-block;
+    }
   }
   .bannerContentWrap {
     display: flex;
@@ -39,11 +48,15 @@
     justify-content: space-between;
     margin-top: 8rem;
     width: 100%;
+    @include mid-991-tab {
+      margin-top: 0;
+    }
   }
   .stats-details {
     display: flex;
     justify-content: space-between;
-    @include mid-991-tab{
+
+    @include mid-991-tab {
       display: flex;
       justify-content: space-evenly;
     }
@@ -53,41 +66,53 @@
 .acheivement {
   position: absolute;
   left: 0.5rem;
-  top: -12%;
-  @include d-1280-desktop {
-    top: -2%;
+  top: -70%;
+  @include d-desktop {
+    top: 4% !important;
   }
-  @include mid-991-tab{
-    display: none;
-    &.acheivement{
-      position: absolute;
-      left: 0.5rem;
-      top: -12%;
-      
-    }
+  @include xu-desktop {
+    top: -60%;
+  }
+  @include mid-991-tab {
+    display: block;
+    position: absolute;
+    top: 33.3rem !important;
+    left: 11.5rem;
+  }
+  @include mobile {
+    left: 13rem;
+    top: 30rem !important;
+  }
+  @include xss-mobile {
+    top: 72%;
+    left: 23.5%;
+  }
+  @include xssm-mobile {
+    left: 27%;
   }
 }
 
 .acheivement-btn {
   width: 193px;
   height: 46px;
-  border-radius: 22px;
+  border-radius: 2.2rem;
+  color: #416d3d;
+  font-size: 20px;
+  font-family: "Work Sans";
+  font-weight: 600;
   border: 1px solid #0e5623;
   display: flex;
   justify-content: center;
   align-items: center;
-  @include d-desktop{
+  @include d-desktop {
     border-color: #fff;
-  }
-}
-
-.acheivement-btn button {
-  font-size: 20px;
-  font-family: Work Sans;
-  font-weight: 600;
-  color: #416d3d;
-  @include d-desktop{
     color: #fff;
+  }
+  @include mobile {
+    width: 160px;
+    height: 42px;
+    color: #fff;
+    font-size: 1.7rem;
   }
 }
 
@@ -95,58 +120,87 @@
   display: flex;
   flex-direction: column;
   margin-bottom: 4rem;
-  @include mid-991-tab{
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    margin-bottom: 2rem;
+  @include mid-991-tab {
+    margin-bottom: 0;
   }
- h2 {
-  font-family: "Work Sans";
-  font-size: 40px;
-  font-weight: 600;
-  color: #ffffff;
-  @include mid-991-tab{
-    font-size: 3.2rem;
+  @include mobile {
+    display: inline-block;
+    margin-bottom: -13px;
   }
-}
-}
-
-.stats-info p {
-  font-size: 20px;
-  font-weight: 500;
-  color: #d7d2d2;
-  margin-bottom: 2rem;
-  // width: 80%;
-  @include mid-991-tab{
-    text-align: center;
-    font-size: 1.6rem;
+  h2 {
+    font-family: "Work Sans";
+    font-size: 40px;
+    font-weight: 600;
+    color: #ffffff;
+    @include d-desktop {
+      font-size: 3.7rem;
+    }
+    @include mid-991-tab {
+      font-size: 3.5rem;
+      text-align: center;
+    }
+    @include mobile {
+      font-size: 2.5rem;
+      text-align: center;
+    }
+    @include xss-mobile {
+      font-size: 2.2rem;
+    }
+  }
+  p {
+    font-size: 20px;
+    font-weight: 500;
     color: #d7d2d2;
-  } 
+    width: 80%;
+    margin-bottom: 1rem;
+    @include mid-991-tab {
+      text-align: center;
+      font-size: 1.8rem;
+      color: #d7d2d2;
+    }
+    @include xss-mobile {
+      font-size: 1.5rem;
+    }
+  }
 }
 
 .stat-item {
   width: 171.31px;
   height: 59px;
   margin-bottom: 50px;
- h3 {
-  font-family: 'Work Sans';
-  font-size: 24px;
-  font-weight: 700;
-  color: #ffffff;
-  margin-bottom: 5px;
-  @include mid-991-tab{
-    font-size: 2.2rem;
+  @include xss-mobile {
+    margin-bottom: 2rem;
   }
-}
- p {
-  font-family: 'Work Sans';
-  font-size: 18px;
-  color: #d9d9d9;
-  @include mid-991-tab{
-    font-size: 1.6rem;
+  h3 {
+    font-family: "Work Sans";
+    font-size: 24px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 5px;
+    @include mid-991-tab {
+      font-size: 2.2rem;
+    }
+    @include mobile {
+      font-size: 1.9rem;
+    }
+    @include xss-mobile {
+      font-size: 1.6rem;
+    }
   }
-}
+  p {
+    font-family: "Work Sans";
+    font-size: 18px;
+    color: #d9d9d9;
+    @include mid-991-tab {
+      font-size: 1.6rem;
+    }
+    @include mobile {
+      font-size: 1.4rem;
+    }
+    @include xss-mobile {
+      font-size: 1.3rem;
+    }
+  }
 }
 
 .stats-left,
@@ -165,6 +219,10 @@
   justify-content: center;
   align-items: center;
   gap: 0.8rem;
+  @include mobile {
+    width: 160px;
+    height: 42px;
+  }
 }
 
 .download-button {
@@ -172,17 +230,37 @@
   font-size: 20px;
   font-family: "Work Sans";
   font-weight: 600;
-  @include mid-991-tab{
+  @include mid-991-tab {
+    // Position for above 991px
     display: none;
-    // font-size: 1.6rem;
-    // position: absolute;
-    // bottom: -16px;
-    // left: 39rem;
-   }
+  }
+  @include mid-991-tab {
+    display: block;
+    position: relative;
+    bottom: -25rem;
+    right: -56%;
+  }
+  @include mobile {
+    bottom: -25.5rem;
+    font-size: 1.7rem;
+    right: -12.3rem;
+  }
+  @include xss-mobile {
+    bottom: -23rem;
+    right: -8rem;
+  }
+  @include xssm-mobile {
+    right: -9.3rem;
+  }
 }
 
 .download-button img {
   width: 18px;
   height: 19px;
   color: #416d3d;
+  $mid_tablet: 992px;
+  @include mid-tab {
+    width: 1.4rem;
+    height: 1.4rem;
+  }
 }

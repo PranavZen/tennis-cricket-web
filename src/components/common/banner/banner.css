@@ -1,0 +1,123 @@
+#banner {
+  position: relative;
+}
+#banner.homeBanner {
+  background-image: url(../../../../public/images/home_banner.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: center;
+  width: 100%;
+  height: 65.5rem;
+}
+@media (max-width: 1366px) {
+  #banner.homeBanner {
+    background-image: url(../../../../public/images/full-banner.png);
+  }
+}
+@media (max-width: 1024px) {
+  #banner.homeBanner {
+    height: 35rem;
+  }
+}
+#banner .midContainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+#banner .midContainer .banner-heading {
+  font-size: 7.2rem;
+  font-weight: bold;
+  color: #fff;
+  line-height: 0.8;
+}
+@media (max-width: 1024px) {
+  #banner .midContainer .banner-heading {
+    font-size: 5.2rem;
+  }
+}
+@media (max-width: 480px) {
+  #banner .midContainer .banner-heading {
+    font-size: 3.8rem;
+  }
+}
+#banner .midContainer p {
+  font-size: 1.8rem;
+  color: #d7d2d2;
+  font-weight: 500;
+}
+@media (max-width: 1024px) {
+  #banner .midContainer p {
+    font-size: 1.6rem;
+  }
+}
+@media (max-width: 480px) {
+  #banner .midContainer p {
+    font-size: 1.5rem;
+  }
+}
+#banner .midContainer .storeIconWrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+@media (max-width: 1024px) {
+  #banner .midContainer .storeIconWrap {
+    width: 45%;
+  }
+}
+#banner .midContainer .storeIconWrap a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.allMatchPages #banner.homeBanner {
+  background-image: url(../../../../public/images/innerPageImg1.png);
+  height: 26rem;
+}
+.allMatchPages #banner .midContainer h2 {
+  font-size: 40px;
+}
+.allMatchPages #banner .midContainer p {
+  display: none;
+}
+.allMatchPages #banner .midContainer .storeIconWrap {
+  display: none;
+}
+.allMatchPages #banner .midContainer .regButton {
+  display: none;
+}
+
+.tournamentDashPage #banner.homeBanner {
+  background-image: url(../../../../public/images/innerPageImg1.png);
+  height: 26rem;
+}
+.tournamentDashPage #banner .midContainer p {
+  display: none;
+}
+.tournamentDashPage #banner .midContainer .storeIconWrap {
+  display: none;
+}
+.tournamentDashPage #banner .midContainer .regButton {
+  display: none;
+}
+
+.domesticTournamnet #banner.homeBanner {
+  background-image: url(../../../../public/images/innerPageImg1.png);
+  height: 26rem;
+}
+.domesticTournamnet #banner .midContainer p {
+  display: none;
+}
+.domesticTournamnet #banner .midContainer .storeIconWrap {
+  display: none;
+}
+.domesticTournamnet #banner .midContainer .regButton {
+  display: none;
+}/*# sourceMappingURL=banner.css.map */

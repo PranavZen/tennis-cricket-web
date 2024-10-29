@@ -1,0 +1,17 @@
+.dropdown-menu li {
+  font-size: 18px;
+  font-family: Work Sans;
+  color: #FFFFFF;
+}
+
+.dropdown-menu li :hover {
+  color: #416D3D;
+}
+
+.collapse {
+  display: none;
+}
+
+.show {
+  display: block;
+}/*# sourceMappingURL=MenuItems.css.map */

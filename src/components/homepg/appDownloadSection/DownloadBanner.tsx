@@ -3,12 +3,11 @@ import "./downloadBanner.scss";
 const DownloadBanner = () => {
   return (
     <section className="bg-img">
+
       <div className="container midSectionWrap">
-        <div className="acheivement">
-          <div className="acheivement-btn">
-            <button>Achievement</button>
+          <div className="acheivement">
+            <button className="acheivement-btn">Achievement</button>
           </div>
-        </div>
 
         <div className="bannerContentWrap">
           <div className="col-lg-6 col-md-12 col-12">
@@ -47,6 +46,7 @@ const DownloadBanner = () => {
           </div>
         </div>
       </div>
+
     </section>
   );
 };

@@ -54,14 +54,16 @@ const TestimonialsCarousel: React.FC = () => {
   // }, []);
 
   return (
-    <section className="feedback-section">
+    <section>
+      <div className="title">
       <div className="section-title">Cricketer's Feedback</div>
       <div className="section-subtitle">
         Every cricket story holds a special place in our hearts and that’s why
         your cricket matters
       </div>
+      </div>
 
-      <div className="container">
+      <div className="container feedback-section">
         <OwlCarousel {...carouselOptions}>
           {feedbackData.map((testimonial, index) => (
             <div className="item" key={index}>

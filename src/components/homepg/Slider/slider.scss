@@ -1,10 +1,5 @@
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-  }
-  
-  html {
+@import '../../../assets/scss/media';
+html {
     font-size: 62.333%;
   }
   
@@ -13,7 +8,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 60px;
+    padding: 0 24px;
   }
 
   .carousel-inner {
@@ -200,10 +195,10 @@
   }
   
   .carousel-control.prev {
-    left: 45px; 
+    left: 1rem; 
     z-index: 1;
   }
   
   .carousel-control.next {
-    right: 45px;
+    right: 1rem;
     }

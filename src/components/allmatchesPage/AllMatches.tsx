@@ -3,6 +3,8 @@ import "../allmatchesPage/allMatches.scss";
 import axios from "axios";
 import MatchPointCard from "../common/pointCard/MatchPointCard";
 import Header from "../common/header/Header";
+import Spinner from "../common/spinner/Spinner";
+import CompanySection from "../homepg/footerSection/CompanySection";
 
 interface MatchData {
   id: number;
@@ -18,27 +20,21 @@ interface MatchData {
   from_team_logo: string;
   to_team_logo: string;
   stadium_name: string;
-  //   match_fixture_status_name: string;
   liveStatus: string;
-  //   winMsg: any;
-  //   city: string;
 }
 
 const AllMatches = () => {
   const [matchData, setMatchData] = useState<MatchData[]>([]);
   const [selectedCity, setSelectedCity] = useState("All");
-  //   const [cityy ,setCityy] = useState('')
-  //   console.log("setMatchData",matchData);
-  //   console.log("selectedCityyyyyy",selectedCity)
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchMatchData = async () => {
+      setLoading(true);
       try {
         const response = await axios.get(
           `https://my.ispl.popopower.com/api/matches/results`
         );
-
-        console.log("API Response:", response);
 
         if (
           response.data &&
@@ -51,6 +47,8 @@ const AllMatches = () => {
         }
       } catch (error) {
         console.error("Error fetching match data:", error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -65,62 +63,63 @@ const AllMatches = () => {
     selectedCity === "All"
       ? matchData
       : matchData.filter((item) => item.from_team_name === selectedCity);
-  // console.log("filteredCards",filteredCards)
 
   return (
     <section className="allMatchPages">
-      <Header />
+      <Header subtitle="Live Cricket Matches" className="innerpageHeading"/>
       <div className="matches">
-      <div className="header-div mb-4">
-        <div className="text-heading">Live Cricket Matches</div>
-        <div className="dropdown">
-          Choose Location
-          <select
-            value={selectedCity}
-            name="city-names"
-            id="city"
-            onChange={handleCityChange}
-          >
-            <option value="All">All</option>
-            <option value="CHENNAI SINGAMS">Chennai</option>
-            <option value="MAJHI MUMBAI">Mumbai</option>
-            <option value="TIIGERS OF KOLKATA">Kolkata</option>
-            <option value="SRINAGAR KE VEER">Srinagar</option>
-            <option value="KVN BANGALORE STRIKERS">Bangalore</option>
-            <option value="FALCON RISERS HYDERABAD">Hyderabad</option>
-          </select>
+        <div className="header-div">
+          <div className="text-heading">Live Cricket Matches</div>
+          <div className="dropdown">
+            Choose Location
+            <select
+              value={selectedCity}
+              name="city-names"
+              id="city"
+              onChange={handleCityChange}
+            >
+              <option value="All">All</option>
+              <option value="CHENNAI SINGAMS">Chennai</option>
+              <option value="MAJHI MUMBAI">Mumbai</option>
+              <option value="TIIGERS OF KOLKATA">Kolkata</option>
+              <option value="SRINAGAR KE VEER">Srinagar</option>
+              <option value="KVN BANGALORE STRIKERS">Bangalore</option>
+              <option value="FALCON RISERS HYDERABAD">Hyderabad</option>
+            </select>
+          </div>
         </div>
-      </div>
 
-      <div className="container">
-        <div className="row">
-          {filteredCards.length > 0 ? (
-            filteredCards.map((item) => (
-              <div className="col-lg-4 col-md-6 col-sm-12 mb-4">
-                <div className="filter-card-container">
-                  <MatchPointCard
-                    key={item.id}
-                    category={item.category_name}
-                    team1={item.from_team_name}
-                    team2={item.to_team_name}
-                    score1={`${item.team_one_scrore}/${item.team_one_wicket}`}
-                    score2={`${item.team_two_scrore}/${item.team_two_wicket}`}
-                    overs1={item.team_one_over}
-                    overs2={item.team_two_over}
-                    logo1={`https://my.ispl-t10.com/images/team-master/teams/${item.from_team_logo}`}
-                    logo2={`https://my.ispl-t10.com/images/team-master/teams/${item.to_team_logo}`}
-                    stadium={item.stadium_name}
-                    liveStatus={item.liveStatus}
-                  />
+        <div className="container">
+          <div className="row">
+            {loading ? ( 
+              <Spinner/>
+            ) : filteredCards.length > 0 ? (
+              filteredCards.map((item) => (
+                <div className="col-lg-4 col-md-6 col-sm-12 mb-4" key={item.id}>
+                  <div className="filter-card-container">
+                    <MatchPointCard
+                      category={item.category_name}
+                      team1={item.from_team_name}
+                      team2={item.to_team_name}
+                      score1={`${item.team_one_scrore}/${item.team_one_wicket}`}
+                      score2={`${item.team_two_scrore}/${item.team_two_wicket}`}
+                      overs1={item.team_one_over}
+                      overs2={item.team_two_over}
+                      logo1={`https://my.ispl-t10.com/images/team-master/teams/${item.from_team_logo}`}
+                      logo2={`https://my.ispl-t10.com/images/team-master/teams/${item.to_team_logo}`}
+                      stadium={item.stadium_name}
+                      liveStatus={item.liveStatus}
+                    />
+                  </div>
                 </div>
-              </div>
-            ))
-          ) : (
-            <p>No match data available.</p>
-          )}
+              ))
+            ) : (
+              <p>No match data available.</p>
+            )}
+          </div>
         </div>
       </div>
-      </div>
+      <CompanySection/>
     </section>
   );
 };

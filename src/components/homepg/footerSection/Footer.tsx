@@ -4,20 +4,8 @@ import './footer.scss';
 const Footer = () => {
   return (
     <section>
-      <div className="mentioned-section">
-        <p>Proudly Mentioned in</p>
-        <div className="mentioned-logos">
-          <img src="images/clientImg1.png" alt="Company 1" />
-          <img src="images/clientImg2.png" alt="Company 2" />
-          <img src="images/clientImg3.png" alt="Company 3" />
-          <img src="images/clientImg4.png" alt="Company 4" />
-          <img src="images/clientImg5.png" alt="Company 5" />
-          <img src="images/clientImg7.png" alt="Company 6" />
-          <img src="images/clientImg7.png" alt="Company 7" />
-        </div>
-      </div>
-
-      <footer>
+       <footer>
+        <div className='footer-container'>
         <div className="footer-content">
           <img src="images/tennisCricketImg.png" alt="tennisCricket" />
           <div className="followUs-container">
@@ -59,6 +47,7 @@ const Footer = () => {
           <a href="#">Terms of Use</a>
           <a href="#">Feedback</a>
           <a href="#">Contact Us</a>
+        </div>
         </div>
 
         {/* Footer Bottom Section */}

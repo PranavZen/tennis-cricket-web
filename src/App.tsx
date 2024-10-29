@@ -20,7 +20,7 @@ function App() {
         <Route path="/domesticTournamnet" element={<DomesticTournament />} />
       </Routes>
 
-      <Footer />
+      <Footer/>
     </BrowserRouter>
   );
 }

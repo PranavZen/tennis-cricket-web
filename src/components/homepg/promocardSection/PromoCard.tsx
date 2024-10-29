@@ -60,25 +60,3 @@ const PromoCard = () => {
 };
 
 export default PromoCard;
-
-{
-  /* <section className="wrapper">
-<div className="position-relative">
-<div className="cardInner">
-  <Link
-    to={"https://youtu.be/7ucE8BAychI?feature=shared"}
-    className="cardAllWrap"
-    // data-fancybox={datafancybox}
-  >
-    <div className="imgWrap">
-      <img src="https://my.ispl-t10.com/images/videos/thumbnail/G6xqZDcENbrDJvfQtijojv9RGQUBa1C2JrOcA5jq.jpg" 
-       className="img-fluid" loading="lazy" />
-      <div className="playBtn">
-          <img src="images\playIcon.png" alt="play-icon"/>
-      </div>
-    </div>
-  </Link>
-</div>
-</div>
-</section> */
-}

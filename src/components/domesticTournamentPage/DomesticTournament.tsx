@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import TournamentCard from "../common/tournamentCard/TournamentCard";
-import './domesticTournament.css';
+import './domesticTournament.scss';
 import data from "./data";
 import Header from "../common/header/Header";
+import { Spinner } from "react-bootstrap";
 
 interface TournamentData {
   id: number;
@@ -20,6 +21,7 @@ const DomesticTournament = () => {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [selectedStatus, setSelectedStatus] = useState<string[]>([]);
   const [filteredData, setFilteredData] = useState(data);
+  const [loading, setLoading] = useState(true);
 
   const handleCityChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedCity(event.target.value);
@@ -34,18 +36,20 @@ const DomesticTournament = () => {
 
   useEffect(() => {
     const filteredCards = data.filter((TournamentData) => {
+      setLoading(true)
       return (
         (selectedStatus.length === 0 || selectedStatus.includes(TournamentData.matchStatus)) &&
         (selectedCity === "All" || TournamentData.matchLocation.includes(selectedCity))
       );
     });
     setFilteredData(filteredCards);
-  }, [selectedCity, selectedStatus]); // Re-run filtering when selected city or status changes
+    setLoading(false)
+  }, [selectedCity, selectedStatus]);
 
   return (
     <section className="domesticTournamnet">
-      <Header/>
-      <div className="header-div mb-4">
+      <Header subtitle="All Domestic Cricket Tournaments" className="innerpageHeading"/>
+      <div className="header-div">
         <div className="dropdown">
           Choose Location
           <select
@@ -96,8 +100,10 @@ const DomesticTournament = () => {
       )}
 
       <div className="container">
-        <div className="row">
-          {filteredData.map((item: TournamentData) => (
+      <div className="row">
+          {loading ? (
+            <Spinner/>
+            ) : filteredData.map((item: TournamentData) => (
             <div key={item.id} className="col-lg-4 col-md-6 col-sm-12 mb-4">
               <TournamentCard
                 id={item.id}

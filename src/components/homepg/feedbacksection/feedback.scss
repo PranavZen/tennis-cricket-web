@@ -9,20 +9,28 @@ $font-exo-2: 'Exo 2', sans-serif;
 
 .feedback-section {
   text-align: center;
-  padding: 20px;
+  margin: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
+.title {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin-top: 3rem;
 
 .section-title {
   font-family: $font-work-sans;
   font-size: 3.4rem;
   font-weight: 500;
   color: $primary-color;
-  margin-bottom: 3px;
   @include mid-991-tab{
     font-size: 3.2rem;
+  }
+  @include mobile {
+    font-size: 2.5rem;
   }
 }
 
@@ -33,6 +41,10 @@ $font-exo-2: 'Exo 2', sans-serif;
   color: $secondary-color;
   max-width: 443px;
   margin: 0 auto;
+  @include mobile {
+    font-size: 1.6rem;
+  }
+}
 }
 
 .shadow-effect {
@@ -57,7 +69,7 @@ $font-exo-2: 'Exo 2', sans-serif;
 .item {
   text-align: center;
   padding: 10px;
-  margin-bottom: 50px;
+  margin-bottom: 5rem;
   transform: scale(0.8);
   transition: all 0.3s ease-in-out;
   

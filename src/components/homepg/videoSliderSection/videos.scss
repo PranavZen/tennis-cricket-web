@@ -1,4 +1,9 @@
 @import "../../../../assets/scss/media";
+#highlightsSection {
+  @include mobile {
+    padding: 0 1.5rem;
+  }
+}
 #VideoSlider {
   padding: 8rem 0 13rem;
   // margin-top: -10rem;

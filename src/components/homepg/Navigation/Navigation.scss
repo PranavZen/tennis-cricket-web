@@ -85,18 +85,10 @@
       }
 
           .nav-link {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             font-weight: 500;
             color: #fff;
-
-            @include d-1366-desktop {
-              font-size: 1.6rem;
-            }
-            @include d-desktop {
-              font-size: 1.2rem;
-            }
             @include mid-991-tab{
-              font-size: 2.2rem;
               display: flex;
               justify-content: center;
               align-items: center;
@@ -227,6 +219,14 @@
       gap: 3.5rem;
       margin: 6%;
     }
+    @include mobile {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+      margin: 6%;
+    }
     
     @include mid-991-tab{
       .searchWrap{
@@ -237,7 +237,11 @@
       .iconWrap{
         img{
           width: 3.5rem;
-          height: 3.5rem; 
+          height: 3.5rem;
+          @include mobile {
+            width: 3rem;
+          height: 3rem;
+          }
         }
       }
     }
@@ -251,14 +255,72 @@
         color: #fff;
         font-family: 'Work Sans';
         font-weight: 500;
+        @include x-tablet {
+          flex-basis: 70%;
+          height: 6rem;
+        }
+        @include mobile {
+          height: 4.5rem;
+          font-size: 2rem;
+          border-radius: 22px;
+        }
       }
       img{
         @include mid-991-tab{
           width: 1.5rem;
           height: 6rem;
+          @include mobile {
+            width: 1.2rem;
+            height: 3.5rem;
+          }
         }
       }
     }
   }
+
+  // .menu-btn-1 {
+  //   height: 32px;
+  //   width: 40px;
+  //   cursor: pointer;
+  //   position: relative;
+  
+  //   span,
+  //   span::before,
+  //   span::after {
+  //     background: black;
+  //     border-radius: 3px;
+  //     content: '';
+  //     position: absolute;
+  //     width: 40px;
+  //     height: 6px;
+  //     margin-top: 13px;
+  //     transition: 0.3s ease-in-out;
+  //   }
+  
+  //   span::before {
+  //     margin-top: -12px;
+  //   }
+  
+  //   span::after {
+  //     margin-top: 12px;
+  //   }
+  
+  //   &.active span {
+  //     background: transparent;
+  //   }
+  
+  //   &.active span::before {
+  //     margin-top: 0;
+  //     transform: rotate(45deg);
+  //   }
+  
+  //   &.active span::after {
+  //     margin-top: 0;
+  //     transform: rotate(-45deg);
+  //   }
+  // }
+  
+
+  
 
 

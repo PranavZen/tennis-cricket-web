@@ -18,6 +18,10 @@
     height: 3.5rem;
     width: 16.5rem;
   }
+  @include mobile {
+    height: 4rem;
+    width: 15rem;
+  } 
   span {
     font-family: "Work Sans";
     font-size: 20px;
@@ -27,7 +31,10 @@
     color: #416d3d;
     margin-left: 8px;
     @include d-desktop {
-      font-size: 1.6rem;
+      font-size: 1.8rem;
+    }
+    @include mobile {
+      font-size: 1.7rem;
     }
   }
   .button-icon {

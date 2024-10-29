@@ -1,108 +1,82 @@
 .header-div {
     display: flex;
     justify-content: space-between;
-}
-
-.text-heading {
+    margin: 6rem 9rem 3rem;
+  }
+  
+  .text-heading {
     font-size: 24px;
     font-weight: bold;
     font-family: Work Sans;
-}
-
-.dropdown {
+  }
+  
+  .dropdown {
     font-size: 20px;
-    font-weight:normal;
-    color: #8C8C8C;
+    font-weight: normal;
+    color: #8c8c8c;
     font-family: Work Sans;
     display: flex;
     gap: 10px;
-}
-
-.dropdown select {
-    font-size: 20px;
-    color: #8C8C8C;
-    width: 145px;
-    height: 42px;
-    border-color: #8C8C8C;
-    border-radius: 21px;
-}
-
-.dropdown option {
-    font-size: 20px;
-    color: #8C8C8C;
-    font-family: Work Sans;
-    text-align: center;
-}
-
-// .row {
-//     width: 100%;
-// }
-
-// .scoreboard {
-//     height: 100%;
-//     border-radius: 5px 0px 0px 0px;
-//     background: #FFFFFF;
-//     border: 1px solid #6CAC44;
-//     box-shadow: 0px 10px 20px 0px #9999991A;
-// }
-
-.category {
-    background: #EBF0FF;
+  
+    select {
+      font-size: 20px;
+      color: #8c8c8c;
+      width: 145px;
+      height: 42px;
+      border-color: #8c8c8c;
+      border-radius: 21px;
+    }
+  
+    option {
+      font-size: 20px;
+      color: #8c8c8c;
+      font-family: Work Sans;
+      text-align: center;
+    }
+  }
+  
+  .category {
+    background: #ebf0ff;
     text-align: center;
     padding: 10px;
-}
-
-.category-text {
-    font-size: 14px;
-    font-weight: 500;
-    color: #555353;
-}
-
-.match-info {
+  
+    .category-text {
+      font-size: 14px;
+      font-weight: 500;
+      color: #555353;
+    }
+  }
+  
+  .match-info {
     font-size: 16px;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
     text-align: center;
-}
-
-.team-name1 {
+  }
+  
+  .team-name1,
+  .team-name2 {
     display: block;
     font-size: 14px;
     font-weight: 500;
-    color: #6C6C6C;
+    color: #6c6c6c;
     white-space: nowrap;
     width: 145px;
     overflow: hidden;
     text-overflow: ellipsis;
-}
-
-.team-vs {
+  }
+  
+  .team-vs {
     font-size: 12px;
     font-weight: 500;
-    color: #6C6C6C;
+    color: #6c6c6c;
     display: block;
-}
-
-.team-vs {
     width: 16px;
     height: 17px;
-    font-size: 14px;
-    font-weight: 500;
-    color: #6C6C6C;
-}
-
-.team-name2 {
-    font-size: 14px;
-    font-weight: 500;
-    color: #6C6C6C;
-    white-space: nowrap;
-    width: 145px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.scores {
+  }
+  
+  .scores {
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -111,154 +85,104 @@
     font-weight: 500;
     line-height: 16.8px;
     text-align: left;
-}
-
-.team-score {
+  }
+  
+  .team-score {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-}
-
-.team-left {
-    flex-direction: row;
-}
-
-.team-score img {
-    margin-left: 10px;
-}
-
-.team-logo1 {
+  
+    img {
+      margin-left: 10px;
+    }
+  
+    &.team-left {
+      flex-direction: row;
+    }
+  
+    &.team-right {
+      flex-direction: row-reverse;
+    }
+  }
+  
+  .team-logo1 {
     width: 42px;
     height: 42px;
-    background: #FFFFFF;
-    border: 0.85px solid #4764DA;
+    background: #ffffff;
+    border: 0.85px solid #4764da;
     border-radius: 50%;
-}
-
-.score-details {
+  }
+  
+  .team-logo2 {
+    width: 42px;
+    height: 42px;
+    background: #ffffff;
+    border: 1px solid #6a0913;
+    border-radius: 50%;
+  }
+  
+  .score-details {
     margin-left: 10px;
     text-align: left;
     width: 59px;
-}
-
-.runs, .overs {
-    display: block;
-    text-align: center;
-}
-
-.runs {
-    font-family: Work Sans;
-    font-size: 18px;
-    font-weight: 600;
-    line-height: 21.11px;
-    letter-spacing: 0.02em;
-    text-align: left;
-    color: #231F20;
-    width: 48px;
-    height: 21px;
-    width: auto;
-    margin-bottom: 5px;
-}
-
-.overs {
-    font-family: Work Sans;
-    font-size: 16px;
-    font-weight: 600;
-    line-height: 18.77px;
-    color: #B7B7B7;
-    width: auto;
-    height: 19px;
-    margin-top: 5px;
-}
-
-.score-vs {
+  
+    .runs {
+      font-family: Work Sans;
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 21.11px;
+      letter-spacing: 0.02em;
+      color: #231f20;
+      width: auto;
+      margin-bottom: 5px;
+    }
+  
+    .overs {
+      font-family: Work Sans;
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 18.77px;
+      color: #b7b7b7;
+      width: auto;
+      margin-top: 5px;
+    }
+  }
+  
+  .score-vs {
     font-size: 14px;
     font-weight: 500;
     line-height: 16.8px;
-    text-align: left;
-    color: #231F20;
+    color: #231f20;
     width: 16px;
     height: 17px;
-}
-
-.team-right {
-    flex-direction: row-reverse;
-}
-
-.team-score {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.team-score img {
-    margin-left: 10px;
-}
-
-.team-logo2 {
-    width: 42px;
-    height: 42px;
-    background: #FFFFFF;
-    border: 1px solid #6A0913;
-    border-radius: 50%;
-}
-
-.runs, .overs {
-    display: block;
-    text-align: left;
-}
-
-.runs {
-    font-family: Work Sans;
-    font-size: 18px;
-    font-weight: 600;
-    line-height: 21.11px;
-    letter-spacing: 0.02em;
-    color: #231F20;
-    height: 21px;
-    width: auto;
-    margin-bottom: 5px;
-}
-
-.overs {
-    font-family: Work Sans;
-    font-size: 16px;
-    font-weight: 600;
-    line-height: 18.77px;
-    text-align: left;
-    color: #B7B7B7;
-    width: auto;
-    height: 19px;
-    margin-top: 5px;
-}
-
-.stadium-info {
+  }
+  
+  .stadium-info {
     display: flex;
     justify-content: space-between;
     padding: 10px;
-    background: #EBF0FF;
-}
-
-.stadium-name {
-    font-family: Work Sans;
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 16.42px;
-    text-align: left;
-    color: #555353;
-    width: 176px;
-}
-
-.live-status {
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 16.8px;
-    color: #E40B21;
-    margin-right: 15px;
-}   
-
-/* @media (max-width: 992px) {
+    background: #ebf0ff;
+  
+    .stadium-name {
+      font-family: Work Sans;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 16.42px;
+      color: #555353;
+      width: 176px;
+    }
+  
+    .live-status {
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 16.8px;
+      color: #e40b21;
+      margin-right: 15px;
+    }
+  }
+  
+  @media (max-width: 992px) {
     .filter-card-container {
       flex: 1 1 50%;
       max-width: 33.33333333%;
@@ -270,4 +194,5 @@
       flex: 1 1 100%;
       max-width: 100%;
     }
-  } */
+  }
+  

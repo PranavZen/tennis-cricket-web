@@ -2,12 +2,23 @@ import Navigation from "../../homepg/Navigation/Navigation";
 import Banner from "../banner/Banner";
 import "../header/header.scss";
 
-const Header = () => {
+interface HeaderProps {
+  subtitle?: string;
+  className?: string;
+}
+
+const Header: React.FC<HeaderProps> = ({ subtitle = "TennisCricket.in", className }) => {
+  const innerPageStyle: React.CSSProperties = {
+    fontSize: '40px'
+  };
   return (
     <>
       <Navigation />
       <header id="headerSection">
-        <Banner />
+        <Banner
+        subtitle={subtitle}
+        style={className === "innerpageHeading" ? innerPageStyle : undefined}
+        />
       </header>
     </>
   );

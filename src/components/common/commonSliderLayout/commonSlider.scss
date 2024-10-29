@@ -6,7 +6,7 @@
       width: 2.6rem;
       height: 2.6rem;
       &.slick-prev {
-        left: 40%;
+        left: 49%;
         top: unset;
         bottom: -55px;
         @include d-desktop{
@@ -32,7 +32,7 @@
           left: 50%;
         }
         @include x-767-tablet{
-          left: 55%;
+          left: 50%;
         }
         &.slick-disabled{
           opacity: .75;

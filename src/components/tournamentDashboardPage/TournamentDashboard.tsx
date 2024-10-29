@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import "./tournamentDashboard.css";
+import "./tournamentDashboard.scss";
 import axios from "axios";
 import MatchPointCard from "../common/pointCard/MatchPointCard";
 import Header from "../common/header/Header";
+import { Spinner } from "react-bootstrap";
 
 interface MatchData {
   id: number;
@@ -29,9 +30,11 @@ const TournamentDashboard: React.FC = () => {
   const [matchData, setMatchData] = useState<MatchData[]>([]);
   const [selectedCity, setSelectedCity] = useState("All");
   const [activeTab, setActiveTab] = useState<string>("tab-1");
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchMatchData = async () => {
+      setLoading(true)
       try {
         const response = await axios.get(
           `https://my.ispl.popopower.com/api/matches/results`
@@ -50,6 +53,8 @@ const TournamentDashboard: React.FC = () => {
         }
       } catch (error) {
         console.error("Error fetching match data:", error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -71,9 +76,9 @@ const TournamentDashboard: React.FC = () => {
 
   return (
       <section className="tournamentDashPage">
-        <Header />
+        <Header subtitle="TournamentDashboard" className="innerpageHeading"/>
         <div className="dashboard">
-        <div className="tab-header mb-4">
+        <div className="tab-header">
         <div className="tabs">
           <button
             className={`tab-button ${activeTab === "tab-1" ? "active" : ""}`}
@@ -133,7 +138,7 @@ const TournamentDashboard: React.FC = () => {
           </button>
         </div>
 
-        <div className="dropdown">
+        <div className="dropdown-city">
           Choose
           <select
             value={selectedCity}
@@ -160,9 +165,11 @@ const TournamentDashboard: React.FC = () => {
             {activeTab === "tab-1" && (
               <div className="tab-box">
 
-                <div className="container">
+  <div className="container">
         <div className="row">
-          {filteredCards.length > 0 ? (
+          {loading ? ( 
+            <Spinner/>
+          ) : filteredCards.length > 0 ? (
             filteredCards.map((item) => (
               <div className="col-lg-4 col-md-6 col-sm-12 mb-4">
                 <div className="filter-card-container">

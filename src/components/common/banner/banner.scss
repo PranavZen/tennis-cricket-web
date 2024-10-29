@@ -12,7 +12,7 @@
       background-image: url(../../../../public/images/full-banner.png);
     }
     @include d-desktop {
-      height: 45rem;
+      height: 35rem;
     }
   }
   .midContainer {
@@ -24,13 +24,16 @@
     flex-direction: column;
     align-items: center;
     gap: 1rem;
-    h1 {
+    .banner-heading {
       font-size: 7.2rem;
       font-weight: bold;
       color: #fff;
       line-height: 0.8;
       @include d-desktop {
         font-size: 5.2rem;
+      }
+      @include mobile {
+        font-size: 3.8rem;
       }
     }
     p {
@@ -39,6 +42,9 @@
       font-weight: 500;
       @include d-desktop {
         font-size: 1.6rem;
+      }
+      @include mobile {
+        font-size: 1.5rem;
       }
     }
     .storeIconWrap {
@@ -58,6 +64,7 @@
   }
 }
 
+// Link header and footer to the inner pages
 .allMatchPages {
   #banner {
     &.homeBanner {

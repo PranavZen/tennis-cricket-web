@@ -6,7 +6,7 @@ import "../featureSection/Featurepart.scss";
 const Featurepart = () => {
   const [visibleTexts, setVisibleTexts] = useState<string[]>(["Live Scoring"]);
   const [activeTab, setActiveTab] = useState<"live" | "booking">("live");
-
+  
   useEffect(() => {
     AOS.init({ duration: 1000 });
   }, []);
@@ -14,27 +14,25 @@ const Featurepart = () => {
   const handleTabChange = (tab: "live" | "booking") => {
     setActiveTab(tab);
     if (tab === "live") {
-      setVisibleTexts(["Live Scoring"]);
+      setVisibleTexts((prevTexts) => {
+        return prevTexts.filter(text => text !== "Booking Ground").concat("Live Scoring");
+      });
     } else {
       setVisibleTexts(["Booking Ground"]);
     }
   };
 
-  const ToggleSwitch = ({
-    switchId,
-    displayText,
-  }: {
-    switchId: string;
-    displayText: string;
-  }) => {
+  const ToggleSwitch = ({ switchId, displayText }: { switchId: string; displayText: string }) => {
     const isVisible = visibleTexts.includes(displayText);
 
     const handleToggleChange = () => {
-      if (isVisible) {
-        setVisibleTexts(visibleTexts.filter((text) => text !== displayText));
-      } else {
-        setVisibleTexts([...visibleTexts, displayText]);
-      }
+      setVisibleTexts((prevTexts) => {
+        if (isVisible) {
+          return prevTexts.filter((text) => text !== displayText);
+        } else {
+          return [...prevTexts, displayText];
+        }
+      });
     };
 
     return (
@@ -43,7 +41,6 @@ const Featurepart = () => {
           type="checkbox"
           checked={isVisible}
           onChange={handleToggleChange}
-          disabled={activeTab === "booking"}
         />
         <span className="slider"></span>
       </label>
@@ -127,7 +124,11 @@ const Featurepart = () => {
                   <div className="feature-card div1" data-aos="fade-left">
                     <div className="icon">📅</div>
                     <h3>Booking Ground</h3>
-                    <p>Find players, opponents, teams, umpires, and scorers with Looking.</p>
+                    <p>Book a ground for your matches easily.</p>
+                    <ToggleSwitch
+                      switchId="feature-card-1"
+                      displayText="Booking Ground"
+                    />
                   </div>
                 </>
               )}

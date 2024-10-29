@@ -1,66 +1,75 @@
-.dashboard {
-  padding: 25px 0 0;
+.tab-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.tab-header {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 20px;
-  }
+.tabs-container {
+  background-color: #f5f5f5;
+}
 
-  .tabs-container {
-    background-color: #F5F5F5;
-  }
+.tabs {
+  width: 88%;
+  height: 44px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  border-radius: 22px;
+  background-color: #fff;
+  margin: 5rem auto 1rem;
+}
+.tabs button {
+  flex: 1;
+  background-color: #fff;
+  color: #8c8c8c;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  font-size: 18px;
+  font-family: Work Sans;
+  border-radius: 22px;
+}
+.tabs button.active {
+  background-color: green;
+  color: white;
+  border-radius: 22px;
+}
 
-  .tabs {
-    width: 1120px;
-    height: 44px;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    border-radius: 22px;
-    background-color: #fff;
-    /* border: 1px solid black; */
-    margin: auto;
-  }
+.tab-content {
+  padding: 20px;
+  margin-top: -1px;
+}
+.tab-content div {
+  display: none;
+}
+.tab-content div.active {
+  display: block;
+}
 
-  .tabs button {
-    flex: 1; /* Equal width for all buttons */
-    background-color: #fff;
-    color: #8C8C8C;
-    /* color: black; */
-    border: none;
-    cursor: pointer;
-    text-align: center;
-    font-size: 18px;
-    font-family: Work Sans;
-    /* transition: background-color 0.3s, color 0.3s; */
-    border-radius: 22px;
-  }
-
-  .tabs button.active {
-    background-color: green;
-    color: white;
-    border-radius: 22px;
-  }
-
-  .tab-content {
-    padding: 20px;
-    /* background-color: #F5F5F5; */
-    margin-top: -1px;
-  }
-
-  .tab-content div {
-    display: none;
-  }
-
-  .tab-content div.active {
-    display: block;
-  }
-
-  .dropdown button {
-    background: none;
-    border: none;
-  }
-
+.dropdown-city {
+  font-size: 20px;
+  font-weight: normal;
+  color: #8c8c8c;
+  font-family: Work Sans;
+  display: flex;
+  gap: 10px;
+  margin: 3rem 9rem 3rem;
+}
+.dropdown-city select {
+  font-size: 20px;
+  color: #8c8c8c;
+  width: 145px;
+  height: 42px;
+  border-color: #8c8c8c;
+  border-radius: 21px;
+}
+.dropdown-city option {
+  font-size: 20px;
+  color: #8c8c8c;
+  font-family: Work Sans;
+  text-align: center;
+}
+.dropdown-city button {
+  background: none;
+  border: none;
+}/*# sourceMappingURL=tournamentDashboard.css.map */

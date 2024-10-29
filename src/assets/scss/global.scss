@@ -58,4 +58,14 @@ input {
   margin-bottom: 0;
 }
 
-
+.SmallDeviceFeature-cricket{
+  display: none;
+  @include mobile{
+    display: block;
+  }
+}
+.desktopDeviceFeature-cricket{
+  @include mobile{
+    display: none;
+  }
+}

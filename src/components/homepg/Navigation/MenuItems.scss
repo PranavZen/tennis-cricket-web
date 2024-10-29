@@ -7,3 +7,12 @@
 .dropdown-menu li :hover {
     color: #416D3D;
 }
+
+.collapse {
+    display: none; // Hide by default
+  }
+  
+  .show {
+    display: block; // Show when menuOpen is true
+  }
+  

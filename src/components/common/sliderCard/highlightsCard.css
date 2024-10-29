@@ -1,0 +1,115 @@
+.cardInner {
+  -webkit-clip-path: polygon(0% 0, 100% 0, 100% 90%, 95% 100%, 0 100%, 0 19%);
+          clip-path: polygon(0% 0, 100% 0, 100% 90%, 95% 100%, 0 100%, 0 19%);
+  border-radius: 0.6rem;
+  position: relative;
+}
+.cardInner .cardAllWrap {
+  display: block;
+  height: 100%;
+  width: 100%;
+  border-radius: 0.6rem;
+  overflow: hidden;
+}
+.cardInner .cardAllWrap .imgWrap {
+  width: 100%;
+  height: 30rem;
+  position: relative;
+}
+.cardInner .cardAllWrap .imgWrap::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(360deg, rgb(13, 83, 118) 0%, rgba(59, 100, 62, 0.3505777311) 100%);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+@media (max-width: 767px) {
+  .cardInner .cardAllWrap .imgWrap {
+    height: 20rem;
+  }
+}
+.cardInner .cardAllWrap .imgWrap img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.cardInner .cardAllWrap .imgWrap .playBtn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5.8rem;
+  height: 5.8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+}
+.cardInner .cardAllWrap .midBox {
+  padding: 1rem;
+  position: absolute;
+  bottom: 0;
+}
+.cardInner .cardAllWrap .midBox p {
+  color: #182046;
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+.cardInner .cardAllWrap .midBox h5 {
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 600;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+@media (max-width: 767px) {
+  .cardInner .cardAllWrap .midBox h5 {
+    font-size: 1.8rem;
+  }
+}
+@supports (-webkit-line-clamp: 2) {
+  .cardInner .cardAllWrap .midBox h5 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: initial;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+}
+.cardInner .cardAllWrap .footBox {
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.cardInner .cardAllWrap .footBox .dateBox {
+  color: #6c6c6c;
+  font-size: 1.6rem;
+  font-weight: 500;
+}
+@media (max-width: 767px) {
+  .cardInner .cardAllWrap .footBox .dateBox {
+    font-size: 1.2rem;
+  }
+}
+
+.shareBox {
+  position: absolute;
+  right: 5%;
+  bottom: 2%;
+  transform: translate(0, -50%);
+  z-index: 1;
+}
+@media (max-width: 767px) {
+  .shareBox {
+    bottom: 1%;
+  }
+}/*# sourceMappingURL=highlightsCard.css.map */

@@ -16,7 +16,7 @@ const feedbackData = [
     title: "Customer Web Consultant",
     testimonial: "Testimonial",
     feedback:
-      "Lorem Ipsum has been the industry's standard dummy text. Lorem Ipsum has been the industry's standard dummy text. Lorem Ipsum has been the industry's standard dummy text.",
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
     rating: "★★★★★",
     image:
       "http://themes.audemedia.com/html/goodgrowth/images/testimonial3.jpg",
@@ -48,7 +48,7 @@ const feedbackData = [
     title: "Internal Implementation Officer",
     testimonial: "Testimonial",
     feedback:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
     rating: "★★★★★",
     image:
       "http://themes.audemedia.com/html/goodgrowth/images/testimonial3.jpg",

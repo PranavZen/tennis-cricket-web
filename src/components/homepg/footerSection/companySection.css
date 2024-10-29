@@ -1,0 +1,26 @@
+.mentioned-section {
+  background: #D4FFE8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 1.5rem;
+  overflow: hidden;
+}
+.mentioned-section p {
+  font-family: "Work Sans";
+  font-size: 2rem;
+  font-weight: 500;
+  color: #416D3D;
+  margin-bottom: 20px;
+}
+@media (max-width: 480px) {
+  .mentioned-section {
+    height: 100%;
+    padding: 1.5rem;
+  }
+}
+
+.image-wrapper {
+  padding: 0 30px;
+}/*# sourceMappingURL=companySection.css.map */
