@@ -66,11 +66,14 @@
 
   .feature-card {
     border-radius: 10px;
-    padding: 20px;
-    width: 70%;
+    // padding: 2rem;
+    width: 100%;
     text-align: center;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     background: #d4ffe8;
+    @include x-767-tablet {
+
+    }
 
     .icon {
       font-size: 40px;
@@ -90,7 +93,7 @@
     p {
       margin-bottom: 20px;
       font-family: "Work Sans";
-      font-size: 16px;
+      font-size: 1.5rem;
       font-weight: 400;
       line-height: 22px;
       letter-spacing: 0.01em;
@@ -214,12 +217,4 @@
     grid-area: 1 / 2 / 4 / 3;
   }
 }
-
-// Ensure this design is hidden below 576px
-// @media (max-width: 575px) {
-//   .feature-section,
-//   .phone-display {
-//     display: none;
-//   }
-// }
 

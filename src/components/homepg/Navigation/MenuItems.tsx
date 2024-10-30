@@ -1,10 +1,15 @@
 import "../Navigation/MenuItems.scss";
 import { Link } from "react-router-dom";
 
-const MenuItems = () => {
+interface MenuItemsProps {
+  menuOpen: boolean;
+}
+
+const MenuItems: React.FC<MenuItemsProps> = ({ menuOpen }) => {
   return (
     <div className="col-md-6 col">
-      <div className="collapse navbar-collapse" id="navbarNav">
+      {/* <div className="collapse navbar-collapse" id="navbarNav"> */}
+      <div className={`navbar-collapse ${menuOpen ? 'show' : 'collapse'}`} id="navbarNav">
         <ul className="navbar-nav">
           <li className="nav-item dropdown">
             <Link
@@ -125,30 +130,14 @@ const MenuItems = () => {
           </li>
         </ul>
         <div className="mobBox">
-          <button className="searchWrap">
+          {/* <button className="searchWrap">
             <img
-              src="../images/search-icon.svg"
+              src="images\searchIcon.svg"
               alt="search"
               width={19}
               height={19}
             />
-          </button>
-          <Link to="" className="iconWrap">
-            <img
-              src="../images/google-play.svg"
-              alt="Google Play Store"
-              width={34}
-              height={34}
-            />
-          </Link>
-          <Link to="" className="iconWrap">
-            <img
-              src="../images/apple-play.svg"
-              alt="Apple Store"
-              width={34}
-              height={34}
-            />
-          </Link>
+          </button> */}
           <Link to="" className="btn">
             <span>
               <img

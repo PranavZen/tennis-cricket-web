@@ -11,8 +11,8 @@ interface CommonSliderProps {
 const CommonSlider: React.FC<CommonSliderProps> = ({ children }) => {
   const settings = {
     dots: true,
-    infinite: false,
-    loop: false,
+    infinite: true,
+    // loop: true,
     slidesToShow: 3.5,
     slidesToScroll: 3,
     arrows: false,

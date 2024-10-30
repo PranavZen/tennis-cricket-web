@@ -4,7 +4,7 @@ import axios from "axios";
 import MatchPointCard from "../common/pointCard/MatchPointCard";
 import Header from "../common/header/Header";
 import Spinner from "../common/spinner/Spinner";
-import CompanySection from "../homepg/footerSection/CompanySection";
+import CompanySection from "../homepg/footerSection/FooterSlider";
 
 interface MatchData {
   id: number;
@@ -67,7 +67,10 @@ const AllMatches = () => {
   return (
     <section className="allMatchPages">
       <Header subtitle="Live Cricket Matches" className="innerpageHeading"/>
+      
       <div className="matches">
+      <div className="container">
+      <div className="row">
         <div className="header-div">
           <div className="text-heading">Live Cricket Matches</div>
           <div className="dropdown">
@@ -89,8 +92,6 @@ const AllMatches = () => {
           </div>
         </div>
 
-        <div className="container">
-          <div className="row">
             {loading ? ( 
               <Spinner/>
             ) : filteredCards.length > 0 ? (

@@ -1,36 +1,93 @@
+@media (max-width: 767px) {
+  .container {
+    padding: 0 5rem;
+  }
+}
+.matches {
+  margin: 1rem 0;
+}
+
 .header-div {
   display: flex;
   justify-content: space-between;
-  margin: 6rem 9rem 3rem;
+  padding: 3rem 0;
 }
-
-.text-heading {
+@media (max-width: 480px) {
+  .header-div {
+    display: inline-block;
+  }
+}
+.header-div .text-heading {
   font-size: 24px;
   font-weight: bold;
-  font-family: Work Sans;
+  font-family: "Work Sans";
 }
-
-.dropdown {
+@media (max-width: 991px) {
+  .header-div .text-heading {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+}
+@media (max-width: 768px) {
+  .header-div .text-heading {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+}
+@media (max-width: 480px) {
+  .header-div .text-heading {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+}
+.header-div .dropdown {
   font-size: 20px;
   font-weight: normal;
   color: #8c8c8c;
-  font-family: Work Sans;
+  font-family: "Work Sans";
   display: flex;
-  gap: 10px;
+  gap: 1rem;
 }
-.dropdown select {
+@media (max-width: 768px) {
+  .header-div .dropdown {
+    font-size: 1.8rem;
+  }
+}
+@media (max-width: 480px) {
+  .header-div .dropdown {
+    font-size: 1.8rem;
+  }
+}
+.header-div .dropdown select {
   font-size: 20px;
   color: #8c8c8c;
   width: 145px;
   height: 42px;
   border-color: #8c8c8c;
-  border-radius: 21px;
+  border-radius: 22px;
 }
-.dropdown option {
-  font-size: 20px;
+@media (max-width: 768px) {
+  .header-div .dropdown select {
+    width: 120px;
+    height: 35px;
+    font-size: 1.8rem;
+  }
+}
+.header-div .dropdown option {
+  font-size: 1.8rem;
   color: #8c8c8c;
-  font-family: Work Sans;
+  font-family: "Work Sans";
   text-align: center;
+}
+@media (max-width: 768px) {
+  .header-div .dropdown option {
+    font-size: 1.8rem;
+  }
+}
+@media (max-width: 480px) {
+  .header-div .dropdown option {
+    font-size: 1.5rem;
+  }
 }
 
 .category {
@@ -100,18 +157,26 @@
   flex-direction: row-reverse;
 }
 
-.team-logo1 {
+.team-logo1,
+.team-logo2 {
   width: 42px;
   height: 42px;
   background: #ffffff;
+  border-radius: 50%;
+}
+
+.team-logo1 {
+  border: 0.85px solid #4764da;
+  border: 0.85px solid #4764da;
+  border-radius: 50%;
   border: 0.85px solid #4764da;
   border-radius: 50%;
 }
 
 .team-logo2 {
-  width: 42px;
-  height: 42px;
-  background: #ffffff;
+  border: 1px solid #6a0913;
+  border: 1px solid #6a0913;
+  border-radius: 50%;
   border: 1px solid #6a0913;
   border-radius: 50%;
 }
@@ -122,7 +187,7 @@
   width: 59px;
 }
 .score-details .runs {
-  font-family: Work Sans;
+  font-family: "Work Sans";
   font-size: 18px;
   font-weight: 600;
   line-height: 21.11px;
@@ -132,7 +197,7 @@
   margin-bottom: 5px;
 }
 .score-details .overs {
-  font-family: Work Sans;
+  font-family: "Work Sans";
   font-size: 16px;
   font-weight: 600;
   line-height: 18.77px;
@@ -157,12 +222,12 @@
   background: #ebf0ff;
 }
 .stadium-info .stadium-name {
-  font-family: Work Sans;
+  font-family: "Work Sans";
   font-size: 14px;
   font-weight: 500;
   line-height: 16.42px;
   color: #555353;
-  width: 176px;
+  width: 100%;
 }
 .stadium-info .live-status {
   font-size: 14px;
@@ -170,17 +235,4 @@
   line-height: 16.8px;
   color: #e40b21;
   margin-right: 15px;
-}
-
-@media (max-width: 992px) {
-  .filter-card-container {
-    flex: 1 1 50%;
-    max-width: 33.33333333%;
-  }
-}
-@media (max-width: 768px) {
-  .filter-card-container .filter-card {
-    flex: 1 1 100%;
-    max-width: 100%;
-  }
 }/*# sourceMappingURL=allMatches.css.map */

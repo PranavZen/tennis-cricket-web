@@ -12,29 +12,13 @@ const LeftBox = () => {
             height={19}
           />
         </button>
-        <Link to="" className="iconWrap">
-          <img
-            src="../images/google-play.svg"
-            alt="Google Play Store"
-            width={34}
-            height={34}
-          />
-        </Link>
-        <Link to="" className="iconWrap">
-          <img
-            src="../images/apple-play.svg"
-            alt="Apple Store"
-            width={34}
-            height={34}
-          />
-        </Link>
         <Link to="" className="btn">
           <span>
             <img
               src="../images/register-icon.svg"
               alt="Apple Store"
-              // width={16}
-              // height={22}
+              width={16}
+              height={22}
             />
           </span>{" "}
           Register

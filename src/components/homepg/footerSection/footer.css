@@ -51,6 +51,30 @@ footer .followUs-container .social-icons .circle-box .instagramIcon {
   width: 12px;
   height: 12px;
 }
+footer .storeIconWrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+@media (max-width: 1024px) {
+  footer .storeIconWrap {
+    margin: auto;
+    margin-top: 1.5rem;
+  }
+}
+@media (max-width: 991px) {
+  footer .storeIconWrap {
+    margin: auto;
+    margin-top: 1.5rem;
+  }
+}
+footer .storeIconWrap a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 footer .footer-links {
   display: flex;
   justify-content: center;
@@ -60,7 +84,7 @@ footer .footer-links {
 }
 @media (max-width: 480px) {
   footer .footer-links {
-    gap: 1rem 3rem;
+    gap: 2.5rem;
   }
 }
 footer .footer-links a {

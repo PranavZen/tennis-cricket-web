@@ -68,7 +68,9 @@
   left: 0.5rem;
   top: -70%;
   @include d-desktop {
-    top: 4% !important;
+    // top: 4% !important;
+    top: -15%;
+    left: -2.5rem;
   }
   @include xu-desktop {
     top: -60%;
@@ -97,7 +99,7 @@
   height: 46px;
   border-radius: 2.2rem;
   color: #416d3d;
-  font-size: 20px;
+  font-size: 1.8rem;
   font-family: "Work Sans";
   font-weight: 600;
   border: 1px solid #0e5623;
@@ -112,7 +114,7 @@
     width: 160px;
     height: 42px;
     color: #fff;
-    font-size: 1.7rem;
+    font-size: 1.8rem;
   }
 }
 
@@ -129,11 +131,11 @@
   }
   h2 {
     font-family: "Work Sans";
-    font-size: 40px;
+    font-size: 3.4rem;
     font-weight: 600;
     color: #ffffff;
     @include d-desktop {
-      font-size: 3.7rem;
+      font-size: 3.4rem;
     }
     @include mid-991-tab {
       font-size: 3.5rem;
@@ -153,6 +155,9 @@
     color: #d7d2d2;
     width: 80%;
     margin-bottom: 1rem;
+    @include d-desktop {
+      width: 100%;
+    }
     @include mid-991-tab {
       text-align: center;
       font-size: 1.8rem;
@@ -160,6 +165,10 @@
     }
     @include xss-mobile {
       font-size: 1.5rem;
+    }
+    @include mid-991-tab {
+      text-align: center;
+      width: 100%;
     }
   }
 }
@@ -227,7 +236,7 @@
 
 .download-button {
   color: #416d3d;
-  font-size: 20px;
+  font-size: 1.8rem;
   font-family: "Work Sans";
   font-weight: 600;
   @include mid-991-tab {
@@ -242,7 +251,7 @@
   }
   @include mobile {
     bottom: -25.5rem;
-    font-size: 1.7rem;
+    font-size: 1.8rem;
     right: -12.3rem;
   }
   @include xss-mobile {
@@ -258,9 +267,10 @@
   width: 18px;
   height: 19px;
   color: #416d3d;
-  $mid_tablet: 992px;
-  @include mid-tab {
-    width: 1.4rem;
-    height: 1.4rem;
+  margin-left: 0.2rem;
+  @include mid-991-tab {
+  width: 1.6rem;
+  height: 1.6rem;
+  margin-left: 0.5rem;
   }
 }

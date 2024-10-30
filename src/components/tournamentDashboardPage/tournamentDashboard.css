@@ -1,3 +1,11 @@
+body {
+  background-color: #f5f5f5;
+}
+
+.dashboard {
+  margin: 1rem 0;
+}
+
 .tab-header {
   display: flex;
   flex-direction: column;
@@ -26,7 +34,7 @@
   cursor: pointer;
   text-align: center;
   font-size: 18px;
-  font-family: Work Sans;
+  font-family: "Work Sans";
   border-radius: 22px;
 }
 .tabs button.active {
@@ -50,13 +58,13 @@
   font-size: 20px;
   font-weight: normal;
   color: #8c8c8c;
-  font-family: Work Sans;
+  font-family: "Work Sans";
   display: flex;
   gap: 10px;
-  margin: 3rem 9rem 3rem;
+  margin: 3rem;
 }
 .dropdown-city select {
-  font-size: 20px;
+  font-size: 1.8rem;
   color: #8c8c8c;
   width: 145px;
   height: 42px;
@@ -64,9 +72,9 @@
   border-radius: 21px;
 }
 .dropdown-city option {
-  font-size: 20px;
+  font-size: 1.8rem;
   color: #8c8c8c;
-  font-family: Work Sans;
+  font-family: "Work Sans";
   text-align: center;
 }
 .dropdown-city button {

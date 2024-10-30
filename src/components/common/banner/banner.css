@@ -81,8 +81,13 @@
   background-image: url(../../../../public/images/innerPageImg1.png);
   height: 26rem;
 }
+@media (max-width: 1366px) {
+  .allMatchPages #banner.homeBanner {
+    background-image: url(../../../../public/images/innerPgFullImg.png);
+  }
+}
 .allMatchPages #banner .midContainer h2 {
-  font-size: 40px;
+  font-size: 3rem;
 }
 .allMatchPages #banner .midContainer p {
   display: none;
@@ -98,6 +103,11 @@
   background-image: url(../../../../public/images/innerPageImg1.png);
   height: 26rem;
 }
+@media (max-width: 1366px) {
+  .tournamentDashPage #banner.homeBanner {
+    background-image: url(../../../../public/images/innerPgFullImg.png);
+  }
+}
 .tournamentDashPage #banner .midContainer p {
   display: none;
 }
@@ -111,6 +121,11 @@
 .domesticTournamnet #banner.homeBanner {
   background-image: url(../../../../public/images/innerPageImg1.png);
   height: 26rem;
+}
+@media (max-width: 1366px) {
+  .domesticTournamnet #banner.homeBanner {
+    background-image: url(../../../../public/images/innerPgFullImg.png);
+  }
 }
 .domesticTournamnet #banner .midContainer p {
   display: none;

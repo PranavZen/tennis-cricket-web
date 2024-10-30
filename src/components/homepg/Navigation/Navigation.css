@@ -270,4 +270,48 @@
     width: 1.2rem;
     height: 3.5rem;
   }
+}
+
+.menu-btn-1 {
+  height: 4px;
+  width: 34px;
+  cursor: pointer;
+  position: absolute;
+  right: 2rem;
+  margin-top: 0px;
+  display: none;
+}
+@media (max-width: 991px) {
+  .menu-btn-1 {
+    display: block;
+  }
+}
+.menu-btn-1 span,
+.menu-btn-1 span::before,
+.menu-btn-1 span::after {
+  background: #fff;
+  border-radius: 3px;
+  content: "";
+  position: absolute;
+  width: 34px;
+  height: 5px;
+  margin-top: 0;
+  transition: 0.3s ease-in-out;
+}
+.menu-btn-1 span::before {
+  margin-top: -12px;
+}
+.menu-btn-1 span::after {
+  margin-top: 12px;
+}
+.menu-btn-1.active span {
+  background: transparent;
+}
+.menu-btn-1.active span::before {
+  margin-top: 0;
+  transform: rotate(45deg);
+}
+.menu-btn-1.active span::after {
+  margin-top: 0;
+  transform: rotate(-45deg);
 }/*# sourceMappingURL=Navigation.css.map */

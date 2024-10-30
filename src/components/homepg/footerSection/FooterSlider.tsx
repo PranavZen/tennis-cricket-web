@@ -1,6 +1,6 @@
 import React from 'react'
 import './footer.scss';
-import '../footerSection/companySection.scss';
+import '../footerSection/footerSlider.scss';
 import Marquee from 'react-fast-marquee';
 
 const CompanySection: React.FC = () => {
@@ -10,7 +10,7 @@ const CompanySection: React.FC = () => {
         <p>Proudly Mentioned in</p>
         
         <div>
-            <Marquee pauseOnHover speed={80}>
+            <Marquee pauseOnHover speed={120} gradient={false} loop={0}>
                 <div className="image-wrapper">
                     <img src="images/clientImg1.png" alt="Company 1" />
                 </div>

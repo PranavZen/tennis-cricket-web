@@ -70,10 +70,13 @@
     &.homeBanner {
       background-image: url(../../../../public/images/innerPageImg1.png);
       height: 26rem;
+      @include d-1366-desktop {
+        background-image: url(../../../../public/images/innerPgFullImg.png);
+      }
     }
     .midContainer {
       h2 {
-        font-size: 40px;
+        font-size: 3rem;
       }
       p {
         display: none;
@@ -92,6 +95,9 @@
     &.homeBanner {
       background-image: url(../../../../public/images/innerPageImg1.png);
       height: 26rem;
+      @include d-1366-desktop {
+        background-image: url(../../../../public/images/innerPgFullImg.png);
+      }
     }
     .midContainer {
       p {
@@ -111,6 +117,9 @@
     &.homeBanner {
       background-image: url(../../../../public/images/innerPageImg1.png);
       height: 26rem;
+      @include d-1366-desktop {
+        background-image: url(../../../../public/images/innerPgFullImg.png);
+      }
     }
     .midContainer {
       p {

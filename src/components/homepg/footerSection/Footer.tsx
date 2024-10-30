@@ -1,5 +1,6 @@
 import React from 'react';
 import './footer.scss';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
@@ -38,6 +39,23 @@ const Footer = () => {
               </div>
             </div>
           </div>
+        </div>
+
+        <div className="storeIconWrap">
+          <Link to="">
+            <img
+              src="../images/google_store.png"
+              alt="google play store"
+              className="img-fluid"
+            />
+          </Link>
+          <Link to="">
+            <img
+              src="../images/apple_store.png"
+              alt="apple store"
+              className="img-fluid"
+            />
+          </Link>
         </div>
 
         <div className="footer-links">

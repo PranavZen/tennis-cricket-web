@@ -71,16 +71,10 @@
             flex-direction: column;
             align-items: center;
           }
-          .dropdown-menu{
-              // width: 40%;
-            }
           .dropdown-item {
               font-size: 1.5rem;
               text-align: center;
             }
-          // .dropdown-item:hover {
-          //   color: green;
-          // }
         }
       }
 
@@ -278,47 +272,54 @@
     }
   }
 
-  // .menu-btn-1 {
-  //   height: 32px;
-  //   width: 40px;
-  //   cursor: pointer;
-  //   position: relative;
+  // Hamburger menu
+  .menu-btn-1 {
+    height: 4px;
+    width: 34px;
+    cursor: pointer;
+    position: absolute;
+    right: 2rem;
+    margin-top: 0px;
+    display: none;
+    @include mid-991-tab {
+      display: block;
+    }
   
-  //   span,
-  //   span::before,
-  //   span::after {
-  //     background: black;
-  //     border-radius: 3px;
-  //     content: '';
-  //     position: absolute;
-  //     width: 40px;
-  //     height: 6px;
-  //     margin-top: 13px;
-  //     transition: 0.3s ease-in-out;
-  //   }
+    span,
+    span::before,
+    span::after {
+      background: #fff;
+      border-radius: 3px;
+      content: '';
+      position: absolute;
+      width: 34px;
+      height: 5px;
+      margin-top: 0;
+      transition: 0.3s ease-in-out;
+    }
   
-  //   span::before {
-  //     margin-top: -12px;
-  //   }
+    span::before {
+      margin-top: -12px;
+    }
   
-  //   span::after {
-  //     margin-top: 12px;
-  //   }
+    span::after {
+      margin-top: 12px;
+    }
   
-  //   &.active span {
-  //     background: transparent;
-  //   }
+    &.active span {
+      background: transparent;
+    }
   
-  //   &.active span::before {
-  //     margin-top: 0;
-  //     transform: rotate(45deg);
-  //   }
+    &.active span::before {
+      margin-top: 0;
+      transform: rotate(45deg);
+    }
   
-  //   &.active span::after {
-  //     margin-top: 0;
-  //     transform: rotate(-45deg);
-  //   }
-  // }
+    &.active span::after {
+      margin-top: 0;
+      transform: rotate(-45deg);
+    }
+  }
   
 
   
