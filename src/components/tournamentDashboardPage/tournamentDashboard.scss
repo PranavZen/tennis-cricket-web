@@ -6,12 +6,16 @@ body {
 
 .dashboard {
   margin: 1rem 0;
+  @include x-767-tablet {
+    margin: 1rem 2rem;
+  }
 }
 
 .tab-header {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-bottom: 1rem;
 }
 
 .tabs-container {
@@ -22,14 +26,31 @@ body {
   width: 88%;
   height: 44px;
   display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+  justify-content: flex-start; // Align to the left for scrolling
+  flex-wrap: nowrap; // Prevent wrapping
   border-radius: 22px;
   background-color: #fff;
   margin: 5rem auto 1rem;
+  overflow-x: auto; // Enable horizontal scroll
+  scrollbar-width: thin; // For Firefox
+
+  &::-webkit-scrollbar {
+    height: 10px; // Horizontal scrollbar height
+    background-color: #f5f5f5;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: #f5f5f5;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #416D3D;
+    border-radius: 10px;
+  }
 
   button {
-    flex: 1; // Equal width for all buttons
+    flex: 0 0 auto; // Prevent buttons from growing/shrinking
+    min-width: 100px; // Set a minimum width for each button
     background-color: #fff;
     color: #8c8c8c;
     border: none;
@@ -38,9 +59,10 @@ body {
     font-size: 18px;
     font-family: 'Work Sans';
     border-radius: 22px;
+    margin-right: 1rem; // Add spacing between buttons
 
     &.active {
-      background-color: green;
+      background-color: #1D7336;
       color: white;
       border-radius: 22px;
     }
@@ -68,6 +90,12 @@ body {
   display: flex;
   gap: 10px;
   margin: 3rem;
+  @include x-tablet {
+    font-size: 1.8rem;
+  }
+  @include mobile {
+    font-size: 1.8rem;
+  }
 
   select {
     font-size: 1.8rem;
@@ -76,6 +104,11 @@ body {
     height: 42px;
     border-color: #8c8c8c;
     border-radius: 21px;
+    @include x-tablet {
+      width: 120px;
+      height: 35px;
+      font-size: 1.8rem;
+    }
   }
 
   option {
@@ -83,6 +116,12 @@ body {
     color: #8c8c8c;
     font-family: 'Work Sans';
     text-align: center;
+    @include x-tablet {
+      font-size: 1.8rem;
+    }
+    @include mobile {
+      font-size: 1.5rem;
+    }
   }
 
   button {

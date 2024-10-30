@@ -86,6 +86,10 @@
     justify-content: center;
     align-items: center;
   }
+  .navbar .navWrap .navbar-collapse .nav-link .col-md-6 {
+    flex: 0 0 auto;
+    width: 60%;
+  }
 }
 
 .leftBox {
@@ -315,3 +319,4 @@
   margin-top: 0;
   transform: rotate(-45deg);
 }/*# sourceMappingURL=Navigation.css.map */
+

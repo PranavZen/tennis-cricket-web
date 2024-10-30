@@ -1,12 +1,12 @@
 .tournament {
   margin: 1rem 0;
 }
-
 @media (max-width: 767px) {
-  .container {
-    padding: 0 5rem;
+  .tournament {
+    margin: 1rem 2rem;
   }
 }
+
 .header-div {
   display: flex;
 }

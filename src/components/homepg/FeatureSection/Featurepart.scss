@@ -71,9 +71,7 @@
     text-align: center;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     background: #d4ffe8;
-    @include x-767-tablet {
-
-    }
+    // @include x-767-tablet {}
 
     .icon {
       font-size: 40px;

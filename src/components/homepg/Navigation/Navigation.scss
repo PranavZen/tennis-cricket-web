@@ -36,8 +36,14 @@
         @include d-desktop {
           width: 100%;
         }
-      }
     }
+  }
+
+  .menu{
+    @include d-1366-desktop{
+      width: 60%;
+    }
+  }
 
     .navbar-collapse {
       justify-content: flex-end;
@@ -86,6 +92,10 @@
               display: flex;
               justify-content: center;
               align-items: center;
+              .col-md-6 {
+                flex: 0 0 auto;
+                width: 60%;
+            }
             }
           }
         }
@@ -320,6 +330,8 @@
       transform: rotate(-45deg);
     }
   }
+
+
   
 
   

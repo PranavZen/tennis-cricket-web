@@ -45,6 +45,9 @@
       }
     }
     .slick-list {
+      @include mobile {
+        margin: 0 2rem;
+      }
       .slick-track {
         .slick-slide {
           padding: 0 10px;

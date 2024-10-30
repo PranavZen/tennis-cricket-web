@@ -1,13 +1,13 @@
 @import '../../assets/scss/media.scss';
 
-@include x-767-tablet {
-  .container {
-    padding: 0 5rem;
-  }
-}
-
 .matches {
   margin: 1rem 0;
+  @include x-767-tablet {
+    margin: 1rem 2rem;
+  }
+  // @include mid-991-tab {
+  //   margin: 1rem 2rem;
+  // }
 }
 
 .header-div {
@@ -35,8 +35,7 @@
     font-family: 'Work Sans';
 
     @include mid-991-tab {
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
+      font-size: 2rem;
     }
     @include x-tablet {
       font-size: 1.8rem;

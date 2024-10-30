@@ -1,10 +1,10 @@
-@media (max-width: 767px) {
-  .container {
-    padding: 0 5rem;
-  }
-}
 .matches {
   margin: 1rem 0;
+}
+@media (max-width: 767px) {
+  .matches {
+    margin: 1rem 2rem;
+  }
 }
 
 .header-div {
@@ -24,8 +24,7 @@
 }
 @media (max-width: 991px) {
   .header-div .text-heading {
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
+    font-size: 2rem;
   }
 }
 @media (max-width: 768px) {

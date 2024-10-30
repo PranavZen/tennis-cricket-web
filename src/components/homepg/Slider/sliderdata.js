@@ -10,7 +10,7 @@ const sliderData =[
       "score2": "60/0",
       "overs2": "7.4 OV",
       "stadium": "Dadoji Kondadev Stadium",
-      "liveStatus": "Live •",
+      "liveStatus": "Live",
       "winMsg" : "abc acb bdbkjcdsbcdskj kjsdbcv,msdc asd cads,m",
     },
     {
@@ -24,7 +24,7 @@ const sliderData =[
       "score2": "60/0",
       "overs2": "7.4 OV",
       "stadium": "Dadoji Kondadev Stadium",
-      "liveStatus": "Live •",
+      "liveStatus": "Live",
        "winMsg" : "abc acb bdbkjcdsbcdskj kjsdbcv,msdc asd cads,m",
       "city" : "Kolkata"
     },
@@ -39,7 +39,7 @@ const sliderData =[
       "score2": "60/0",
       "overs2": "7.4 OV",
       "stadium": "Dadoji Kondadev Stadium",
-      "liveStatus": "Live •"
+      "liveStatus": "Live"
     },
     {
       "id": 4,
@@ -52,7 +52,7 @@ const sliderData =[
       "score2": "60/0",
       "overs2": "7.4 OV",
       "stadium": "Dadoji Kondadev Stadium",
-      "liveStatus": "Live •"
+      "liveStatus": "Live"
     },
     {
       "id": 5,
@@ -65,7 +65,7 @@ const sliderData =[
       "score2": "60/0",
       "overs2": "7.4 OV",
       "stadium": "Dadoji Kondadev Stadium",
-      "liveStatus": "Live •"
+      "liveStatus": "Live"
     },
     {
       "id": 6,
@@ -78,7 +78,7 @@ const sliderData =[
       "score2": "60/0",
       "overs2": "7.4 OV",
       "stadium": "Dadoji Kondadev Stadium",
-      "liveStatus": "Live •"
+      "liveStatus": "Live"
     }
 ]
 export default sliderData;

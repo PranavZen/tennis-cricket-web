@@ -7,7 +7,7 @@ interface MenuItemsProps {
 
 const MenuItems: React.FC<MenuItemsProps> = ({ menuOpen }) => {
   return (
-    <div className="col-md-6 col">
+    <div className="col-md-6 col menu">
       {/* <div className="collapse navbar-collapse" id="navbarNav"> */}
       <div className={`navbar-collapse ${menuOpen ? 'show' : 'collapse'}`} id="navbarNav">
         <ul className="navbar-nav">

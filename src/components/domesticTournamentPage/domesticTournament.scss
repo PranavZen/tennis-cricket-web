@@ -1,11 +1,8 @@
 @import '../../assets/scss/media';
 .tournament {
   margin: 1rem 0;
-}
-
-@include x-767-tablet {
-  .container {
-    padding: 0 5rem;
+  @include x-767-tablet {
+    margin: 1rem 2rem;
   }
 }
 
