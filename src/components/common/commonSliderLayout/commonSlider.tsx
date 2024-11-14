@@ -10,12 +10,12 @@ interface CommonSliderProps {
 
 const CommonSlider: React.FC<CommonSliderProps> = ({ children }) => {
   const settings = {
-    dots: true,
+    dots: false,
     infinite: true,
     // loop: true,
     slidesToShow: 3.5,
     slidesToScroll: 3,
-    arrows: false,
+    arrows: true,
     autoplay: true,
     autoplaySpeed: 3000,
     responsive: [
@@ -25,7 +25,8 @@ const CommonSlider: React.FC<CommonSliderProps> = ({ children }) => {
           slidesToShow: 3,
           slidesToScroll: 1,
           infinite: true,
-          dots: true,
+          dots: false,
+          arrows: true,
         },
       },
       {
@@ -34,6 +35,7 @@ const CommonSlider: React.FC<CommonSliderProps> = ({ children }) => {
           slidesToShow: 3,
           slidesToScroll: 1,
           initialSlide: 1,
+          infinite: true,
           dots: false,
           arrows: true,
         },
@@ -44,6 +46,7 @@ const CommonSlider: React.FC<CommonSliderProps> = ({ children }) => {
           slidesToShow: 1,
           slidesToScroll: 1,
           initialSlide: 1,
+          infinite: true,
           dots: false,
           arrows: true,
         },

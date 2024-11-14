@@ -20,7 +20,7 @@
       flex-direction: column;
       font-family: "Work Sans";
       font-size: 3.4rem;
-      color: #416d3d;
+      color: #0C495B;
       @include mid-991-tab {
         font-size: 3.2rem;
         padding: 10px;
@@ -37,14 +37,14 @@
     button {
       margin: 0 15px;
       text-decoration: none;
-      color: #666;
+      color: #898989;
       font-size: 18px;
       padding-bottom: 5px;
       border-bottom: 2px solid transparent;
       border-bottom-color: #d9d9d9;
 
       &.active {
-        color: #0e5623;
+        color: #23313A;
         border-bottom-color: #0e5623;
       }
     }
@@ -66,7 +66,7 @@
 
   .feature-card {
     border-radius: 10px;
-    // padding: 2rem;
+    padding: 1rem;
     width: 100%;
     text-align: center;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -85,7 +85,7 @@
       font-weight: 500;
       line-height: 25.81px;
       text-align: center;
-      color: #0e5623;
+      color: #025B9A;
     }
 
     p {
@@ -188,7 +188,7 @@
     grid-template-columns: repeat(3, 1fr);
     place-items: center;
     row-gap: 3rem;
-    margin-top: 8rem;
+    margin-top: 3rem;
 
     // @include md-mobile {
     //   display: none;

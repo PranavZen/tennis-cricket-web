@@ -60,78 +60,76 @@ const DomesticTournament = () => {
       <div className="tournament">
         <div className="container">
           <div className="row">
-          <div className="header-div">
-            <div className="dropdown">
-              Choose Location
-              <select value={selectedCity} onChange={handleCityChange}>
-                <option value="All">All</option>
-                <option value="Chennai">Chennai</option>
-                <option value="Mumbai, Maharashtra">Mumbai, Maharashtra</option>
-                <option value="Kolkata">Kolkata</option>
-                <option value="Srinagar">Srinagar</option>
-                <option value="Bangalore">Bangalore</option>
-                <option value="Hydrabad">Hydrabad</option>
-              </select>
-            </div>
-
-            <div className="search-container">
-              <input
-                type="text"
-                placeholder="Search Tournament"
-                name="search"
-              />
-              {/* <button type="submit" className="search-icon">
-                <img src="images/searchIcon.svg" alt="search-icon" />
-              </button> */}
-
-              <button
-                onClick={() => setIsFilterOpen(true)}
-                className="filter-icon"
-              >
-                <img src="images\filterIcon.svg" alt="filter-icon" />
-              </button>
-            </div>
-
-            {isFilterOpen && (
-              <div className="filter-content">
-                <div>
-                  <label>
-                    <input
-                      type="checkbox"
-                      value="Ongoing"
-                      onChange={handleStatusFilter}
-                    />{" "}
-                    Ongoing
-                  </label>
-                  <label>
-                    <input
-                      type="checkbox"
-                      value="Upcoming"
-                      onChange={handleStatusFilter}
-                    />{" "}
-                    Upcoming
-                  </label>
-                  <label>
-                    <input
-                      type="checkbox"
-                      value="Cancelled"
-                      onChange={handleStatusFilter}
-                    />{" "}
-                    Cancelled
-                  </label>
-                  <label>
-                    <input
-                      type="checkbox"
-                      value="Live"
-                      onChange={handleStatusFilter}
-                    />{" "}
-                    Live
-                  </label>
-                </div>
-
-                <button onClick={() => setIsFilterOpen(false)}>Close</button>
+            <div className="header-div">
+              <div className="dropdown">
+                Choose Location
+                <select value={selectedCity} onChange={handleCityChange}>
+                  <option value="All">All</option>
+                  <option value="Chennai">Chennai</option>
+                  <option value="Mumbai, Maharashtra">
+                    Mumbai, Maharashtra
+                  </option>
+                  <option value="Kolkata">Kolkata</option>
+                  <option value="Srinagar">Srinagar</option>
+                  <option value="Bangalore">Bangalore</option>
+                  <option value="Hyderabad">Hyderabad</option>
+                </select>
               </div>
-            )}
+
+              <div className="search-container">
+                <input
+                  type="text"
+                  placeholder="Search Tournament"
+                  name="search"
+                />
+
+                <button
+                  onClick={() => setIsFilterOpen((prev) => !prev)}
+                  className="filter-icon"
+                >
+                  <img src="images/filterIcon.svg" alt="filter-icon" />
+                </button>
+              </div>
+            </div>
+            <div className="abc">
+              {isFilterOpen && (
+                <div className="filter-content">
+                  <div>
+                    <label>
+                      <input
+                        type="checkbox"
+                        value="Ongoing"
+                        onChange={handleStatusFilter}
+                      />{" "}
+                      Ongoing
+                    </label>
+                    <label>
+                      <input
+                        type="checkbox"
+                        value="Upcoming"
+                        onChange={handleStatusFilter}
+                      />{" "}
+                      Upcoming
+                    </label>
+                    <label>
+                      <input
+                        type="checkbox"
+                        value="Cancelled"
+                        onChange={handleStatusFilter}
+                      />{" "}
+                      Cancelled
+                    </label>
+                    <label>
+                      <input
+                        type="checkbox"
+                        value="Live"
+                        onChange={handleStatusFilter}
+                      />{" "}
+                      Live
+                    </label>
+                  </div>
+                </div>
+              )}
             </div>
 
             {loading ? (

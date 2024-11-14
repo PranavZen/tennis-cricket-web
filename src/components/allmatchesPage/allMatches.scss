@@ -69,6 +69,7 @@
       height: 42px;
       border-color: #8c8c8c;
       border-radius: 22px;
+      color: #1D7336;
 
       @include x-tablet {
         width: 120px;
@@ -82,6 +83,7 @@
       color: #8c8c8c;
       font-family: 'Work Sans';
       text-align: center;
+      color: #1D7336;
 
       @include x-tablet {
         font-size: 1.8rem;

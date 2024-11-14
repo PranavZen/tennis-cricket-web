@@ -5,9 +5,9 @@ const DownloadBanner = () => {
     <section className="bg-img">
 
       <div className="container midSectionWrap">
-          <div className="acheivement">
+          {/* <div className="acheivement">
             <button className="acheivement-btn">Achievement</button>
-          </div>
+          </div> */}
 
         <div className="bannerContentWrap">
           <div className="col-lg-6 col-md-12 col-12">

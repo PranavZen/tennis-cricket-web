@@ -1,0 +1,102 @@
+
+.Reg-form {
+    background-image: url(../../../public/images/full-banner.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center;
+    width: 100%;
+  height: auto;
+  border-radius: 5px;
+  padding: 2rem;
+  margin: auto;
+
+  .heading {
+    h6 {
+      font-family: "Work Sans";
+      font-size: 3rem;
+      font-weight: 600;
+      color: #ffffff;
+      text-align: center;
+    }
+  }
+
+  .form-fields {
+    padding: 2rem;
+
+    .input {
+        height: 45px;
+        font-size: 16px;
+        padding: 10px;
+        border-radius: 8px;
+        border: 1px solid #eb1a1a;
+        background-color: #ccc;
+    // padding-left: 0rem;
+    }
+
+    .form-control,
+    .form-select {
+      font-size: 16px;
+      font-weight: 400;
+      background-color: aliceblue;
+      border-radius: 15px;
+      padding: 1rem;
+      width: 90%;
+      height: 50px;
+    }
+
+    label {
+        font-size: 1.8rem;
+        font-weight: 500;
+        color: #fff;
+        margin-bottom: 5px;
+    }
+
+    select,
+    option,
+    ::placeholder {
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: #a7a3a3;
+    }
+
+    .form-select:disabled {
+      background-color: #c2c0c0;
+      color: #888;
+      cursor: not-allowed;
+    }
+
+    // .error-msg{
+    //   font-size: 1.5rem;
+    //   color: #ccc;
+    //   font-weight: 500;
+    // }
+  }
+
+  .reg-btn {
+    display: flex;
+    margin: 1.5rem;
+
+    .registration-button {
+      background-color: #1d7336;
+      color: #ffffff;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 2.2rem;
+      font-size: 2rem;
+      font-weight: 500;
+      cursor: pointer;
+      width: 12%;
+      margin: auto;
+
+      &:disabled {
+        background-color: #71aaeb;
+        cursor: not-allowed;
+      }
+
+      .registration-button:hover {
+        background-color: #badbc4;
+        transform: scale(1.05);
+      }
+    }
+  } 
+}

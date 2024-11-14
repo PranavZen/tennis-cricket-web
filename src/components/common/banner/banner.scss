@@ -2,7 +2,8 @@
 #banner {
   position: relative;
   &.homeBanner {
-    background-image: url(../../../../public/images/home_banner.png);
+    // background-image: url(../../../../public/images/home_banner.png);
+    background-image: url(../../../../public/images/full-banner.png);
     background-repeat: no-repeat;
     background-size: 100% 100%;
     background-position: center;
@@ -68,11 +69,11 @@
 .allMatchPages {
   #banner {
     &.homeBanner {
-      background-image: url(../../../../public/images/innerPageImg1.png);
-      height: 26rem;
-      @include d-1366-desktop {
-        background-image: url(../../../../public/images/innerPgFullImg.png);
-      }
+      background-image: url(../../../../public/images/innerPgFullImg.png);
+      height: 35rem;
+      // @include d-1366-desktop {
+      //   background-image: url(../../../../public/images/innerPgFullImg.png);
+      // }
     }
     .midContainer {
       h2 {
@@ -93,11 +94,11 @@
 .tournamentDashPage {
   #banner {
     &.homeBanner {
-      background-image: url(../../../../public/images/innerPageImg1.png);
-      height: 26rem;
-      @include d-1366-desktop {
-        background-image: url(../../../../public/images/innerPgFullImg.png);
-      }
+      background-image: url(../../../../public/images/innerPgFullImg.png);
+      height: 35rem;
+      // @include d-1366-desktop {
+      //   background-image: url(../../../../public/images/innerPgFullImg.png);
+      // }
     }
     .midContainer {
       p {
@@ -115,11 +116,11 @@
 .domesticTournamnet {
   #banner {
     &.homeBanner {
-      background-image: url(../../../../public/images/innerPageImg1.png);
-      height: 26rem;
-      @include d-1366-desktop {
-        background-image: url(../../../../public/images/innerPgFullImg.png);
-      }
+      background-image: url(../../../../public/images/innerPgFullImg.png);
+      height: 35rem;
+      // @include d-1366-desktop {
+      //   background-image: url(../../../../public/images/innerPgFullImg.png);
+      // }
     }
     .midContainer {
       p {

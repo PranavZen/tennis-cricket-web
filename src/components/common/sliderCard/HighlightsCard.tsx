@@ -15,6 +15,7 @@ interface CardProps {
   target?: string;
   datafancybox?: string;
   url: string;
+  city?: string
 }
 
 const HighlightsCard: React.FC<CardProps> = ({

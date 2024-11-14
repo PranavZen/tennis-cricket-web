@@ -41,7 +41,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="storeIconWrap">
+        {/* <div className="storeIconWrap">
           <Link to="">
             <img
               src="../images/google_store.png"
@@ -56,7 +56,7 @@ const Footer = () => {
               className="img-fluid"
             />
           </Link>
-        </div>
+        </div> */}
 
         <div className="footer-links">
           <a href="#">About</a>

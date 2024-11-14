@@ -23,16 +23,19 @@ body {
 }
 
 .tabs {
-  width: 88%;
   height: 44px;
   display: flex;
-  justify-content: flex-start; // Align to the left for scrolling
-  flex-wrap: nowrap; // Prevent wrapping
+  justify-content: flex-start;
+  flex-wrap: nowrap;
   border-radius: 22px;
   background-color: #fff;
-  margin: 5rem auto 1rem;
-  overflow-x: auto; // Enable horizontal scroll
-  scrollbar-width: thin; // For Firefox
+  margin: 5rem auto 5rem;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #1D7336;
+  @include x-tablet {
+    width: 88%;
+  }
 
   &::-webkit-scrollbar {
     height: 10px; // Horizontal scrollbar height
@@ -104,6 +107,7 @@ body {
     height: 42px;
     border-color: #8c8c8c;
     border-radius: 21px;
+    color: #1D7336;
     @include x-tablet {
       width: 120px;
       height: 35px;
@@ -116,6 +120,7 @@ body {
     color: #8c8c8c;
     font-family: 'Work Sans';
     text-align: center;
+    color: #1D7336;
     @include x-tablet {
       font-size: 1.8rem;
     }

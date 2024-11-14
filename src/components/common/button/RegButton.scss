@@ -15,13 +15,17 @@
   gap: 0.5rem;
   align-items: center;
   @include d-desktop {
-    height: 3.5rem;
+    // height: 3.5rem;
     width: 16.5rem;
+  }
+  @include x-tablet {
+    width: 14.5rem;
+    height: 3.5rem;
   }
   @include mobile {
     height: 4rem;
     width: 15rem;
-  } 
+  }
   span {
     font-family: "Work Sans";
     font-size: 20px;
@@ -33,6 +37,9 @@
     @include d-desktop {
       font-size: 1.8rem;
     }
+    @include x-tablet {
+      font-size: 1.5rem;
+    }
     @include mobile {
       font-size: 1.7rem;
     }
@@ -40,6 +47,10 @@
   .button-icon {
     width: 20px;
     height: 20px;
+    @include x-tablet {
+      width: 15px;
+      height: 18px;
+    }
   }
   .right-arrow {
     width: 20px;

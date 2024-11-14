@@ -1,0 +1,52 @@
+.addvertiseImg2 {
+    // display: flex;
+    // justify-content: center;
+    padding: 6rem 0 3rem;
+
+    position: relative;
+
+    &::before {
+    position: absolute;
+    width: 88px;
+    height: 47px;
+    background-color: #1D7336;
+    top: 0;
+    left: 0;
+    }
+
+    img {
+        width: 100%;
+    }
+}
+
+// .addvertiseImg2 {
+//     position: relative;
+//     width: 100%; // Ensure the container takes full width if required
+
+//     &::before {
+//         content: 'AD';
+//         color: #ffff;
+//         font-size: 2rem;
+//         font-weight: bold;         
+//         position: absolute;
+//         width: 88px; // Adjust the width as needed                 
+//         height: 47px; // Adjust the height as needed
+//         background-color: #1D7336;
+//         top: 0;                       
+//         left: 0;
+//         z-index: 1;
+//         display: flex;
+//         align-items: center;
+//         justify-content: center;
+//     }
+
+//     img {
+//         width: 100%; // Ensures the image takes the container's width
+//         height: auto;
+//         display: block; // Removes any inline space around the image
+//         object-fit: cover;
+//         z-index: 0;
+//     }
+// }
+
+

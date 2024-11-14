@@ -60,12 +60,24 @@ input {
 
 .SmallDeviceFeature-cricket{
   display: none;
-  @include mobile{
+  @include md-mobile{
     display: block;
   }
 }
 .desktopDeviceFeature-cricket{
-  @include mobile{
+  @include md-mobile{
     display: none;
   }
 }
+.container {
+// @include x-767-tablet {
+//   max-width: 660px;
+// }
+// @include md-mobile {
+//   max-width: 450px;
+// }
+@include mid-991-tab {
+  max-width: 860px
+}
+}
+

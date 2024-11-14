@@ -9,7 +9,9 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ subtitle = "TennisCricket.in", className }) => {
   const innerPageStyle: React.CSSProperties = {
-    fontSize: '3rem'
+    fontSize: '3rem',
+    marginTop: '10rem',
+    marginBottom: '5rem'
   };
   return (
     <>

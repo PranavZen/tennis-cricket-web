@@ -1,6 +1,6 @@
 @import "../../../assets/scss/media";
 .cardInner {
-  clip-path: polygon(0% 0, 100% 0, 100% 90%, 95% 100%, 0 100%, 0 19%);
+  // clip-path: polygon(0% 0, 100% 0, 100% 90%, 95% 100%, 0 100%, 0 19%);
   border-radius: 0.6rem;
   position: relative;
   .cardAllWrap {
@@ -20,8 +20,9 @@
         background: linear-gradient(
           360deg,
           rgba(13, 83, 118, 1) 0%,
-          rgba(59, 100, 62, 0.35057773109243695) 100%
+          rgba(249, 249, 250, 0.24) 100%
         );
+        // background: linear-gradient(90deg, rgba(0,0,0,1) 30%, rgba(15,43,79,1) 100%);
         position: absolute;
         top: 0;
         left: 0;
@@ -46,12 +47,19 @@
         align-items: center;
         transform: translate(-50%, -50%);
         border-radius: 50%;
+
+        @include x-767-tablet {
+          width: 4rem;
+          height: 4rem;
+        }
       }
     }
     .midBox {
       padding: 1rem;
       position: absolute;
       bottom: 0;
+      background-color: #0f2b4f;
+      border-radius: 0.6rem;
       p {
         color: #182046;
         font-size: 1.3rem;
@@ -62,8 +70,7 @@
       }
       h5 {
         color: #fff;
-        font-size: 2rem;
-        font-weight: 600;
+        font-size: 1.8rem;
         white-space: nowrap;
         text-overflow: ellipsis;
         overflow: hidden;

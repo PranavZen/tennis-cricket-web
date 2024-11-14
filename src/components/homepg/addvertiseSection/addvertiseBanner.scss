@@ -1,0 +1,20 @@
+.addvertiseImg {
+    // display: flex;
+    // justify-content: center;
+    margin: 5rem 0 5rem;
+
+    position: relative;
+
+    &::before {
+    width: 88px;
+    height: 47px;
+    background-color: #1D7336;
+    position: absolute;
+    top: 0;
+    left: 0;    
+    }
+
+    img {
+        width: 100%;
+    }
+}

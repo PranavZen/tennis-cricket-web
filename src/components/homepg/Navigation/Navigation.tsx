@@ -53,7 +53,7 @@ const Navigation = () => {
             <div className="col-md-2 col">
               <Link to="/" className="logoWrap">
                 <img
-                  src="../images/tennis-cricket-logo.svg"
+                  src="images\tennis-cricket-logo-mobile.png"
                   alt="Logo"
                   width={200}
                   height={73}

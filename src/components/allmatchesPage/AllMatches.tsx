@@ -1,26 +1,25 @@
 import React, { useEffect, useState } from "react";
 import "../allmatchesPage/allMatches.scss";
-import axios from "axios";
 import MatchPointCard from "../common/pointCard/MatchPointCard";
 import Header from "../common/header/Header";
 import Spinner from "../common/spinner/Spinner";
 import CompanySection from "../homepg/footerSection/FooterSlider";
+import sliderData from "../homepg/Slider/sliderdata";
 
 interface MatchData {
   id: number;
-  category_name: string;
-  from_team_name: string;
-  to_team_name: string;
-  team_one_scrore: string;
-  team_one_wicket: string;
-  team_two_scrore: string;
-  team_two_wicket: number;
-  team_one_over: string;
-  team_two_over: string;
-  from_team_logo: string;
-  to_team_logo: string;
-  stadium_name: string;
+  team1: string;
+  team2: string;
+  score1: string;
+  score2: string;
+  overs1: string;
+  overs2: string;
+  logo1: string;
+  logo2: string;
+  stadium: string;
   liveStatus: string;
+  winMsg?: string;
+  city?: string;
 }
 
 const AllMatches = () => {
@@ -29,30 +28,10 @@ const AllMatches = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchMatchData = async () => {
-      setLoading(true);
-      try {
-        const response = await axios.get(
-          `https://my.ispl.popopower.com/api/matches/results`
-        );
-
-        if (
-          response.data &&
-          response.data.data &&
-          Array.isArray(response.data.data.result)
-        ) {
-          setMatchData(response.data.data.result);
-        } else {
-          console.error("Result data is not an array");
-        }
-      } catch (error) {
-        console.error("Error fetching match data:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchMatchData();
+    setTimeout(() => {
+      setMatchData(sliderData);
+      setLoading(false);
+    }, 1000);
   }, []);
 
   const handleCityChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -62,54 +41,53 @@ const AllMatches = () => {
   const filteredCards =
     selectedCity === "All"
       ? matchData
-      : matchData.filter((item) => item.from_team_name === selectedCity);
+      : matchData.filter((item) => item.team1.toLowerCase().includes(selectedCity.toLowerCase()));
 
   return (
     <section className="allMatchPages">
-      <Header subtitle="Live Cricket Matches" className="innerpageHeading"/>
-      
+      <Header subtitle="Live Cricket Matches" className="innerpageHeading" />
       <div className="matches">
-      <div className="container">
-      <div className="row">
-        <div className="header-div">
-          <div className="text-heading">Live Cricket Matches</div>
-          <div className="dropdown">
-            Choose Location
-            <select
-              value={selectedCity}
-              name="city-names"
-              id="city"
-              onChange={handleCityChange}
-            >
-              <option value="All">All</option>
-              <option value="CHENNAI SINGAMS">Chennai</option>
-              <option value="MAJHI MUMBAI">Mumbai</option>
-              <option value="TIIGERS OF KOLKATA">Kolkata</option>
-              <option value="SRINAGAR KE VEER">Srinagar</option>
-              <option value="KVN BANGALORE STRIKERS">Bangalore</option>
-              <option value="FALCON RISERS HYDERABAD">Hyderabad</option>
-            </select>
-          </div>
-        </div>
+        <div className="container">
+          <div className="row">
+            <div className="header-div">
+              <div className="text-heading">Live Cricket Matches</div>
+              <div className="dropdown">
+                Choose Location
+                <select
+                  value={selectedCity}
+                  name="city-names"
+                  id="city"
+                  onChange={handleCityChange}
+                >
+                  <option value="All">All</option>
+                  <option value="Kolkata">Kolkata</option>
+                  <option value="Mumbai">Mumbai</option>
+                  <option value="Chennai">Chennai</option>
+                  <option value="Bangalore">Bangalore</option>
+                  <option value="Hyderabad">Hyderabad</option>
+                </select>
+              </div>
+            </div>
 
-            {loading ? ( 
-              <Spinner/>
+            {loading ? (
+              <Spinner />
             ) : filteredCards.length > 0 ? (
               filteredCards.map((item) => (
                 <div className="col-lg-4 col-md-6 col-sm-12 mb-4" key={item.id}>
                   <div className="filter-card-container">
                     <MatchPointCard
-                      category={item.category_name}
-                      team1={item.from_team_name}
-                      team2={item.to_team_name}
-                      score1={`${item.team_one_scrore}/${item.team_one_wicket}`}
-                      score2={`${item.team_two_scrore}/${item.team_two_wicket}`}
-                      overs1={item.team_one_over}
-                      overs2={item.team_two_over}
-                      logo1={`https://my.ispl-t10.com/images/team-master/teams/${item.from_team_logo}`}
-                      logo2={`https://my.ispl-t10.com/images/team-master/teams/${item.to_team_logo}`}
-                      stadium={item.stadium_name}
+                      key={item.id}
+                      team1={item.team1}
+                      team2={item.team2}
+                      score1={item.score1}
+                      score2={item.score2}
+                      overs1={item.overs1}
+                      overs2={item.overs2}
+                      logo1={item.logo1}
+                      logo2={item.logo2}
+                      stadium={item.stadium}
                       liveStatus={item.liveStatus}
+                      // winMsg={item.winMsg}
                     />
                   </div>
                 </div>
@@ -120,7 +98,7 @@ const AllMatches = () => {
           </div>
         </div>
       </div>
-      <CompanySection/>
+      <CompanySection />
     </section>
   );
 };

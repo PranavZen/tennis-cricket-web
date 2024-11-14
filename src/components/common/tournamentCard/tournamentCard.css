@@ -32,7 +32,7 @@
   .status-label {
     display: inline-block;
     width: 85.08px;
-    height: 26px;
+    /* height: 26px; */
     border-radius: 20px;
     text-align: center;
     color: #fff;

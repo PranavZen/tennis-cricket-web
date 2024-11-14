@@ -4,25 +4,22 @@ import axios from "axios";
 import MatchPointCard from "../common/pointCard/MatchPointCard";
 import Header from "../common/header/Header";
 import { Spinner } from "react-bootstrap";
+import sliderData from "../homepg/Slider/sliderdata";
 
 interface MatchData {
   id: number;
-  category_name: string;
-  from_team_name: string;
-  to_team_name: string;
-  team_one_scrore: string;
-  team_one_wicket: string;
-  team_two_scrore: string;
-  team_two_wicket: number;
-  team_one_over: string;
-  team_two_over: string;
-  from_team_logo: string;
-  to_team_logo: string;
-  stadium_name: string;
-  //   match_fixture_status_name: string;
+  team1: string;
+  team2: string;
+  score1: string;
+  score2: string;
+  overs1: string;
+  overs2: string;
+  logo1: string;
+  logo2: string;
+  stadium: string;
   liveStatus: string;
-  //   winMsg: any;
-  //   city: string;
+  winMsg?: string;
+  city?: string;
 }
 
 const TournamentDashboard: React.FC = () => {
@@ -32,32 +29,10 @@ const TournamentDashboard: React.FC = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchMatchData = async () => {
-      setLoading(true);
-      try {
-        const response = await axios.get(
-          `https://my.ispl.popopower.com/api/matches/results`
-        );
-
-        console.log("API Response:", response);
-
-        if (
-          response.data &&
-          response.data.data &&
-          Array.isArray(response.data.data.result)
-        ) {
-          setMatchData(response.data.data.result);
-        } else {
-          console.error("Result data is not an array");
-        }
-      } catch (error) {
-        console.error("Error fetching match data:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchMatchData();
+    setTimeout(() => {
+      setMatchData(sliderData);
+      setLoading(false);
+    }, 1000);
   }, []);
 
   const handleCityChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -67,7 +42,7 @@ const TournamentDashboard: React.FC = () => {
   const filteredCards =
     selectedCity === "All"
       ? matchData
-      : matchData.filter((item) => item.from_team_name === selectedCity);
+      : matchData.filter((item) => item.team1.toLowerCase().includes(selectedCity.toLowerCase()));
 
   const handleTabClick = (tabId: string) => {
     setActiveTab(tabId);
@@ -170,20 +145,20 @@ const TournamentDashboard: React.FC = () => {
                     filteredCards.map((item) => (
                       <div className="col-lg-4 col-md-6 col-sm-12 mb-4">
                         <div className="filter-card-container">
-                          <MatchPointCard
-                            key={item.id}
-                            category={item.category_name}
-                            team1={item.from_team_name}
-                            team2={item.to_team_name}
-                            score1={`${item.team_one_scrore}/${item.team_one_wicket}`}
-                            score2={`${item.team_two_scrore}/${item.team_two_wicket}`}
-                            overs1={item.team_one_over}
-                            overs2={item.team_two_over}
-                            logo1={`https://my.ispl-t10.com/images/team-master/teams/${item.from_team_logo}`}
-                            logo2={`https://my.ispl-t10.com/images/team-master/teams/${item.to_team_logo}`}
-                            stadium={item.stadium_name}
-                            liveStatus={item.liveStatus}
-                          />
+                        <MatchPointCard
+                      key={item.id}
+                      team1={item.team1}
+                      team2={item.team2}
+                      score1={item.score1}
+                      score2={item.score2}
+                      overs1={item.overs1}
+                      overs2={item.overs2}
+                      logo1={item.logo1}
+                      logo2={item.logo2}
+                      stadium={item.stadium}
+                      liveStatus={item.liveStatus}
+                      // winMsg={item.winMsg}
+                    />
                         </div>
                       </div>
                     ))

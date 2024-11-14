@@ -1,4 +1,40 @@
-@import "../../../../assets/scss/media";
+@import "../../../assets/scss/media";
+.heading-dropdown {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+
+  @include md-mobile {
+    display: block;
+  }
+
+  .heading {
+    h6 {
+      font-family: 'Work Sans';
+      font-size: 3rem;
+      font-weight: 600;
+      color: #0C495B;
+    }
+  }
+
+  .dropdown-videos {
+    font-family: 'Work Sans';
+    font-size: 2rem;
+    color: #8C8C8C;
+
+    select {
+      width: 154px;
+      height: 42px;
+      border-radius: 21px;
+      font-family: 'Work Sans';
+      font-size: 2rem;
+      color: #1D7336;
+      text-align: center;
+      margin-left: 1rem;
+    }
+  }
+}
+
 #highlightsSection {
   @include mobile {
     padding: 0 1.5rem;
