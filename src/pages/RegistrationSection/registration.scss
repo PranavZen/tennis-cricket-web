@@ -1,10 +1,10 @@
-
+@import "../../assets/scss/media";
 .Reg-form {
-    background-image: url(../../../public/images/full-banner.png);
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    background-position: center;
-    width: 100%;
+  background-image: url(../../../public/images/full-banner.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 100%;
   height: auto;
   border-radius: 5px;
   padding: 2rem;
@@ -17,38 +17,46 @@
       font-weight: 600;
       color: #ffffff;
       text-align: center;
+      padding: 2rem;
     }
   }
 
   .form-fields {
     padding: 2rem;
 
+    .container {
+        width: 70%;
+    }
+
     .input {
-        height: 45px;
-        font-size: 16px;
-        padding: 10px;
-        border-radius: 8px;
-        border: 1px solid #eb1a1a;
-        background-color: #ccc;
-    // padding-left: 0rem;
+      height: 45px;
+      font-size: 16px;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #eb1a1a;
+      background-color: #ccc;
+      @include mid-991-tab {
+        height: 40px;
+        margin-bottom: 4px;
+      }
     }
 
     .form-control,
     .form-select {
       font-size: 16px;
       font-weight: 400;
-      background-color: aliceblue;
-      border-radius: 15px;
+      background-color: beige;
+      //   border-radius: 15px;
       padding: 1rem;
-      width: 90%;
+    //   width: 63%;
       height: 50px;
     }
 
     label {
-        font-size: 1.8rem;
-        font-weight: 500;
-        color: #fff;
-        margin-bottom: 5px;
+      font-size: 1.8rem;
+      font-weight: 500;
+      color: #fff;
+      margin-bottom: 5px;
     }
 
     select,
@@ -65,38 +73,31 @@
       cursor: not-allowed;
     }
 
-    // .error-msg{
-    //   font-size: 1.5rem;
-    //   color: #ccc;
-    //   font-weight: 500;
-    // }
+    .error-msg{
+      font-size: 1.5rem;
+      color: #ccc;
+      font-weight: 500;
+    }
   }
 
   .reg-btn {
-    display: flex;
-    margin: 1.5rem;
-
-    .registration-button {
-      background-color: #1d7336;
+    padding-top: 2.5rem;
+    padding-bottom: 1.5rem; 
+    button {
+      background-color: #075d9a;
       color: #ffffff;
-      padding: 12px 24px;
       border: none;
-      border-radius: 2.2rem;
+      border-radius: 0.5rem;
+      font-family: "Work Sans";
       font-size: 2rem;
       font-weight: 500;
       cursor: pointer;
-      width: 12%;
-      margin: auto;
-
-      &:disabled {
-        background-color: #71aaeb;
-        cursor: not-allowed;
-      }
-
-      .registration-button:hover {
-        background-color: #badbc4;
-        transform: scale(1.05);
-      }
+      width: 17%;
+      height: 42px;
+    //   margin: auto;
+    //   display: flex;
+    //   justify-content: center;
+    //   align-items: center;
     }
-  } 
+  }
 }

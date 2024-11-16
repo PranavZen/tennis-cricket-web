@@ -7,124 +7,52 @@ import { states, cities, zones } from "./registrationData";
 import Header from "../../components/common/header/Header";
 import Navigation from "../../components/homepg/Navigation/Navigation";
 import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { registrationValidationSchema } from "../../components/common/validation/Validation";
 
 interface FormValues {
   firstName: string;
-  middleName: string;
-  surname: string;
-  mobileNumber: string;
-  alternateNumber: string;
+  lastName: string;
+  dob: string;
+  phone: string;
   email: string;
+  address: string;
+  teamName: string;
+  playingRole: string;
+  battingStyle: string;
+  bowlingStyle: string;
+  wicketKeeping: string;
   password: string;
   confirmPassword: string;
   bloodGroup: string;
   state: string;
   city: string;
   zone: string;
-  aadhaarNumber: string;
   profilePhoto?: File;
-  AadharPhoto?: File;
+  idCard?: File;
+  socialLinks: string;
 }
 
 const initialValues: FormValues = {
   firstName: "",
-  middleName: "",
-  surname: "",
-  mobileNumber: "",
-  alternateNumber: "",
+  lastName: "",
+  dob: "",
+  phone: "",
   email: "",
+  address: "",
+  teamName: "",
+  playingRole: "",
+  battingStyle: "",
+  bowlingStyle: "",
+  wicketKeeping: "",
   password: "",
   confirmPassword: "",
   bloodGroup: "",
   state: "",
   city: "",
   zone: "",
-  aadhaarNumber: "",
-  //   profilePhoto: null,
+  socialLinks: "",
 };
-
-const validationSchema = Yup.object().shape({
-  firstName: Yup.string()
-    .required("First name is required")
-    .min(2, "First name should have at least 2 characters")
-    .max(10, "First name should not be more than 10 characters"),
-
-  middleName: Yup.string()
-    .required("Middle name is required")
-    .min(2, "Middle name should have at least 2 characters")
-    .max(10, "Middle name should not be more than 10 characters"),
-
-  surname: Yup.string()
-    .required("Surname is required")
-    .min(2, "Surname should have at least 2 characters")
-    .max(10, "Surname should not be more than 10 characters"),
-
-  mobileNumber: Yup.string()
-    .required("Mobile number is required")
-    .matches(/^[0-9]{10}$/, "Mobile number must be 10 digits"),
-
-  alternateNumber: Yup.string()
-    .required("Mobile number is required")
-    .matches(/^[0-9]{10}$/, "Mobile number must be 10 digits"),
-
-  email: Yup.string()
-    .email("Invalid email format")
-    .matches(
-      /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-      "Invalid email structure"
-    )
-    .required("Email is required"),
-
-  password: Yup.string()
-    .required("Password is required")
-    .min(8, "Password must be 8 characters long")
-    .matches(/[0-9]/, "Password requires a number")
-    .matches(/[a-z]/, "Password requires a lowercase letter")
-    .matches(/[A-Z]/, "Password requires an uppercase letter")
-    .matches(/[^\w]/, "Password requires a symbol"),
-
-  confirmPassword: Yup.string()
-    .oneOf([Yup.ref("password"), undefined], "Passwords must match")
-    .required("Confirm password is required"),
-
-  bloodGroup: Yup.string().required("Blood group is required"),
-
-  state: Yup.string().required("State is required"),
-  city: Yup.string().required("City is required"),
-  zone: Yup.string().required("Zone is required"),
-
-  aadhaarNumber: Yup.string()
-    .required("Aadhar number is required")
-    .matches(/^\d{12}$/, "Aadhaar number must be 12 digits long"),
-
-  profilePhoto: Yup.mixed().nullable()
-    .required("Profile photo is required"),
-    // .test(
-    //   "fileSize",
-    //   "File too large",
-    //   (value) => value && (value as File).size <= 1024 * 1024
-    // ) // 1MB size limit
-    // .test(
-    //   "fileType",
-    //   "Unsupported file type",
-    //   (value) =>
-    //     value && ["image/jpeg", "image/png"].includes((value as File).type)
-    // ),
-
-  AadharPhoto: Yup.mixed().nullable()
-    .required("Profile photo is required"),
-    // .test(
-    //   "fileSize",
-    //   "File too large",
-    //   (value) => value && (value as File).size <= 1024 * 1024
-    // ) // 1MB size limit
-    // .test(
-    //   "fileType",
-    //   "Unsupported file type",
-    //   (value) =>
-    //     value && ["image/jpeg", "image/png"].includes((value as File).type)
-    // ),
-});
 
 const RegistrationForm: React.FC = () => {
   const [filteredCities, setFilteredCities] = useState<
@@ -142,7 +70,8 @@ const RegistrationForm: React.FC = () => {
     setFieldValue("state", state);
     setFieldValue("city", ""); // Reset city selection
     setFieldValue("zone", ""); // Reset zone selection
-    setFieldValue("bloodGroup", "");
+    setFieldValue("bloodGroup", state);
+    setFieldValue("playingRole", state);
     setFilteredCities(cities[state as keyof typeof cities] || []);
     setFilteredZones([]); // Clear zones
   };
@@ -157,13 +86,18 @@ const RegistrationForm: React.FC = () => {
     setFilteredZones(zones[city as keyof typeof zones] || []);
   };
 
-  const handleSubmit = (values: FormValues) => {
+  const handleSubmit = (
+    values: FormValues,
+    { resetForm }: { resetForm: () => void }
+  ) => {
     console.log("Form values:", values);
-    toast.success('Registered successfully!');
+    toast.success("Registered successfully!");
+    resetForm();
   };
 
   return (
     <section>
+      <ToastContainer position="bottom-right" closeOnClick={true} />
       <Navigation />
       <div className="Reg-form">
         <div className="heading mb-4">
@@ -172,7 +106,7 @@ const RegistrationForm: React.FC = () => {
 
         <Formik
           initialValues={initialValues}
-          validationSchema={validationSchema}
+          validationSchema={registrationValidationSchema}
           onSubmit={handleSubmit}
         >
           {({ setFieldValue, values }) => (
@@ -180,7 +114,8 @@ const RegistrationForm: React.FC = () => {
               <div className="container">
                 <div className="row">
                   {/* First Column */}
-                  <div className="mb-3 col-md-6">
+                  <div className="mb-5 col-md-6">
+                  <label>First Name</label>
                     <Field
                       type="text"
                       className="form-control"
@@ -188,39 +123,28 @@ const RegistrationForm: React.FC = () => {
                       name="firstName"
                       placeholder="First Name"
                     />
-                    <div style={{ color: '#ccc', fontSize: '1.5rem', fontWeight: '500' }}>
+                    <div className="error-msg">
                       <ErrorMessage name="firstName" component="div" />
                     </div>
                   </div>
 
-                  <div className="mb-3 col-md-6">
-                    <Field
-                      type="text"
-                      className="form-control"
-                      id="floatingMiddleName"
-                      name="middleName"
-                      placeholder="Middle Name"
-                    />
-                    <div style={{ color: '#ccc', fontSize: '1.5rem', fontWeight: '500' }}>
-                      <ErrorMessage name="middleName" component="div" />
-                    </div>
-                  </div>
-
                   {/* Second Column */}
-                  <div className="mb-3 col-md-6">
+                  <div className="mb-5 col-md-6">
+                  <label>Last Name</label>
                     <Field
                       type="text"
                       className="form-control"
-                      id="floatingSurname"
-                      name="surname"
-                      placeholder="Surname"
+                      id="floatingLastName"
+                      name="lastName"
+                      placeholder="Last Name"
                     />
-                    <div style={{ color: '#ccc', fontSize: '1.5rem', fontWeight: '500' }}>
-                      <ErrorMessage name="surname" component="div" />
+                    <div className="error-msg">
+                      <ErrorMessage name="lastName" component="div" />
                     </div>
                   </div>
 
-                  <div className="mb-3 col-md-6">
+                  <div className="mb-5 col-md-6">
+                  <label>Email</label>
                     <Field
                       type="email"
                       className="form-control"
@@ -228,41 +152,168 @@ const RegistrationForm: React.FC = () => {
                       name="email"
                       placeholder="name@example.com"
                     />
-                    <div style={{ color: '#ccc', fontSize: '1.5rem', fontWeight: '500' }}>
+                    <div className="error-msg">
                       <ErrorMessage name="email" component="div" />
                     </div>
                   </div>
 
-                  {/* Third Column */}    
-                  <div className="mb-3 col-md-6">
+                  <div className="mb-5 col-md-4">
+                  <label>Mobile Number</label>
                     <Field
                       type="text"
                       className="form-control"
-                      id="floatingMobileNumber"
-                      name="mobileNumber"
+                      id="floatingphone"
+                      name="phone"
                       placeholder="Mobile Number"
                     />
-                    <div style={{ color: '#ccc', fontSize: '1.5rem', fontWeight: '500' }}>
-                      <ErrorMessage name="mobileNumber" component="div" />
+                    <div className="error-msg">
+                      <ErrorMessage name="phone" component="div" />
                     </div>
                   </div>
 
-                  <div className="mb-3 col-md-6">
+                  <div className="mb-5 col-md-2">
+                  <label>DOB</label>
+                    <Field
+                      className="form-control"
+                      type="date"
+                      id="floatingDob"
+                      name="dob"
+                    />
+                    <div className="error-msg">
+                      <ErrorMessage name="dob" component="div" />
+                    </div>
+                  </div>
+
+                  <div className="mb-5 col-md-12">
+                  <label>Address</label>
+                    <Field
+                      as="textarea"
+                      className="form-control"
+                      id="floatingaddress"
+                      name="address"
+                      placeholder="Address"
+                    />
+                    <div className="error-msg">
+                      <ErrorMessage name="address" component="div" />
+                    </div>
+                  </div>
+
+                  <div className="mb-5 col-md-6">
+                  <label>Team Name</label>
                     <Field
                       type="text"
                       className="form-control"
-                      id="floatingAlternateNumber"
-                      name="alternateNumber"
-                      placeholder="Alternate Mobile Number"
+                      id="floatingTeamName"
+                      name="teamName"
+                      placeholder="Team Name"
                     />
-                    <div style={{ color: '#ccc', fontSize: '1.5rem', fontWeight: '500' }}>
-                      <ErrorMessage name="alternateNumber" component="div" />
+                    <div className="error-msg">
+                      <ErrorMessage name="teamName" component="div" />
                     </div>
                   </div>
-                  
+
+                  <div className="mb-5 col-md-6">
+                  <label>Playing Role</label>
+                    <Field
+                      as="select"
+                      className="form-select"
+                      name="playingRole"
+                      value={values.playingRole} // Bind value to Formik's state
+                      onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+                        setFieldValue("playingRole", e.target.value)
+                      }
+                    >
+                      <option value="">Select Playing Role</option>
+                      <option value="Batsman">Batsman</option>
+                      <option value="Bowler">Bowler</option>
+                      <option value="All-rounder">All-rounder</option>
+                      <option value="Wicket-keeper">Wicket-keeper</option>
+                    </Field>
+                    <div className="error-msg">
+                      <ErrorMessage name="playingRole" component="div" />
+                    </div>
+                  </div>
+
+                {values.playingRole === 'Batsman' || values.playingRole === 'All-rounder'
+                // || values.playingRole === 'Bowler'
+                ? (
+                  <div className="mb-5 col-md-6">
+                  <label>Batting Style</label>
+                    <Field
+                      as="select"
+                      className="form-select"
+                      name="battingStyle"
+                      value={values.battingStyle} // Bind value to Formik's state
+                      onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+                        setFieldValue("battingStyle", e.target.value)
+                      }
+                    >
+                      <option value="">Select Batting Style</option>
+                      <option value="Right-hand">Right-hand</option>
+                      <option value="Left-hand">Left-hand</option>
+                    </Field>
+                    <div className="error-msg">
+                      <ErrorMessage name="battingStyle" component="div" />
+                    </div>
+                  </div>
+                  ):null}
+
+                {values.playingRole === 'Bowler' || values.playingRole === 'All-rounder' ? (
+                  <div className="mb-5 col-md-6">
+                  <label>Bowling Style</label>
+                    <Field
+                      as="select"
+                      className="form-select"
+                      name="bowlingStyle"
+                      value={values.bowlingStyle} // Bind value to Formik's state
+                      onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+                        setFieldValue("bowlingStyle", e.target.value)
+                      }
+                    >
+                      <option value="">Select Bowling Style</option>
+                      <option value="Right-arm Fast">Right-arm Fast</option>
+                      <option value="Right-arm Medium">Right-arm Medium</option>
+                      <option value="Left-arm Fast">Left-arm Fast</option>
+                      <option value="Left-arm Medium">Left-arm Medium</option>
+                      <option value="Right-arm Spin">Right-arm Spin</option>
+                      <option value="Left-arm Spin">Left-arm Spin</option>
+                    </Field>
+                    <div className="error-msg">
+                      <ErrorMessage name="bowlingStyle" component="div" />
+                    </div>
+                  </div>
+                ):null}
+
+                {values.playingRole === 'Wicket-keeper' || values.playingRole === 'All-rounder' ? (
+                  <div className="mb-5 col-md-6">
+                  <label>Wicketkeeping</label>
+                  <div>
+                    <Field
+                      type="radio"
+                      //   className="form-control"
+                      id="yes"
+                      value="yes"
+                      name="wicketKeeping"
+                    />
+                    <label htmlFor="yes" className="form-check-label">Yes</label>
+                    <Field
+                      type="radio"
+                      //   className="form-control"
+                      id="no"
+                      value="no"
+                      name="wicketKeeping"
+                    />
+                    <label htmlFor="no" className="form-check-label">No</label>
+                    </div>
+                    <div className="error-msg">
+                      <ErrorMessage name="wicketKeeping" component="div" />
+                    </div>
+                  </div>
+                ):null}          
 
                   {/* Fourth Column */}
-                  <div className="mb-3 col-md-6">
+                  <div className="mb-5 col-md-6">
+                  <label>Password</label>
                     <Field
                       type="password"
                       className="form-control"
@@ -270,12 +321,13 @@ const RegistrationForm: React.FC = () => {
                       name="password"
                       placeholder="Password"
                     />
-                    <div style={{ color: '#ccc', fontSize: '1.5rem', fontWeight: '500' }}>
+                    <div className="error-msg">
                       <ErrorMessage name="password" component="div" />
                     </div>
                   </div>
 
-                  <div className="mb-3 col-md-6">
+                  <div className="mb-5 col-md-6">
+                  <label>Confirm Password</label>
                     <Field
                       type="password"
                       className="form-control"
@@ -283,53 +335,55 @@ const RegistrationForm: React.FC = () => {
                       name="confirmPassword"
                       placeholder="Confirm Password"
                     />
-                    <div style={{ color: '#ccc', fontSize: '1.5rem', fontWeight: '500' }}>
+                    <div className="error-msg">
                       <ErrorMessage name="confirmPassword" component="div" />
                     </div>
                   </div>
 
                   {/* Select Inputs */}
-                  <div className="mb-3 col-md-6">
-  <Field
-    as="select"
-    className="form-select"
-    name="bloodGroup"
-    value={values.bloodGroup} // Bind value to Formik's state
-    onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
-        setFieldValue('bloodGroup', e.target.value)
-      }
-  >
-    <option value="">Select Blood Group</option>
-    <option value="A+">A+</option>
-    <option value="A-">A-</option>
-    <option value="B+">B+</option>
-    <option value="B-">B-</option>
-    <option value="AB+">AB+</option>
-    <option value="AB-">AB-</option>
-    <option value="O+">O+</option>
-    <option value="O-">O-</option>
-  </Field>
-  <div style={{ color: '#ccc', fontSize: '1.5rem', fontWeight: '500' }}>
-    <ErrorMessage name="bloodGroup" component="div" />
-  </div>
-</div>
-
-
-                  <div className="mb-3 col-md-6">
+                  <div className="mb-5 col-md-6">
+                  <label>Blood Group</label>
                     <Field
-                      type="text"
+                      as="select"
+                      className="form-select"
+                      name="bloodGroup"
+                      value={values.bloodGroup} // Bind value to Formik's state
+                      onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+                        setFieldValue("bloodGroup", e.target.value)
+                      }
+                    >
+                      <option value="">Select Blood Group</option>
+                      <option value="A+">A+</option>
+                      <option value="A-">A-</option>
+                      <option value="B+">B+</option>
+                      <option value="B-">B-</option>
+                      <option value="AB+">AB+</option>
+                      <option value="AB-">AB-</option>
+                      <option value="O+">O+</option>
+                      <option value="O-">O-</option>
+                    </Field>
+                    <div className="error-msg">
+                      <ErrorMessage name="bloodGroup" component="div" />
+                    </div>
+                  </div>
+
+                  <div className="mb-5 col-md-6">
+                  <label>Social Links</label>
+                    <Field
+                      type="url"
                       className="form-control"
-                      id="floatingAadhaarNumber"
-                      name="aadhaarNumber"
-                      placeholder="Aadhaar Number"
+                      //   id="floatingTeamName"
+                      name="socialLinks"
+                      placeholder="Enter URL"
                     />
-                    <div style={{ color: '#ccc', fontSize: '1.5rem', fontWeight: '500' }}>
-                      <ErrorMessage name="aadhaarNumber" component="div" />
+                    <div className="error-msg">
+                      <ErrorMessage name="socialLinks" component="div" />
                     </div>
                   </div>
 
                   {/* State Dropdown */}
-                  <div className="mb-3 col-md-6">
+                  <div className="mb-5 col-md-6">
+                  <label>State</label>
                     <Field
                       as="select"
                       className="form-select"
@@ -345,13 +399,14 @@ const RegistrationForm: React.FC = () => {
                         </option>
                       ))}
                     </Field>
-                    <div style={{ color: '#ccc', fontSize: '1.5rem', fontWeight: '500' }}>
+                    <div className="error-msg">
                       <ErrorMessage name="state" component="div" />
                     </div>
                   </div>
 
                   {/* City Dropdown */}
-                  <div className="mb-3 col-md-3">
+                  <div className="mb-5 col-md-4">
+                  <label>City</label>
                     <Field
                       as="select"
                       className="form-select"
@@ -368,13 +423,15 @@ const RegistrationForm: React.FC = () => {
                         </option>
                       ))}
                     </Field>
-                    <div style={{ color: '#ccc', fontSize: '1.5rem', fontWeight: '500' }}>
+                    <div className="error-msg">
                       <ErrorMessage name="city" component="div" />
                     </div>
                   </div>
 
                   {/* Zone Dropdown */}
-                  <div className="mb-3 col-md-2">
+                  <div className="mb-5 col-md-2">
+                  {/* d-flex justify-content-center align-items-center flex-column */}
+                  <label>Zone</label>
                     <Field
                       as="select"
                       className="form-select"
@@ -388,15 +445,15 @@ const RegistrationForm: React.FC = () => {
                         </option>
                       ))}
                     </Field>
-                    <div style={{ color: '#ccc', fontSize: '1.5rem', fontWeight: '500' }}>
+                    <div className="error-msg">
                       <ErrorMessage name="zone" component="div" />
                     </div>
                   </div>
 
                   {/* Profile and Aadhar Photo */}
-                  <div className="user-profilePhoto mb-3 col-md-6">
+                  <div className="user-profilePhoto mb-4 col-md-6">
                     <label>Profile Photo</label>
-                    <div className="mb-3">
+                    <div className="mb-4">
                       <Field
                         type="file"
                         className="form-control"
@@ -405,25 +462,25 @@ const RegistrationForm: React.FC = () => {
                         name="profilePhoto"
                         // style={{ width: "50%" }}
                       />
-                      <div style={{ color: '#ccc', fontSize: '1.5rem', fontWeight: '500' }}>
+                      <div className="error-msg">
                         <ErrorMessage name="profilePhoto" component="div" />
                       </div>
                     </div>
                   </div>
 
-                  <div className="user-aadharPhoto mb-3 col-md-6">
-                    <label>Aadhar Photo</label>
-                    <div className="form-floating mb-3">
+                  <div className="user-aadharPhoto mb-4 col-md-6">
+                    <label>ID Card</label>
+                    <div className="form-floating mb-4">
                       <Field
                         type="file"
                         className="form-control"
                         aria-label="file example"
-                        id="AadharPhoto"
-                        name="AadharPhoto"
+                        id="idCard"
+                        name="idCard"
                         // style={{ width: "50%" }}
                       />
-                      <div style={{ color: '#ccc', fontSize: '1.5rem', fontWeight: '500' }}>
-                        <ErrorMessage name="AadharPhoto" component="div" />
+                      <div className="error-msg">
+                        <ErrorMessage name="idCard" component="div" />
                       </div>
                     </div>
                   </div>
@@ -431,28 +488,15 @@ const RegistrationForm: React.FC = () => {
               </div>
 
               {/* <RegButton text={"Register"} style={{ margin: "auto" }} /> */}
-              <div className="reg-btn">
-                <button
-                  className="registration-button"
-                //   disabled={!(isValid && dirty)}
-                >
+              <div className="col-md-12 text-center reg-btn">
+                <button type="submit">
+                  {/* <img src="images\profile-icon.svg" alt="Apple Store" /> */}
                   Register
                 </button>
               </div>
             </Form>
           )}
         </Formik>
-
-        <ToastContainer position="top-right" autoClose={5000}
-        // position="top-right" // Toast position
-        // autoClose={5000}      // Toast duration before auto-closing (in ms)
-        // hideProgressBar={false} // Show progress bar
-        // newestOnTop={true}    // New toasts appear at the top
-        // closeOnClick={true}   // Toast closes when clicked
-        // pauseOnHover={true}   // Pause when hover over the toast
-        // draggable={true}      // Allow dragging
-        // pauseOnFocusLoss={false} // Toast doesn't pause if focus is lost
-      />
       </div>
     </section>
   );

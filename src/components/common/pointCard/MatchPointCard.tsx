@@ -11,8 +11,8 @@ interface PointerCardProps {
   overs2: string;
   logo1: string;
   logo2: string;
-  stadium: string;
-  liveStatus: string;
+  stadium?: string;
+  liveStatus?: string;
   winMsg?: any;
   city?: any;
 }
@@ -63,10 +63,12 @@ const MatchPointCard: React.FC<PointerCardProps> = ({
             </div>
           </div>
           <p>{winMsg}</p>
+          {stadium && liveStatus && (
           <div className="stadium-info">
             <span className="stadium-name">{stadium}</span>
             <span className="live-status">{liveStatus}</span>
           </div>
+          )}
         </div>
       </div>
     </div>

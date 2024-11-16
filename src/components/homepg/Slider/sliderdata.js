@@ -10,7 +10,7 @@ const sliderData =[
       "score2": "60/0",
       "overs2": "7.4 OV",
       "stadium": "Dadoji Kondadev Stadium",
-      "liveStatus": "",
+      "liveStatus": "Live",
       "winMsg" : "WinMsg",
     },
     {
@@ -52,7 +52,7 @@ const sliderData =[
       "score2": "60/0",
       "overs2": "7.4 OV",
       "stadium": "Dadoji Kondadev Stadium",
-      "liveStatus": ""
+      "liveStatus": "Live"
     },
     {
       "id": 5,
@@ -78,7 +78,7 @@ const sliderData =[
       "score2": "60/0",
       "overs2": "7.4 OV",
       "stadium": "Dadoji Kondadev Stadium",
-      "liveStatus": ""
+      "liveStatus": "Live"
     },
     {
       "id": 7,
@@ -143,7 +143,7 @@ const sliderData =[
       "score2": "60/0",
       "overs2": "7.4 OV",
       "stadium": "Dadoji Kondadev Stadium",
-      "liveStatus": ""
+      "liveStatus": "Live"
     },
     {
       "id": 12,
@@ -160,10 +160,3 @@ const sliderData =[
     }
 ]
 export default sliderData;
-
-{/* <option value="CHENNAI SINGAMS">Chennai</option>
-                      <option value="MAJHI MUMBAI">Mumbai</option>
-                      <option value="TIIGERS OF KOLKATA">Kolkata</option>
-                      <option value="SRINAGAR KE VEER">Srinagar</option>
-                      <option value="KVN BANGALORE STRIKERS">Bangalore</option>
-                      <option value="FALCON RISERS HYDERABAD">Hyderabad</option> */}

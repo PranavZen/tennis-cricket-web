@@ -7,6 +7,7 @@ import HomePage from "./pages/HomePage";
 import Footer from "./components/homepg/footerSection/Footer";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 import RegistrationForm from "./pages/RegistrationSection/RegistrationForm";
+import LoginForm from "./pages/loginFormSection/LoginForm";
 
 function App() {
   return (
@@ -19,7 +20,8 @@ function App() {
         <Route path="/allMatches" element={<AllMatches />} />
         <Route path="/tournamentDashboard" element={<TournamentDashboard />} />
         <Route path="/domesticTournamnet" element={<DomesticTournament />} />
-        <Route path="/registraionPage" element={<RegistrationForm/>}/>
+        <Route path="/registrationPage" element={<RegistrationForm/>}/>
+        <Route path="/loginPage" element={<LoginForm/>} />
       </Routes>
 
       <Footer/>

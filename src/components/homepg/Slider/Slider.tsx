@@ -13,8 +13,6 @@ interface sliderData {
   overs2: string;
   logo1: string;
   logo2: string;
-  stadium: string;
-  liveStatus: string;
 }
 
 const Slider = () => {
@@ -50,8 +48,6 @@ const Slider = () => {
                 overs2={item.overs2}
                 logo1={item.logo1}
                 logo2={item.logo2}
-                stadium={item.stadium}
-                liveStatus={item.liveStatus}
               />
             ))}
           </div>

@@ -1,0 +1,106 @@
+.login-form {
+  background-image: url(../../../public/images/full-banner.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: center;
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  padding: 1.5rem;
+  //   margin: auto;
+
+  .container {
+    width: 450px;
+  }
+
+  h6 {
+    font-family: "Work Sans";
+    font-size: 3rem;
+    font-weight: 600;
+    color: #ffffff;
+    text-align: center;
+    margin-top: 3rem;
+  }
+
+  .form-fields {
+    margin: 2rem;
+    
+    .form-check {
+      font-size: 1.5rem;
+      color: #fff;
+      margin-left: -2rem;
+      .form-check-label {
+        margin-left: 0.5rem;
+      }
+    }
+
+    .col {
+      a {
+        font-size: 1.5rem;
+        color: #fff;
+      }
+    }
+
+    .input-field {
+   .form-label {
+        font-family: 'Work Sans';
+        font-size: 1.8rem;
+        font-weight: 500;
+        color: #fff;
+        text-align: right;
+      } 
+      .form-control {
+        font-family: 'Work Sans';
+        font-size: 16px;
+        font-weight: 400;
+        background-color: beige;
+        //   border-radius: 15px;
+        padding: 1rem;
+        height: 45px;
+      }
+      .text-danger {
+        font-family: 'Work Sans';
+        font-size: 1.5rem;
+        font-weight: 500;
+        color: #ccc;
+      }
+    }
+
+    .text-center {
+        display: flex;
+        justify-content: center;
+        gap: 13rem;
+        margin: 2rem 0;
+      p,
+      a {
+        font-family: 'Work Sans';
+        font-size: 1.5rem;
+        color: #fff;
+      }
+      a:hover {
+        color: #f39c12;
+        text-decoration: underline;
+      }
+    }
+    .sign-in {
+        margin-top: 2rem;
+        button {
+            background-color: #075D9A;
+            color: #ffffff;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 0.5rem;
+            font-family: 'Work Sans';
+            font-size: 2rem;
+            font-weight: 500;
+            cursor: pointer;
+            width: 30%;
+            height: 42px;
+            margin: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }      
+    }
+  }
+}
