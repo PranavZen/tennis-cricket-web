@@ -34,7 +34,12 @@ const MenuItems: React.FC<MenuItemsProps> = ({ menuOpen }) => {
               </li>
               <li>
                 <Link className="dropdown-item" to="/domesticTournamnet">
-                  Domastic Tournamnet
+                  Domastic Tournament
+                </Link>
+              </li>
+              <li>
+                <Link className="dropdown-item" to="/matchStat">
+                  Match Stat
                 </Link>
               </li>
             </ul>

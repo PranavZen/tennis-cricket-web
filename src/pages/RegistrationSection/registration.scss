@@ -1,70 +1,49 @@
 @import "../../assets/scss/media";
+@import "../../assets/scss/mixin";
 .Reg-form {
   background-image: url(../../../public/images/full-banner.png);
   background-repeat: no-repeat;
   background-size: cover;
+  // background-position: 100%;
   background-position: center;
   width: 100%;
-  height: auto;
-  border-radius: 5px;
-  padding: 2rem;
+  height: 100%;
+  // border-radius: 5px;
   margin: auto;
 
   .heading {
+    padding: 2rem;
     h6 {
-      font-family: "Work Sans";
-      font-size: 3rem;
-      font-weight: 600;
-      color: #ffffff;
-      text-align: center;
+      @include formHeadingTypo;
       padding: 2rem;
     }
   }
 
   .form-fields {
-    padding: 2rem;
-
-    .container {
-        width: 70%;
+    .lableIconWrap {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 0.3rem;
     }
 
-    .input {
-      height: 45px;
-      font-size: 16px;
-      padding: 10px;
-      border-radius: 8px;
-      border: 1px solid #eb1a1a;
-      background-color: #ccc;
+    .form-control,
+    .form-select {
+      @include inputTypo;
       @include mid-991-tab {
         height: 40px;
         margin-bottom: 4px;
       }
     }
 
-    .form-control,
-    .form-select {
-      font-size: 16px;
-      font-weight: 400;
-      background-color: beige;
-      //   border-radius: 15px;
-      padding: 1rem;
-    //   width: 63%;
-      height: 50px;
-    }
-
     label {
-      font-size: 1.8rem;
-      font-weight: 500;
-      color: #fff;
-      margin-bottom: 5px;
+      @include formLabelTypo;
     }
 
     select,
     option,
     ::placeholder {
-      font-size: 1.5rem;
-      font-weight: 500;
-      color: #a7a3a3;
+      @include formPlaceholderTypo;
     }
 
     .form-select:disabled {
@@ -73,31 +52,30 @@
       cursor: not-allowed;
     }
 
-    .error-msg{
-      font-size: 1.5rem;
-      color: #ccc;
-      font-weight: 500;
+    .formErrorMsgTypo {
+      @include formErrorMsgTypo;
+    }
+
+    .text-center {
+      .paragraph {
+        padding-bottom: 4.5rem;
+        padding-top: 1rem;
+      }
+      p,
+      a {
+        @include anchotTagTypo;
+      }
+      a:hover {
+        color: #f39c12;
+        text-decoration: underline;
+      }
     }
   }
 
   .reg-btn {
-    padding-top: 2.5rem;
-    padding-bottom: 1.5rem; 
+    padding-top: 2rem;
     button {
-      background-color: #075d9a;
-      color: #ffffff;
-      border: none;
-      border-radius: 0.5rem;
-      font-family: "Work Sans";
-      font-size: 2rem;
-      font-weight: 500;
-      cursor: pointer;
-      width: 17%;
-      height: 42px;
-    //   margin: auto;
-    //   display: flex;
-    //   justify-content: center;
-    //   align-items: center;
+      @include formButtonTypo;
     }
   }
 }

@@ -1,4 +1,5 @@
 @import "../../../assets/scss/media";
+@import "../../../assets/scss/mixin";
 .latestBlog {
   width: 100%;
   background-color: #d6edff;
@@ -6,12 +7,9 @@
   height: 100%;
 
   h6 {
+    @include subTitleTypo;
     display: flex;
     justify-content: center;
-    font-family: "Work Sans";
-    font-size: 3rem;
-    font-weight: 600;
-    color: #0c495b;
     padding-top: 3rem;
   }
   .news-card {

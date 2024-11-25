@@ -1,3 +1,5 @@
+@import '../../../assets/scss/_media.scss';
+@import '.././../../assets/scss/_mixin.scss';
 html {
   font-size: 62.333%;
 }
@@ -91,13 +93,9 @@ html {
   flex-direction: row;
 }
 
-.team-logo1 {
-  width: 42px;
-  height: 42px;
-  background: #FFFFFF;
-  border: 0.85px solid #4764DA;
-  border-radius: 50%;
-}
+/* .team-logo1 {
+  @include
+} */
 
 .score-details {
   margin-left: 10px;

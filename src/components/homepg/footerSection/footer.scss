@@ -1,9 +1,15 @@
 @import "../../../assets/scss/media";
 
 footer {
-  border-image-source: linear-gradient(90deg, #0C495B 0%, #1D7336 100%);
-  background: linear-gradient(260.04deg, #3C7749 1.87%, #125671 96.08%);
+  // border-image-source: linear-gradient(90deg, #0C495B 0%, #1D7336 100%);
+  // background: linear-gradient(260.04deg, #3C7749 1.87%, #125671 96.08%);
   /* background: url('images/footerBgImg.png') no-repeat center center; */
+  background-image: url(../../../../public/images/footerImage.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center;
+    width: 100%;
+    // height: 65.5rem;
 
   .footer-container {
     padding: 3rem;

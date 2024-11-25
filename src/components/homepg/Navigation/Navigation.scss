@@ -33,7 +33,7 @@
     .logoWrap {
       img {
         @include d-desktop {
-          width: 100%;
+          // width: 100%;
         }
       }
     }
@@ -190,6 +190,9 @@
     .searchWrap {
       position: absolute;
       right: 8rem;
+      @include mobile {
+        right: 4.5rem;
+      }
     }
     .iconWrap {
       display: none;

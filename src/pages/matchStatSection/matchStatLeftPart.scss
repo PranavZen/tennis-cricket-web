@@ -1,0 +1,367 @@
+@import "../../assets/scss/media.scss";
+.match-container {
+  width: 100%;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 3rem;
+
+  .match-status {
+    font-size: 14px;
+    color: #333;
+    border-bottom: 1px solid #ececec;
+    margin-bottom: 16px;
+    padding-bottom: 1rem;
+
+    .live-dot {
+      color: #e40b21;
+      font-family: "Exo 2";
+      font-size: 1.6rem;
+      vertical-align: middle;
+      margin-right: 5px;
+    }
+
+    .live-text {
+      font-weight: bold;
+      font-family: "Exo 2";
+      color: #e40b21;
+    }
+
+    .match-details {
+      color: #1e1e1e;
+      font-family: "Work Sans";
+      font-size: 1.6rem;
+    }
+  }
+
+  .team-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 16px;
+    gap: 2rem;
+
+    .team {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      
+      .left-part {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+    //   .team-logo {
+    //     width: 50px;
+    //     height: 50px;
+    //     border-radius: 50%;
+    //     margin-right: 10px;
+    //   }
+      .team-name {
+        font-family: "Work Sans";
+        font-size: 1.5rem;
+        color: #1e1e1e;
+      }
+
+      .team-info {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        text-align: right;
+
+        .team-score {
+          font-family: "Work Sans";
+          font-size: 2.5rem;
+          font-weight: 600;
+          color: #231f20;
+          margin-top: 5px;
+        }
+
+        .team-rr {
+          font-size: 1.8rem;
+          font-weight: 600;
+          color: #b7b7b7;
+          margin-top: 1rem;
+        }
+
+        .team-status {
+          font-family: "Work Sans";
+          font-size: 1.8rem;
+          color: #6c6c6c;
+        }
+      }
+    }
+  }
+
+  .match-stats {
+    font-family: "Work Sans";
+    font-size: 1.4rem;
+    color: #6c6c6c;
+    border-top: 1px solid #ddd;
+    padding: 0.5rem 0;
+    background-color: #ececec;
+  }
+
+  .nav-tabs {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid #ddd;
+    .tab-container {
+      display: flex;
+      justify-content: space-evenly;
+      width: 100%;
+      overflow-x: auto; // Enable horizontal scrolling
+      scrollbar-color: #4c7737 #f5f5f5;
+
+      &::-webkit-scrollbar {
+        height: 8px;
+        background-color: #f5f5f5;
+      }
+      &::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        background-color: #f5f5f5;
+      }
+      &::-webkit-scrollbar-thumb {
+        background-color: #416d3d;
+      }
+      &::-webkit-scrollbar {
+        height: 8px;
+      }
+    }
+
+    .tab {
+      font-family: "Work Sans";
+      font-size: 1.6rem;
+      color: #8c8c8c;
+      padding: 8px 10px;
+      cursor: pointer;
+      transition: color 0.3s;
+
+      &:hover {
+        color: #000;
+      }
+
+      &.active {
+        font-weight: 600;
+        color: #0e0d0d;
+      }
+    }
+    @include mobile {
+      .tab-container {
+      }
+    }
+  }
+}
+
+.table-responsive {
+  overflow-x: auto;
+}
+.scorecard {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 2rem;
+  background: #fff;
+  overflow: hidden;
+  border-radius: 5px;
+
+  .column-headers {
+    th {
+      font-family: "Work Sans";
+      font-size: 1.6rem;
+      text-align: center;
+      padding: 8px;
+      border: 1px solid #ececec;
+      background-color: #4c7737;
+      color: white;
+      &:first-child {
+        text-align: left;
+        padding-left: 2rem;
+      }
+    }
+  }
+
+  tbody {
+    td {
+      font-family: "Work Sans";
+      text-align: center;
+      padding: 18px 22px;
+      border: 1px solid #ececec;
+      font-size: 1.6rem;
+      color: #6c6c6c;
+
+      &:first-child {
+        color: #1d7336;
+        text-align: left;
+        width: 260px;
+      }
+    }
+  }
+}
+
+.score-summary {
+  width: 100%;
+  background-color: #fff;
+  padding: 1rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  margin-bottom: 2rem;
+  .last-bat {
+    font-family: "Work Sans";
+    font-size: 1.4rem;
+    color: #6c6c6c;
+    border-bottom: 1px solid #ececec;
+    margin-bottom: 10px;
+    padding: 1rem 0;
+  }
+}
+
+.balls-container {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+  align-items: center;
+
+  .ball {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 2px;
+    font-family: "Work Sans";
+    font-size: 1.4rem;
+    font-weight: normal;
+
+    &.red {
+      background-color: #e40b21;
+    }
+
+    &.green {
+      background-color: #6cac44;
+    }
+
+    &.purple {
+      background-color: #7a41d8;
+    }
+
+    &.grey {
+      background-color: #d9d9d9;
+    }
+
+    &:not(.grey):not(.red):not(.green):not(.purple) {
+      background-color: transparent;
+      color: #6c6c6c;
+    }
+  }
+}
+
+.match-center {
+  width: 100%;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #fff;
+  margin-bottom: 2rem;
+
+  .match-header {
+    padding: 14px;
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+    font-family: "Work Sans";
+    font-size: 1.6rem;
+    color: #1e1e1e;
+  }
+}
+
+.over-summary {
+  padding: 15px;
+
+  .summary-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #e2ffd1;
+    padding: 1.5rem 0;
+
+    .end-over,
+    .score {
+      font-family: "Work Sans";
+      font-size: 1.6rem;
+      font-weight: 600;
+
+      p {
+        font-family: "Work Sans";
+        font-size: 1.6rem;
+      }
+    }
+  }
+}
+
+.players-info {
+  display: flex;
+  justify-content: space-between;
+  background-color: #f3ffec;
+
+  .players {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    gap: 15rem;
+    font-family: "Work Sans";
+    font-size: 1.6rem;
+    color: #6c6c6c;
+    @include md-mobile {
+      display: block;
+    }
+
+    p {
+      margin: 8px 0;
+    }
+  }
+}
+
+.ball-by-ball {
+  padding: 0 1rem;
+
+  .info {
+    padding: 2rem 0;
+    border-bottom: 1px solid #ececec;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    span {
+      font-family: "Work Sans";
+      font-size: 1.6rem;
+      color: #595959;
+    }
+
+    .box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 28px;
+      height: 28px;
+      background-color: #d9d9d9;
+      font-weight: bold;
+      font-size: 1.3rem;
+    }
+  }
+
+  .commentry {
+    text-align: center;
+    padding: 2.5rem 0;
+
+    p {
+      font-family: "Work Sans";
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: #1d7336;
+    }
+  }
+}

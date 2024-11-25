@@ -1,5 +1,5 @@
 import Header from "../components/common/header/Header";
-import AddvertiseBanner from "../components/homepg/addvertiseSection/AddvertiseBanner"
+import AddvertiseBanner from "../components/homepg/addvertiseSection/AddvertiseBanner";
 import AddvertiseBanner2 from "../components/homepg/addvertiseSection/AddvertiseBanner2";
 import DownloadBanner from "../components/homepg/appDownloadSection/DownloadBanner";
 import Featurepart from "../components/homepg/featureSection/Featurepart";
@@ -27,13 +27,13 @@ const HomePage = () => {
         <SmallDeviceFeature />
       </div>
 
-      <AddvertiseBanner/>
-      <LatestBlog/>
-      <TopStories/>
+      <AddvertiseBanner />
+      <LatestBlog />
+      <TopStories />
       <DownloadBanner />
       <VideoSlider />
-      <AddvertiseBanner2/>
-      <ImageGallery/>
+      <AddvertiseBanner2 />
+      <ImageGallery />
       {/* <PromoCard /> */}
       {/* <TestimonialsCarousel /> */}
       {/* <Feedback id={0} title={""} image={""} feedback={""} name={""}/> */}

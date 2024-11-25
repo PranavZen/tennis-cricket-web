@@ -135,3 +135,27 @@
     }
   }
 }
+
+.matchStat {
+  #banner {
+    &.homeBanner {
+      background-image: url(../../../../public/images/innerPgFullImg.png);
+      height: 35rem;
+      @include mobile {
+        height: 30rem;
+      }
+    }
+    .midContainer {
+      p {
+        display: none;
+      }
+      .storeIconWrap {
+        display: none;
+      }
+      .regButton {
+        display: none;
+      }
+    }
+  }
+}
+

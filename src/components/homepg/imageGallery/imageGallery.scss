@@ -1,3 +1,4 @@
+@import "../../../assets/scss/mixin";
 .background {
     width: 100%;
     // height: 677px;
@@ -36,10 +37,7 @@
       position: relative;
       z-index: 1;
       h6 {
-        font-family: 'Work Sans';
-        font-size: 3rem;
-        font-weight: 600;
-        color: #0C495B;
+        @include subTitleTypo;
       }
       a {
         font-family: 'Exo 2';

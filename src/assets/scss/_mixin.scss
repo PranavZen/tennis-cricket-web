@@ -1,6 +1,71 @@
+@mixin teamLogo1 {
+  width: 42px;
+  height: 42px;
+  background: #FFFFFF;
+  border: 0.85px solid #4764DA;
+  border-radius: 50%;
+}
+
 @mixin subTitleTypo {
+  font-family: "Work Sans";
+    font-size: 3rem;
+    font-weight: 600;
+    color: #0c495b;
+}
+
+@mixin formHeadingTypo {
+  font-family: "Work Sans";
+  font-size: 3rem;
+  font-weight: 600;
+  color: #ffffff;
+  text-align: center;
+}
+
+@mixin formLabelTypo {
+  font-family: "Work Sans";
   font-size: 1.8rem;
-  color: #d7d2d2;
   font-weight: 500;
-  margin-bottom: 2rem;
+  color: #fff;
+  margin-bottom: 5px;
+}
+
+@mixin inputTypo {
+  font-family: "Work Sans";
+  font-size: 16px;
+  font-weight: 400;
+  background-color: #e8f0fe;
+  padding: 1rem;
+  height: 45px;
+}
+
+@mixin formPlaceholderTypo {
+  font-family: "Work Sans";
+  font-size: 1.5rem;
+  color: #a7a3a3;
+}
+
+@mixin formErrorMsgTypo {
+  font-family: "Work Sans";
+  font-size: 1.5rem;
+  color: #ccc;
+  font-weight: 500;
+}
+
+@mixin formButtonTypo {
+  background-color: #075d9a;
+  color: #ffffff;
+  border: none;
+  border-radius: 0.5rem;
+  font-family: "Work Sans";
+  font-size: 2rem;
+  font-weight: 500;
+  cursor: pointer;
+  width: 29%;
+  height: 45px;
+}
+
+@mixin anchotTagTypo {
+  font-family: "Work Sans";
+  font-size: 1.5rem;
+  color: #fff;
 }

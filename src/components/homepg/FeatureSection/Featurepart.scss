@@ -1,5 +1,5 @@
 @import "../../../assets/scss/media";
-
+@import "../../../assets/scss/mixin";
 // The following design will only display after 576px
 @media (min-width: 576px) {
   .feature-section,
@@ -14,13 +14,11 @@
     padding-top: 1.5rem;
 
     h2 {
+      @include subTitleTypo;
       text-align: center;
       padding: 20px;
       display: flex;
       flex-direction: column;
-      font-family: "Work Sans";
-      font-size: 3.4rem;
-      color: #0C495B;
       @include mid-991-tab {
         font-size: 3.2rem;
         padding: 10px;
@@ -187,6 +185,7 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     place-items: center;
+    
     row-gap: 3rem;
     margin-top: 3rem;
 
