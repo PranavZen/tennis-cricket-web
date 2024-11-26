@@ -1,10 +1,10 @@
-import "../loginFormSection/loginForm.scss";
+import "./loginForm.scss";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Navigation from "../../components/homepg/Navigation/Navigation";
+import Navigation from "../homepg/Navigation/Navigation";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { loginValidationSchema } from "../../components/common/validation/Validation";
+import { loginValidationSchema } from "../common/validation/Validation";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
 
@@ -124,8 +124,9 @@ const LoginForm: React.FC = () => {
             >
               {({ values, validateForm }) => (
                 <Form className="form-fields">
-                  <div className="col-md 12">
-                    <div className="input-field mb-3 mx-auto">
+                  <div className="row">
+                  <div className="col-md-4 mx-auto">
+                    <div className="input-field mb-3">
                       <label className="form-label">
                         Email address or Mobile Number
                       </label>
@@ -143,7 +144,7 @@ const LoginForm: React.FC = () => {
                     </div>
 
                     <div className="row">
-                      <div className="col-md-4 mx-auto">
+                      <div>
                         {showLoginWithOtpBtn && ( // Show this button only if showLoginWithOtpBtn is true
                           <p className="btm-text">
                             <button
@@ -171,11 +172,10 @@ const LoginForm: React.FC = () => {
                           )}
                       </div>
                     </div>
-                  </div>
 
                   {!showOtpField && ( // Show Password field when OTP field is not visible
                     <div>
-                      <div className="input-field mx-auto">
+                      <div className="input-field mx-auto mb-2">
                         <label className="form-label">Password</label>
                         <Field
                           type="password"
@@ -207,11 +207,13 @@ const LoginForm: React.FC = () => {
                           <a href="/forgotPassword">Forgot password?</a>
                         </div>
                       </div>
-                      <div className="col-md-12 text-center sign-in">
+                      <div className="col-md-12 sign-in">
                         <button type="submit">Sign in</button>
                       </div>
                     </div>
                   )}
+                  </div>
+                  </div>
 
                   {showOtpField && ( // Show OTP field when OTP field is visible
                     <div>
@@ -289,7 +291,7 @@ const LoginForm: React.FC = () => {
                   <button type="submit">Sign in</button>
                 </div> */}
 
-                  <div className="text-center">
+                  <div className="bottom-link">
                     <div className="paragraph">
                       <p>
                         Not a member? <a href="/registrationPage">Register</a>

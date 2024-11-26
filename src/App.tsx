@@ -6,12 +6,12 @@ import TournamentDashboard from "./components/tournamentDashboardPage/Tournament
 import HomePage from "./pages/HomePage";
 import Footer from "./components/homepg/footerSection/Footer";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
-import RegistrationForm from "./pages/RegistrationSection/RegistrationForm";
-import LoginForm from "./pages/loginFormSection/LoginForm";
-import ForgotPassword from "./pages/forgotPasswordSection/ForgotPassword";
+import RegistrationForm from "./components/RegistrationSection/RegistrationForm";
+import LoginForm from "./components/loginFormSection/LoginForm";
+import ForgotPassword from "./components/forgotPasswordSection/ForgotPassword";
 import { useState } from "react";
 import Loader from "./components/common/loader/Loader";
-import MatchStat from "./pages/matchStatSection/MatchStat";
+import MatchStat from "./components/matchStatSection/MatchStat";
 
 function App() {  
   return (

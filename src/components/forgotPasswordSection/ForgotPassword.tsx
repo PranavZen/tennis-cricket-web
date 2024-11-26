@@ -1,8 +1,8 @@
-import "../forgotPasswordSection/forgotPassword.scss";
+import "./forgotPassword.scss";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import { toast, ToastContainer } from "react-toastify";
-import Navigation from "../../components/homepg/Navigation/Navigation";
-import { loginValidationSchema } from "../../components/common/validation/Validation";
+import Navigation from "../homepg/Navigation/Navigation";
+import { loginValidationSchema } from "../common/validation/Validation";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -97,8 +97,8 @@ const ForgotPassword: React.FC = () => {
             >
               {({ values }) => (
                 <Form className="form-fields mx-auto">
-                  <div className="col-md-12">
-                    <div className="input-field mb-3 mx-auto">
+                  <div className="col-md-4 mx-auto">
+                    <div className="input-field mb-3">
                       <label className="formLabelTypo mb-2">
                         Email address or Mobile Number
                       </label>
@@ -116,7 +116,7 @@ const ForgotPassword: React.FC = () => {
                     </div>
 
                     <div className="row">
-                      <div className="col-md-4 mx-auto">
+                      <div className="col-md-12 mx-auto">
                         <div className="form-check justify-content-end">
                           {!showOtpField && (
                             <button
@@ -149,7 +149,7 @@ const ForgotPassword: React.FC = () => {
                         </div>
 
                         <div
-                          className="col-md-4 mx-auto otp-timer"
+                          className="col-md-12 otp-timer"
                           style={{
                             fontFamily: "Work Sans",
                             fontSize: "1.6rem",

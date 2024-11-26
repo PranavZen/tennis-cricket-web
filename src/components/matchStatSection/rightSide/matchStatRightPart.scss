@@ -1,7 +1,4 @@
-@import "../../assets/scss/media.scss";
-.matchStatRightPart {
-  
-}
+@import '../../../assets/scss/media';
 .image-container {
   position: relative;
   background-color: #ffffff;
@@ -24,7 +21,6 @@
   border-radius: 5px;
   width: 100%;
   img {
-    //   display: block; // Remove any space below the image
     border-radius: 5px;
   }
 }

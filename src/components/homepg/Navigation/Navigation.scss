@@ -32,8 +32,8 @@
     align-items: center;
     .logoWrap {
       img {
-        @include d-desktop {
-          // width: 100%;
+        @include xssm_360_mobile {
+          width: 200px;
         }
       }
     }
@@ -242,23 +242,21 @@
     }
   }
   .btn {
+    cursor: pointer;
     @include mid-991-tab {
-      flex-basis: 66%;
+      width: 40%;
       border: 2px solid #fff;
-      height: 7rem;
       font-size: 2.5rem;
-      border-radius: 32px;
+      border-radius: 22px;
       color: #fff;
       font-family: "Work Sans";
       font-weight: 500;
       @include x-tablet {
-        flex-basis: 70%;
-        height: 6rem;
+        font-size: 2rem;
       }
       @include mobile {
-        height: 4.5rem;
-        font-size: 2rem;
-        border-radius: 22px;
+        width: 60%;
+        font-size: 1.9rem;
       }
     }
     img {

@@ -1,12 +1,12 @@
-import "../RegistrationSection/registration.scss";
+import "./registration.scss";
 import React, { useState } from "react";
 import { Formik, Form, Field, ErrorMessage, FormikProps } from "formik";
-import RegButton from "../../components/common/button/RegButton";
+import RegButton from "../common/button/RegButton";
 import { states, cities, zones } from "./registrationData";
-import Navigation from "../../components/homepg/Navigation/Navigation";
+import Navigation from "../homepg/Navigation/Navigation";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { registrationValidationSchema } from "../../components/common/validation/Validation";
+import { registrationValidationSchema } from "../common/validation/Validation";
 import "boxicons/css/boxicons.min.css";
 import UploadFile from "./UploadFile";
 import { useNavigate } from "react-router-dom";
@@ -197,7 +197,7 @@ const RegistrationForm: React.FC = () => {
                         <label>Address</label>
                         <Field
                           as="textarea"
-                          className="form-control"
+                          className="form-control no-height"
                           id="floatingaddress"
                           name="address"
                           placeholder="Address"

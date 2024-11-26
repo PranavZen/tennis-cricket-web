@@ -16,6 +16,9 @@
     h6 {
       @include formHeadingTypo;
       padding: 2rem;
+      @include mobile {
+        font-size: 2.5rem;
+      }
     }
   }
 
@@ -30,6 +33,9 @@
     .form-control,
     .form-select {
       @include inputTypo;
+      &.no-height {
+        height: auto;
+      }
       @include mid-991-tab {
         height: 40px;
         margin-bottom: 4px;
@@ -38,6 +44,9 @@
 
     label {
       @include formLabelTypo;
+      @include mobile {
+        font-size: 1.5rem;
+      }
     }
 
     select,
@@ -52,7 +61,7 @@
       cursor: not-allowed;
     }
 
-    .formErrorMsgTypo {
+    .errorMsg {
       @include formErrorMsgTypo;
     }
 

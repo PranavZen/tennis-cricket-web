@@ -59,15 +59,19 @@ body {
     border: none;
     cursor: pointer;
     text-align: center;
-    font-size: 18px;
+    font-size: 1.8rem;
     font-family: 'Work Sans';
     border-radius: 22px;
     margin-right: 1rem; // Add spacing between buttons
+    @include mobile {
+      font-size: 1.6rem;
+    }
 
     &.active {
       background-color: #1D7336;
       color: white;
       border-radius: 22px;
+      width: 135px;
     }
   }
 }

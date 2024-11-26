@@ -109,35 +109,35 @@ export const registrationValidationSchema = Yup.object({
   city: Yup.string().required("City is required"),
   zone: Yup.string().required("Zone is required"),
 
-  // profilePhoto: Yup.mixed()
-  // .nullable()
-  // .required("Profile photo is required")
-  // .test(
-  //   "fileSize",
-  //   "File too large",
-  //   (value) => value && (value as File).size <= 1024 * 1024 // 1MB size limit
-  // )
-  // .test(
-  //   "fileType",
-  //   "Unsupported file type",
-  //   (value) =>
-  //     value && ["image/jpeg", "image/png"].includes((value as File).type)
-  // ),
+  profilePhoto: Yup.mixed()
+  .nullable()
+  .required("Profile photo is required")
+  .test(
+    "fileSize",
+    "File too large",
+    (value) => value && (value as File).size <= 1024 * 1024 // 1MB size limit
+  )
+  .test(
+    "fileType",
+    "Unsupported file type",
+    (value) =>
+      value && ["image/jpeg", "image/png"].includes((value as File).type)
+  ),
 
-  // idCard: Yup.mixed()
-  //   .nullable()
-  //   .required("IdCard is required")
-  //   .test(
-  //     "fileSize",
-  //     "File too large",
-  //     (value) => value && (value as File).size <= 1024 * 1024 // 1MB size limit
-  //   )
-  //   .test(
-  //     "fileType",
-  //     "Unsupported file type",
-  //     (value) =>
-  //       value && ["image/jpeg", "image/png"].includes((value as File).type)
-  //   ),
+  idCard: Yup.mixed()
+    .nullable()
+    .required("IdCard is required")
+    .test(
+      "fileSize",
+      "File too large",
+      (value) => value && (value as File).size <= 1024 * 1024 // 1MB size limit
+    )
+    .test(
+      "fileType",
+      "Unsupported file type",
+      (value) =>
+        value && ["image/jpeg", "image/png"].includes((value as File).type)
+    ),
 
   // socialLinks:
   // (Yup.string().url("Invalid URL format")),
@@ -145,6 +145,6 @@ export const registrationValidationSchema = Yup.object({
   // .required("SocialLink is required")
   // .of(Yup.string().url("Invalid URL format")),
 
-  profilePhoto: Yup.mixed().required("Profile Photo is required"),
-  idCard: Yup.mixed().required("ID Card is required"),
+  // profilePhoto: Yup.mixed().required("Profile Photo is required"),
+  // idCard: Yup.mixed().required("ID Card is required"),
 });

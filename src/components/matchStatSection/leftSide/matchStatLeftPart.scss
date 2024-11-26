@@ -1,4 +1,4 @@
-@import "../../assets/scss/media.scss";
+@import '../.././../assets/scss/media';
 .match-container {
   width: 100%;
   background: #fff;
@@ -146,10 +146,6 @@
       &.active {
         font-weight: 600;
         color: #0e0d0d;
-      }
-    }
-    @include mobile {
-      .tab-container {
       }
     }
   }
@@ -311,7 +307,7 @@
     display: flex;
     justify-content: space-between;
     margin-top: 10px;
-    gap: 15rem;
+    gap: 10rem;
     font-family: "Work Sans";
     font-size: 1.6rem;
     color: #6c6c6c;

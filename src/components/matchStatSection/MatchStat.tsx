@@ -1,7 +1,7 @@
-import Header from "../../components/common/header/Header";
-import "../matchStatSection/matchStat.scss";
-import MatchStatLeftPart from "./MatchStatLeftPart";
-import MatchStatRightPart from "./MatchStatRightPart";
+import Header from "../common/header/Header";
+import MatchStatLeftPart from "./leftSide/MatchStatLeftPart";
+import "./matchStat.scss";
+import MatchStatRightPart from "./rightSide/MatchStatRightPart";
 
 const MatchStat = () => {
   return (

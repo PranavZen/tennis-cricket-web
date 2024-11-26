@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../RegistrationSection/uploadFile.scss";
+import "./uploadFile.scss";
 import { useFormikContext } from "formik";
 
 interface UploadFileProps {

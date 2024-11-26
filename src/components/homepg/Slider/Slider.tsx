@@ -36,7 +36,7 @@ const Slider = () => {
           ‹
         </button>
         <div className="carousel-inner">
-          <div className="d-flex">
+          <div className="d-flex justify-content-center">
             {sliderData.map((item) => (
               <MatchPointCard
                 key={item.id}

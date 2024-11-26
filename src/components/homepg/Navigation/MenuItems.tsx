@@ -144,14 +144,14 @@ const MenuItems: React.FC<MenuItemsProps> = ({ menuOpen }) => {
             />
           </button> */}
           <Link to="" className="btn">
-            <span>
+            {/* <span>
               <img
                 src="../images/register-icon.svg"
                 alt="Apple Store"
                 width={16}
                 height={22}
               />
-            </span>{" "}
+            </span>{" "} */}
             Register
           </Link>
         </div>

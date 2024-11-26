@@ -1,4 +1,5 @@
 import Header from "../components/common/header/Header";
+import Gallery from "../components/gallery/Gallery";
 import AddvertiseBanner from "../components/homepg/addvertiseSection/AddvertiseBanner";
 import AddvertiseBanner2 from "../components/homepg/addvertiseSection/AddvertiseBanner2";
 import DownloadBanner from "../components/homepg/appDownloadSection/DownloadBanner";
@@ -18,15 +19,12 @@ const HomePage = () => {
   return (
     <>
       <Header />
-
       <div className="desktopDeviceFeature-cricket">
         <Featurepart />
       </div>
-
       <div className="SmallDeviceFeature-cricket">
         <SmallDeviceFeature />
       </div>
-
       <AddvertiseBanner />
       <LatestBlog />
       <TopStories />
@@ -34,6 +32,7 @@ const HomePage = () => {
       <VideoSlider />
       <AddvertiseBanner2 />
       <ImageGallery />
+      {/* <Gallery /> */}
       {/* <PromoCard /> */}
       {/* <TestimonialsCarousel /> */}
       {/* <Feedback id={0} title={""} image={""} feedback={""} name={""}/> */}
