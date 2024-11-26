@@ -42,7 +42,7 @@ const Banner: React.FC<BannerProps> = ({ subtitle, style }) => {
             />
           </Link>
         </div>
-        <RegButton text={"Register Now"} link="/" icon={arrowIcon}/>
+        <RegButton text={"Register Now"} link="/registrationPage" icon={arrowIcon}/>
       </div>
     </section>
   );
