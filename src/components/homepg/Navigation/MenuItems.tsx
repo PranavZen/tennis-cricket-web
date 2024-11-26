@@ -143,7 +143,7 @@ const MenuItems: React.FC<MenuItemsProps> = ({ menuOpen }) => {
               height={19}
             />
           </button> */}
-          <Link to="" className="btn">
+          <Link to="/registrationPage" className="btn">
             {/* <span>
               <img
                 src="../images/register-icon.svg"
