@@ -6,15 +6,9 @@
       width: 2.6rem;
       height: 2.6rem;
       &.slick-prev {
-        left: 49%;
+        left: 44.5%;
         top: unset;
         bottom: -55px;
-        @include d-desktop{
-          left: 45%;
-        }
-        @include x-767-tablet{
-          left: 40%;
-        }
         &.slick-disabled{
           opacity: .75;
         }
@@ -25,15 +19,9 @@
         }
       }
       &.slick-next {
-        left: 55%;
+        left: 53%;
         top: unset;
         bottom: -55px;
-        @include d-desktop{
-          left: 50%;
-        }
-        @include x-767-tablet{
-          left: 50%;
-        }
         &.slick-disabled{
           opacity: .75;
         }

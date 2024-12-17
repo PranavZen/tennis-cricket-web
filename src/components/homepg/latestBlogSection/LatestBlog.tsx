@@ -16,62 +16,68 @@ const arrowIcon = (
 
 const LatestBlog = () => {
   return (
-    <section>
+    <section className="letestBlog-page">
       <div className="latestBlog">
         <h6>Latest Blog</h6>
+        </div>
 
         <div className="container">
-          <div className="parent">
-            <div className="news-card">
-              <div className="row">
-                <div className="news-card div1">
-                  <img src="images\blogImg.svg" alt="Main News Image" />
-                  <div className="newsCard-content">
-                    <h4>
-                      <a href="/">
-                        Tennis Ball Cricket World Unites to fight against
-                        COVID-19, donates Rs. 277187
-                      </a>
-                    </h4>
-                    <p>
-                      <a href="/">
-                        While the entire nation is still in lockdown, the tennis
-                        ball cricket world takes an initiative as a social
-                        commitment to
-                      </a>
-                    </p>
-                    <p>
-                      <small>09:30 AM April 30, 2020</small>
-                    </p>
+          <div className="news-section">
+            <div className="parent">
+              <div className="news-card">
+                <div className="row">
+                  <div className="news-card div1">
+                    <img src="images\blogImg.svg" alt="Main News Image" />
+                    <div className="newsCard-content">
+                      <div className="top-text">
+                        <h4>
+                          <a href="/">
+                            Tennis Ball Cricket World Unites to fight against
+                            COVID-19, donates Rs. 277187
+                          </a>
+                        </h4>
+                        <p>
+                          <a href="/">
+                            While the entire nation is still in lockdown, the
+                            tennis ball cricket world takes an initiative as a
+                            social commitment to
+                          </a>
+                        </p>
+                      </div>
+                      <div className="bottom-text">
+                        <p>
+                          <small>09:30 AM April 30, 2020</small>
+                        </p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
 
-            <div className="news-sidebar">
-              <div className="div2">
-                <a href="/">
-                  Shivshakti Pale Won Shivsena Pramukh Chashak 2016
-                </a>
-              </div>
-              <div className="div3">
-                <a href="/">
-                  Shivshakti Pale Won Shivsena Pramukh Chashak 2016
-                </a>
-              </div>
-              <div className="div4">
-                <a href="/">
-                  Shivshakti Pale Won Shivsena Pramukh Chashak 2016
-                </a>
+              <div className="news-sidebar">
+                <div className="div2">
+                  <a href="/">
+                    Shivshakti Pale Won Shivsena Pramukh Chashak 2016
+                  </a>
+                </div>
+                <div className="div3">
+                  <a href="/">
+                    Shivshakti Pale Won Shivsena Pramukh Chashak 2016
+                  </a>
+                </div>
+                <div className="div4">
+                  <a href="/">
+                    Shivshakti Pale Won Shivsena Pramukh Chashak 2016
+                  </a>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <div className="readmore-btn">
-          <RegButton text={"Read More"} link="/" icon={arrowIcon} />
+          <div className="readmore-btn">
+            <RegButton text={"Read More"} link="/" icon={arrowIcon} />
+          </div>
         </div>
-      </div>
     </section>
   );
 };

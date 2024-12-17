@@ -36,12 +36,29 @@ const AllMatches = () => {
 
   const handleCityChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedCity(event.target.value);
+    setLoading(true);
+
+    // Simulate filtering with a timeout
+    setTimeout(() => {
+      if (event.target.value === "All") {
+        setMatchData(sliderData);
+      } else {
+        setMatchData(
+          sliderData.filter((item) =>
+            item.team1.toLowerCase().includes(event.target.value.toLowerCase())
+          )
+        );
+      }
+      setLoading(false);
+    }, 1000);
   };
 
   const filteredCards =
     selectedCity === "All"
       ? matchData
-      : matchData.filter((item) => item.team1.toLowerCase().includes(selectedCity.toLowerCase()));
+      : matchData.filter((item) =>
+          item.team1.toLowerCase().includes(selectedCity.toLowerCase())
+        );
 
   return (
     <section className="allMatchPages">
@@ -52,20 +69,23 @@ const AllMatches = () => {
             <div className="header-div">
               <div className="text-heading">Live Cricket Matches</div>
               <div className="dropdown">
-                Choose Location
-                <select
-                  value={selectedCity}
-                  name="city-names"
-                  id="city"
-                  onChange={handleCityChange}
-                >
-                  <option value="All">All</option>
-                  <option value="Kolkata">Kolkata</option>
-                  <option value="Mumbai">Mumbai</option>
-                  <option value="Chennai">Chennai</option>
-                  <option value="Bangalore">Bangalore</option>
-                  <option value="Hyderabad">Hyderabad</option>
-                </select>
+                  <>
+                    Choose Location
+                    <select
+                      value={selectedCity}
+                      name="city-names"
+                      id="city"
+                      onChange={handleCityChange}
+                    >
+                      <option value="All">All</option>
+                      <option value="Kolkata">Kolkata</option>
+                      <option value="Mumbai">Mumbai</option>
+                      <option value="Chennai">Chennai</option>
+                      <option value="Bangalore">Bangalore</option>
+                      <option value="Hyderabad">Hyderabad</option>
+                    </select>
+                    {/* {loading && <Spinner />} */}
+                  </>
               </div>
             </div>
 

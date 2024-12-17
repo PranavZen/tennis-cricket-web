@@ -54,7 +54,7 @@ const initialValues: FormValues = {
   zone: "",
   socialLinks: "",
   profilePhoto: null,
-  idCard: null
+  idCard: null,
 };
 
 const RegistrationForm: React.FC = () => {
@@ -104,7 +104,11 @@ const RegistrationForm: React.FC = () => {
 
   return (
     <section>
-      <ToastContainer position="top-right" closeOnClick={true} className="toast-container" />
+      <ToastContainer
+        position="top-right"
+        closeOnClick={true}
+        className="toast-container"
+      />
       <Navigation />
       <div className="Reg-form">
         <div className="heading">
@@ -487,7 +491,9 @@ const RegistrationForm: React.FC = () => {
                             setFieldValue("bloodGroup", e.target.value)
                           }
                         >
-                          <option value="">Select Blood Group</option>
+                          <option value="" disabled>
+                            Select Blood Group
+                          </option>
                           <option value="A+">A+</option>
                           <option value="A-">A-</option>
                           <option value="B+">B+</option>
@@ -550,16 +556,16 @@ const RegistrationForm: React.FC = () => {
 
               <div className="col-md-12 text-center">
                 <div className="paragraph">
-                <p>
-                  Already have an account?{" "}
-                  <a
-                    href="/loginPage"
-                    // style={{ color: "#fff", textDecoration: "none" }}
-                  >
-                    Login now
-                  </a>
-                </p>
-              </div>
+                  <p>
+                    Already have an account?{" "}
+                    <a
+                      href="/loginPage"
+                      // style={{ color: "#fff", textDecoration: "none" }}
+                    >
+                      Login now
+                    </a>
+                  </p>
+                </div>
               </div>
             </Form>
           )}

@@ -29,7 +29,7 @@
   .tab-menu {
     display: flex;
     justify-content: center;
-    margin-bottom: 5px;
+    margin-bottom: 3rem;
     position: relative;
 
     button {
@@ -187,7 +187,7 @@
     place-items: center;
     
     row-gap: 3rem;
-    margin-top: 3rem;
+    // margin-top: 3rem;
 
     // @include md-mobile {
     //   display: none;

@@ -3,8 +3,8 @@ import "./tournamentDashboard.scss";
 import axios from "axios";
 import MatchPointCard from "../common/pointCard/MatchPointCard";
 import Header from "../common/header/Header";
-import { Spinner } from "react-bootstrap";
 import sliderData from "../homepg/Slider/sliderdata";
+import Spinner from "../common/spinner/Spinner";
 
 interface MatchData {
   id: number;
@@ -36,13 +36,29 @@ const TournamentDashboard: React.FC = () => {
   }, []);
 
   const handleCityChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setLoading(true); // Show spinner while filtering
     setSelectedCity(event.target.value);
+
+    setTimeout(() => {
+      if (event.target.value === "All") {
+        setMatchData(sliderData);
+      } else {
+        setMatchData(
+          sliderData.filter((item) =>
+            item.team1.toLowerCase().includes(event.target.value.toLowerCase())
+          )
+        );
+      }
+      setLoading(false); // Stop spinner after filtering
+    }, 500);
   };
 
   const filteredCards =
     selectedCity === "All"
       ? matchData
-      : matchData.filter((item) => item.team1.toLowerCase().includes(selectedCity.toLowerCase()));
+      : matchData.filter((item) =>
+          item.team1.toLowerCase().includes(selectedCity.toLowerCase())
+        );
 
   const handleTabClick = (tabId: string) => {
     setActiveTab(tabId);
@@ -145,20 +161,20 @@ const TournamentDashboard: React.FC = () => {
                     filteredCards.map((item) => (
                       <div className="col-lg-4 col-md-6 col-sm-12 mb-4">
                         <div className="filter-card-container">
-                        <MatchPointCard
-                      key={item.id}
-                      team1={item.team1}
-                      team2={item.team2}
-                      score1={item.score1}
-                      score2={item.score2}
-                      overs1={item.overs1}
-                      overs2={item.overs2}
-                      logo1={item.logo1}
-                      logo2={item.logo2}
-                      stadium={item.stadium}
-                      liveStatus={item.liveStatus}
-                      // winMsg={item.winMsg}
-                    />
+                          <MatchPointCard
+                            key={item.id}
+                            team1={item.team1}
+                            team2={item.team2}
+                            score1={item.score1}
+                            score2={item.score2}
+                            overs1={item.overs1}
+                            overs2={item.overs2}
+                            logo1={item.logo1}
+                            logo2={item.logo2}
+                            stadium={item.stadium}
+                            liveStatus={item.liveStatus}
+                            // winMsg={item.winMsg}
+                          />
                         </div>
                       </div>
                     ))
@@ -171,37 +187,37 @@ const TournamentDashboard: React.FC = () => {
           )}
           {activeTab === "tab-2" && (
             <div className="tab-box">
-              <h1>Leaderboard</h1>
+              <h1>Leaderboard-Tab 2</h1>
             </div>
           )}
           {activeTab === "tab-3" && (
             <div className="tab-box">
-              <h1>Points Table</h1>
+              <h1>Points Table-Tab 3</h1>
             </div>
           )}
           {activeTab === "tab-4" && (
             <div className="tab-box">
-              <h1>Stats</h1>
+              <h1>Stats-Tab 4</h1>
             </div>
           )}
           {activeTab === "tab-5" && (
             <div className="tab-box">
-              <h1>Sponsers</h1>
+              <h1>Sponsers-Tab 5</h1>
             </div>
           )}
           {activeTab === "tab-6" && (
             <div className="tab-box">
-              <h1>Teams</h1>
+              <h1>Teams-Tab 6</h1>
             </div>
           )}
           {activeTab === "tab-7" && (
             <div className="tab-box">
-              <h1>Gallery</h1>
+              <h1>Gallery-Tab 7</h1>
             </div>
           )}
           {activeTab === "tab-8" && (
             <div className="tab-box">
-              <h1>About Us</h1>
+              <h1>About Us-Tab 8</h1>
             </div>
           )}
         </div>

@@ -3,7 +3,7 @@ import TournamentCard from "../common/tournamentCard/TournamentCard";
 import "./domesticTournament.scss";
 import data from "./data";
 import Header from "../common/header/Header";
-import { Spinner } from "react-bootstrap";
+import Spinner from "../common/spinner/Spinner";
 
 interface TournamentData {
   id: number;
@@ -25,6 +25,7 @@ const DomesticTournament = () => {
 
   const handleCityChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedCity(event.target.value);
+    setLoading(true);
   };
 
   const handleStatusFilter = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -36,18 +37,34 @@ const DomesticTournament = () => {
     );
   };
 
+  // useEffect(() => {
+  //   const filteredCards = data.filter((TournamentData) => {
+  //     return (
+  //       (selectedStatus.length === 0 ||
+  //         selectedStatus.includes(TournamentData.matchStatus)) &&
+  //       (selectedCity === "All" ||
+  //         TournamentData.matchLocation.includes(selectedCity))
+  //     );
+  //   });
+  //   setFilteredData(filteredCards);
+  //   setLoading(false);
+  // }, [selectedCity, selectedStatus]);
+
   useEffect(() => {
-    const filteredCards = data.filter((TournamentData) => {
-      setLoading(true);
-      return (
-        (selectedStatus.length === 0 ||
-          selectedStatus.includes(TournamentData.matchStatus)) &&
-        (selectedCity === "All" ||
-          TournamentData.matchLocation.includes(selectedCity))
-      );
-    });
-    setFilteredData(filteredCards);
-    setLoading(false);
+    const timer = setTimeout(() => {
+      const filteredCards = data.filter((TournamentData) => {
+        return (
+          (selectedStatus.length === 0 ||
+            selectedStatus.includes(TournamentData.matchStatus)) &&
+          (selectedCity === "All" ||
+            TournamentData.matchLocation.includes(selectedCity))
+        );
+      });
+      setFilteredData(filteredCards);
+      setLoading(false);
+    }, 1000);
+
+    return () => clearTimeout(timer);
   }, [selectedCity, selectedStatus]);
 
   return (
@@ -133,7 +150,9 @@ const DomesticTournament = () => {
             </div>
 
             {loading ? (
+              <div>
               <Spinner />
+              </div>
             ) : (
               filteredData.map((item: TournamentData) => (
                 <div key={item.id} className="col-lg-4 col-md-6 col-sm-12 mb-4">

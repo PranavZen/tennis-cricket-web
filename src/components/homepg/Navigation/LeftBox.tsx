@@ -12,7 +12,7 @@ const LeftBox = () => {
             // height={19}
           />
         </button>
-        <Link to="/registrationPage" className="btn">
+        <Link to="/registrationPage" className="register-btn">
           <span>
             <img
               src="images\profile-icon.svg"

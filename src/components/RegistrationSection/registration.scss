@@ -33,9 +33,19 @@
     .form-control,
     .form-select {
       @include inputTypo;
+      color: #a7a3a3;
       &.no-height {
         height: auto;
       }
+      &:focus {
+        outline: none;
+        border: 1px solid #888;
+      }
+    
+      // &:valid {
+      //   color: black;
+      // }
+
       @include mid-991-tab {
         height: 40px;
         margin-bottom: 4px;
@@ -53,6 +63,10 @@
     option,
     ::placeholder {
       @include formPlaceholderTypo;
+    }
+
+    option:disabled {
+      color: #a7a3a3; // Placeholder color
     }
 
     .form-select:disabled {
@@ -85,6 +99,7 @@
     padding-top: 2rem;
     button {
       @include formButtonTypo;
+      width: 18%;
     }
   }
 }

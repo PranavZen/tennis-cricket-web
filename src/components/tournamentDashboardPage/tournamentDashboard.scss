@@ -5,9 +5,9 @@ body {
 }
 
 .dashboard {
-  margin: 1rem 0;
+  padding: 7rem 0 5rem;
   @include x-767-tablet {
-    margin: 1rem 2rem;
+    padding: 4rem 0 3rem;
   }
 }
 
@@ -15,7 +15,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-bottom: 1rem;
+  margin-bottom: 3rem;
 }
 
 .tabs-container {
@@ -29,12 +29,12 @@ body {
   flex-wrap: nowrap;
   border-radius: 22px;
   background-color: #fff;
-  margin: 5rem auto 5rem;
+  margin: auto;
   overflow-x: auto;
   scrollbar-width: thin;
   scrollbar-color: #1D7336;
   @include x-tablet {
-    width: 88%;
+    width: 98%;
   }
 
   &::-webkit-scrollbar {
@@ -49,6 +49,10 @@ body {
   &::-webkit-scrollbar-thumb {
     background-color: #416D3D;
     border-radius: 10px;
+  }
+
+  .tab-main-box {
+    margin-bottom: 5rem;
   }
 
   button {
