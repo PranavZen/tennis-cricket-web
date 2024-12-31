@@ -10,6 +10,7 @@ import { registrationValidationSchema } from "../common/validation/Validation";
 import "boxicons/css/boxicons.min.css";
 import UploadFile from "./UploadFile";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 interface FormValues {
   firstName: string;
@@ -97,10 +98,29 @@ const RegistrationForm: React.FC = () => {
     console.log("Form values:", values);
     toast.success("Registered successfully!");
     resetForm();
-    setTimeout(() => {
-      navigate("/loginPage"); // Redirect to homepage after displaying the success message
-    }, 5000); // 2-second delay
+    // setTimeout(() => {
+    //   navigate("/loginPage");
+    // }, 5000);
   };
+
+  // const handleSubmit = async (
+  //   values: FormValues,
+  //   { resetForm }: { resetForm: () => void }
+  // ) => {
+  //   console.log("Form values:", values);
+  //   try {
+  //     const response = await axios.post("https://my.tc.popopower.com/api/register", values);
+  //     console.log("API Response:", response.data);
+  //     toast.success("Registered successfully!");
+  //     resetForm();
+  //     setTimeout(() => {  
+  //       navigate("/loginPage");
+  //     }, 5000);
+  //   } catch (error: any) {
+  //     console.error("API Error:", error);
+  //     toast.error(error.response?.data?.message || "Registration failed!");
+  //   }
+  // };
 
   return (
     <section>
@@ -191,6 +211,7 @@ const RegistrationForm: React.FC = () => {
                           type="date"
                           id="floatingDob"
                           name="dob"
+                          style={{ cursor: 'pointer' }}
                         />
                         <div className="errorMsg">
                           <ErrorMessage name="dob" component="div" />

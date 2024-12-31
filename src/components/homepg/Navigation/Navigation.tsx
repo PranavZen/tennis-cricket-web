@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "../Navigation/Navigation.scss";
 import MenuItems from "./MenuItems";
 import LeftBox from "./LeftBox";
-
+import pic1 from '../.././../../public/images/tennisCricketLogo.png'
 const Navigation = () => {
   const [prevScrollpos, setPrevScrollpos] = useState(0);
   const [scroll, setScroll] = useState(false);
@@ -53,8 +53,8 @@ const Navigation = () => {
             <div className="col-md-2 col">
               <Link to="/" className="logoWrap">
                 <img
-                  src="images\tennisCricketLogo.png"
-                  alt="Logo"
+                  src='\images\tennisCricketLogo.png'
+                  alt="Logoooooo"
                   // width={200}
                   height={73}
                 />

@@ -47,7 +47,7 @@ const LoginForm: React.FC = () => {
         resetForm();
         setShowLoginWithOtpBtn(true);
         setTimeout(() => {
-          navigate("/"); // Redirect to homepage after displaying the success message
+          navigate("/profilePage"); // Redirect to homepage after displaying the success message
         }, 5000); // 2-second delay
       } else {
         console.error("Invalid OTP:", values.otp);
@@ -59,7 +59,7 @@ const LoginForm: React.FC = () => {
       resetForm();
       setShowLoginWithOtpBtn(true);
       setTimeout(() => {
-        navigate("/"); // Redirect to homepage after displaying the success message
+        navigate("/profilePage"); // Redirect to homepage after displaying the success message
       }, 5000); // 2-second delay
     }
   };

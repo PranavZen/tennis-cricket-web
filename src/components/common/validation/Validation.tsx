@@ -74,12 +74,7 @@ export const registrationValidationSchema = Yup.object({
 
   address: Yup.string()
     .required("Address is required")
-    .min(10, "Address must be at least 10 characters long")
-    .max(200, "Address cannot exceed 200 characters")
-    .matches(
-      /^[a-zA-Z0-9\s,'-]*$/,
-      "Address can only contain letters, numbers, spaces, commas, apostrophes, and dashes"
-    ),
+    .max(200, "Address cannot exceed 200 characters"),
 
   teamName: Yup.string().required("Team name is required"),
 

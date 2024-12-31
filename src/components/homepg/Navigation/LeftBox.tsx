@@ -6,7 +6,7 @@ const LeftBox = () => {
       <div className="leftBox">
         <button className="searchWrap">
           <img
-            src="images\search-icon.png"
+            src="\images\search-icon.png"
             alt="search"
             // width={19}
             // height={19}
@@ -15,7 +15,7 @@ const LeftBox = () => {
         <Link to="/registrationPage" className="register-btn">
           <span>
             <img
-              src="images\profile-icon.svg"
+              src="\images\profile-icon.svg"
               alt="Apple Store"
               // width={16}
               // height={22}

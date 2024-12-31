@@ -1,32 +1,56 @@
 import React, { useEffect, useState } from "react";
 import "./tournamentDashboard.scss";
-import axios from "axios";
-import MatchPointCard from "../common/pointCard/MatchPointCard";
 import Header from "../common/header/Header";
 import sliderData from "../homepg/Slider/sliderdata";
-import Spinner from "../common/spinner/Spinner";
+import Tabs from "./Tabs";
+import LeaderBoardTab from "./leaderboardTab/LeaderBoardTab";
+import MatchesTab from "./matchesTab/MatchesTab";
+import TeamNmaeDropdown from "./matchesTab/TeamNameDropdown";
+import Dropdown from "./leaderboardTab/Dropdown";
 
 interface MatchData {
   id: number;
-  team1: string;
-  team2: string;
-  score1: string;
-  score2: string;
-  overs1: string;
-  overs2: string;
-  logo1: string;
-  logo2: string;
-  stadium: string;
-  liveStatus: string;
-  winMsg?: string;
-  city?: string;
+  // team1: string;
+  // team2: string;
+  // score1: string;
+  // score2: string;
+  // overs1: string;
+  // overs2: string;
+  // logo1: string;
+  // logo2: string;
+  // stadium: string;
+  // liveStatus: string;
+  // winMsg?: string;
+  // city?: string;
 }
 
 const TournamentDashboard: React.FC = () => {
   const [matchData, setMatchData] = useState<MatchData[]>([]);
   const [selectedCity, setSelectedCity] = useState("All");
+  // const [selectType, setSelectType] = useState("Select");
+  // const [selectStyle, setSelectStyle] = useState("All Style");
   const [activeTab, setActiveTab] = useState<string>("tab-1");
   const [loading, setLoading] = useState(true);
+
+  const tabs = [
+    { id: "tab-1", label: "Matches" },
+    { id: "tab-2", label: "Leaderboard" },
+    { id: "tab-3", label: "Points Table" },
+    { id: "tab-4", label: "Stats" },
+    { id: "tab-5", label: "Sponsors" },
+    { id: "tab-6", label: "Teams" },
+    { id: "tab-7", label: "Gallery" },
+    { id: "tab-8", label: "About Us" },
+  ];
+
+  const cities = [
+    "CHENNAI SINGAMS",
+    "MAJHI MUMBAI",
+    "TIIGERS OF KOLKATA",
+    "SRINAGAR KE VEER",
+    "KVN BANGALORE STRIKERS",
+    "FALCON RISERS HYDERABAD",
+  ];
 
   useEffect(() => {
     setTimeout(() => {
@@ -36,29 +60,35 @@ const TournamentDashboard: React.FC = () => {
   }, []);
 
   const handleCityChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setLoading(true); // Show spinner while filtering
-    setSelectedCity(event.target.value);
+    setLoading(true);
+    const selectedCity = event.target.value;
+    setSelectedCity(selectedCity);
 
     setTimeout(() => {
-      if (event.target.value === "All") {
+      if (selectedCity === "All") {
         setMatchData(sliderData);
       } else {
         setMatchData(
           sliderData.filter((item) =>
-            item.team1.toLowerCase().includes(event.target.value.toLowerCase())
+            item.team1.toLowerCase().includes(selectedCity.toLowerCase())
           )
         );
       }
-      setLoading(false); // Stop spinner after filtering
+      setLoading(false);
     }, 500);
   };
 
-  const filteredCards =
-    selectedCity === "All"
-      ? matchData
-      : matchData.filter((item) =>
-          item.team1.toLowerCase().includes(selectedCity.toLowerCase())
-        );
+  // const handelTypeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+  //   setLoading(true);
+  //   const selectType = event.target.value;
+  //   setSelectType(selectType);
+  // };
+
+  // const handleStyleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+  //   setLoading(true);
+  //   const selectStyle = event.target.value;
+  //   setSelectStyle(selectStyle);
+  // }
 
   const handleTabClick = (tabId: string) => {
     setActiveTab(tabId);
@@ -67,159 +97,63 @@ const TournamentDashboard: React.FC = () => {
   return (
     <section className="tournamentDashPage">
       <Header subtitle="TournamentDashboard" className="innerpageHeading" />
-      <div className="dashboard">
-        <div className="tab-header">
-          <div className="tabs">
-            <button
-              className={`tab-button ${activeTab === "tab-1" ? "active" : ""}`}
-              onClick={() => handleTabClick("tab-1")}
-              data-tab="tab1"
-            >
-              Matches
-            </button>
-            <button
-              className={`tab-button ${activeTab === "tab-2" ? "active" : ""}`}
-              onClick={() => handleTabClick("tab-2")}
-              data-tab="tab2"
-            >
-              Leaderboard
-            </button>
-            <button
-              className={`tab-button ${activeTab === "tab-3" ? "active" : ""}`}
-              onClick={() => handleTabClick("tab-3")}
-              data-tab="tab3"
-            >
-              Points Table
-            </button>
-            <button
-              className={`tab-button ${activeTab === "tab-4" ? "active" : ""}`}
-              onClick={() => handleTabClick("tab-4")}
-              data-tab="tab4"
-            >
-              Stats
-            </button>
-            <button
-              className={`tab-button ${activeTab === "tab-5" ? "active" : ""}`}
-              onClick={() => handleTabClick("tab-5")}
-              data-tab="tab5"
-            >
-              Sponsors
-            </button>
-            <button
-              className={`tab-button ${activeTab === "tab-6" ? "active" : ""}`}
-              onClick={() => handleTabClick("tab-6")}
-              data-tab="tab6"
-            >
-              Teams
-            </button>
-            <button
-              className={`tab-button ${activeTab === "tab-7" ? "active" : ""}`}
-              onClick={() => handleTabClick("tab-7")}
-              data-tab="tab7"
-            >
-              Gallery
-            </button>
-            <button
-              className={`tab-button ${activeTab === "tab-8" ? "active" : ""}`}
-              onClick={() => handleTabClick("tab-8")}
-              data-tab="tab8"
-            >
-              About Us
-            </button>
-          </div>
-        </div>
+      <div className="container">
+        <div className="dashboard">
+          <Tabs activeTab={activeTab} tabs={tabs} onTabClick={handleTabClick} />
 
-        <div className="tab-main-box">
-          {activeTab === "tab-1" && (
-            <div className="tab-box">
-              <div className="container">
-                <div className="row">
-                  <div className="dropdown-city">
-                    Choose
-                    <select
-                      value={selectedCity}
-                      name="city-names"
-                      id="city"
-                      onChange={handleCityChange}
-                    >
-                      <option value="All">Live</option>
-                      <option value="CHENNAI SINGAMS">Chennai</option>
-                      <option value="MAJHI MUMBAI">Mumbai</option>
-                      <option value="TIIGERS OF KOLKATA">Kolkata</option>
-                      <option value="SRINAGAR KE VEER">Srinagar</option>
-                      <option value="KVN BANGALORE STRIKERS">Bangalore</option>
-                      <option value="FALCON RISERS HYDERABAD">Hyderabad</option>
-                    </select>
-                    <button>
-                      <img src="images\filterIcon.svg" alt="filter-icon" />
-                    </button>
-                  </div>
-
-                  {loading ? (
-                    <Spinner />
-                  ) : filteredCards.length > 0 ? (
-                    filteredCards.map((item) => (
-                      <div className="col-lg-4 col-md-6 col-sm-12 mb-4">
-                        <div className="filter-card-container">
-                          <MatchPointCard
-                            key={item.id}
-                            team1={item.team1}
-                            team2={item.team2}
-                            score1={item.score1}
-                            score2={item.score2}
-                            overs1={item.overs1}
-                            overs2={item.overs2}
-                            logo1={item.logo1}
-                            logo2={item.logo2}
-                            stadium={item.stadium}
-                            liveStatus={item.liveStatus}
-                            // winMsg={item.winMsg}
-                          />
-                        </div>
-                      </div>
-                    ))
-                  ) : (
-                    <p>No match data available.</p>
-                  )}
-                </div>
+          <div className="tab-main-box">
+            {activeTab === "tab-1" && (
+              <div>
+                <TeamNmaeDropdown
+                  selectedCity={selectedCity}
+                  cities={["All", ...cities]}
+                  onCityChange={handleCityChange}
+                />
+                <MatchesTab />
               </div>
-            </div>
-          )}
-          {activeTab === "tab-2" && (
-            <div className="tab-box">
-              <h1>Leaderboard-Tab 2</h1>
-            </div>
-          )}
-          {activeTab === "tab-3" && (
-            <div className="tab-box">
-              <h1>Points Table-Tab 3</h1>
-            </div>
-          )}
-          {activeTab === "tab-4" && (
-            <div className="tab-box">
-              <h1>Stats-Tab 4</h1>
-            </div>
-          )}
-          {activeTab === "tab-5" && (
-            <div className="tab-box">
-              <h1>Sponsers-Tab 5</h1>
-            </div>
-          )}
-          {activeTab === "tab-6" && (
-            <div className="tab-box">
-              <h1>Teams-Tab 6</h1>
-            </div>
-          )}
-          {activeTab === "tab-7" && (
-            <div className="tab-box">
-              <h1>Gallery-Tab 7</h1>
-            </div>
-          )}
-          {activeTab === "tab-8" && (
-            <div className="tab-box">
-              <h1>About Us-Tab 8</h1>
-            </div>
-          )}
+            )}
+            {activeTab === "tab-2" && (
+              <div>
+                {/* <Dropdown
+                  selectType={selectType}
+                  handelTypeChange={handelTypeChange}
+                  selectStyle={selectStyle}
+                  handleStyleChange={handleStyleChange}
+                /> */}
+                <LeaderBoardTab />
+              </div>
+            )}
+            {activeTab === "tab-3" && (
+              <div className="tab-box">
+                <h1>Points Table-Tab 3</h1>
+              </div>
+            )}
+            {activeTab === "tab-4" && (
+              <div className="tab-box">
+                <h1>Stats-Tab 4</h1>
+              </div>
+            )}
+            {activeTab === "tab-5" && (
+              <div className="tab-box">
+                <h1>Sponsors-Tab 5</h1>
+              </div>
+            )}
+            {activeTab === "tab-6" && (
+              <div className="tab-box">
+                <h1>Teams-Tab 6</h1>
+              </div>
+            )}
+            {activeTab === "tab-7" && (
+              <div className="tab-box">
+                <h1>Gallery-Tab 7</h1>
+              </div>
+            )}
+            {activeTab === "tab-8" && (
+              <div className="tab-box">
+                <h1>About Us-Tab 8</h1>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </section>

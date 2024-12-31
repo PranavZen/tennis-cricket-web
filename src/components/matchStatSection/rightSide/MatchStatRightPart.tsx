@@ -4,14 +4,18 @@ import MatchDetails from "./matchDetails/MatchDetails";
 import MatchNotes from "./matchDetails/MatchNotes";
 import "./matchStatRightPart.scss";
 
-const MatchStatRightPart = () => {
+interface MatchDataProps {
+  matchData : any;
+}
+
+const MatchStatRightPart: React.FC<MatchDataProps> = ({ matchData }) => {
   return (
     <div className="rightBox">
       <ImageContainer />
       <div className="graph-img">
         <LineChart />
       </div>
-      <MatchDetails />
+      <MatchDetails matchData={matchData}/>
       <MatchNotes />
     </div>
   );

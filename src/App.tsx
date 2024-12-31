@@ -12,8 +12,10 @@ import ForgotPassword from "./components/forgotPasswordSection/ForgotPassword";
 import { useState } from "react";
 import Loader from "./components/common/loader/Loader";
 import MatchStat from "./components/matchStatSection/MatchStat";
+import ProfilePage from "./components/profilePageSection/ProfilePage";
+import MatchDetailCard from "./components/matchDetails/MatchDetailCard";
 
-function App() {  
+function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
@@ -24,57 +26,18 @@ function App() {
         <Route path="/allMatches" element={<AllMatches />} />
         <Route path="/tournamentDashboard" element={<TournamentDashboard />} />
         <Route path="/domesticTournamnet" element={<DomesticTournament />} />
-        <Route path='/matchStat' element={<MatchStat/>} />
-        <Route path="/registrationPage" element={<RegistrationForm/>}/>
-        <Route path="/loginPage" element={<LoginForm/>} />
-        <Route path="/forgotPassword" element={<ForgotPassword/>} />
+        {/* <Route path="/matchStat" element={<MatchStat />} /> */}
+        <Route path="/registrationPage" element={<RegistrationForm />} />
+        <Route path="/loginPage" element={<LoginForm />} />
+        <Route path="/forgotPassword" element={<ForgotPassword />} />
+        <Route path="/profilePage" element={<ProfilePage />} />
+        <Route path="/matchDetailCard" element={<MatchDetailCard />} />
+        <Route path="/matchStat/:id" element={<MatchStat />} />
       </Routes>
 
-      <Footer/>
+      <Footer />
     </BrowserRouter>
   );
 }
 
 export default App;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// {fileName && (
-//   <div
-//     id="fileDetails"
-//     className="upload-area__file-details file-details file-details--open"
-//   >
-//     <h3 className="file-details__title">Uploaded File</h3>
-//     <div id="uploadedFile" className="uploaded-file uploaded-file--open">
-//       <div className="uploaded-file__icon-container">
-//         <i className="bx bxs-file-blank uploaded-file__icon"></i>
-//         <span className="uploaded-file__icon-text">{fileType}</span>
-//       </div>
-//       <div
-//         id="uploadedFileInfo"
-//         className="uploaded-file__info uploaded-file__info--active"
-//       >
-        
-//         <span className="uploaded-file__size">{fileSize}</span>
-//         <span className="uploaded-file__progress">{progress}%</span>
-//         <div className="drop-zoon__progress">
-//           <div
-//             className="drop-zoon__progress-bar"
-//             style={{ width: `${progress}%` }}
-//           ></div>
-//         </div>
-//         <span className="uploaded-file__name">{fileName}</span>
-//       </div>
-//     </div>
-//   </div>

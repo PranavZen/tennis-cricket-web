@@ -21,7 +21,8 @@ body {
 
   .combine-Part {
     display: grid;
-    grid-template-columns: repeat(2, auto);
+    // grid-template-columns: repeat(2, auto);
+    grid-template-columns: 60% 40%;
     grid-template-rows: 1fr;
     grid-column-gap: 15px;
     grid-row-gap: 0px;
