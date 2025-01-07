@@ -1,5 +1,5 @@
 import RegButton from "../../common/button/RegButton";
-import "../bannersection/banner.scss";
+import "../bannersection/banner.scss"
 
 const Banner = () => {
   const arrowIcon = (
