@@ -1,7 +1,10 @@
 footer {
-  border-image-source: linear-gradient(90deg, #0C495B 0%, #1D7336 100%);
-  background: linear-gradient(260.04deg, #3C7749 1.87%, #125671 96.08%);
   /* background: url('images/footerBgImg.png') no-repeat center center; */
+  background-image: url(../../../../public/images/footerImage.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: center;
+  width: 100%;
 }
 footer .footer-container {
   padding: 3rem;
@@ -118,7 +121,7 @@ footer .footer-bottom {
 }
 footer .footer-bottom p {
   font-family: "Work Sans";
-  font-size: 18px;
+  font-size: 1.5rem;
   color: #B7B7B7;
 }
 @media (max-width: 480px) {

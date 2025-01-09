@@ -1,16 +1,16 @@
 @mixin teamLogo1 {
   width: 42px;
   height: 42px;
-  background: #FFFFFF;
-  border: 0.85px solid #4764DA;
+  background: #ffffff;
+  border: 0.85px solid #4764da;
   border-radius: 50%;
 }
 
 @mixin subTitleTypo {
   font-family: "Work Sans";
-    font-size: 3rem;
-    font-weight: 600;
-    color: #0c495b;
+  font-size: 3rem;
+  font-weight: 600;
+  color: #0c495b;
 }
 
 @mixin formHeadingTypo {
@@ -45,10 +45,14 @@
 }
 
 @mixin formErrorMsgTypo {
-  font-family: "Work Sans";
-  font-size: 1.5rem;
-  color: #ccc;
-  font-weight: 500;
+  font-size: 1.4rem;
+  color: #ffffff;
+  background: red;
+  padding: 0.2rem 1rem;
+  border-radius: 0.5rem;
+  margin-top: 0.8rem;
+  width: fit-content;
+  font-weight: 400;
 }
 
 @mixin formButtonTypo {

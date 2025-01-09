@@ -15,8 +15,13 @@
 }
 @media (max-width: 1024px) {
   .regButton {
-    height: 3.5rem;
     width: 16.5rem;
+  }
+}
+@media (max-width: 768px) {
+  .regButton {
+    width: 14.5rem;
+    height: 3.5rem;
   }
 }
 @media (max-width: 480px) {
@@ -39,6 +44,11 @@
     font-size: 1.8rem;
   }
 }
+@media (max-width: 768px) {
+  .regButton span {
+    font-size: 1.5rem;
+  }
+}
 @media (max-width: 480px) {
   .regButton span {
     font-size: 1.7rem;
@@ -47,6 +57,12 @@
 .regButton .button-icon {
   width: 20px;
   height: 20px;
+}
+@media (max-width: 768px) {
+  .regButton .button-icon {
+    width: 15px;
+    height: 18px;
+  }
 }
 .regButton .right-arrow {
   width: 20px;

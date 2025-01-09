@@ -28,7 +28,7 @@ const LeaderBoardTab: React.FC = () => {
         { tour_id: 9 }
       )
       .then((response) => {
-        console.log("API Response:", response.data);
+        console.log("API Responseqwqwqwqw:", response.data);
         setBattersData(response.data.data.batters);
         setBowlersData(response.data.data.bowlers);
         setFieldingData(response.data.data.fielding);
@@ -65,9 +65,11 @@ const LeaderBoardTab: React.FC = () => {
       {displayData.length > 0 ? (
         displayData.map((user) => (
           <div key={user.id} className="board-content">
-            <div className="profile-photo">
-              <div>UserProfilePhoto</div>
-              <h3>{user.name}</h3>
+            <div className="profile-photo">img</div>
+            <div>
+              <div className="profile-photo_name">
+                <h3>{user.name}</h3>
+              </div>
             </div>
 
             <div className="table-responsive">
@@ -118,6 +120,8 @@ const LeaderBoardTab: React.FC = () => {
                 </tbody>
               </table>
             </div>
+
+            <div>Rank</div>
           </div>
         ))
       ) : (

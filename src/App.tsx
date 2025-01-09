@@ -12,14 +12,16 @@ import ForgotPassword from "./components/forgotPasswordSection/ForgotPassword";
 import { useState } from "react";
 import Loader from "./components/common/loader/Loader";
 import MatchStat from "./components/matchStatSection/MatchStat";
-import ProfilePage from "./components/profilePageSection/ProfilePage";
 import MatchDetailCard from "./components/matchDetails/MatchDetailCard";
+import ProfilePage from "./components/profilePageSection/ProfilePage";
+import Slidertop from "./components/homepg/Slider/SliderTop";
 
 function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
-      <Slider />
+      {/* <Slider /> */}
+      <Slidertop/>
 
       <Routes>
         <Route path="/" element={<HomePage />} />

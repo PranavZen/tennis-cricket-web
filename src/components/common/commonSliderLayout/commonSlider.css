@@ -3,19 +3,9 @@
   height: 2.6rem;
 }
 .sliderContainer .slick-slider .slick-arrow.slick-prev {
-  left: 49%;
+  left: 44.5%;
   top: unset;
   bottom: -55px;
-}
-@media (max-width: 1024px) {
-  .sliderContainer .slick-slider .slick-arrow.slick-prev {
-    left: 45%;
-  }
-}
-@media (max-width: 767px) {
-  .sliderContainer .slick-slider .slick-arrow.slick-prev {
-    left: 40%;
-  }
 }
 .sliderContainer .slick-slider .slick-arrow.slick-prev.slick-disabled {
   opacity: 0.75;
@@ -26,19 +16,9 @@
   color: #263574;
 }
 .sliderContainer .slick-slider .slick-arrow.slick-next {
-  left: 55%;
+  left: 53%;
   top: unset;
   bottom: -55px;
-}
-@media (max-width: 1024px) {
-  .sliderContainer .slick-slider .slick-arrow.slick-next {
-    left: 50%;
-  }
-}
-@media (max-width: 767px) {
-  .sliderContainer .slick-slider .slick-arrow.slick-next {
-    left: 50%;
-  }
 }
 .sliderContainer .slick-slider .slick-arrow.slick-next.slick-disabled {
   opacity: 0.75;
@@ -47,6 +27,11 @@
   font-size: 2.6rem;
   opacity: 1;
   color: #263574;
+}
+@media (max-width: 480px) {
+  .sliderContainer .slick-slider .slick-list {
+    margin: 0 2rem;
+  }
 }
 .sliderContainer .slick-slider .slick-list .slick-track .slick-slide {
   padding: 0 10px;

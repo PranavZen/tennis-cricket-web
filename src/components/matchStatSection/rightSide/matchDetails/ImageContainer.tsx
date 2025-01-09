@@ -4,7 +4,14 @@ const ImageContainer = () => {
   return (
     <section>
         <div className="image-container">
-          <img src="\images\imageStat1.png" alt="image-stat1" />
+        <iframe
+          width="415"
+          height="315"
+          src="https://www.youtube.com/embed/your_video_id"
+          title="YouTube video player"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        ></iframe>
         </div>
     </section>
   )

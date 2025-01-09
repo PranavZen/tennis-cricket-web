@@ -25,7 +25,7 @@ interface UploadFileProps {
 
   const handleFileUpload = (file: File) => {
     if (!file) return;
-
+    console.log("file", file);
     const fileType = file.type.split("/")[1];
     if (!imagesTypes.includes(fileType)) {
       alert("Please upload a valid image file.");
@@ -67,8 +67,13 @@ interface UploadFileProps {
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files ? e.target.files[0] : null;
-    handleFileUpload(file!);
+    if (e.target.files && e.target.files.length > 0) {
+      const file = e.target.files[0]; // Access the first file
+      console.log("File selected:", file);
+      handleFileUpload(file);
+    } else {
+      console.log("No file selected.");
+    }
   };
 
   const handleDelete = () => {
@@ -100,7 +105,7 @@ interface UploadFileProps {
         onDragOver={(e) => e.preventDefault()}
         onDrop={handleDrop}
         // onClick={() => document.getElementById("fileInput")?.click()}
-        onClick={() => document.getElementById(`${name}FileInput`)?.click()}
+        onClick={() => document.getElementById(`${name}`)?.click()}
       >
         {!previewImage ? (
           <>
@@ -122,7 +127,7 @@ interface UploadFileProps {
         )}
         <input
           type="file"
-          id={`${name}FileInput`} // Unique ID
+          id={`${name}`} // Unique ID
           className="drop-zoon__file-input"
           accept="image/*"
           onChange={handleInputChange}

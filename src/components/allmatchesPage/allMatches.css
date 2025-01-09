@@ -64,6 +64,7 @@
   height: 42px;
   border-color: #8c8c8c;
   border-radius: 22px;
+  color: #1D7336;
 }
 @media (max-width: 768px) {
   .header-div .dropdown select {
@@ -77,6 +78,7 @@
   color: #8c8c8c;
   font-family: "Work Sans";
   text-align: center;
+  color: #1D7336;
 }
 @media (max-width: 768px) {
   .header-div .dropdown option {
@@ -87,17 +89,6 @@
   .header-div .dropdown option {
     font-size: 1.5rem;
   }
-}
-
-.category {
-  background: #ebf0ff;
-  text-align: center;
-  padding: 10px;
-}
-.category .category-text {
-  font-size: 14px;
-  font-weight: 500;
-  color: #555353;
 }
 
 .match-info {

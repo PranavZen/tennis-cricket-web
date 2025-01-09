@@ -47,7 +47,7 @@ const MatchPointCard: React.FC<PointerCardProps> = ({
   showStadiumInfo = true,
 }) => {
   return (
-    <div className="wrap-content">
+    <div className={`wrap-content ${showStadiumInfo ? 'with-stadium-info' : 'without-stadium-info'}`}>
       <div className="topContainer">
         <div className="scoreboard">
           {category && (

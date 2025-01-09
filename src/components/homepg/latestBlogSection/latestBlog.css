@@ -1,0 +1,130 @@
+.letestBlog-page {
+  background-color: #d6edff;
+  border-radius: 5px;
+  height: auto;
+}
+.letestBlog-page .latestBlog {
+  display: flex;
+  justify-content: center;
+  padding: 2rem 0;
+}
+.letestBlog-page h6 {
+  font-family: "Work Sans";
+  font-size: 3rem;
+  font-weight: 600;
+  color: #0c495b;
+}
+.letestBlog-page .news-section {
+  overflow: hidden;
+}
+.letestBlog-page .news-section .news-card img {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  width: 100%;
+  max-height: 440px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.letestBlog-page .news-section .news-card .newsCard-content {
+  background-color: #ffffff;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+.letestBlog-page .news-section .news-card .newsCard-content .top-text {
+  padding: 1.5rem 2rem;
+}
+.letestBlog-page .news-section .news-card .newsCard-content .top-text h4 {
+  margin-bottom: 1rem;
+}
+.letestBlog-page .news-section .news-card .newsCard-content .top-text h4 a {
+  font-family: "Work Sans";
+  font-size: 2.6rem;
+  font-weight: 600;
+  color: #0c495b;
+  cursor: pointer;
+}
+.letestBlog-page .news-section .news-card .newsCard-content .top-text p,
+.letestBlog-page .news-section .news-card .newsCard-content .top-text a {
+  font-family: "Work Sans";
+  font-size: 2rem;
+  color: #6c6c6c;
+  cursor: pointer;
+}
+.letestBlog-page .news-section .news-card .newsCard-content .bottom-text {
+  border-top: 0.8px solid #89abb8;
+  padding: 1rem 2rem;
+}
+.letestBlog-page .news-section .news-card .newsCard-content .bottom-text small {
+  font-family: "Work Sans";
+  font-size: 1.4rem;
+  color: #6c6c6c;
+}
+.letestBlog-page .news-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.letestBlog-page .news-sidebar .div2,
+.letestBlog-page .news-sidebar .div3,
+.letestBlog-page .news-sidebar .div4 {
+  background-image: url("../../../../public/images/blogImg1.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: 200px;
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+  border-radius: 5px;
+}
+.letestBlog-page .news-sidebar .div2 a,
+.letestBlog-page .news-sidebar .div3 a,
+.letestBlog-page .news-sidebar .div4 a {
+  color: #ffffff;
+  z-index: 999;
+  font-family: "Work Sans";
+  font-size: 1.8rem;
+  font-weight: 600;
+  padding: 1rem;
+  width: 340px;
+  cursor: pointer;
+}
+.letestBlog-page .news-sidebar .card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 5px;
+}
+.letestBlog-page .readmore-btn {
+  display: flex;
+  justify-content: center;
+}
+.letestBlog-page .readmore-btn .regButton {
+  margin: 3rem;
+  background: #1d7336;
+}
+.letestBlog-page .readmore-btn span {
+  color: #ffffff;
+}
+.letestBlog-page .parent {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  grid-column-gap: 15px;
+}
+@media (max-width: 600px) {
+  .letestBlog-page .parent {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, 1fr);
+  }
+}
+.letestBlog-page .div1 {
+  grid-area: 1/1/4/2;
+}
+.letestBlog-page .div2 {
+  grid-area: 1/2/2/3;
+}
+.letestBlog-page .div3 {
+  grid-area: 2/2/3/3;
+}
+.letestBlog-page .div4 {
+  grid-area: 3/2/4/3;
+}/*# sourceMappingURL=latestBlog.css.map */

@@ -1,0 +1,134 @@
+.Reg-form {
+  background-image: url(../../../public/images/full-banner.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 100%;
+  margin: auto;
+}
+.Reg-form .heading {
+  padding: 2rem;
+}
+.Reg-form .heading h6 {
+  font-family: "Work Sans";
+  font-size: 3rem;
+  font-weight: 600;
+  color: #ffffff;
+  text-align: center;
+  padding: 2rem;
+}
+@media (max-width: 480px) {
+  .Reg-form .heading h6 {
+    font-size: 2.5rem;
+  }
+}
+.Reg-form .form-fields .lableIconWrap {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.3rem;
+}
+.Reg-form .form-fields .form-control,
+.Reg-form .form-fields .form-select {
+  font-family: "Work Sans";
+  font-size: 16px;
+  font-weight: 400;
+  background-color: #e8f0fe;
+  padding: 1rem;
+  height: 45px;
+  color: black;
+}
+.Reg-form .form-fields .form-control.no-height,
+.Reg-form .form-fields .form-select.no-height {
+  height: auto;
+}
+.Reg-form .form-fields .form-control:focus,
+.Reg-form .form-fields .form-select:focus {
+  outline: none;
+  border: 1px solid #888;
+}
+@media (max-width: 991px) {
+  .Reg-form .form-fields .form-control,
+  .Reg-form .form-fields .form-select {
+    height: 40px;
+    margin-bottom: 4px;
+  }
+}
+.Reg-form .form-fields label {
+  font-family: "Work Sans";
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: #fff;
+  margin-bottom: 5px;
+}
+@media (max-width: 480px) {
+  .Reg-form .form-fields label {
+    font-size: 1.5rem;
+  }
+}
+.Reg-form .form-fields label::after {
+  content: " * ";
+}
+.Reg-form .form-fields select,
+.Reg-form .form-fields option {
+  color: black;
+}
+.Reg-form .form-fields ::-moz-placeholder {
+  font-family: "Work Sans";
+  font-size: 1.5rem;
+  color: #a7a3a3;
+}
+.Reg-form .form-fields ::placeholder {
+  font-family: "Work Sans";
+  font-size: 1.5rem;
+  color: #a7a3a3;
+}
+.Reg-form .form-fields .form-select:disabled {
+  background-color: #c2c0c0;
+  color: #888;
+  cursor: not-allowed;
+}
+.Reg-form .form-fields .errorMsg {
+  font-size: 1.4rem;
+  color: #ffffff;
+  background: red;
+  padding: 0.2rem 1rem;
+  border-radius: 0.5rem;
+  margin-top: 0.8rem;
+  width: -moz-fit-content;
+  width: fit-content;
+  font-weight: 400;
+}
+.Reg-form .form-fields .text-center .paragraph {
+  padding-bottom: 4.5rem;
+  padding-top: 1rem;
+}
+.Reg-form .form-fields .text-center p,
+.Reg-form .form-fields .text-center a {
+  font-family: "Work Sans";
+  font-size: 1.5rem;
+  color: #fff;
+}
+.Reg-form .form-fields .text-center a:hover {
+  color: #f39c12;
+  text-decoration: underline;
+}
+.Reg-form .reg-btn {
+  padding-top: 2rem;
+}
+.Reg-form .reg-btn button {
+  background-color: #075d9a;
+  color: #ffffff;
+  border: none;
+  border-radius: 0.5rem;
+  font-family: "Work Sans";
+  font-size: 2rem;
+  font-weight: 500;
+  cursor: pointer;
+  height: 45px;
+  width: 18%;
+}
+.Reg-form .reg-btn :hover {
+  background-color: #36426c;
+}/*# sourceMappingURL=registration.css.map */

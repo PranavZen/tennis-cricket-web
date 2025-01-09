@@ -1,0 +1,72 @@
+.image-container {
+  position: relative;
+  background-color: #ffffff;
+  border-radius: 5px;
+  margin-bottom: 2rem;
+  padding: 10px;
+}
+.image-container img {
+  border-radius: 5px;
+  width: 100%;
+}
+
+.graph-img {
+  display: inline-block;
+  position: relative;
+  background-color: #ffffff;
+  padding: 10px;
+  margin-bottom: 2rem;
+  border-radius: 5px;
+  width: 100%;
+}
+.graph-img img {
+  border-radius: 5px;
+}
+
+.match-details-card {
+  width: 100%;
+  margin: 0 auto;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #fff;
+  font-family: Arial, sans-serif;
+  margin-bottom: 2rem;
+}
+.match-details-card .match-details-header {
+  text-align: left;
+  padding: 15px;
+  border-bottom: 1px solid #ececec;
+  font-family: "Work Sans";
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: #1e1e1e;
+}
+.match-details-card .match-detail {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 15px;
+  border-bottom: 1px solid #ececec;
+}
+.match-details-card .match-detail:last-child {
+  border-bottom: none;
+}
+.match-details-card .match-detail .detail-label {
+  font-family: "Work Sans";
+  font-size: 1.6rem;
+  color: #1e1e1e;
+}
+.match-details-card .match-detail .detail-value {
+  font-family: "Work Sans";
+  font-size: 1.6rem;
+  color: #6c6c6c;
+}
+
+.match-notes {
+  padding: 12px 15px;
+  border-bottom: 1px solid #ececec;
+}
+.match-notes .detail-value {
+  font-family: "Work Sans";
+  font-size: 1.6rem;
+  color: #6c6c6c;
+}/*# sourceMappingURL=matchStatRightPart.css.map */

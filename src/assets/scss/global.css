@@ -70,14 +70,26 @@ input {
 .SmallDeviceFeature-cricket {
   display: none;
 }
-@media (max-width: 480px) {
+@media (max-width: 576px) {
   .SmallDeviceFeature-cricket {
     display: block;
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 576px) {
   .desktopDeviceFeature-cricket {
     display: none;
   }
+}
+
+@media (max-width: 991px) {
+  .container {
+    max-width: 860px;
+  }
+}
+
+.toast-container {
+  font-family: "work Sans";
+  font-size: 1.8rem;
+  padding: 20px;
 }/*# sourceMappingURL=global.css.map */

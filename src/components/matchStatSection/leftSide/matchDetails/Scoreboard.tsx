@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 interface Match {
   name: string;
   inning1: {
@@ -70,6 +72,9 @@ interface MatchDataProps {
 }
 
 const Scoreboard: React.FC<MatchDataProps> = ({ matchData }) => {
+  const [inning1Open, setInning1Open] = useState(true);
+  const [inning2Open, setInning2Open] = useState(false);
+
   console.log(
     "Batters",
     matchData[0]?.inning1?.batters.map((batter) => batter.name)
@@ -78,172 +83,216 @@ const Scoreboard: React.FC<MatchDataProps> = ({ matchData }) => {
   return (
     <section>
       <div className="table-responsive">
-        <div className="inning-data">
-          <h3>{matchData[0].inning1?.team_name}</h3>
-          <h3>
-            {`${matchData[0].inning1?.runs || 0}/${
-              matchData[0].inning1?.wickets || 0
-            }`}{" "}
-            {`(${matchData[0].inning1?.overs || "0"} OV)`}
-          </h3>
-        </div>
-        {/* Batting Table */}
-        <div className="batting-table">
-          <table className="table scorecard">
-            <thead>
-              <tr className="column-headers">
-                <th>Batters</th>
-                <th></th>
-                <th>R</th>
-                <th>B</th>
-                <th>4s</th>
-                <th>6s</th>
-                <th>SR</th>
-              </tr>
-            </thead>
-            <tbody>
-              {matchData[0]?.inning1?.batters?.length > 0 &&
-                matchData[0].inning1.batters.map((elem, index) => (
-                  <>
-                    <tr key={index}>
-                      <td>{elem.name}</td>
-                      <td>{elem.outReason}</td>
+        <div className="inning-1">
+          <div className="inning-data">
+            <h3>
+              {matchData[0].inning1?.team_name?.charAt(0).toUpperCase() +
+                matchData[0].inning1?.team_name?.slice(1).toLowerCase()}
+            </h3>
+            <div className="d-flex align-items-center gap-3">
+              <h3>
+                {`${matchData[0].inning1?.runs || 0}/${
+                  matchData[0].inning1?.wickets || 0
+                }`}{" "}
+                {`(${matchData[0].inning1?.overs || "0"} OV)`}
+              </h3>
+              <span
+                onClick={() => setInning1Open(!inning1Open)}
+                className="dropdown-icon"
+                style={{ cursor: "pointer", fontSize: "2rem" }}
+              >
+                {inning1Open ? (
+                  <i className="fa-solid fa-caret-up"></i>
+                ) : (
+                  <i className="fa-solid fa-caret-down"></i>
+                )}
+              </span>
+            </div>
+          </div>
 
-                      <td>{elem.run}</td>
-                      <td>{elem.ball}</td>
-                      <td>{elem.four}</td>
-                      <td>{elem.six}</td>
-                      <td>{elem.strikeRate}</td>
+          {inning1Open && (
+            <>
+              {/* Batting Table */}
+              <div className="batting-table">
+                <table className="table scorecard">
+                  <thead>
+                    <tr className="column-headers">
+                      <th>Batters</th>
+                      <th></th>
+                      <th>R</th>
+                      <th>B</th>
+                      <th>4s</th>
+                      <th>6s</th>
+                      <th>SR</th>
                     </tr>
-                  </>
-                ))}
-            </tbody>
-            <tfoot>
-              <tr className="column-headers">
-                <th colSpan={1}>Extra</th>
-                <td colSpan={6}>
-                  (wd {matchData[0]?.inning1?.extra?.wide}, nb{" "}
-                  {matchData[0]?.inning1?.extra?.noBall}, lb{" "}
-                  {matchData[0]?.inning1?.extra?.lb}, R{" "}
-                  {matchData[0]?.inning1?.extra?.b})
-                </td>
-              </tr>
-            </tfoot>
-          </table>
+                  </thead>
+                  <tbody>
+                    {matchData[0]?.inning1?.batters?.length > 0 &&
+                      matchData[0].inning1.batters.map((elem, index) => (
+                        <>
+                          <tr key={index}>
+                            <td>{elem.name}</td>
+                            <td>{elem.outReason}</td>
+
+                            <td>{elem.run}</td>
+                            <td>{elem.ball}</td>
+                            <td>{elem.four}</td>
+                            <td>{elem.six}</td>
+                            <td>{elem.strikeRate}</td>
+                          </tr>
+                        </>
+                      ))}
+                  </tbody>
+                  <tfoot>
+                    <tr className="column-headers">
+                      <th colSpan={1}>Extra</th>
+                      <td colSpan={6}>
+                        (wd {matchData[0]?.inning1?.extra?.wide}, nb{" "}
+                        {matchData[0]?.inning1?.extra?.noBall}, lb{" "}
+                        {matchData[0]?.inning1?.extra?.lb}, R{" "}
+                        {matchData[0]?.inning1?.extra?.b})
+                      </td>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+
+              {/* Bowling Table */}
+              <div className="bowling-table">
+                <table className="table scorecard">
+                  <thead>
+                    <tr className="column-headers">
+                      <th>Bowlers</th>
+                      <th>O</th>
+                      <th>M</th>
+                      <th>R</th>
+                      <th>W</th>
+                      <th>WD</th>
+                      <th>NB</th>
+                      <th>Eco</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {matchData[0]?.inning1?.bowlers?.length > 0 &&
+                      matchData[0].inning1.bowlers.map((elem, index) => (
+                        <tr key={index}>
+                          <td>{elem.name}</td>
+                          <td>{elem.over}</td>
+                          <td>{elem.maiden}</td>
+                          <td>{elem.run}</td>
+                          <td>{elem.wicket}</td>
+                          <td>{elem.wide}</td>
+                          <td>{elem.noBall}</td>
+                          <td>{elem.economy}</td>
+                        </tr>
+                      ))}
+                  </tbody>
+                </table>
+              </div>
+            </>
+          )}
         </div>
 
-        {/* Bowling Table */}
-        <div className="bowling-table">
-          <table className="table scorecard">
-            <thead>
-              <tr className="column-headers">
-                <th>Bowlers</th>
-                <th>O</th>
-                <th>M</th>
-                <th>R</th>
-                <th>W</th>
-                <th>WD</th>
-                <th>NB</th>
-                <th>Eco</th>
-              </tr>
-            </thead>
-            <tbody>
-              {matchData[0]?.inning1?.bowlers?.length > 0 &&
-                matchData[0].inning1.bowlers.map((elem, index) => (
-                  <tr key={index}>
-                    <td>{elem.name}</td>
-                    <td>{elem.over}</td>
-                    <td>{elem.maiden}</td>
-                    <td>{elem.run}</td>
-                    <td>{elem.wicket}</td>
-                    <td>{elem.wide}</td>
-                    <td>{elem.noBall}</td>
-                    <td>{elem.economy}</td>
-                  </tr>
-                ))}
-            </tbody>
-          </table>
-        </div>
-
-        {/* Batting Table */}
-        <div className="inning-data">
-          <h3>{matchData[0].inning2?.team_name}</h3>
-          <h3>{`${matchData[0].inning2?.runs || 0}/${
-            matchData[0].inning2?.wickets || 0
-          } (${matchData[0].inning2?.overs || "0"} OV)`}</h3>
-        </div>
-
-        <div className="batting-table">
-          <table className="table scorecard">
-            <thead>
-              <tr className="column-headers">
-                <th>Batters</th>
-                <th></th>
-                <th>R</th>
-                <th>B</th>
-                <th>4s</th>
-                <th>6s</th>
-                <th>SR</th>
-              </tr>
-            </thead>
-            <tbody>
-              {matchData[0]?.inning2?.batters?.length > 0 &&
-                matchData[0].inning2.batters.map((elem, index) => (
-                  <tr key={index}>
-                    <td>{elem.name}</td>
-                    <td>{elem.outReason}</td>
-                    <td>{elem.run}</td>
-                    <td>{elem.ball}</td>
-                    <td>{elem.four}</td>
-                    <td>{elem.six}</td>
-                    <td>{elem.strikeRate}</td>
-                  </tr>
-                ))}
-            </tbody>
-            <tfoot>
-              <tr className="column-headers">
-                <th colSpan={1}>Extra</th>
-                <td colSpan={6}>
-                  (wd {matchData[0]?.inning2?.extra?.wide}, nb{" "}
-                  {matchData[0]?.inning2?.extra?.noBall}, lb{" "}
-                  {matchData[0]?.inning2?.extra?.lb}, R{" "}
-                  {matchData[0]?.inning2?.extra?.b})
-                </td>
-              </tr>
-            </tfoot>
-          </table>
-        </div>
-        {/* Bowling Table */}
-        <div className="bowling-table">
-          <table className="table scorecard">
-            <thead>
-              <tr className="column-headers">
-                <th>Bowlers</th>
-                <th>O</th>
-                <th>M</th>
-                <th>R</th>
-                <th>W</th>
-                <th>WD</th>
-                <th>NB</th>
-                <th>Eco</th>
-              </tr>
-            </thead>
-            <tbody>
-              {matchData[0]?.inning2?.bowlers?.length > 0 &&
-                matchData[0].inning2.bowlers.map((elem, index) => (
-                  <tr key={index}>
-                    <td>{elem.name}</td>
-                    <td>{elem.over}</td>
-                    <td>{elem.maiden}</td>
-                    <td>{elem.run}</td>
-                    <td>{elem.wicket}</td>
-                    <td>{elem.wide}</td>
-                    <td>{elem.noBall}</td>
-                    <td>{elem.economy}</td>
-                  </tr>
-                ))}
-            </tbody>
-          </table>
+        <div className="inning-2">
+          {/* Batting Table */}
+          <div className="inning-data">
+            <h3>
+              {matchData[0].inning2?.team_name?.charAt(0).toUpperCase() +
+                matchData[0].inning2?.team_name?.slice(1).toLowerCase()}
+            </h3>
+            <div className="d-flex align-items-center gap-3">
+              <h3>{`${matchData[0].inning2?.runs || 0}/${
+                matchData[0].inning2?.wickets || 0
+              } (${matchData[0].inning2?.overs || "0"} OV)`}</h3>
+              <span
+                onClick={() => setInning2Open(!inning2Open)}
+                className="dropdown-icon"
+                style={{ cursor: "pointer", fontSize: "2rem" }}
+              >
+                {inning2Open ? (
+                  <i className="fa-solid fa-caret-up"></i>
+                ) : (
+                  <i className="fa-solid fa-caret-down"></i>
+                )}
+              </span>
+            </div>
+          </div>
+          {inning2Open && (
+            <>
+              <div className="batting-table">
+                <table className="table scorecard">
+                  <thead>
+                    <tr className="column-headers">
+                      <th>Batters</th>
+                      <th></th>
+                      <th>R</th>
+                      <th>B</th>
+                      <th>4s</th>
+                      <th>6s</th>
+                      <th>SR</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {matchData[0]?.inning2?.batters?.length > 0 &&
+                      matchData[0].inning2.batters.map((elem, index) => (
+                        <tr key={index}>
+                          <td>{elem.name}</td>
+                          <td>{elem.outReason}</td>
+                          <td>{elem.run}</td>
+                          <td>{elem.ball}</td>
+                          <td>{elem.four}</td>
+                          <td>{elem.six}</td>
+                          <td>{elem.strikeRate}</td>
+                        </tr>
+                      ))}
+                  </tbody>
+                  <tfoot>
+                    <tr className="column-headers">
+                      <th colSpan={1}>Extra</th>
+                      <td colSpan={6}>
+                        (wd {matchData[0]?.inning2?.extra?.wide}, nb{" "}
+                        {matchData[0]?.inning2?.extra?.noBall}, lb{" "}
+                        {matchData[0]?.inning2?.extra?.lb}, R{" "}
+                        {matchData[0]?.inning2?.extra?.b})
+                      </td>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+              {/* Bowling Table */}
+              <div className="bowling-table">
+                <table className="table scorecard">
+                  <thead>
+                    <tr className="column-headers">
+                      <th>Bowlers</th>
+                      <th>O</th>
+                      <th>M</th>
+                      <th>R</th>
+                      <th>W</th>
+                      <th>WD</th>
+                      <th>NB</th>
+                      <th>Eco</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {matchData[0]?.inning2?.bowlers?.length > 0 &&
+                      matchData[0].inning2.bowlers.map((elem, index) => (
+                        <tr key={index}>
+                          <td>{elem.name}</td>
+                          <td>{elem.over}</td>
+                          <td>{elem.maiden}</td>
+                          <td>{elem.run}</td>
+                          <td>{elem.wicket}</td>
+                          <td>{elem.wide}</td>
+                          <td>{elem.noBall}</td>
+                          <td>{elem.economy}</td>
+                        </tr>
+                      ))}
+                  </tbody>
+                </table>
+              </div>
+            </>
+          )}
         </div>
       </div>
     </section>

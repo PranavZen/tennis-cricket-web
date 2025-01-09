@@ -1,0 +1,62 @@
+.heading-dropdown {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+@media (max-width: 576px) {
+  .heading-dropdown {
+    display: block;
+  }
+}
+.heading-dropdown .heading h6 {
+  font-family: "Work Sans";
+  font-size: 3rem;
+  font-weight: 600;
+  color: #0C495B;
+}
+.heading-dropdown .dropdown-videos {
+  font-family: "Work Sans";
+  font-size: 2rem;
+  color: #8C8C8C;
+}
+.heading-dropdown .dropdown-videos select {
+  width: 154px;
+  height: 42px;
+  border-radius: 21px;
+  font-family: "Work Sans";
+  font-size: 2rem;
+  color: #1D7336;
+  text-align: center;
+  margin-left: 1rem;
+}
+
+@media (max-width: 480px) {
+  #highlightsSection {
+    padding: 0 1.5rem;
+  }
+}
+
+#VideoSlider {
+  padding: 8rem 0 13rem;
+}
+@media (max-width: 767px) {
+  #VideoSlider {
+    margin-top: 0;
+    padding: 5rem 1rem 7rem;
+  }
+}
+#VideoSlider .topSecWrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3rem;
+  padding: 0 0.5rem;
+}
+@media (max-width: 767px) {
+  #VideoSlider .topSecWrap {
+    padding: 0 1rem;
+  }
+}
+#VideoSlider .shareBox .timeText {
+  display: none;
+}/*# sourceMappingURL=videos.css.map */

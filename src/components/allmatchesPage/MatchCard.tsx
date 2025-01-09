@@ -68,7 +68,9 @@ const MatchCard = () => {
       {loading ? (
         <Spinner />
       ) : liveCard.length > 0 ? (
-        liveCard.map((item) => (
+        liveCard.map((item) => {
+          const mockCategory = "Individual Match (2024-2025)";
+          return (
           <div
             className="col-lg-4 col-md-6 col-sm-12 mb-4"
             key={item.id}
@@ -77,6 +79,7 @@ const MatchCard = () => {
           >
             <div className="filter-card-container">
               <MatchPointCard
+                category={mockCategory}
                 team1={item.teamA}
                 team2={item.teamB}
                 score1={item.electedToBat === item.teamA ? item.inning1.runs : item.inning2.runs}
@@ -94,7 +97,8 @@ const MatchCard = () => {
               />
             </div>
           </div>
-        ))
+          )
+})
       ) : (
         <p>No match data available.</p>
       )}

@@ -3,11 +3,11 @@ body {
 }
 
 .dashboard {
-  margin: 1rem 0;
+  padding: 7rem 0 5rem;
 }
 @media (max-width: 767px) {
   .dashboard {
-    margin: 1rem 2rem;
+    padding: 4rem 0 3rem;
   }
 }
 
@@ -15,24 +15,26 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-bottom: 1rem;
-}
-
-.tabs-container {
-  background-color: #f5f5f5;
+  margin-bottom: 3rem;
 }
 
 .tabs {
-  width: 88%;
   height: 44px;
   display: flex;
   justify-content: flex-start;
   flex-wrap: nowrap;
   border-radius: 22px;
+  gap: 2.5rem;
   background-color: #fff;
-  margin: 5rem auto 1rem;
+  margin: auto;
   overflow-x: auto;
   scrollbar-width: thin;
+  scrollbar-color: #1D7336;
+}
+@media (max-width: 768px) {
+  .tabs {
+    width: 98%;
+  }
 }
 .tabs::-webkit-scrollbar {
   height: 10px;
@@ -45,6 +47,9 @@ body {
   background-color: #416D3D;
   border-radius: 10px;
 }
+.tabs .tab-main-box {
+  margin-bottom: 5rem;
+}
 .tabs button {
   flex: 0 0 auto;
   min-width: 100px;
@@ -53,23 +58,31 @@ body {
   border: none;
   cursor: pointer;
   text-align: center;
-  font-size: 18px;
+  font-size: 1.8rem;
   font-family: "Work Sans";
   border-radius: 22px;
   margin-right: 1rem;
+}
+@media (max-width: 480px) {
+  .tabs button {
+    font-size: 1.6rem;
+  }
 }
 .tabs button.active {
   background-color: #1D7336;
   color: white;
   border-radius: 22px;
+  width: 135px;
 }
 
 .tab-content {
   padding: 20px;
   margin-top: -1px;
 }
-.tab-content div {
-  display: none;
+@media (max-width: 480px) {
+  .tab-content div {
+    display: none;
+  }
 }
 .tab-content div.active {
   display: block;
@@ -81,8 +94,9 @@ body {
   color: #8c8c8c;
   font-family: "Work Sans";
   display: flex;
+  align-items: center;
   gap: 10px;
-  margin: 3rem;
+  margin: 3rem 1rem;
 }
 @media (max-width: 768px) {
   .dropdown-city {
@@ -101,6 +115,7 @@ body {
   height: 42px;
   border-color: #8c8c8c;
   border-radius: 21px;
+  color: #1D7336;
 }
 @media (max-width: 768px) {
   .dropdown-city select {
@@ -114,6 +129,7 @@ body {
   color: #8c8c8c;
   font-family: "Work Sans";
   text-align: center;
+  color: #1D7336;
 }
 @media (max-width: 768px) {
   .dropdown-city option {

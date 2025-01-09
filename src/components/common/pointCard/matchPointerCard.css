@@ -1,0 +1,210 @@
+.filter-card-container {
+  height: 100%;
+}
+
+.wrap-content.with-stadium-info {
+  padding-bottom: 0;
+  height: 100%;
+}
+.wrap-content.without-stadium-info {
+  padding-bottom: 0;
+}
+
+.topContainer {
+  height: 100%;
+}
+
+.category {
+  text-align: center;
+  padding: 1rem;
+  border-bottom: 1px solid #ccc;
+}
+.category .category-text {
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: #555353;
+}
+
+.scoreboard {
+  border-radius: 2px;
+  background: #ffffff;
+  border: 1px solid #6cac44;
+  box-shadow: 0px 10px 20px 0px rgba(153, 153, 153, 0.1019607843);
+  height: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.match-info {
+  font-size: 16px;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  text-align: center;
+}
+
+.team-name1 {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: #6c6c6c;
+  white-space: nowrap;
+  width: 145px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+}
+
+.team-vs {
+  display: block;
+  font-size: 12px;
+  font-weight: 500;
+  color: #6c6c6c;
+}
+
+.team-name2 {
+  font-size: 14px;
+  font-weight: 500;
+  color: #6c6c6c;
+  white-space: nowrap;
+  width: 145px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+}
+
+.scores {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 5rem;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: left;
+}
+
+.scores-top-card {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 3rem;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: left;
+}
+
+.team-score {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.team-left {
+  flex-direction: row;
+}
+
+.team-logo1 {
+  width: 42px;
+  height: 42px;
+  background: #ffffff;
+  border: 0.85px solid #4764da;
+  border-radius: 50%;
+}
+
+.score-details {
+  margin-left: 10px;
+  text-align: left;
+  width: 62px;
+}
+
+.runs {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 21.11px;
+  letter-spacing: 0.02em;
+  color: #231f20;
+  height: 21px;
+  width: auto;
+  margin-bottom: 5px;
+}
+
+.runs,
+.overs {
+  display: block;
+  text-align: left;
+}
+
+.overs {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 18.77px;
+  color: #b7b7b7;
+  width: auto;
+  height: 19px;
+  margin-top: 5px;
+}
+
+.score-vs {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 16.8px;
+  text-align: left;
+  color: #231f20;
+  width: 16px;
+  height: 17px;
+}
+
+.team-logo2 {
+  width: 42px;
+  height: 42px;
+  background: #ffffff;
+  border: 1px solid #6a0913;
+  border-radius: 50%;
+}
+
+.team-right {
+  flex-direction: row-reverse;
+}
+
+.win-msg p {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #555353;
+  text-align: center;
+}
+
+.stadium-info {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 10px;
+  background: #ebf0ff;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}
+
+.stadium-name p {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 16.42px;
+  text-align: left;
+  color: #555353;
+  width: 220px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.live-status {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 16.8px;
+  text-align: left;
+  height: 17px;
+  color: #e40b21;
+}/*# sourceMappingURL=matchPointerCard.css.map */

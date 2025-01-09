@@ -61,9 +61,12 @@ const Slider = () => {
         </button>
         <div className="carousel-inner">
         <div className="d-flex justify-content-center">
-            {cardData.map((item) => (
+            {cardData.map((item) => {
+              // const mockCategory = "Individual Match (2024-2025)";
+              return (
               <MatchPointCard
                 key={item.id}
+                // category={mockCategory}
                 team1={item.teamA}
                 team2={item.teamB}
                 score1={item.electedToBat===item.teamA?item.inning1.runs:item.inning2.runs}
@@ -78,7 +81,8 @@ const Slider = () => {
                 electedToBat={item.electedToBat}
                 showStadiumInfo={false}
               />
-            ))}
+              )
+})}
           </div>
         </div>
         <button className="carousel-control next" onClick={() => scroll(1)}>

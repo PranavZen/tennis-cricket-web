@@ -1,29 +1,30 @@
-import * as Yup from 'yup';
+import * as Yup from "yup";
 
 export const loginValidationSchema = Yup.object({
-    // email: Yup.string()
-    // .email("Invalid email format")
-    // .matches(
-    //   /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-    //   "Invalid email format"
-    // )
-    // .required("Please enter a valid email address or mobile number"),
-    email: Yup.string()
-  .required("Please enter a valid email address or mobile number")
-  .test(
-    "is-valid-email-or-mobile",
-    "Please enter a valid email address or mobile number",
-    (value) => {
-      if (!value) return false;
+  // email: Yup.string()
+  // .email("Invalid email format")
+  // .matches(
+  //   /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+  //   "Invalid email format"
+  // )
+  // .required("Please enter a valid email address or mobile number"),
+  email: Yup.string()
+    .required("Please enter a valid email address or mobile number")
+    .test(
+      "is-valid-email-or-mobile",
+      "Please enter a valid email address or mobile number",
+      (value) => {
+        if (!value) return false;
 
-      const isEmail = Yup.string().email().isValidSync(value); // Checks for valid email.
-      const isMobile = Yup.string()
-        .matches(/^[6-9]\d{9}$/) // Matches typical 10-digit mobile numbers in India starting with 6-9.
-        .isValidSync(value); // Checks for valid mobile number.
+        const isEmail = Yup.string().email().isValidSync(value);
+        const isMobile = Yup.string()
+          .matches(/^[6-9]\d{9}$/)
+          .isValidSync(value);
 
-      return isEmail || isMobile; // Passes if either is valid.
-    }),
-  
+        return isEmail || isMobile;
+      }
+    ),
+
   password: Yup.string()
     .required("Password is required")
     .min(8, "Password must be 8 characters long")
@@ -31,38 +32,17 @@ export const loginValidationSchema = Yup.object({
     .matches(/[a-z]/, "Password requires a lowercase letter")
     .matches(/[A-Z]/, "Password requires an uppercase letter")
     .matches(/[^\w]/, "Password requires a symbol"),
-
-    // otp: Yup.string()
-    // .matches(/^\d{6}$/, "OTP must be a 6-digit number") // Ensures OTP is 6 digits
-    // .when("showOtpField", {
-    //   is: true, // Validates only when OTP field is visible
-    //   then: Yup.string().required("OTP is required"),
-    //   otherwise: Yup.string(), // Allows it to be empty when not required
-    // }),
 });
 
 export const registrationValidationSchema = Yup.object({
-    firstName: Yup.string()
+  first_name: Yup.string()
     .required("First name is required")
     .min(2, "First name should have at least 2 characters")
     .max(10, "First name should not be more than 10 characters"),
 
-  lastName: Yup.string()
+  last_name: Yup.string()
     .required("Last name is required")
-    .min(2, "Last name should have at least 2 characters")
-    .max(10, "Last name should not be more than 10 characters"),
-
-  dob: Yup.date()
-    .nullable()
-    .required("DOB is required")
-    .max(new Date(), "Date of birth cannot be in the future"),
-
-  phone: Yup.string()
-    .required("Phone number is required")
-    .matches(
-      /^(\+\d{1,3}[- ]?)?\d{10}$/,
-      "Phone number is not valid. It must be 10 digits"
-    ),
+    .min(2, "Last name should have at least 2 characters"),
 
   email: Yup.string()
     .email("Invalid email format")
@@ -72,19 +52,26 @@ export const registrationValidationSchema = Yup.object({
     )
     .required("Email is required"),
 
-  address: Yup.string()
-    .required("Address is required")
-    .max(200, "Address cannot exceed 200 characters"),
+  mobile_number: Yup.string()
+    .required("Phone number is required")
+    .matches(/^\d{10}$/, "Phone number must be exactly 10 digits"),
 
-  teamName: Yup.string().required("Team name is required"),
+  date_of_birth: Yup.date()
+    .required("DOB is required")
+    .max(new Date(), "Date of birth cannot be in the future"),
 
-  playingRole: Yup.string().required("Playing Role is required"),
+  address: Yup.string().required("Address is required"),
+  // .max(200, "Address cannot exceed 200 characters"),
 
-  battingStyle: Yup.string().required("Batting Style is required"),
+  team_name: Yup.string().required("Team name is required"),
 
-  bowlingStyle: Yup.string().required("Bawling Style is required"),
+  playing_role: Yup.string().required("Playing Role is required"),
 
-  wicketKeeping: Yup.string().required("Please select a WicketKeeping"),
+  batting_style: Yup.string().required("Batting Style is required"),
+
+  bowling_style: Yup.string().required("Bawling Style is required"),
+
+  wicket_keeping: Yup.string().required("Please select a WicketKeeping"),
 
   password: Yup.string()
     .required("Password is required")
@@ -94,32 +81,32 @@ export const registrationValidationSchema = Yup.object({
     .matches(/[A-Z]/, "Password requires an uppercase letter")
     .matches(/[^\w]/, "Password requires a symbol"),
 
-  confirmPassword: Yup.string()
+  password_confirmation: Yup.string()
     .oneOf([Yup.ref("password"), undefined], "Passwords must match")
     .required("Confirm password is required"),
 
-  bloodGroup: Yup.string().required("Blood group is required"),
+  blood_group: Yup.string().required("Blood group is required"),
 
-  state: Yup.string().required("State is required"),
-  city: Yup.string().required("City is required"),
-  zone: Yup.string().required("Zone is required"),
+  state_name: Yup.string().required("State is required"),
+  city_name: Yup.string().required("City is required"),
+  zone_name: Yup.string().required("Zone is required"),
 
-  profilePhoto: Yup.mixed()
-  .nullable()
-  .required("Profile photo is required")
-  .test(
-    "fileSize",
-    "File too large",
-    (value) => value && (value as File).size <= 1024 * 1024 // 1MB size limit
-  )
-  .test(
-    "fileType",
-    "Unsupported file type",
-    (value) =>
-      value && ["image/jpeg", "image/png"].includes((value as File).type)
-  ),
+  doc_profile_photo: Yup.mixed()
+    .nullable()
+    .required("Profile photo is required")
+    .test(
+      "fileSize",
+      "File too large",
+      (value) => value && (value as File).size <= 1024 * 1024 // 1MB size limit
+    )
+    .test(
+      "fileType",
+      "Unsupported file type",
+      (value) =>
+        value && ["image/jpeg", "image/png"].includes((value as File).type)
+    ),
 
-  idCard: Yup.mixed()
+  doc_id_card: Yup.mixed()
     .nullable()
     .required("IdCard is required")
     .test(
@@ -134,7 +121,7 @@ export const registrationValidationSchema = Yup.object({
         value && ["image/jpeg", "image/png"].includes((value as File).type)
     ),
 
-  // socialLinks:
+  // social_link:
   // (Yup.string().url("Invalid URL format")),
   // Yup.array()
   // .required("SocialLink is required")

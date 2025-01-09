@@ -1,21 +1,40 @@
 import "./loginForm.scss";
+
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Navigation from "../homepg/Navigation/Navigation";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { loginValidationSchema } from "../common/validation/Validation";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { loginValidationSchema } from "../common/validation/Validation";
+import Spinner from "../../components/common/spinner/Spinner";
+import {message, notification} from 'antd'
 
 const LoginForm: React.FC = () => {
-  const [showOtpField, setShowOtpField] = useState(false); // State to toggle fields
-  const [timer, setTimer] = useState(120); // Timer state in seconds
-  const [resendEnabled, setResendEnabled] = useState(false); // Toggle for Resend OTP button
-  const [isResending, setIsResending] = useState(false); // State for "Resending OTP..."
-  const [showLoginWithOtpBtn, setShowLoginWithOtpBtn] = useState(true); // State to toggle visibility of Login with OTP button
-  const [isPasswordLogin, setIsPasswordLogin] = useState(false); // State to track if we are showing password fields
-  const navigate = useNavigate(); // Initialize navigate
+  const [showOtpField, setShowOtpField] = useState(false);
+  const [timer, setTimer] = useState(120);
+  const [resendEnabled, setResendEnabled] = useState(false);
+  const [isResending, setIsResending] = useState(false);
+  const [showLoginWithOtpBtn, setShowLoginWithOtpBtn] = useState(true);
+  const [isPasswordLogin, setIsPasswordLogin] = useState(false);
+  const navigate = useNavigate();
+
+  const [loading, setLoading] = useState(false);
+
+  const handleButtonClick = () => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+  };
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+  }, []);
 
   useEffect(() => {
     let countdown: NodeJS.Timeout;
@@ -23,306 +42,384 @@ const LoginForm: React.FC = () => {
       countdown = setTimeout(() => setTimer((prev) => prev - 1), 1000);
     }
     if (timer === 0) {
-      setResendEnabled(true); // Enable "Resend OTP" button when timer ends
+      setResendEnabled(true);
     }
-    return () => clearTimeout(countdown); // Cleanup timeout
+    return () => clearTimeout(countdown);
   }, [timer, showOtpField]);
 
-  const handleSubmit = (
-    values: {
-      email: string;
-      password: string;
-      otp?: string;
-      rememberMe: boolean;
-    },
+
+  const handleSubmit = async (
+    values: { email: string; password: string; otp?: string; rememberMe: boolean },
     { resetForm }: { resetForm: () => void }
   ) => {
-    console.log("Form values:", values); // Debugging form values
+    setLoading(true);
     if (showOtpField) {
       if (values.otp === "123456") {
-        // OTP logic
-        console.log("OTP verified successfully:", values.otp);
         toast.success("OTP verified successfully!");
-        setShowOtpField(false); // Hide OTP field after verification
+        setShowOtpField(false);
         resetForm();
         setShowLoginWithOtpBtn(true);
         setTimeout(() => {
-          navigate("/profilePage"); // Redirect to homepage after displaying the success message
-        }, 5000); // 2-second delay
+          setLoading(false);
+          navigate("/profilePage");
+        }, 2000);
       } else {
-        console.error("Invalid OTP:", values.otp);
         toast.error("Invalid OTP. Please try again.");
+        setLoading(false);
       }
     } else {
-      console.log("Form data", values); // Password login logic
-      toast.success("Login successfully!");
-      resetForm();
-      setShowLoginWithOtpBtn(true);
-      setTimeout(() => {
-        navigate("/profilePage"); // Redirect to homepage after displaying the success message
-      }, 5000); // 2-second delay
+      try {
+        const response = await axios.post("https://my.tc.popopower.com/api/post-login", {
+          email: values.email,
+          password: values.password,
+        });
+
+        // console.log("response", response.data);
+
+        if (response.data.remark) {
+          notification.success({ message: "Login successfully!" });
+          localStorage.setItem('token', response.data.data.token);
+          // console.log("tokenresponse", response);
+          resetForm();
+          setTimeout(() => {
+            setLoading(false); 
+            navigate("/profilePage");
+          }, 2000);
+        } else {
+          notification.error({
+            message: response.data.error_message || "Incorrect Details Please Try Again !!!"
+          });
+          setLoading(false); 
+        }
+      } catch (error) {
+        notification.error({message:"An error occurred during login. Please try again."});
+        setLoading(false);
+      }
+    }
+  };
+
+  //  handle verify otp 
+  const handleVerifyOTP = async (
+    values: { email: string; otp: string },
+    // resetForm: () => void
+  ) => {
+    if (!values.otp) {
+      toast.error("Please enter the OTP.");
+      return;
+    }
+
+    try {
+      setLoading(true);
+      const response = await axios.post("https://my.tc.popopower.com/api/verify-otp", {
+        email: values.email,
+        otp: values.otp,
+      });
+
+      if (response.data.remark) {
+        notification.success({message:"OTP verified successfully!"});
+        localStorage.setItem("token", response.data.data.token)
+        // console.log("otp responsetoken", response)
+        // resetForm();
+        setShowOtpField(false);
+        setTimeout(() => {
+          navigate("/profilePage");
+        },1000);
+      } else {
+      notification.error({message:response.data.message || "Invalid OTP. Please try again."});
+      }
+    } catch (error) {
+      notification.error({message:"An error occurred while verifying OTP."});
+    } finally {
+      setLoading(false);
     }
   };
 
   const handleLoginWithOTP = (email: string, validateForm: () => void) => {
     validateForm();
-
     if (!email || !/^(?:[0-9]{10}|\S+@\S+\.\S+)$/.test(email)) {
-      toast.error("Please enter a valid email address or mobile number");
+      notification.error({message:"Please enter a valid email address or mobile number"});
     } else {
-      console.log("Sending OTP to email:", email); // Debugging
-      toast.success("OTP sent successfully!");
-      setShowOtpField(true);
-      setTimer(120); // Reset timer to 2 minutes
-      setResendEnabled(false); // Disable Resend OTP button
-      setShowLoginWithOtpBtn(false); // Hide "Login with OTP" button after OTP is sent
-      setIsPasswordLogin(false); // Ensure password login is hidden
+      try {
+        const formData = new FormData();
+        formData.append('email', email)
+
+        const response = axios.post(`https://my.tc.popopower.com/api/send-otp`, formData);
+
+        console.log("response", response);
+
+        console.log("Sending OTP to email:", email);
+        notification.success({message:"OTP sent successfully!"});
+        setShowOtpField(true);
+        setTimer(120);
+        setResendEnabled(false);
+        setShowLoginWithOtpBtn(false);
+        setIsPasswordLogin(false);
+      } catch {
+
+      }
+
     }
   };
 
-  const handleResendOTP = (email: string) => {
+  const handleResendOTP = async (email: string) => {
     if (!email) {
-      toast.error("Please enter a valid email address or mobile number");
+      notification.error({message:"Please enter a valid email address or mobile number"});
       return;
     }
-    setIsResending(true); // Show "Resending OTP..." message
-    setTimeout(() => {
-      setIsResending(false); // Stop "Resending OTP..." message
-      setTimer(120); // Reset the timer
-      setResendEnabled(false); // Disable "Resend OTP" button
-      toast.success("OTP sent successfully!");
-    }, 2000); // Simulating an API call with a 2-second delay
+    setIsResending(true);
+    try {
+   
+      const response = await axios.post('https://my.tc.popopower.com/api/send-otp', { email });
+
+      if (response.status === 200) {
+
+        notification.success({message:"OTP sent successfully!"});
+        setResendEnabled(false); 
+      
+      } else {
+        notification.error({message:"Failed to send OTP. Please try again later."});
+      }
+    } catch (error) {
+      notification.error({message:"An error occurred. Please try again."});
+    } finally {
+      setIsResending(false);
+    }
   };
 
   const handleLoginWithPassword = () => {
-    setIsPasswordLogin(true); // Switch to password login mode
-    setShowOtpField(false); // Hide OTP field
-    // setShowLoginWithOtpBtn(false); // Hide Login with OTP button when in password mode
+    setIsPasswordLogin(true);
+    setShowOtpField(false);
   };
 
   return (
-    <section>
-      <ToastContainer
-        position="top-right"
-        closeOnClick={true}
-        className="toast-container"
-      />
-      <Navigation />
-      <div className="login-form">
-        <div className="container">
-          <div className="login-page">
-            <h6>Login</h6>
-            <Formik
-              initialValues={{
-                email: "",
-                password: "",
-                otp: "",
-                rememberMe: false,
-              }}
-              // validationSchema={loginValidationSchema}
-              onSubmit={handleSubmit}
-            >
-              {({ values, validateForm }) => (
-                <Form className="form-fields">
-                  <div className="row">
-                  <div className="col-md-4 mx-auto">
-                    <div className="input-field mb-3">
-                      <label className="form-label">
-                        Email address or Mobile Number
-                      </label>
-                      <Field
-                        type="email"
-                        name="email"
-                        id="form2Example1"
-                        className="form-control"
-                      />
-                      <ErrorMessage
-                        name="email"
-                        component="div"
-                        className="textdanger"
-                      />
-                    </div>
+    <>
+      <section>
+        <ToastContainer
+          position="top-right"
+          closeOnClick={true}
+          className="toast-container"
+        />
+        <Navigation />
+        <div className="login-form">
+          <div className="container">
+            {
+              loading ? <>
+                <div style={{
+                  display: "flex",
+                  justifyContent: "center", alignItems: "center"
+                }}>
 
-                    <div className="row">
-                      <div>
-                        {showLoginWithOtpBtn && ( // Show this button only if showLoginWithOtpBtn is true
-                          <p className="btm-text">
-                            <button
-                              type="button"
-                              className="otp-btn"
-                              onClick={() =>
-                                handleLoginWithOTP(values.email, validateForm)
-                              }
-                            >
-                              Login with OTP
-                            </button>
-                          </p>
-                        )}
-                        {!isPasswordLogin &&
-                          showOtpField && ( // Show "Login with Password" if OTP is not shown
-                            <p className="btm-text">
-                              <button
-                                type="submit"
-                                style={{ fontSize: "1.5rem", color: "#fff" }}
-                                onClick={handleLoginWithPassword} // Switch to password mode
-                              >
-                                Login With Password
-                              </button>
-                            </p>
-                          )}
-                      </div>
-                    </div>
+                  <Spinner />
 
-                  {!showOtpField && ( // Show Password field when OTP field is not visible
-                    <div>
-                      <div className="input-field mx-auto mb-2">
-                        <label className="form-label">Password</label>
-                        <Field
-                          type="password"
-                          name="password"
-                          id="form2Example2"
-                          className="form-control"
-                        />
-                        <ErrorMessage
-                          name="password"
-                          component="div"
-                          className="textdanger"
-                        />
-                      </div>
-                      <div className="mb-4 text-center">
-                        <div>
-                          <div className="form-check">
-                            <Field
-                              type="checkbox"
-                              name="rememberMe"
-                              id="form2Example31"
-                            />
-                            <label className="form-check-label">
-                              {" "}
-                              Remember me{" "}
-                            </label>
-                          </div>
-                        </div>
-                        <div>
-                          <a href="/forgotPassword">Forgot password?</a>
-                        </div>
-                      </div>
-                      <div className="col-md-12 sign-in">
-                        <button type="submit">Sign in</button>
-                      </div>
-                    </div>
-                  )}
-                  </div>
-                  </div>
+                </div>
 
-                  {showOtpField && ( // Show OTP field when OTP field is visible
-                    <div>
-                      <div className="input-field mb-2 mx-auto">
-                        <label className="form-label">OTP</label>
-                        <Field
-                          type="text"
-                          name="otp"
-                          id="form2Example2"
-                          className="form-control"
-                        />
-                        <ErrorMessage
-                          name="otp"
-                          component="div"
-                          className="textdanger"
-                        />
-                      </div>
-                      <div
-                        className="col-md-4 mx-auto otp-txt"
-                        style={{
-                          fontFamily: "Work Sans",
-                          fontSize: "1.6rem",
-                          color: "#fff",
-                          fontWeight: "600",
-                        }}
-                      >
-                        {!resendEnabled ? (
-                          <p>
-                            OTP expires in{" "}
-                            {`${Math.floor(timer / 60)}:${(
-                              "0" +
-                              (timer % 60)
-                            ).slice(-2)}`}
-                          </p>
-                        ) : (
+              </> :
+                <>
+                  <div className="login-page">
+                    <h6>Login</h6>
+                    <Formik
+                      initialValues={{
+                        email: "",
+                        password: "",
+                        otp: "",
+                        rememberMe: false,
+                      }}
+                      validationSchema={loginValidationSchema}
+                      onSubmit={handleSubmit}
+                    >
+                      {({ values, validateForm, handleChange }) => (
+                        <Form className="form-fields">
                           <div className="row">
-                            {/* <div className="col-md-4 mx-auto otp-txt"> */}
-                            {/* <div className="mb-3">
-                          <button
-                            type="submit"
-                            style={{ fontSize: "1.5rem", color: "#fff" }}
-                          >
-                            Login With Password
-                          </button>
-                        </div> */}
-                            <button
-                              onClick={() => handleResendOTP(values.email)}
-                              type="button"
-                              style={{
-                                fontFamily: "Work Sans",
-                                fontSize: "1.6rem",
-                                color: "#fff",
-                                fontWeight: "600",
-                              }}
-                              disabled={isResending}
-                            >
-                              {isResending ? "Resending OTP..." : "Resend OTP"}
-                            </button>
-                            {/* </div> */}
+                            <div className="col-md-4 mx-auto">
+                              <div className="input-field mb-3">
+                                <label className="form-label">
+                                  Email address or Mobile Number
+                                </label>
+                                <Field
+                                  type="email"
+                                  name="email"
+                                  id="form2Example1"
+                                  className="form-control"
+                                  value={values.email}
+                                  onChange={handleChange}
+
+                                />
+                                <ErrorMessage
+                                  name="email"
+                                  component="div"
+                                  className="textdanger"
+                                />
+                              </div>
+
+                              <div className="row">
+                                <div>
+                                  {showLoginWithOtpBtn && (
+                                    <p className="btm-text">
+                                      <button
+                                        type="button"
+                                        className="otp-btn"
+                                        onClick={() =>
+                                          handleLoginWithOTP(values.email, validateForm)
+                                        }
+                                      >
+                                        Login with OTP
+                                      </button>
+                                    </p>
+                                  )}
+                                  {!isPasswordLogin &&
+                                    showOtpField && ( // Show "Login with Password" if OTP is not shown
+                                      <p className="btm-text">
+                                        <button
+                                          type="submit"
+                                          style={{ fontSize: "1.5rem", color: "#fff" }}
+                                          onClick={handleLoginWithPassword} // Switch to password mode
+                                        >
+                                          Login With Password
+                                        </button>
+                                      </p>
+                                    )}
+                                </div>
+                              </div>
+
+                              {!showOtpField && ( // Show Password field when OTP field is not visible
+                                <div>
+                                  <div className="input-field mx-auto mb-2">
+                                    <label className="form-label">Password</label>
+                                    <Field
+                                      type="password"
+                                      name="password"
+                                      id="form2Example2"
+                                      className="form-control"
+                                      value={values.password}
+                                      onChange={handleChange}
+                                    />
+                                    <ErrorMessage
+                                      name="password"
+                                      component="div"
+                                      className="textdanger"
+                                    />
+                                  </div>
+                                  <div className="mb-4 text-center">
+                                    <div>
+                                      <div className="form-check">
+                                        <Field
+                                          type="checkbox"
+                                          name="rememberMe"
+                                          id="form2Example31"
+                                        />
+                                        <label className="form-check-label">
+                                          {" "}
+                                          Remember me{" "}
+                                        </label>
+                                      </div>
+                                    </div>
+                                    <div>
+                                      <a href="/forgotPassword">Forgot password?</a>
+                                    </div>
+                                  </div>
+                                  <div className="col-md-12 sign-in">
+                                    <button type="submit">
+                                      {loading ? (
+                                        <>
+                                          <div style={{ width: "1" }}>
+                                            <Spinner
+
+
+                                            />
+                                          </div>
+                                        </>
+                                      ) : (
+                                        "Sign In"
+                                      )}
+                                    </button>
+                                  </div>
+
+                                </div>
+                              )}
+                            </div>
                           </div>
-                        )}
-                      </div>
-                      <div className="col-md-12 text-center sign-in">
-                        <button
-                          type="submit" // Formik handles submission when this is of type "submit"
-                          disabled={isResending} // Optionally disable if OTP is being resent
-                        >
-                          Verify OTP
-                        </button>
-                      </div>
-                    </div>
-                  )}
 
-                  {/* <div className="col-md-12 text-center sign-in">
-                  <button type="submit">Sign in</button>
-                </div> */}
+                          {showOtpField && (
+                            <div>
+                              <div className="input-field mb-2 col-md-4 mx-auto">
+                                <label className="form-label">OTP</label>
+                                <Field
+                                  type="text"
+                                  name="otp"
+                                  id="form2Example2"
+                                  className="form-control"
+                                />
+                                <ErrorMessage
+                                  name="otp"
+                                  component="div"
+                                  className="textdanger"
+                                />
+                              </div>
+                              <div
+                                className="col-md-4 mx-auto otp-txt"
+                                style={{
+                                  fontFamily: "Work Sans",
+                                  fontSize: "1.6rem",
+                                  color: "#fff",
+                                  fontWeight: "600",
+                                }}
+                              >
+                                {!resendEnabled ? (
+                                  <p>
+                                    OTP expires in{" "}
+                                    {`${Math.floor(timer / 60)}:${(
+                                      "0" +
+                                      (timer % 60)
+                                    ).slice(-2)}`}
+                                  </p>
+                                ) : (
+                                  <div className="row">
 
-                  <div className="bottom-link">
-                    <div className="paragraph">
-                      <p>
-                        Not a member? <a href="/registrationPage">Register</a>
-                      </p>
-                      {/* <p>or sign up with:</p> */}
-
-                      {/* <button type="button" className="btn btn-link btn-floating mx-1">
-              <i className="fab fa-facebook-f"></i>
-            </button>
-
-            <button type="button" className="btn btn-link btn-floating mx-1">
-              <i className="fab fa-google"></i>
-            </button>
-
-            <button type="button" className="btn btn-link btn-floating mx-1">
-              <i className="fab fa-twitter"></i>
-            </button>
-
-            <button type="button" className="btn btn-link btn-floating mx-1">
-              <i className="fab fa-github"></i>
-            </button> */}
-                    </div>
+                                    <button
+                                      onClick={() => handleResendOTP(values.email)}
+                                      type="button"
+                                      style={{
+                                        fontFamily: "Work Sans",
+                                        fontSize: "1.6rem",
+                                        color: "#fff",
+                                        fontWeight: "600",
+                                      }}
+                                      disabled={isResending}
+                                    >
+                                      {isResending ? "Resending OTP..." : "Resend OTP"}
+                                    </button>
+                                    {/* </div> */}
+                                  </div>
+                                )}
+                              </div>
+                              <div className="col-md-4 text-center sign-in">
+                                <button
+                                  type="button"
+                                  onClick={() => handleVerifyOTP(values)}
+                                >   
+                                  Verify OTP
+                                </button>
+                              </div>
+                            </div>
+                          )}
+                          <div className="bottom-link">
+                            <div className="paragraph">
+                              <p>
+                                Not a member? <a href="/registrationPage">Register</a>
+                              </p>
+                            </div>
+                          </div>
+                        </Form>
+                      )}
+                    </Formik>
                   </div>
-                </Form>
-              )}
-            </Formik>
+                </>
+            }
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+    </>
   );
 };
-
 export default LoginForm;

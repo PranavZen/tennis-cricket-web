@@ -1,0 +1,7 @@
+.masonry-image {
+  width: 100%; /* Makes the image responsive */
+  height: 100%; /* Ensures the image fills the item block */
+  -o-object-fit: cover;
+     object-fit: cover; /* Maintains aspect ratio and fills the block */
+  border-radius: 5px; /* Matches the border-radius of the item */
+}/*# sourceMappingURL=masonryGrid.css.map */

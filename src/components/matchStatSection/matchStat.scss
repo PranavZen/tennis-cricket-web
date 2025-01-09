@@ -19,22 +19,21 @@ body {
     }
   }
 
-  .combine-Part {
-    display: grid;
-    // grid-template-columns: repeat(2, auto);
-    grid-template-columns: 60% 40%;
-    grid-template-rows: 1fr;
-    grid-column-gap: 15px;
-    grid-row-gap: 0px;
-    @include d-desktop {
-      display: flex;
-      grid-template-columns: repeat(2, auto);
-      grid-gap: 0rem;
-      grid-template-columns: 1fr;
-      grid-template-rows: repeat(2, 1fr);
-      flex-direction: column;
-    }
-  }
+  // .combine-Part {
+  //   display: grid;
+  //   grid-template-columns: repeat(2, auto);
+  //   grid-template-rows: 1fr;
+  //   grid-column-gap: 15px;
+  //   grid-row-gap: 0px;
+  //   @include d-desktop {
+  //     display: flex;
+  //     grid-template-columns: repeat(2, auto);
+  //     grid-gap: 0rem;
+  //     grid-template-columns: 1fr;
+  //     grid-template-rows: repeat(2, 1fr);
+  //     flex-direction: column;
+  //   }
+  // }
 }
 }
 

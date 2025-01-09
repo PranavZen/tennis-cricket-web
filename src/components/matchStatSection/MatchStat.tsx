@@ -19,7 +19,7 @@ const MatchStat = () => {
         `http://ec2-65-2-77-140.ap-south-1.compute.amazonaws.com:8080/api/statistics/fetchTournamentOverview`,
         {
           tour_id: 9,
-          match_id:id,
+          match_id: id,
         }
       )
       .then((response) => {
@@ -49,13 +49,17 @@ const MatchStat = () => {
               </div>
             ))}
 
-            <div className="combine-Part">
+            <div className="combine-Part row">
               {loading ? (
                 <p>Loading...</p>
               ) : (
                 <>
-                  <MatchStatLeftPart matchData={matchData} />
-                  <MatchStatRightPart matchData={matchData} />
+                  <div className="col-md-8">
+                    <MatchStatLeftPart matchData={matchData} />
+                  </div>
+                  <div className="col-md-4">
+                    <MatchStatRightPart matchData={matchData} />
+                  </div>
                 </>
               )}
             </div>

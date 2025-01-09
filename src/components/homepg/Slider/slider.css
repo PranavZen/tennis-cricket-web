@@ -1,0 +1,46 @@
+html {
+  font-size: 62.333%;
+}
+
+.carousel-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+}
+
+.carousel-inner {
+  padding: 20px 0;
+  scrollbar-width: none;
+}
+
+.carousel-inner::-webkit-scrollbar {
+  display: none;
+}
+
+.d-flex {
+  display: flex;
+  gap: 5px;
+}
+
+.carousel-control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.carousel-control.prev {
+  left: 1rem;
+  z-index: 1;
+}
+
+.carousel-control.next {
+  right: 1rem;
+}/*# sourceMappingURL=slider.css.map */

@@ -1,0 +1,105 @@
+.top-Stories {
+  padding: 3rem 0 0;
+}
+.top-Stories .container {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  padding: 20px;
+  grid-column-gap: 20px;
+}
+@media (max-width: 1024px) {
+  .top-Stories .container {
+    display: block;
+  }
+}
+.top-Stories .container .stories {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+@media (max-width: 768px) {
+  .top-Stories .container .stories {
+    display: block;
+  }
+}
+.top-Stories .container .stories .header {
+  grid-column: 1/-1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  padding: 2rem;
+}
+.top-Stories .container .stories .header h2 {
+  font-family: "Work Sans";
+  font-size: 3rem;
+  font-weight: 600;
+  color: #0c495b;
+}
+.top-Stories .container .stories .header a {
+  font-family: "Exo 2";
+  font-size: 2rem;
+  font-weight: bold;
+  color: #1d7336;
+  text-decoration: none;
+}
+.top-Stories .container .stories .story {
+  display: flex;
+  gap: 10px;
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+.top-Stories .container .stories .story img {
+  width: 180px;
+  height: 150px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 5px;
+}
+@media (max-width: 768px) {
+  .top-Stories .container .stories .story img {
+    width: 300px;
+  }
+}
+@media (max-width: 576px) {
+  .top-Stories .container .stories .story img {
+    width: 180px;
+  }
+}
+.top-Stories .container .stories .story .story-content a {
+  font-family: "Work Sans";
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #1e1e1e;
+}
+.top-Stories .container .stories .story .story-content p {
+  font-family: "Work Sans";
+  font-size: 1.4rem;
+  color: #6c6c6c;
+  margin-top: 2rem;
+}
+@media (max-width: 991px) {
+  .top-Stories .container .stories .story .story-content p {
+    margin-top: 2rem;
+  }
+}
+.top-Stories .container .ads {
+  display: grid;
+  gap: 2rem;
+}
+@media (max-width: 1024px) {
+  .top-Stories .container .ads {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+  }
+}
+.top-Stories .container .ads .ad img {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  border: 1px solid #c9c9c9;
+  padding: 1rem;
+}/*# sourceMappingURL=topStories.css.map */

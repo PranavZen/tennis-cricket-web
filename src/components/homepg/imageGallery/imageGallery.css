@@ -1,0 +1,217 @@
+.background {
+  width: 100%;
+  height: auto;
+  background-color: #D6EDFF;
+}
+
+.news-sectiondiv .mindle-heading {
+  display: inline-block;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+.news-sectiondiv .mindle-heading h6 {
+  font-family: "Work Sans";
+  font-size: 3rem;
+  font-weight: 600;
+  color: #0c495b;
+}
+.news-sectiondiv .mindle-heading a {
+  font-family: "Exo 2";
+  font-size: 2rem;
+  font-weight: bold;
+  color: #1D7336;
+}
+@media (max-width: 900px) {
+  .news-sectiondiv .mindle-heading h1 {
+    font-size: 35px;
+  }
+  .news-sectiondiv .mindle-heading h1 span {
+    font-size: 35px;
+  }
+}
+@media (max-width: 375px) {
+  .news-sectiondiv .mindle-heading h1 {
+    font-size: 35px;
+  }
+  .news-sectiondiv .mindle-heading h1 span {
+    font-size: 35px;
+  }
+}
+.news-sectiondiv .card-body h5 {
+  color: rgb(255, 255, 255);
+  font-size: 20px;
+}
+.news-sectiondiv .card-body {
+  border-radius: 10px;
+  padding: 1rem;
+}
+.news-sectiondiv .outer-layer {
+  overflow: hidden;
+}
+.news-sectiondiv .card-img-top {
+  width: 100%;
+  border-radius: 50% !important;
+}
+.news-sectiondiv .comon-links-divb05 {
+  display: inline-block;
+  height: 250px;
+  overflow: hidden;
+  width: 100%;
+  border-radius: 8px;
+}
+.news-sectiondiv .comon-links-divb05 figure {
+  width: 100%;
+  height: 250px;
+  margin: 0;
+  position: relative;
+}
+.news-sectiondiv .comon-links-divb05 figure figcaption {
+  position: absolute;
+  width: 120px;
+  height: 37px;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.5);
+  text-align: center;
+  bottom: 16px;
+  left: 19px;
+  color: #fff;
+  display: grid;
+  align-content: center;
+}
+.news-sectiondiv .comon-links-divb05 figure img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+@media (max-width: 668px) {
+  .news-sectiondiv .comon-links-divb05 {
+    height: 190px;
+    width: 100%;
+  }
+  .news-sectiondiv .comon-links-divb05 figure {
+    height: 100%;
+  }
+}
+
+.top-list-turnament {
+  display: inline-block;
+  width: 100%;
+  position: relative;
+  background-image: url(https://my.ispl-t10.com/assets/new_css/images/bg-st.jpg);
+  background-position: center;
+  background-size: cover;
+  padding: 8rem 0 14rem;
+  margin-top: 0;
+}
+.top-list-turnament .bgi-text {
+  color: #fff !important;
+  opacity: 15%;
+}
+.top-list-turnament .bg-img {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+  margin: auto;
+}
+.top-list-turnament .bg-img img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+.top-list-turnament .container {
+  position: relative;
+  z-index: 1;
+  margin: 0 auto !important;
+}
+@media (min-width: 576px) {
+  .top-list-turnament .container {
+    width: 540px;
+  }
+}
+@media (min-width: 768px) {
+  .top-list-turnament .container {
+    width: 720px;
+  }
+}
+@media (min-width: 992px) {
+  .top-list-turnament .container {
+    width: 960px;
+  }
+}
+@media (min-width: 1200px) {
+  .top-list-turnament .container {
+    width: 1140px;
+  }
+}
+.top-list-turnament .top-imgn {
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 100%;
+  top: -10px;
+  z-index: 2;
+}
+.top-list-turnament .top-imgn img {
+  -o-object-fit: contain;
+     object-fit: contain;
+  width: 100%;
+}
+.top-list-turnament .mindle-heading {
+  padding-top: 20px !important;
+  padding-bottom: 20px !important;
+  display: inline-block;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+.top-list-turnament .mindle-heading h1 {
+  text-shadow: none !important;
+  color: #ffffff;
+}
+.top-list-turnament .mindle-heading .light-tsext01 {
+  top: 15px !important;
+  color: #f2f7f3 !important;
+  opacity: 15%;
+}
+.top-list-turnament .mindle-heading h5 {
+  color: #0047c0;
+  font-size: 28px;
+}
+.top-list-turnament .mindle-heading h1 {
+  text-transform: uppercase;
+  color: #ffffff;
+  font-size: 45px;
+  margin-top: 10px;
+  letter-spacing: 1px;
+  font-weight: 700;
+}
+@media (max-width: 900px) {
+  .top-list-turnament .mindle-heading h1 {
+    font-size: 35px;
+  }
+  .top-list-turnament .mindle-heading h1 span {
+    font-size: 35px;
+  }
+}
+@media (max-width: 375px) {
+  .top-list-turnament .mindle-heading h1 {
+    font-size: 35px;
+  }
+  .top-list-turnament .mindle-heading h1 span {
+    font-size: 35px;
+  }
+}
+.top-list-turnament .mindle-heading span {
+  text-transform: uppercase;
+  color: #19398a;
+  font-weight: 700;
+}/*# sourceMappingURL=imageGallery.css.map */

@@ -2,7 +2,7 @@
   position: relative;
 }
 #banner.homeBanner {
-  background-image: url(../../../../public/images/home_banner.png);
+  background-image: url(../../../../public/images/full-banner.png);
   background-repeat: no-repeat;
   background-size: 100% 100%;
   background-position: center;
@@ -27,7 +27,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 #banner .midContainer .banner-heading {
   font-size: 7.2rem;
@@ -42,7 +42,7 @@
 }
 @media (max-width: 480px) {
   #banner .midContainer .banner-heading {
-    font-size: 3.8rem;
+    font-size: 3.6rem;
   }
 }
 #banner .midContainer p {
@@ -57,7 +57,7 @@
 }
 @media (max-width: 480px) {
   #banner .midContainer p {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
 }
 #banner .midContainer .storeIconWrap {
@@ -78,13 +78,8 @@
 }
 
 .allMatchPages #banner.homeBanner {
-  background-image: url(../../../../public/images/innerPageImg1.png);
-  height: 26rem;
-}
-@media (max-width: 1366px) {
-  .allMatchPages #banner.homeBanner {
-    background-image: url(../../../../public/images/innerPgFullImg.png);
-  }
+  background-image: url(../../../../public/images/innerPgFullImg.png);
+  height: 35rem;
 }
 .allMatchPages #banner .midContainer h2 {
   font-size: 3rem;
@@ -100,13 +95,8 @@
 }
 
 .tournamentDashPage #banner.homeBanner {
-  background-image: url(../../../../public/images/innerPageImg1.png);
-  height: 26rem;
-}
-@media (max-width: 1366px) {
-  .tournamentDashPage #banner.homeBanner {
-    background-image: url(../../../../public/images/innerPgFullImg.png);
-  }
+  background-image: url(../../../../public/images/innerPgFullImg.png);
+  height: 35rem;
 }
 .tournamentDashPage #banner .midContainer p {
   display: none;
@@ -119,13 +109,8 @@
 }
 
 .domesticTournamnet #banner.homeBanner {
-  background-image: url(../../../../public/images/innerPageImg1.png);
-  height: 26rem;
-}
-@media (max-width: 1366px) {
-  .domesticTournamnet #banner.homeBanner {
-    background-image: url(../../../../public/images/innerPgFullImg.png);
-  }
+  background-image: url(../../../../public/images/innerPgFullImg.png);
+  height: 35rem;
 }
 .domesticTournamnet #banner .midContainer p {
   display: none;
@@ -134,5 +119,24 @@
   display: none;
 }
 .domesticTournamnet #banner .midContainer .regButton {
+  display: none;
+}
+
+.matchStat #banner.homeBanner {
+  background-image: url(../../../../public/images/innerPgFullImg.png);
+  height: 35rem;
+}
+@media (max-width: 480px) {
+  .matchStat #banner.homeBanner {
+    height: 30rem;
+  }
+}
+.matchStat #banner .midContainer p {
+  display: none;
+}
+.matchStat #banner .midContainer .storeIconWrap {
+  display: none;
+}
+.matchStat #banner .midContainer .regButton {
   display: none;
 }/*# sourceMappingURL=banner.css.map */

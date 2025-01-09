@@ -13,7 +13,6 @@ const SubTabs: React.FC<TabsProps> = ({ tabs, activeTabIndex, onTabChange }) => 
   const [internalActiveTab, setInternalActiveTab] = useState(0);
   const activeTab = activeTabIndex !== undefined ? activeTabIndex : internalActiveTab;
 
-  // Handle tab change
   const handleTabChange = (index: number) => {
     if (onTabChange) {
       onTabChange(index);
@@ -28,6 +27,7 @@ const SubTabs: React.FC<TabsProps> = ({ tabs, activeTabIndex, onTabChange }) => 
         {tabs.map((tab, index) => (
           <button
             key={index}
+            type="button"
             className={`tab-btn ${activeTab === index ? "active" : ""}`}
             onClick={() => handleTabChange(index)}
           >

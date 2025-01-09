@@ -117,10 +117,10 @@
   }
 }
 .wrapper .heading-content p {
-  font-size: 1.8rem;
-  color: #d7d2d2;
-  font-weight: 500;
-  margin-bottom: 2rem;
+  font-family: "Work Sans";
+  font-size: 3rem;
+  font-weight: 600;
+  color: #0c495b;
 }
 @media (max-width: 1024px) {
   .wrapper .heading-content p {

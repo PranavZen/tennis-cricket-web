@@ -1,0 +1,101 @@
+.background-image {
+  background-image: url(../../../../public/images/full-banner.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: center;
+  width: 100%;
+  height: auto;
+}
+.background-image .profile-pageWrap .profile-picture {
+  width: 350px;
+  height: 278px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.background-image .profile-pageWrap .profile-picture img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.background-image .profile-pageWrap .profile-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.background-image .profile-pageWrap .profile-container .info-score {
+  margin: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.background-image .profile-pageWrap .profile-container .info-score .user-info {
+  text-align: flex-start;
+}
+.background-image .profile-pageWrap .profile-container .info-score .user-info h1 {
+  color: #f5f5f5;
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+}
+.background-image .profile-pageWrap .profile-container .info-score .user-info p {
+  color: #f5f5f5;
+  font-size: 1.8rem;
+  margin-bottom: 0.2rem;
+}
+.background-image .profile-pageWrap .profile-container .score-container .score-list {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+.background-image .profile-pageWrap .profile-container .score-container .score-list .score-item {
+  background-color: #025b9a;
+  padding: 1.5rem 2.5rem;
+  border-radius: 8px;
+  text-align: center;
+  color: #fff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.background-image .profile-pageWrap .profile-container .score-container .score-list .score-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+.background-image .profile-pageWrap .profile-container .score-container .score-list .score-item .score-number {
+  font-size: 3.5rem;
+  font-weight: bold;
+}
+.background-image .profile-pageWrap .profile-container .score-container .score-list .score-item .score-label {
+  font-size: 1.5rem;
+  margin-top: 0.5rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.background-image .modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  overflow: auto;
+}
+.background-image .modal-overlay .modal-content {
+  max-width: 50%;
+  max-height: 90%;
+  padding: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+.background-image .modal-overlay .modal-content img {
+  width: 100%;
+  height: auto;
+  -o-object-fit: contain;
+     object-fit: contain;
+  border-radius: 8px;
+}/*# sourceMappingURL=userInfoCard.css.map */

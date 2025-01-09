@@ -1,0 +1,77 @@
+.ant-modal {
+  width: 70%;
+  max-width: 900px;
+}
+.ant-modal .ant-modal-header {
+  padding: 20px;
+  border-bottom: 2px solid #ccc;
+}
+.ant-modal .ant-modal-title {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+}
+.ant-modal .ant-modal-body {
+  padding: 1rem 2rem;
+  color: #333;
+}
+.ant-modal .ant-modal-body h3 {
+  margin-top: 20px;
+  font-size: 2rem;
+  color: #0056b3;
+}
+.ant-modal .ant-modal-body p {
+  font-size: 1.5rem;
+  line-height: 2.5rem;
+}
+.ant-modal .ant-modal-body .youtube-links {
+  margin-top: 10px;
+}
+.ant-modal .ant-modal-body .youtube-links p {
+  font-weight: bold;
+}
+.ant-modal .ant-modal-body .youtube-links a {
+  display: block;
+  color: #007bff;
+  text-decoration: none;
+  margin-top: 5px;
+  transition: all 0.3s;
+}
+.ant-modal .ant-modal-body .youtube-links a:hover {
+  text-decoration: underline;
+  color: #0056b3;
+}
+.ant-modal .ant-modal-body .performance-section {
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+.ant-modal .ant-modal-body .performance-section h3 {
+  color: #333;
+}
+.ant-modal .ant-modal-body .performance-section p {
+  font-size: 1.5rem;
+}
+.ant-modal .ant-modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  padding: 1.5rem 2rem;
+}
+.ant-modal .ant-modal-footer .ant-btn {
+  padding: 8px 20px;
+  font-size: 2rem;
+  font-weight: 600;
+  border-radius: 5px;
+}
+.ant-modal .ant-modal-footer .ant-btn:hover {
+  border-color: #0a2e0c;
+}
+.ant-modal .ant-modal-footer .ant-btn-primary {
+  background-color: #1d7336;
+}
+.ant-modal .ant-modal-footer .ant-btn-primary:hover {
+  background-color: #0a2e0c;
+}
+.ant-modal .ant-modal-footer .ant-btn-danger {
+  background-color: #dc3545;
+  border-color: #dc3545;
+}/*# sourceMappingURL=claimModal.css.map */

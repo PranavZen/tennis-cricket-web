@@ -12,6 +12,7 @@ const sliderData =[
       "stadium": "Dadoji Kondadev Stadium",
       "liveStatus": "Live",
       "winMsg" : "WinMsg",
+      "category" : "Individual Match"
     },
     {
       "id": 2,
@@ -26,7 +27,8 @@ const sliderData =[
       "stadium": "Dadoji Kondadev Stadium",
       "liveStatus": "Live",
        "winMsg" : "WinMsg",
-      "city" : "Kolkata"
+      "city" : "Kolkata",
+      "category" : "Testing"
     },
     {
       "id": 3,
@@ -39,7 +41,8 @@ const sliderData =[
       "score2": "60/0",
       "overs2": "7.4 OV",
       "stadium": "Dadoji Kondadev Stadium",
-      "liveStatus": "Live"
+      "liveStatus": "Live",
+      "category" : "Individual Match"
     },
     {
       "id": 4,
@@ -52,7 +55,8 @@ const sliderData =[
       "score2": "60/0",
       "overs2": "7.4 OV",
       "stadium": "Dadoji Kondadev Stadium",
-      "liveStatus": "Live"
+      "liveStatus": "Live",
+      "category" : "Individual Match"
     },
     {
       "id": 5,
@@ -65,7 +69,8 @@ const sliderData =[
       "score2": "60/0",
       "overs2": "7.4 OV",
       "stadium": "Dadoji Kondadev Stadium",
-      "liveStatus": "Live"
+      "liveStatus": "Live",
+      "category" : "Individual Match"
     },
     {
       "id": 6,
@@ -78,7 +83,8 @@ const sliderData =[
       "score2": "60/0",
       "overs2": "7.4 OV",
       "stadium": "Dadoji Kondadev Stadium",
-      "liveStatus": "Live"
+      "liveStatus": "Live",
+      "category" : "Individual Match"
     },
     {
       "id": 7,
@@ -91,7 +97,8 @@ const sliderData =[
       "score2": "60/0",
       "overs2": "7.4 OV",
       "stadium": "Dadoji Kondadev Stadium",
-      "liveStatus": "Live"
+      "liveStatus": "Live",
+      "category" : "Individual Match"
     },
     {
       "id": 8,
@@ -104,7 +111,8 @@ const sliderData =[
       "score2": "60/0",
       "overs2": "7.4 OV",
       "stadium": "Dadoji Kondadev Stadium",
-      "liveStatus": "Live"
+      "liveStatus": "Live",
+      "category" : "Individual Match"
     },
     {
       "id": 9,
@@ -117,7 +125,8 @@ const sliderData =[
       "score2": "60/0",
       "overs2": "7.4 OV",
       "stadium": "Dadoji Kondadev Stadium",
-      "liveStatus": "Live"
+      "liveStatus": "Live",
+      "category" : "Individual Match"
     },
     {
       "id": 10,
@@ -130,7 +139,8 @@ const sliderData =[
       "score2": "60/0",
       "overs2": "7.4 OV",
       "stadium": "Dadoji Kondadev Stadium",
-      "liveStatus": "Live"
+      "liveStatus": "Live",
+      "category" : "Individual Match"
     },
     {
       "id": 11,
@@ -143,7 +153,8 @@ const sliderData =[
       "score2": "60/0",
       "overs2": "7.4 OV",
       "stadium": "Dadoji Kondadev Stadium",
-      "liveStatus": "Live"
+      "liveStatus": "Live",
+      "category" : "Individual Match"
     },
     {
       "id": 12,
@@ -156,7 +167,8 @@ const sliderData =[
       "score2": "60/0",
       "overs2": "7.4 OV",
       "stadium": "Dadoji Kondadev Stadium",
-      "liveStatus": "Live"
+      "liveStatus": "Live",
+      "category" : "Individual Match"
     }
 ]
 export default sliderData;

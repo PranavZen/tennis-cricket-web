@@ -2,7 +2,7 @@ import * as Yup from "yup";
 
 export const fields = [
   {
-    name: "runs",
+    name: "bat_runs",
     label: "Runs Scored",
     type: "number",
     placeholder: "Enter runs scored",
@@ -11,7 +11,7 @@ export const fields = [
       .min(0, "Runs scored must be a non-negative number"),
   },
   {
-    name: "balls",
+     name: "bat_balls",
     label: "Balls Faced",
     type: "number",
     placeholder: "Enter balls faced",
@@ -20,7 +20,7 @@ export const fields = [
       .min(1, "Balls faced must be at least 1"),
   },
   {
-    name: "fours",
+    name: "bat_fours",
     label: "Fours",
     type: "number",
     placeholder: "Enter number of fours",
@@ -29,7 +29,7 @@ export const fields = [
       .min(0, "Fours must be a non-negative number"),
   },
   {
-    name: "sixes",
+    name: "bat_sixes",
     label: "Sixes",
     type: "number",
     placeholder: "Enter number of sixes",

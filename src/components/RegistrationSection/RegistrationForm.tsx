@@ -11,51 +11,52 @@ import "boxicons/css/boxicons.min.css";
 import UploadFile from "./UploadFile";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { notification } from "antd";
 
 interface FormValues {
-  firstName: string;
-  lastName: string;
-  dob: string;
-  phone: string;
+  first_name: string;
+  last_name: string;
+  date_of_birth: string;
+  mobile_number: string;
   email: string;
   address: string;
-  teamName: string;
-  playingRole: string;
-  battingStyle: string;
-  bowlingStyle: string;
-  wicketKeeping: string;
   password: string;
-  confirmPassword: string;
-  bloodGroup: string;
-  state: string;
-  city: string;
-  zone: string;
-  profilePhoto: null;
-  idCard: null;
-  socialLinks: string;
+  state_name: string;
+  city_name: string;
+  zone_name: string;
+  team_name: string;
+  blood_group: string;
+  social_link: string;
+  playing_role: string;
+  batting_style: string;
+  bowling_style: string;
+  wicket_keeping: string;
+  password_confirmation: string;
+  doc_id_card: File | null;
+  doc_profile_photo: File | null;
 }
 
 const initialValues: FormValues = {
-  firstName: "",
-  lastName: "",
-  dob: "",
-  phone: "",
+  first_name: "",
+  last_name: "",
+  date_of_birth: "",
+  mobile_number: "",
   email: "",
   address: "",
-  teamName: "",
-  playingRole: "",
-  battingStyle: "",
-  bowlingStyle: "",
-  wicketKeeping: "",
   password: "",
-  confirmPassword: "",
-  bloodGroup: "",
-  state: "",
-  city: "",
-  zone: "",
-  socialLinks: "",
-  profilePhoto: null,
-  idCard: null,
+  state_name: "",
+  city_name: "",
+  zone_name: "",
+  team_name: "",
+  blood_group: "",
+  social_link: "",
+  playing_role: "",
+  batting_style: "",
+  bowling_style: "",
+  wicket_keeping: "",
+  password_confirmation: "",
+  doc_id_card: null,
+  doc_profile_photo: null,
 };
 
 const RegistrationForm: React.FC = () => {
@@ -65,74 +66,149 @@ const RegistrationForm: React.FC = () => {
   const [filteredZones, setFilteredZones] = useState<
     Array<{ id: string; name: string }>
   >([]);
-  const navigate = useNavigate(); // Initialize navigate
+  const navigate = useNavigate();
+
+  // console.log("filteredZonesss", filteredZones);
 
   const handleStateChange = (
     event: React.ChangeEvent<HTMLSelectElement>,
     setFieldValue: FormikProps<FormValues>["setFieldValue"]
   ) => {
     const state = event.target.value;
-    setFieldValue("state", state);
-    setFieldValue("city", ""); // Reset city selection
-    setFieldValue("zone", ""); // Reset zone selection
-    setFieldValue("bloodGroup", state);
-    setFieldValue("playingRole", state);
+
+    setFieldValue("state_name", state);
+    setFieldValue("city_name", "");
+    setFieldValue("zone_name", "");
+    setFieldValue("blood_group", state);
+    setFieldValue("playing_role", state);
     setFilteredCities(cities[state as keyof typeof cities] || []);
-    setFilteredZones([]); // Clear zones
+    setFilteredZones([]);
   };
 
   const handleCityChange = (
     event: React.ChangeEvent<HTMLSelectElement>,
     setFieldValue: FormikProps<FormValues>["setFieldValue"]
   ) => {
-    const city = event.target.value;
-    setFieldValue("city", city);
-    setFieldValue("zone", ""); // Reset zone selection
-    setFilteredZones(zones[city as keyof typeof zones] || []);
+    const city_name = event.target.value;
+
+    // console.log("city_namennnnnn", city_name);
+
+    setFieldValue("city_name", city_name);
+    setFieldValue("zone_name", "");
+    setFilteredZones(zones[city_name as keyof typeof zones] || []);
   };
 
-  const handleSubmit = (
+  const handleSubmit = async (
     values: FormValues,
-    { resetForm }: { resetForm: () => void }
+    { resetForm }: any
   ) => {
-    console.log("Form values:", values);
-    toast.success("Registered successfully!");
-    resetForm();
-    // setTimeout(() => {
-    //   navigate("/loginPage");
-    // }, 5000);
+    console.log("Form submitted with values:", values);
+    const formData = new FormData();
+
+    // Add the form fields to the FormData, excluding certain fields
+    for (const key in values) {
+      if (key !== "doc_id_card" && key !== "doc_profile_photo") {
+        formData.append(key, values[key as keyof FormValues] as string);
+      }
+    }
+
+    // Append the profile photo and ID card if they exist
+    if (values.doc_profile_photo) {
+      formData.append("doc_profile_photo", values.doc_profile_photo);
+    }
+    if (values.doc_id_card) {
+      formData.append("doc_id_card", values.doc_id_card);
+    }
+
+    try {
+      const response = await axios.post(
+        "https://my.tc.popopower.com/api/register",
+        formData
+      );
+
+      console.log("API Response:", response.data.message.error);
+
+      if (response.data.status === "success") {
+        resetForm();
+        setTimeout(() => {
+          navigate("/loginPage");
+          notification.success({ message: "Registered successfully!" });
+        },1000);
+      } else {
+    
+        const errorMessages = response.data.message.error;
+
+        if (errorMessages && errorMessages.length > 0) {
+          const errorMessage = errorMessages[0]; 
+
+          if (errorMessage.includes("email id already exists")) {
+            notification.error({
+              message: "Email ID already exists. Please use a different email.",
+            });
+          } else if (errorMessage.includes("mobile number already exists")) {
+            notification.error({
+              message: "Mobile number already exists. Please use a different number.",
+            });
+          } else {
+            notification.error({
+              message: "Registration failed. Please try again.",
+            });
+          }
+        } else {
+        
+          notification.error({
+            message: "Registration failed. Please try again.",
+          });
+        }
+      }
+    } catch (error: any) {
+      console.error("API Error:", error);
+
+      if (error.response && error.response.data) {
+        const errorMessages = error.response.data.message.error;
+
+        if (errorMessages && errorMessages.length > 0) {
+          const errorMessage = errorMessages[0];
+
+          console.log("Error message:", errorMessage);
+
+
+          if (errorMessage.includes("email id already exists")) {
+            notification.error({
+              message: "Email ID already exists. Please use a different email.",
+            });
+          } else if (errorMessage.includes("mobile number already exists")) {
+            notification.error({
+              message: "Mobile number already exists. Please use a different number.",
+            });
+          } else {
+            notification.error({ message: "Registration failed!" });
+          }
+        } else {
+          notification.error({ message: "Registration failed!" });
+        }
+      } else {
+       
+        notification.error({ message: "Registration failed!" });
+      }
+    }
   };
 
-  // const handleSubmit = async (
-  //   values: FormValues,
-  //   { resetForm }: { resetForm: () => void }
-  // ) => {
-  //   console.log("Form values:", values);
-  //   try {
-  //     const response = await axios.post("https://my.tc.popopower.com/api/register", values);
-  //     console.log("API Response:", response.data);
-  //     toast.success("Registered successfully!");
-  //     resetForm();
-  //     setTimeout(() => {  
-  //       navigate("/loginPage");
-  //     }, 5000);
-  //   } catch (error: any) {
-  //     console.error("API Error:", error);
-  //     toast.error(error.response?.data?.message || "Registration failed!");
-  //   }
-  // };
+
+
+
 
   return (
     <section>
-      <ToastContainer
+      {/* <ToastContainer
         position="top-right"
         closeOnClick={true}
         className="toast-container"
-      />
+      /> */}
       <Navigation />
       <div className="Reg-form">
         <div className="heading">
-          <h6>Registration Form</h6>
+          <h6>Registration</h6>
         </div>
 
         <Formik
@@ -148,120 +224,156 @@ const RegistrationForm: React.FC = () => {
                     <div className="row">
                       {/* First Column */}
                       <div className="mb-5 col-md-6">
-                        <label>First Name</label>
+                        <label htmlFor="floatingFirstName">First Name</label>
                         <Field
                           type="text"
                           className="form-control"
                           id="floatingFirstName"
-                          name="firstName"
+                          name="first_name"
                           placeholder="First Name"
+                          value={values.first_name}
+                          onChange={(
+                            event: React.ChangeEvent<HTMLInputElement>
+                          ) => setFieldValue("first_name", event.target.value)}
                         />
-                        <div className="errorMsg">
-                          <ErrorMessage name="firstName" component="div" />
-                        </div>
+                        <ErrorMessage className="errorMsg" name="first_name" component="div" />
                       </div>
 
                       {/* Second Column */}
                       <div className="mb-5 col-md-6">
-                        <label>Last Name</label>
+                        <label htmlFor="floatingLastName">Last Name</label>
                         <Field
                           type="text"
                           className="form-control"
                           id="floatingLastName"
-                          name="lastName"
+                          name="last_name"
                           placeholder="Last Name"
+                          onChange={(
+                            event: React.ChangeEvent<HTMLInputElement>
+                          ) => setFieldValue("last_name", event.target.value)}
                         />
-                        <div className="errorMsg">
-                          <ErrorMessage name="lastName" component="div" />
-                        </div>
+                        <ErrorMessage className="errorMsg" name="last_name" component="div" />
                       </div>
 
                       <div className="mb-5 col-md-4">
-                        <label>Email</label>
+                        <label htmlFor="floatingEmail">Email</label>
                         <Field
                           type="email"
                           className="form-control"
                           id="floatingEmail"
                           name="email"
                           placeholder="name@example.com"
+                          value={values.email}
+                          onChange={(
+                            event: React.ChangeEvent<HTMLInputElement>
+                          ) => setFieldValue("email", event.target.value)}
                         />
-                        <div className="errorMsg">
-                          <ErrorMessage name="email" component="div" />
-                        </div>
+                        <ErrorMessage className="errorMsg" name="email" component="div" />
                       </div>
 
                       <div className="mb-5 col-md-4">
-                        <label>Mobile Number</label>
+                        <label htmlFor="floatingphone">Mobile Number</label>
                         <Field
-                          type="text"
+                          type="tel"
                           className="form-control"
                           id="floatingphone"
-                          name="phone"
+                          name="mobile_number"
                           placeholder="Mobile Number"
+                          value={values.mobile_number}
+                          onChange={(
+                            event: React.ChangeEvent<HTMLInputElement>
+                          ) =>
+                            setFieldValue("mobile_number", event.target.value)
+                          }
+                          onKeyDown={(
+                            e: React.KeyboardEvent<HTMLInputElement>
+                          ) => {
+                            if (
+                              e.key !== "Backspace" &&
+                              e.key !== "Tab" &&
+                              e.key !== "ArrowLeft" &&
+                              e.key !== "ArrowRight" &&
+                              !/^[0-9]$/.test(e.key)
+                            ) {
+                              e.preventDefault();
+                            }
+                            if (e.currentTarget.value.length >= 10 && /^[0-9]$/.test(e.key)) {
+                              e.preventDefault();
+                            }
+                          }}
                         />
-                        <div className="errorMsg">
-                          <ErrorMessage name="phone" component="div" />
-                        </div>
+                        <ErrorMessage className="errorMsg" name="mobile_number" component="div" />
                       </div>
 
                       <div className="mb-5 col-md-4">
-                        <label>DOB</label>
+                        <label htmlFor="floatingDob">DOB</label>
                         <Field
                           className="form-control"
                           type="date"
                           id="floatingDob"
-                          name="dob"
-                          style={{ cursor: 'pointer' }}
+                          name="date_of_birth"
+                          style={{ cursor: "pointer" }}
+                          value={values.date_of_birth}
+                          onChange={(
+                            event: React.ChangeEvent<HTMLInputElement>
+                          ) =>
+                            setFieldValue("date_of_birth", event.target.value)
+                          }
+                          max={new Date().toISOString().split("T")[0]}
                         />
-                        <div className="errorMsg">
-                          <ErrorMessage name="dob" component="div" />
-                        </div>
+                        <ErrorMessage className="errorMsg" name="date_of_birth" component="div" />
                       </div>
 
                       <div className="mb-5 col-md-12">
-                        <label>Address</label>
+                        <label htmlFor="floatingaddress">Address</label>
                         <Field
                           as="textarea"
                           className="form-control no-height"
                           id="floatingaddress"
                           name="address"
                           placeholder="Address"
+                          value={values.address}
+                          onChange={(
+                            event: React.ChangeEvent<HTMLInputElement>
+                          ) => setFieldValue("address", event.target.value)}
                         />
-                        <div className="errorMsg">
-                          <ErrorMessage name="address" component="div" />
-                        </div>
+                        <ErrorMessage className="errorMsg" name="address" component="div" />
                       </div>
 
                       {/* State Dropdown */}
                       <div className="mb-5 col-md-4">
-                        <label>State</label>
+                        <label htmlFor="floatingState">State</label>
                         <Field
                           as="select"
                           className="form-select"
-                          name="state"
+                          id="floatingState"
+                          value={values.state_name}
+                          name="state_name"
                           onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
                             handleStateChange(e, setFieldValue)
                           }
                         >
-                          <option value="">Select State</option>
+                          <option value="" className="placeholder-option">
+                            Select State
+                          </option>
                           {states.map((state) => (
                             <option key={state.id} value={state.name}>
                               {state.name}
                             </option>
                           ))}
                         </Field>
-                        <div className="errorMsg">
-                          <ErrorMessage name="state" component="div" />
-                        </div>
+                        <ErrorMessage className="errorMsg" name="state_name" component="div" />
                       </div>
 
                       {/* City Dropdown */}
                       <div className="mb-5 col-md-4">
-                        <label>City</label>
+                        <label htmlFor="floatingCity">City</label>
                         <Field
                           as="select"
                           className="form-select"
-                          name="city"
+                          id="floatingCity"
+                          name="city_name"
+                          value={values.city_name}
                           onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
                             handleCityChange(e, setFieldValue)
                           }
@@ -274,19 +386,21 @@ const RegistrationForm: React.FC = () => {
                             </option>
                           ))}
                         </Field>
-                        <div className="errorMsg">
-                          <ErrorMessage name="city" component="div" />
-                        </div>
+                        <ErrorMessage className="errorMsg" name="city_name" component="div" />
                       </div>
 
                       {/* Zone Dropdown */}
                       <div className="mb-5 col-md-4">
-                        {/* d-flex justify-content-center align-items-center flex-column */}
-                        <label>Zone</label>
+                        <label htmlFor="floatingZone">Zone</label>
                         <Field
                           as="select"
                           className="form-select"
-                          name="zone"
+                          id="floatingZone"
+                          name="zone_name"
+                          value={values.zone_name}
+                          onChange={(
+                            event: React.ChangeEvent<HTMLInputElement>
+                          ) => setFieldValue("zone_name", event.target.value)}
                           disabled={!filteredZones.length}
                         >
                           <option value="">Select Zone</option>
@@ -296,34 +410,35 @@ const RegistrationForm: React.FC = () => {
                             </option>
                           ))}
                         </Field>
-                        <div className="errorMsg">
-                          <ErrorMessage name="zone" component="div" />
-                        </div>
+                        <ErrorMessage className="errorMsg" name="zone_name" component="div" />
                       </div>
 
                       <div className="mb-5 col-md-6">
-                        <label>Team Name</label>
+                        <label htmlFor="floatingTeamName">Team Name</label>
                         <Field
                           type="text"
                           className="form-control"
                           id="floatingTeamName"
-                          name="teamName"
+                          name="team_name"
                           placeholder="Team Name"
+                          value={values.team_name}
+                          onChange={(
+                            event: React.ChangeEvent<HTMLInputElement>
+                          ) => setFieldValue("team_name", event.target.value)}
                         />
-                        <div className="errorMsg">
-                          <ErrorMessage name="teamName" component="div" />
-                        </div>
+                        <ErrorMessage className="errorMsg" name="team_name" component="div" />
                       </div>
 
                       <div className="mb-5 col-md-6">
-                        <label>Playing Role</label>
+                        <label htmlFor="floatingRole">Playing Role</label>
                         <Field
                           as="select"
                           className="form-select"
-                          name="playingRole"
-                          value={values.playingRole} // Bind value to Formik's state
+                          id="floatingRole"
+                          name="playing_role"
+                          value={values.playing_role}
                           onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
-                            setFieldValue("playingRole", e.target.value)
+                            setFieldValue("playing_role", e.target.value)
                           }
                         >
                           <option value="">Select Playing Role</option>
@@ -332,17 +447,17 @@ const RegistrationForm: React.FC = () => {
                           <option value="All-rounder">All-rounder</option>
                           <option value="Wicket-keeper">Wicket-keeper</option>
                         </Field>
-                        <div className="errorMsg">
-                          <ErrorMessage name="playingRole" component="div" />
-                        </div>
+                        <ErrorMessage className="errorMsg" name="playing_role" component="div" />
                       </div>
 
-                      {values.playingRole === "Batsman" ||
-                      values.playingRole === "All-rounder" ? (
-                        // || values.playingRole === 'Bowler'
+                      {values.playing_role === "Batsman" ||
+                        values.playing_role === "All-rounder" ? (
+                        // || values.playing_role === 'Bowler'
                         <div className="mb-5 col-md-6">
                           <div className="lableIconWrap">
-                            <label>Batting Style</label>
+                            <label htmlFor="floatingBatsman">
+                              Batting Style
+                            </label>
                             <img
                               src="images\batsman (1).svg"
                               alt="batsman-icon"
@@ -354,27 +469,28 @@ const RegistrationForm: React.FC = () => {
                           <Field
                             as="select"
                             className="form-select"
-                            name="battingStyle"
-                            value={values.battingStyle} // Bind value to Formik's state
+                            id="floatingBatsman"
+                            name="batting_style"
+                            value={values.batting_style}
                             onChange={(
                               e: React.ChangeEvent<HTMLSelectElement>
-                            ) => setFieldValue("battingStyle", e.target.value)}
+                            ) => setFieldValue("batting_style", e.target.value)}
                           >
                             <option value="">Select Batting Style</option>
                             <option value="Right-hand">Right-hand</option>
                             <option value="Left-hand">Left-hand</option>
                           </Field>
-                          <div className="errorMsg">
-                            <ErrorMessage name="battingStyle" component="div" />
-                          </div>
+                          <ErrorMessage className="errorMsg" name="batting_style" component="div" />
                         </div>
                       ) : null}
 
-                      {values.playingRole === "Bowler" ||
-                      values.playingRole === "All-rounder" ? (
+                      {values.playing_role === "Bowler" ||
+                        values.playing_role === "All-rounder" ? (
                         <div className="mb-5 col-md-6">
                           <div className="lableIconWrap">
-                            <label>Bowling Style</label>
+                            <label htmlFor="floatingBowling">
+                              Bowling Style
+                            </label>
                             <img
                               src="images\Bowler (1).svg"
                               alt="bowler-icon"
@@ -386,11 +502,12 @@ const RegistrationForm: React.FC = () => {
                           <Field
                             as="select"
                             className="form-select"
-                            name="bowlingStyle"
-                            value={values.bowlingStyle} // Bind value to Formik's state
+                            id="floatingBowling"
+                            name="bowling_style"
+                            value={values.bowling_style}
                             onChange={(
                               e: React.ChangeEvent<HTMLSelectElement>
-                            ) => setFieldValue("bowlingStyle", e.target.value)}
+                            ) => setFieldValue("bowling_style", e.target.value)}
                           >
                             <option value="">Select Bowling Style</option>
                             <option value="Right-arm Fast">
@@ -408,17 +525,17 @@ const RegistrationForm: React.FC = () => {
                             </option>
                             <option value="Left-arm Spin">Left-arm Spin</option>
                           </Field>
-                          <div className="errorMsg">
-                            <ErrorMessage name="bowlingStyle" component="div" />
-                          </div>
+                          <ErrorMessage name="bowling_style" component="div" />                        
                         </div>
                       ) : null}
 
-                      {values.playingRole === "Wicket-keeper" ||
-                      values.playingRole === "All-rounder" ? (
+                      {values.playing_role === "Wicket-keeper" ||
+                        values.playing_role === "All-rounder" ? (
                         <div className="mb-5 col-md-6">
                           <div className="lableIconWrap">
-                            <label>Wicketkeeping</label>
+                            <label htmlFor="floatingWicket">
+                              Wicketkeeping
+                            </label>
                             <img
                               src="images\Wicketkeeper (1).svg"
                               alt="gloves-icon"
@@ -431,9 +548,15 @@ const RegistrationForm: React.FC = () => {
                             <Field
                               type="radio"
                               //   className="form-control"
-                              id="yes"
+                              id="floatingWicket"
                               value="yes"
-                              name="wicketKeeping"
+                              name="wicket_keeping"
+                              checked={values.wicket_keeping === "yes"}
+                              onChange={(
+                                e: React.ChangeEvent<HTMLSelectElement>
+                              ) =>
+                                setFieldValue("wicket_keeping", e.target.value)
+                              }
                             />
                             <label
                               htmlFor="yes"
@@ -447,9 +570,15 @@ const RegistrationForm: React.FC = () => {
                             </label>
                             <Field
                               type="radio"
-                              id="no"
+                              id="floatingWicket"
                               value="no"
-                              name="wicketKeeping"
+                              name="wicket_keeping"
+                              checked={values.wicket_keeping === "no"}
+                              onChange={(
+                                e: React.ChangeEvent<HTMLSelectElement>
+                              ) =>
+                                setFieldValue("wicket_keeping", e.target.value)
+                              }
                             />
                             <label
                               htmlFor="no"
@@ -459,62 +588,62 @@ const RegistrationForm: React.FC = () => {
                               No
                             </label>
                           </div>
-                          <div className="errorMsg">
-                            <ErrorMessage
-                              name="wicketKeeping"
-                              component="div"
-                            />
-                          </div>
+                          <ErrorMessage className="errorMsg" name="wicket_keeping" component="div" />
                         </div>
                       ) : null}
 
                       {/* Fourth Column */}
                       <div className="mb-5 col-md-6">
-                        <label>Password</label>
+                        <label htmlFor="floatingPassword">Password</label>
                         <Field
                           type="password"
                           className="form-control"
                           id="floatingPassword"
                           name="password"
                           placeholder="Password"
+                          value={values.password}
+                          onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+                            setFieldValue("password", e.target.value)
+                          }
                         />
-                        <div className="errorMsg">
-                          <ErrorMessage name="password" component="div" />
-                        </div>
+                        <ErrorMessage className="errorMsg" name="password" component="div" />
                       </div>
 
                       <div className="mb-5 col-md-6">
-                        <label>Confirm Password</label>
+                        <label htmlFor="floatingConfirmPassword">
+                          Confirm Password
+                        </label>
                         <Field
                           type="password"
                           className="form-control"
                           id="floatingConfirmPassword"
-                          name="confirmPassword"
+                          name="password_confirmation"
                           placeholder="Confirm Password"
+                          value={values.password_confirmation}
+                          onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+                            setFieldValue(
+                              "password_confirmation",
+                              e.target.value
+                            )
+                          }
                         />
-                        <div className="errorMsg">
-                          <ErrorMessage
-                            name="confirmPassword"
-                            component="div"
-                          />
-                        </div>
+                        <ErrorMessage className="errorMsg" name="password_confirmation" component="div" />
                       </div>
 
                       {/* Select Inputs */}
                       <div className="mb-5 col-md-6">
-                        <label>Blood Group</label>
+                        <label htmlFor="floatingBloodGroup">Blood Group</label>
                         <Field
                           as="select"
                           className="form-select"
-                          name="bloodGroup"
-                          value={values.bloodGroup} // Bind value to Formik's state
+                          id="floatingBloodGroup"
+                          name="blood_group"
+                          value={values.blood_group}
                           onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
-                            setFieldValue("bloodGroup", e.target.value)
+                            setFieldValue("blood_group", e.target.value)
                           }
                         >
-                          <option value="" disabled>
-                            Select Blood Group
-                          </option>
+                          <option>Select Blood Group</option>
                           <option value="A+">A+</option>
                           <option value="A-">A-</option>
                           <option value="B+">B+</option>
@@ -524,43 +653,45 @@ const RegistrationForm: React.FC = () => {
                           <option value="O+">O+</option>
                           <option value="O-">O-</option>
                         </Field>
-                        <div className="errorMsg">
-                          <ErrorMessage name="bloodGroup" component="div" />
-                        </div>
+                        <ErrorMessage className="errorMsg" name="blood_group" component="div" />
                       </div>
 
                       <div className="mb-5 col-md-6">
-                        <label>Social Links</label>
+                        <label htmlFor="floatingSocialLink">Social Links</label>
                         <Field
                           type="url"
                           className="form-control"
-                          //   id="floatingTeamName"
-                          name="socialLinks"
+                          id="floatingSocialLink"
+                          name="social_link"
                           placeholder="Enter URL"
+                          value={values.social_link}
+                          onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+                            setFieldValue("social_link", e.target.value)
+                          }
                         />
-                        <div className="errorMsg">
-                          <ErrorMessage name="socialLinks" component="div" />
-                        </div>
+                        <ErrorMessage className="errorMsg" name="social_link" component="div" />
                       </div>
                     </div>
                   </div>
 
                   <div className="col-lg-8 mx-auto">
                     <div className="row">
-                      <div className="mb-5 col-md-6">
-                        <label>Profile Photo</label>
-                        <UploadFile name="profilePhoto" />
-                        <div className="errorMsg">
-                          <ErrorMessage name="profilePhoto" component="div" />
-                        </div>
+                      <div className="user-aadharPhoto mb-5 col-md-6">
+                        <label htmlFor="profilePhoto">Profile Photo</label>
+                        <UploadFile
+                          // id="floatingProfilePhoto"
+                          name="doc_profile_photo"
+                        />
+                        <ErrorMessage className="errorMsg" name="doc_profile_photo" component="div" />
                       </div>
 
                       <div className="user-aadharPhoto mb-5 col-md-6">
-                        <label>ID Card</label>
-                        <UploadFile name="idCard" />
-                        <div className="errorMsg">
-                          <ErrorMessage name="idCard" component="div" />
-                        </div>
+                        <label htmlFor="floatingAadharPhoto">ID Card</label>
+                        <UploadFile
+                          // id="floatingAadharPhoto"
+                          name="doc_id_card"
+                        />
+                        <ErrorMessage className="errorMsg" name="doc_id_card" component="div" />
                       </div>
                     </div>
                   </div>
@@ -581,7 +712,7 @@ const RegistrationForm: React.FC = () => {
                     Already have an account?{" "}
                     <a
                       href="/loginPage"
-                      // style={{ color: "#fff", textDecoration: "none" }}
+                    // style={{ color: "#fff", textDecoration: "none" }}
                     >
                       Login now
                     </a>
@@ -595,5 +726,4 @@ const RegistrationForm: React.FC = () => {
     </section>
   );
 };
-
 export default RegistrationForm;

@@ -1,12 +1,6 @@
 .tournament {
-  margin: 1rem 0;
+  padding: 3rem 0 5rem;
 }
-@media (max-width: 767px) {
-  .tournament {
-    margin: 1rem 2rem;
-  }
-}
-
 .header-div {
   display: flex;
 }
@@ -17,7 +11,6 @@
 }
 
 .search-container {
-  position: relative;
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -66,10 +59,18 @@
 }
 
 .filter-content {
-  background: white;
+  background: aliceblue;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   padding: 20px;
   border-radius: 10px;
-  width: 400px;
   text-align: center;
   font-size: 20px;
+  font-weight: 500;
+  width: 50%;
+  margin: 2rem auto;
+}
+.filter-content div {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
 }/*# sourceMappingURL=domesticTournament.css.map */

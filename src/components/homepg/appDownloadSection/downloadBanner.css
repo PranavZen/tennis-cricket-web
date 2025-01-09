@@ -1,142 +1,58 @@
 .bg-img {
   position: relative;
-  background-image: url(../../../../public//images/DownloadAppContainer.png);
+  background: linear-gradient(90deg, rgb(2, 91, 154) 0%, rgb(3, 49, 81) 100%);
   background-position: center;
   background-repeat: no-repeat;
   background-size: 100%;
   width: 100%;
-  height: 450px;
-  /* margin-top: 4rem; */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 10%;
-}
-@media (max-width: 1024px) {
-  .bg-img {
-    background-image: unset;
-    background: linear-gradient(90deg, rgb(58, 98, 62) 19%, rgb(84, 143, 57) 100%);
-    padding: 2rem 0 2rem;
-    margin: 5.1rem 0 0;
-  }
-}
-@media (max-width: 1024px) and (max-width: 991px) {
-  .bg-img {
-    height: 435px;
-  }
-}
-@media (max-width: 1024px) and (max-width: 320px) {
-  .bg-img {
-    height: 404px;
-  }
-}
-.bg-img .midSectionWrap {
-  position: relative;
-  height: 100%;
+  height: auto;
+  margin: 3rem 0 4rem;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 @media (max-width: 991px) {
-  .bg-img .midSectionWrap {
+  .bg-img {
+    padding: 1rem 0 2rem;
+  }
+}
+
+.midSectionWrap {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@media (max-width: 991px) {
+  .midSectionWrap {
     align-items: flex-start;
   }
 }
 @media (max-width: 480px) {
-  .bg-img .midSectionWrap {
+  .midSectionWrap {
     display: inline-block;
   }
 }
-.bg-img .bannerContentWrap {
+.midSectionWrap .bannerContentWrap {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  margin-top: 8rem;
+  justify-content: space-evenly;
+  margin-top: 6rem;
   width: 100%;
 }
 @media (max-width: 991px) {
-  .bg-img .bannerContentWrap {
+  .midSectionWrap .bannerContentWrap {
     margin-top: 0;
   }
 }
-.bg-img .stats-details {
+.midSectionWrap .stats-details {
   display: flex;
   justify-content: space-between;
 }
 @media (max-width: 991px) {
-  .bg-img .stats-details {
+  .midSectionWrap .stats-details {
     display: flex;
     justify-content: space-evenly;
-  }
-}
-
-.acheivement {
-  position: absolute;
-  left: 0.5rem;
-  top: -70%;
-}
-@media (max-width: 1024px) {
-  .acheivement {
-    top: -15%;
-    left: -2.5rem;
-  }
-}
-@media (max-width: 1440px) {
-  .acheivement {
-    top: -60%;
-  }
-}
-@media (max-width: 991px) {
-  .acheivement {
-    display: block;
-    position: absolute;
-    top: 33.3rem !important;
-    left: 11.5rem;
-  }
-}
-@media (max-width: 480px) {
-  .acheivement {
-    left: 13rem;
-    top: 30rem !important;
-  }
-}
-@media (max-width: 320px) {
-  .acheivement {
-    top: 72%;
-    left: 23.5%;
-  }
-}
-@media (max-width: 375px) {
-  .acheivement {
-    left: 27%;
-  }
-}
-
-.acheivement-btn {
-  width: 193px;
-  height: 46px;
-  border-radius: 2.2rem;
-  color: #416d3d;
-  font-size: 1.8rem;
-  font-family: "Work Sans";
-  font-weight: 600;
-  border: 1px solid #0e5623;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-@media (max-width: 1024px) {
-  .acheivement-btn {
-    border-color: #fff;
-    color: #fff;
-  }
-}
-@media (max-width: 480px) {
-  .acheivement-btn {
-    width: 160px;
-    height: 42px;
-    color: #fff;
-    font-size: 1.8rem;
   }
 }
 
@@ -144,6 +60,7 @@
   display: flex;
   flex-direction: column;
   margin-bottom: 4rem;
+  width: 100%;
 }
 @media (max-width: 991px) {
   .stats-info {
@@ -307,26 +224,20 @@
   .download-button {
     display: block;
     position: relative;
-    bottom: -25rem;
-    right: -56%;
+    bottom: -22rem;
+    margin: auto;
   }
 }
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   .download-button {
-    bottom: -25.5rem;
-    font-size: 1.8rem;
-    right: -12.3rem;
+    width: 14.5rem;
+    height: 3.5rem;
+    font-size: 1.5rem;
   }
 }
 @media (max-width: 320px) {
   .download-button {
-    bottom: -23rem;
-    right: -8rem;
-  }
-}
-@media (max-width: 375px) {
-  .download-button {
-    right: -9.3rem;
+    bottom: -16rem;
   }
 }
 
@@ -341,5 +252,11 @@
     width: 1.6rem;
     height: 1.6rem;
     margin-left: 0.5rem;
+  }
+}
+@media (max-width: 768px) {
+  .download-button img {
+    width: 1.5rem;
+    height: 1.5rem;
   }
 }/*# sourceMappingURL=downloadBanner.css.map */

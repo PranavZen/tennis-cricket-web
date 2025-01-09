@@ -1,0 +1,15 @@
+.addvertiseImg {
+  margin: 5rem 0 5rem;
+  position: relative;
+}
+.addvertiseImg::before {
+  width: 88px;
+  height: 47px;
+  background-color: #1D7336;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.addvertiseImg img {
+  width: 100%;
+}/*# sourceMappingURL=addvertiseBanner.css.map */

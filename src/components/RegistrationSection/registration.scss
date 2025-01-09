@@ -33,7 +33,7 @@
     .form-control,
     .form-select {
       @include inputTypo;
-      color: #a7a3a3;
+      color: black;
       &.no-height {
         height: auto;
       }
@@ -58,16 +58,22 @@
         font-size: 1.5rem;
       }
     }
+    label::after{
+      content: " * ";
+    }
+  
 
     select,
-    option,
+    option {
+      color: black;
+    }
     ::placeholder {
       @include formPlaceholderTypo;
     }
 
-    option:disabled {
-      color: #a7a3a3; // Placeholder color
-    }
+    // option:disabled {
+    //   color: #a7a3a3; // Placeholder color
+    // }
 
     .form-select:disabled {
       background-color: #c2c0c0;
@@ -100,6 +106,9 @@
     button {
       @include formButtonTypo;
       width: 18%;
+    }
+    :hover {
+      background-color: #36426c;
     }
   }
 }

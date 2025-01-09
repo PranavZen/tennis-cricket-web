@@ -10,13 +10,14 @@
     padding-top: 1.5rem;
   }
   .why-tenniscricket h2 {
+    font-family: "Work Sans";
+    font-size: 3rem;
+    font-weight: 600;
+    color: #0c495b;
     text-align: center;
     padding: 20px;
     display: flex;
     flex-direction: column;
-    font-family: "Work Sans";
-    font-size: 3.4rem;
-    color: #416d3d;
   }
   /* ToggleSwitch styles */
   /* Grid parent styles */
@@ -31,20 +32,20 @@
   .tab-menu {
     display: flex;
     justify-content: center;
-    margin-bottom: 5px;
+    margin-bottom: 3rem;
     position: relative;
   }
   .tab-menu button {
     margin: 0 15px;
     text-decoration: none;
-    color: #666;
+    color: #898989;
     font-size: 18px;
     padding-bottom: 5px;
     border-bottom: 2px solid transparent;
     border-bottom-color: #d9d9d9;
   }
   .tab-menu button.active {
-    color: #0e5623;
+    color: #23313A;
     border-bottom-color: #0e5623;
   }
   .feature-left {
@@ -61,6 +62,7 @@
   }
   .feature-card {
     border-radius: 10px;
+    padding: 1rem;
     width: 100%;
     text-align: center;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -77,7 +79,7 @@
     font-weight: 500;
     line-height: 25.81px;
     text-align: center;
-    color: #0e5623;
+    color: #025B9A;
   }
   .feature-card p {
     margin-bottom: 20px;
@@ -89,8 +91,6 @@
     text-align: center;
     color: #898989;
   }
-}
-@media (min-width: 576px) {
   .phone-display {
     justify-content: center;
     align-items: center;
@@ -167,12 +167,6 @@
     grid-template-columns: repeat(3, 1fr);
     place-items: center;
     row-gap: 3rem;
-    margin-top: 8rem;
-  }
-}
-@media (min-width: 576px) and (max-width: 1024px) {
-  .parent {
-    margin-top: 5rem;
   }
 }
 @media (min-width: 576px) {
