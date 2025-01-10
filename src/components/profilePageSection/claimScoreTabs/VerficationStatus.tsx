@@ -46,6 +46,7 @@ const token = localStorage.getItem("token");
 const VerificationStatus = () => {
   const [claimScore, setClaimScore] = useState<ClaimScore[]>([]);
   const [loading, setLoading] = useState(true);
+  const [modalLoading, setModalLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [singleData, setSingleData] = useState<number | null>(null);
   const [claimDetails, setClaimDetails] = useState<ClaimDetail[]>([]);
@@ -85,10 +86,10 @@ const VerificationStatus = () => {
             }
           );
           setClaimDetails(response.data.message.data);
-          setLoading(false);
+          setModalLoading(false);
         } catch (error) {
           console.error("Error fetching claim details:", error);
-          setLoading(false);
+          setModalLoading(false);
         }
       }
     };
@@ -150,7 +151,7 @@ const VerificationStatus = () => {
         onCancel={handleCancel}
         width={800}
       >
-        {loading ? (
+        {modalLoading ? (
           <Spinner />
         ) : (
           claimDetails.map((detail) => (
@@ -184,7 +185,10 @@ const VerificationStatus = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
+                      <p>
+                      <strong>Youtube Link: </strong>
                       {linkObj.link}
+                      </p>
                     </a>
                   </div>
                 ))}

@@ -5,16 +5,20 @@ import "../../../components/profilePageSection/profilePage.scss";
 const CaptainTab = () => {
   return (
     <div className="stats-content">
-        <div className="stats-container">
-          {captainStatsData.map((stat, index) => (
-            <div key={index} className="stat-box">
-              <span className="stat-number">{stat.score}</span>
-              <span className="stat-label">{stat.label}</span>
-            </div>
-          ))}
+      <div className="stats-container">
+        {captainStatsData.map((stat, index) => (
+          <div key={index} className="stat-box">
+            <span className="stat-number">{stat.score}</span>
+            <span className="stat-label">{stat.label}</span>
+          </div>
+        ))}
+        <div className="stat-box">
+          <span className="stat-number">{190}</span>
+          <span className="stat-label">Matches</span>
         </div>
       </div>
-  )
-}
+    </div>
+  );
+};
 
-export default CaptainTab
+export default CaptainTab;

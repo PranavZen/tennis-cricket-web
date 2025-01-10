@@ -85,6 +85,10 @@ const BattingTab: React.FC<BattingStats> = ({ batters }) => {
           <span className="stat-number">{Number(batters.sr).toFixed(2)}</span>
           <span className="stat-label">SR</span>
         </div>
+        <div className="stat-box">
+          <span className="stat-number">{190}</span>
+          <span className="stat-label">Matches</span>
+        </div>
       </div>
       {/* ) : ( */}
         {/* <table className="batting-table">

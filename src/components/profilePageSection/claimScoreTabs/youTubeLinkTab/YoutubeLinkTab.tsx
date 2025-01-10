@@ -68,6 +68,7 @@ const YouTubeLinkForm = ({ tournamentIndex }: { tournamentIndex: number }) => {
                       type="text"
                       onChange={(e: React.ChangeEvent<HTMLInputElement>) => formik.setFieldValue(`youtube_link[${tournamentIndex}][${youtubeIndex}]`, e.target.value)}
                       value={link}
+                      placeholder="Add youtube link"
                       className="input-box"
                     />
                   </div>
@@ -302,11 +303,9 @@ const YouTubeLink = ({ onPrev, onSubmit }: { onPrev: () => void; onSubmit: () =>
               <button type="button" onClick={onPrev} disabled={formik.isSubmitting}>
                 Previous
               </button>
-              <Modal>
               <button type="button" onClick={() => { formik.handleSubmit(); onSubmit(); }}>
                 Claim Score
               </button>
-              </Modal>
             </div>
           </div>
         </div>

@@ -6,9 +6,9 @@ import * as Yup from "yup";
 import StepNavigator from "./StepNavigator";
 import BattingPerformance from "./BattingPerformance";
 import BowlingPerformance from "./BowlingPerformance";
-import YouTubeLinkTab from "./youTubeLinkTab/YoutubeLinkTab"; // Ensure correct import path
+import YouTubeLinkTab from "./youTubeLinkTab/YoutubeLinkTab";
 import "../../../components/profilePageSection/profilePage.scss";
-import { ToastContainer, toast } from "react-toastify";
+import { notification } from "antd";
 import "react-toastify/dist/ReactToastify.css";
 import SubTabs from "../../common/subTabs/SubTabs";
 import VerificationStatus from "./VerficationStatus";
@@ -160,13 +160,13 @@ const ClaimScoreTab = () => {
         console.log("ressssssss", res);
 
         // setSuccessMessage("Score claimed successfully!");
-        toast.success("Claim score added successfully!");
+        notification.success({ message: "Claim score added successfully!" });
         resetForm();
         setShowTabs(false);
         window.location.reload();
       } catch (error) {
         setError("An error occurred while submitting the form.");
-        toast.error("An error occurred while submitting the form.");
+        notification.error({ message: "An error occurred while submitting the form." });
       } finally {
         setIsSubmitting(false);
       }
@@ -230,7 +230,6 @@ const ClaimScoreTab = () => {
   
   return (
     <>
-      <ToastContainer />
       {!showTabs ? (
         <div className="claimScore-data">
           <div className="claim-button text-end">
@@ -294,11 +293,13 @@ const ClaimScoreTab = () => {
                       value={formik.values.season}
                     />
                   </div>
-                  <h3>Match</h3>
+                  <div className="match d-flex justify-content-between align-items-center">
+                  <h1>Match</h1>
                   <div className="add-btn text-end">
                     <button type="button" onClick={handleAddMatches}>
                       + Add Another Match
                     </button>
+                  </div>
                   </div>
                   <div className="col-md-6">
                     <label htmlFor="match_name">Match Name:</label>

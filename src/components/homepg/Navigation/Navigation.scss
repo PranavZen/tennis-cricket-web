@@ -118,30 +118,30 @@
     gap: 0.4rem;
   }
 
-  .searchWrap {
-    // width: 4.1rem;
-    // height: 4.1rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    // border: 0.1rem solid #b7b7b7;
-    border-radius: 5rem;
+  // .searchWrap {
+  //   // width: 4.1rem;
+  //   // height: 4.1rem;
+  //   display: flex;
+  //   justify-content: center;
+  //   align-items: center;
+  //   // border: 0.1rem solid #b7b7b7;
+  //   border-radius: 5rem;
 
-    @include d-1366-desktop {
-      width: 7rem;
-      height: 7rem;
-      img {
-        width: 50%;
-      }
-    }
-    @include d-desktop {
-      width: 7rem;
-      height: 7rem;
-      img {
-        width: 50%;
-      }
-    }
-  }
+  //   @include d-1366-desktop {
+  //     width: 7rem;
+  //     height: 7rem;
+  //     img {
+  //       width: 50%;
+  //     }
+  //   }
+  //   @include d-desktop {
+  //     width: 7rem;
+  //     height: 7rem;
+  //     img {
+  //       width: 50%;
+  //     }
+  //   }
+  // }
 
   .register-btn {
     background-color: #FFFFFF;
@@ -157,6 +157,10 @@
     border-radius: 5rem;
     padding: 0;
     border: 0;
+
+    &:hover {
+      color: black;
+    }
 
     @include d-desktop {
       font-size: 1.2rem;

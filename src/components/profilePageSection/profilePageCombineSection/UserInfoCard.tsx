@@ -9,6 +9,15 @@ const UserInfoCard = () => {
   const openModal = () => setModalOpen(true);
   const closeModal = () => setModalOpen(false);
 
+  const firstName = localStorage.getItem("firstName");
+  const surname = localStorage.getItem("surname");
+  const cityName = localStorage.getItem("cityName");
+  const profileImg = localStorage.getItem("profileImage");
+  const battingStyle = localStorage.getItem("battingStyle");
+  const bowlingStyle = localStorage.getItem("bowlingStyle");
+  const runs = localStorage.getItem("runs");
+  const wickets = localStorage.getItem("wickets");
+
   return (
     <div className="background-image">
       <div className="container">
@@ -23,9 +32,13 @@ const UserInfoCard = () => {
             </div>
             <div className="info-score">
               <div className="user-info">
-                <h1 className="user-name">User Name</h1>
-                <p className="user-location">Mumbai 154 Views</p>
-                <p className="player-type">RHB | Right-arm Off Break</p>
+                <h1 className="user-name">
+                  {firstName} {surname}
+                </h1>
+                <p className="user-location">{cityName} 154 Views</p>
+                <p className="player-type">
+                  {battingStyle} | {bowlingStyle}
+                </p>
               </div>
 
               <div className="score-container">
@@ -37,13 +50,13 @@ const UserInfoCard = () => {
                     </div>
                   </li>
                   <li className="score-item">
-                    <div className="score-number">1073</div>
+                    <div className="score-number">{runs}19</div>
                     <div className="score-label">
                       <i className="fa-solid fa-chart-line"></i> RUNS
                     </div>
                   </li>
                   <li className="score-item">
-                    <div className="score-number">116</div>
+                    <div className="score-number">{wickets}3</div>
                     <div className="score-label">
                       <i className="fa-solid fa-bullseye"></i> WICKETS
                     </div>

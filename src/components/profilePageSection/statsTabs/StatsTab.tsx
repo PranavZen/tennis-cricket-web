@@ -7,6 +7,7 @@ import BowlingTab from "./BowlingTab";
 import FieldingTab from "./FieldingTab";
 import CaptainTab from "./CaptainTab";
 import SubTabs from "../../common/subTabs/SubTabs";
+import Spinner from "../../common/spinner/Spinner";
 
 interface BattingStats {
   fifty: number;
@@ -40,19 +41,33 @@ interface PlayerStats {
 const StatsTab: React.FC = () => {
   const [batters, setBatters] = useState<BattingStats | null>(null);
   const [bowlers, setBowlers] = useState<BowlingStats | null>(null);
-  // const [isLoading, setIsLoading] = useState<boolean>(true); 
+  const [isLoading, setLoading] = useState(true);
+  const [runs, setRuns] = useState();
+  const [wickets, setWickets] = useState();
 
   const tabsData = [
     {
       label: "Batting",
-      component: batters ? <BattingTab batters={batters} /> : <div>Loading Batting Stats...</div>,
+      component: isLoading ? <Spinner 
+      // runs={runs} setRuns={setRuns}
+      />
+       : (batters ? <BattingTab batters={batters} /> : <div>No Data</div>),
     },
     {
       label: "Bowling",
-      component: bowlers ? <BowlingTab bowlers={bowlers}/>  : <div>Loading Batting Stats...</div>,
+      component: isLoading ? <Spinner 
+      // wickets={wickets} setWickets={setWickets}
+      />
+       : (bowlers ? <BowlingTab bowlers={bowlers}/>  : <div>No Data</div>),
     },
-    { label: "Fielding", component: <FieldingTab /> },
-    { label: "Captain", component: <CaptainTab /> },
+    {
+      label: "Fielding",
+      component: isLoading ? <Spinner /> : <FieldingTab />,
+    },
+    {
+      label: "Captain",
+      component: isLoading ? <Spinner /> : <CaptainTab />,
+    }
   ];
 
   useEffect(() => {
@@ -65,17 +80,16 @@ const StatsTab: React.FC = () => {
         const playerData: PlayerStats = response.data.data;
         setBatters(playerData.batting_record);
         setBowlers(playerData.bowling_record);
-        // setIsLoading(false);
+        setLoading(false);
+        // setRuns(response.data.data.batting_record.runs);
+        // setWickets(playerData.bowling_record);
+        // localStorage.setItem("runs", response.data.data.batting_record.runs);
       })
       .catch((error) => {
         console.error("Error fetching player stats:", error);
-        // setIsLoading(false);
+        setLoading(false);
       });
   }, []);
-
-  // if (isLoading) {
-  //   return <div>Loading Player Stats...</div>;
-  // }
 
   return <SubTabs tabs={tabsData} />;
 };

@@ -1,14 +1,17 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../Navigation/Navigation.scss";
 import MenuItems from "./MenuItems";
 import LeftBox from "./LeftBox";
-import pic1 from '../.././../../public/images/tennisCricketLogo.png'
+
 const Navigation = () => {
   const [prevScrollpos, setPrevScrollpos] = useState(0);
   const [scroll, setScroll] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false); // State to track if the menu is open
   const scrollRef = useRef<HTMLDivElement | null>(null);
+  const [isLoggedIn, setLoggedIn] = useState(false);
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -32,6 +35,22 @@ const Navigation = () => {
     };
   }, [prevScrollpos]);
 
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    setLoggedIn(!!token);
+  }, []);
+
+  const handleLogout = () => {
+    setLoading(true);
+    setTimeout(() => {
+      localStorage.clear();
+      setLoggedIn(false);
+      setLoading(false);
+      navigate("/loginPage");
+      window.location.reload();
+    }, 1500);
+  };
+
   return (
     <div
       id="mainTop"
@@ -46,15 +65,15 @@ const Navigation = () => {
             aria-expanded={menuOpen}
             aria-label="Toggle navigation"
           >
-            <span></span>
+            {/* <span></span> */}
           </div>
 
           <div className="navWrap">
             <div className="col-md-2 col">
               <Link to="/" className="logoWrap">
                 <img
-                  src='\images\tennisCricketLogo.png'
-                  alt="Logoooooo"
+                  src="\images\tennisCricketLogo.png"
+                  alt="Logo"
                   // width={200}
                   height={73}
                 />
@@ -62,7 +81,7 @@ const Navigation = () => {
             </div>
 
             <MenuItems menuOpen={menuOpen} />
-            <LeftBox />
+            <LeftBox isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
           </div>
         </div>
       </nav>
@@ -71,4 +90,3 @@ const Navigation = () => {
 };
 
 export default Navigation;
-

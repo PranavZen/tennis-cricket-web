@@ -6,9 +6,9 @@ const ProfilePage = () => {
   return (
     <section>
       <Navigation />
+      <UserInfoCard />
       <div className="container">
         <div className="row">
-          <UserInfoCard />
           <AllProfileTab />
         </div>
       </div>

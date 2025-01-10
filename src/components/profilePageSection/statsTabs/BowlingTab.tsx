@@ -52,6 +52,10 @@ const BowlingTab: React.FC<BowlingStats> = ({ bowlers }) => {
           <span className="stat-number">{Number(bowlers.economy).toFixed(2) || "0.00"}</span>
           <span className="stat-label">Economy</span>
         </div>
+        <div className="stat-box">
+          <span className="stat-number">{190}</span>
+          <span className="stat-label">Matches</span>
+        </div>
       </div>
     </div>
   );
