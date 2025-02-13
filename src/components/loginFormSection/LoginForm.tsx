@@ -307,7 +307,7 @@ const LoginForm: React.FC = () => {
                                           fontSize: "1.5rem",
                                           color: "#fff",
                                         }}
-                                        onClick={handleLoginWithPassword}
+                                        onClick={handleLoginWithPassword} // Switch to password mode
                                       >
                                         Login With Password
                                       </button>
@@ -316,7 +316,7 @@ const LoginForm: React.FC = () => {
                               </div>
                             </div>
 
-                            {!showOtpField && (
+                            {!showOtpField && ( // Show Password field when OTP field is not visible
                               <div>
                                 <div className="input-field mx-auto mb-2">
                                   <label className="form-label">Password</label>

@@ -245,57 +245,10 @@ const YouTubeLink = ({ onPrev, onSubmit }: { onPrev: () => void; onSubmit: () =>
 
   return (
     <div className="form-container">
-      {/* <div className="add-btn text-end">
-        <button type="button" onClick={handleAddTournament}>
-          + Add Another Tournament
-        </button>
-      </div> */}
       {formik.values.tournament_name.map((_: string, tournamentIndex: number) => (
         <div key={tournamentIndex} className="tournament-form">
           <div>
             <h1>{`Tournament ${tournamentIndex + 1}`}</h1>
-          </div>
-          <div className="row">
-            {/* <div className="col-md-6">
-              <label htmlFor={`tournament_name[${tournamentIndex}]`}>Tournament Name</label>
-              <Field
-                id={`tournament_name[${tournamentIndex}]`}
-                name={`tournament_name[${tournamentIndex}]`}
-                type="text"
-                placeholder="Enter tournament name"
-                className="input-box"
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) => formik.setFieldValue(`tournament_name[${tournamentIndex}]`, e.target.value)}
-                value={formik.values.tournament_name[tournamentIndex]}
-              />
-            </div>
-            <div className="col-md-6">
-              <label htmlFor={`team_name[${tournamentIndex}]`}>Team Name</label>
-              <Field
-                id={`team_name[${tournamentIndex}]`}
-                name={`team_name[${tournamentIndex}]`}
-                type="text"
-                placeholder="Enter team name"
-                className="input-box"
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) => formik.setFieldValue(`team_name[${tournamentIndex}]`, e.target.value)}
-                value={formik.values.team_name[tournamentIndex]}
-              />
-            </div>
-            <div className="col-md-6">
-              <label htmlFor={`season[${tournamentIndex}]`}>Season</label>
-              <Field
-                as="select"
-                id={`season[${tournamentIndex}]`}
-                name={`season[${tournamentIndex}]`}
-                className="input-box"
-                onChange={(e: React.ChangeEvent<HTMLSelectElement>) => formik.setFieldValue(`season[${tournamentIndex}]`, e.target.value)}
-                value={formik.values.season[tournamentIndex]}
-              >
-                <option value="">Select a season</option>
-                <option value="2023">2023</option>
-                <option value="2024">2024</option>
-                <option value="2025">2025</option>
-              </Field>
-            </div> */}
           </div>
           <YouTubeLinkForm tournamentIndex={tournamentIndex} />
           <div className="row">

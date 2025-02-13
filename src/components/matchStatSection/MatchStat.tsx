@@ -54,10 +54,10 @@ const MatchStat = () => {
                 <p>Loading...</p>
               ) : (
                 <>
-                  <div className="col-md-8">
+                  <div className="col-lg-8">
                     <MatchStatLeftPart matchData={matchData} />
                   </div>
-                  <div className="col-md-4">
+                  <div className="col-lg-4">
                     <MatchStatRightPart matchData={matchData} />
                   </div>
                 </>

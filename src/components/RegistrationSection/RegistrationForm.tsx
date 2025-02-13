@@ -192,11 +192,8 @@ const RegistrationForm: React.FC = () => {
         notification.error({ message: "Registration failed!" });
       }
     }
+    // alert("Form submitted with values:");
   };
-
-
-
-
 
   return (
     <section>
@@ -224,7 +221,7 @@ const RegistrationForm: React.FC = () => {
                     <div className="row">
                       {/* First Column */}
                       <div className="mb-5 col-md-6">
-                        <label htmlFor="floatingFirstName">First Name</label>
+                        <label htmlFor="floatingFirstName">First Name*</label>
                         <Field
                           type="text"
                           className="form-control"
@@ -241,7 +238,7 @@ const RegistrationForm: React.FC = () => {
 
                       {/* Second Column */}
                       <div className="mb-5 col-md-6">
-                        <label htmlFor="floatingLastName">Last Name</label>
+                        <label htmlFor="floatingLastName">Last Name*</label>
                         <Field
                           type="text"
                           className="form-control"
@@ -256,7 +253,7 @@ const RegistrationForm: React.FC = () => {
                       </div>
 
                       <div className="mb-5 col-md-4">
-                        <label htmlFor="floatingEmail">Email</label>
+                        <label htmlFor="floatingEmail">Email*</label>
                         <Field
                           type="email"
                           className="form-control"
@@ -272,7 +269,7 @@ const RegistrationForm: React.FC = () => {
                       </div>
 
                       <div className="mb-5 col-md-4">
-                        <label htmlFor="floatingphone">Mobile Number</label>
+                        <label htmlFor="floatingphone">Mobile Number*</label>
                         <Field
                           type="tel"
                           className="form-control"
@@ -306,7 +303,7 @@ const RegistrationForm: React.FC = () => {
                       </div>
 
                       <div className="mb-5 col-md-4">
-                        <label htmlFor="floatingDob">DOB</label>
+                        <label htmlFor="floatingDob">DOB*</label>
                         <Field
                           className="form-control"
                           type="date"
@@ -325,7 +322,7 @@ const RegistrationForm: React.FC = () => {
                       </div>
 
                       <div className="mb-5 col-md-12">
-                        <label htmlFor="floatingaddress">Address</label>
+                        <label htmlFor="floatingaddress">Address*</label>
                         <Field
                           as="textarea"
                           className="form-control no-height"
@@ -342,7 +339,7 @@ const RegistrationForm: React.FC = () => {
 
                       {/* State Dropdown */}
                       <div className="mb-5 col-md-4">
-                        <label htmlFor="floatingState">State</label>
+                        <label htmlFor="floatingState">State*</label>
                         <Field
                           as="select"
                           className="form-select"
@@ -354,7 +351,7 @@ const RegistrationForm: React.FC = () => {
                           }
                         >
                           <option value="" className="placeholder-option">
-                            Select State
+                            Select State*
                           </option>
                           {states.map((state) => (
                             <option key={state.id} value={state.name}>
@@ -367,7 +364,7 @@ const RegistrationForm: React.FC = () => {
 
                       {/* City Dropdown */}
                       <div className="mb-5 col-md-4">
-                        <label htmlFor="floatingCity">City</label>
+                        <label htmlFor="floatingCity">City*</label>
                         <Field
                           as="select"
                           className="form-select"
@@ -379,7 +376,7 @@ const RegistrationForm: React.FC = () => {
                           }
                           disabled={!filteredCities.length}
                         >
-                          <option value="">Select City</option>
+                          <option value="">Select City*</option>
                           {filteredCities.map((city) => (
                             <option key={city.id} value={city.name}>
                               {city.name}
@@ -391,7 +388,7 @@ const RegistrationForm: React.FC = () => {
 
                       {/* Zone Dropdown */}
                       <div className="mb-5 col-md-4">
-                        <label htmlFor="floatingZone">Zone</label>
+                        <label htmlFor="floatingZone">Zone*</label>
                         <Field
                           as="select"
                           className="form-select"
@@ -403,7 +400,7 @@ const RegistrationForm: React.FC = () => {
                           ) => setFieldValue("zone_name", event.target.value)}
                           disabled={!filteredZones.length}
                         >
-                          <option value="">Select Zone</option>
+                          <option value="">Select Zone*</option>
                           {filteredZones.map((zone) => (
                             <option key={zone.id} value={zone.name}>
                               {zone.name}
@@ -414,7 +411,7 @@ const RegistrationForm: React.FC = () => {
                       </div>
 
                       <div className="mb-5 col-md-6">
-                        <label htmlFor="floatingTeamName">Team Name</label>
+                        <label htmlFor="floatingTeamName">Team Name*</label>
                         <Field
                           type="text"
                           className="form-control"
@@ -430,7 +427,7 @@ const RegistrationForm: React.FC = () => {
                       </div>
 
                       <div className="mb-5 col-md-6">
-                        <label htmlFor="floatingRole">Playing Role</label>
+                        <label htmlFor="floatingRole">Playing Role*</label>
                         <Field
                           as="select"
                           className="form-select"
@@ -456,7 +453,7 @@ const RegistrationForm: React.FC = () => {
                         <div className="mb-5 col-md-6">
                           <div className="lableIconWrap">
                             <label htmlFor="floatingBatsman">
-                              Batting Style
+                              Batting Style*
                             </label>
                             <img
                               src="images\batsman (1).svg"
@@ -489,7 +486,7 @@ const RegistrationForm: React.FC = () => {
                         <div className="mb-5 col-md-6">
                           <div className="lableIconWrap">
                             <label htmlFor="floatingBowling">
-                              Bowling Style
+                              Bowling Style*
                             </label>
                             <img
                               src="images\Bowler (1).svg"
@@ -534,7 +531,7 @@ const RegistrationForm: React.FC = () => {
                         <div className="mb-5 col-md-6">
                           <div className="lableIconWrap">
                             <label htmlFor="floatingWicket">
-                              Wicketkeeping
+                              Wicketkeeping*
                             </label>
                             <img
                               src="images\Wicketkeeper (1).svg"
@@ -594,7 +591,7 @@ const RegistrationForm: React.FC = () => {
 
                       {/* Fourth Column */}
                       <div className="mb-5 col-md-6">
-                        <label htmlFor="floatingPassword">Password</label>
+                        <label htmlFor="floatingPassword">Password*</label>
                         <Field
                           type="password"
                           className="form-control"
@@ -611,7 +608,7 @@ const RegistrationForm: React.FC = () => {
 
                       <div className="mb-5 col-md-6">
                         <label htmlFor="floatingConfirmPassword">
-                          Confirm Password
+                          Confirm Password*
                         </label>
                         <Field
                           type="password"
@@ -632,7 +629,7 @@ const RegistrationForm: React.FC = () => {
 
                       {/* Select Inputs */}
                       <div className="mb-5 col-md-6">
-                        <label htmlFor="floatingBloodGroup">Blood Group</label>
+                        <label htmlFor="floatingBloodGroup">Blood Group*</label>
                         <Field
                           as="select"
                           className="form-select"
@@ -677,7 +674,7 @@ const RegistrationForm: React.FC = () => {
                   <div className="col-lg-8 mx-auto">
                     <div className="row">
                       <div className="user-aadharPhoto mb-5 col-md-6">
-                        <label htmlFor="profilePhoto">Profile Photo</label>
+                        <label htmlFor="profilePhoto">Profile Photo*</label>
                         <UploadFile
                           // id="floatingProfilePhoto"
                           name="doc_profile_photo"
@@ -686,7 +683,7 @@ const RegistrationForm: React.FC = () => {
                       </div>
 
                       <div className="user-aadharPhoto mb-5 col-md-6">
-                        <label htmlFor="floatingAadharPhoto">ID Card</label>
+                        <label htmlFor="floatingAadharPhoto">ID Card*</label>
                         <UploadFile
                           // id="floatingAadharPhoto"
                           name="doc_id_card"

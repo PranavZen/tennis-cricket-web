@@ -3,7 +3,6 @@ import { Field, FormikProvider, useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import * as Yup from "yup";
-import StepNavigator from "./StepNavigator";
 import BattingPerformance from "./BattingPerformance";
 import BowlingPerformance from "./BowlingPerformance";
 import YouTubeLinkTab from "./youTubeLinkTab/YoutubeLinkTab";

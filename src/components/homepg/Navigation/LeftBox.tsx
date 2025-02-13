@@ -29,7 +29,7 @@ const LeftBox: React.FC<LoginButtonProps> = ({ isLoggedIn, handleLogout }) => {
           </Link>
         ) : (
           <>
-          <Link to="/loginPage" className="register-btn">
+          <Link to="/registrationPage" className="register-btn">
           <span>
             <i className="fa-regular fa-user"></i>
           </span>{" "}
