@@ -4,6 +4,8 @@ import "./domesticTournament.scss";
 import data from "./data";
 import Header from "../common/header/Header";
 import Spinner from "../common/spinner/Spinner";
+import { Modal, Checkbox, Button } from "antd"; 
+import { CheckboxChangeEvent } from "antd/es/checkbox";
 
 interface TournamentData {
   id: number;
@@ -22,33 +24,23 @@ const DomesticTournament = () => {
   const [selectedStatus, setSelectedStatus] = useState<string[]>([]);
   const [filteredData, setFilteredData] = useState(data);
   const [loading, setLoading] = useState(true);
+  
+  const [tempSelectedStatus, setTempSelectedStatus] = useState<string[]>([]);
 
   const handleCityChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedCity(event.target.value);
     setLoading(true);
   };
 
-  const handleStatusFilter = (e: React.ChangeEvent<HTMLInputElement>) => {
+
+  const handleStatusFilter = (e: CheckboxChangeEvent) => {
     const value = e.target.value;
-    setSelectedStatus((prev) =>
+    setTempSelectedStatus((prev) =>
       prev.includes(value)
         ? prev.filter((item) => item !== value)
         : [...prev, value]
     );
   };
-
-  // useEffect(() => {
-  //   const filteredCards = data.filter((TournamentData) => {
-  //     return (
-  //       (selectedStatus.length === 0 ||
-  //         selectedStatus.includes(TournamentData.matchStatus)) &&
-  //       (selectedCity === "All" ||
-  //         TournamentData.matchLocation.includes(selectedCity))
-  //     );
-  //   });
-  //   setFilteredData(filteredCards);
-  //   setLoading(false);
-  // }, [selectedCity, selectedStatus]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -67,13 +59,42 @@ const DomesticTournament = () => {
     return () => clearTimeout(timer);
   }, [selectedCity, selectedStatus]);
 
+  const filterContent = (
+    <div>
+      <label>
+        <Checkbox value="Ongoing" onChange={handleStatusFilter}> Ongoing </Checkbox>
+      </label>
+      <label>
+        <Checkbox value="Upcoming" onChange={handleStatusFilter}> Upcoming </Checkbox>
+      </label>
+      <label>
+        <Checkbox value="Cancelled" onChange={handleStatusFilter}> Cancelled </Checkbox>
+      </label>
+      <label>
+        <Checkbox value="Live" onChange={handleStatusFilter}> Live </Checkbox>
+      </label>
+    </div>
+  );
+
+  const openFilterModal = () => {
+    setIsFilterOpen(true);
+  };
+
+  const closeFilterModal = () => {
+    setIsFilterOpen(false);
+  };
+
+  const applyFilters = () => {
+    setSelectedStatus(tempSelectedStatus); 
+    setIsFilterOpen(false); 
+  };
+
   return (
     <section className="domesticTournamnet">
       <Header
         subtitle="All Domestic Cricket Tournaments"
         className="innerpageHeading"
       />
-
       <div className="tournament">
         <div className="container">
           <div className="row">
@@ -83,9 +104,7 @@ const DomesticTournament = () => {
                 <select value={selectedCity} onChange={handleCityChange}>
                   <option value="All">All</option>
                   <option value="Chennai">Chennai</option>
-                  <option value="Mumbai, Maharashtra">
-                    Mumbai, Maharashtra
-                  </option>
+                  <option value="Mumbai, Maharashtra">Mumbai, Maharashtra</option>
                   <option value="Kolkata">Kolkata</option>
                   <option value="Srinagar">Srinagar</option>
                   <option value="Bangalore">Bangalore</option>
@@ -101,57 +120,19 @@ const DomesticTournament = () => {
                 />
 
                 <button
-                  onClick={() => setIsFilterOpen((prev) => !prev)}
+                  onClick={openFilterModal}
                   className="filter-icon"
-                >
+                >  
                   <img src="images/filterIcon.svg" alt="filter-icon" />
                 </button>
               </div>
             </div>
-            <div className="abc">
-              {isFilterOpen && (
-                <div className="filter-content">
-                  <div>
-                    <label>
-                      <input
-                        type="checkbox"
-                        value="Ongoing"
-                        onChange={handleStatusFilter}
-                      />{" "}
-                      Ongoing
-                    </label>
-                    <label>
-                      <input
-                        type="checkbox"
-                        value="Upcoming"
-                        onChange={handleStatusFilter}
-                      />{" "}
-                      Upcoming
-                    </label>
-                    <label>
-                      <input
-                        type="checkbox"
-                        value="Cancelled"
-                        onChange={handleStatusFilter}
-                      />{" "}
-                      Cancelled
-                    </label>
-                    <label>
-                      <input
-                        type="checkbox"
-                        value="Live"
-                        onChange={handleStatusFilter}
-                      />{" "}
-                      Live
-                    </label>
-                  </div>
-                </div>
-              )}
-            </div>
+
+            {/*******************************/}
 
             {loading ? (
               <div>
-              <Spinner />
+                <Spinner />
               </div>
             ) : (
               filteredData.map((item: TournamentData) => (
@@ -172,6 +153,20 @@ const DomesticTournament = () => {
           </div>
         </div>
       </div>
+
+      <Modal
+        title="Filter Matches"
+        visible={isFilterOpen}
+        onCancel={closeFilterModal} 
+        footer={null} 
+      >
+        {filterContent}
+        <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '20px' }}>
+          <Button type="primary" onClick={applyFilters}>
+            OK
+          </Button>
+        </div>
+      </Modal>
     </section>
   );
 };

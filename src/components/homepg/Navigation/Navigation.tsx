@@ -7,7 +7,7 @@ import LeftBox from "./LeftBox";
 const Navigation = () => {
   const [prevScrollpos, setPrevScrollpos] = useState(0);
   const [scroll, setScroll] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false); // State to track if the menu is open
+  const [menuOpen, setMenuOpen] = useState(false); 
   const scrollRef = useRef<HTMLDivElement | null>(null);
   const [isLoggedIn, setLoggedIn] = useState(false);
   const navigate = useNavigate();
@@ -65,7 +65,7 @@ const Navigation = () => {
             aria-expanded={menuOpen}
             aria-label="Toggle navigation"
           >
-            {/* <span></span> */}
+            <span></span>
           </div>
 
           <div className="navWrap">
@@ -79,9 +79,8 @@ const Navigation = () => {
                 />
               </Link>
             </div>
-
             <MenuItems menuOpen={menuOpen} />
-            <LeftBox isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
+            <LeftBox isLoggedIn={isLoggedIn} handleLogout={handleLogout}/>
           </div>
         </div>
       </nav>

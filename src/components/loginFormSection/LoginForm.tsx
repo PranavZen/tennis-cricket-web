@@ -81,9 +81,9 @@ const LoginForm: React.FC = () => {
           }
         );
 
-        // console.log("responseLoginwqwqw", response.data.data.token);
+        // console.log("responseLoginwqwqw", response.data);
         // localStorage.setItem("token", response.data.data.token);
-        if (response.data) {
+        if (response.data.status === 'success'){
           notification.success({ message: "Login successfully!" });
           localStorage.setItem("token", response.data.data.token);
           localStorage.setItem("firstName", response.data.data.user.first_name);
@@ -99,7 +99,7 @@ const LoginForm: React.FC = () => {
             navigate("/profilePage");
             // window.location.reload();
           }, 2000);
-        } else {
+        } else{
           notification.error({
             message:
               response.data.error_message ||
@@ -173,9 +173,9 @@ const LoginForm: React.FC = () => {
           formData
         );
 
-        console.log("response", response);
+        // console.log("response", response);
 
-        console.log("Sending OTP to email:", email);
+        // console.log("Sending OTP to email:", email);
         notification.success({ message: "OTP sent successfully!" });
         setShowOtpField(true);
         setTimer(120);

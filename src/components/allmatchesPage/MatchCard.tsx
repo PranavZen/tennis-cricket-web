@@ -37,7 +37,11 @@ interface LiveCard {
   };
 }
 
-const MatchCard = () => {
+interface MatchCardProps {
+  selectedCity: string;
+}
+
+const MatchCard: React.FC<MatchCardProps> = ({ selectedCity }) => {
   const [liveCard, setLiveCard] = useState<LiveCard[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const navigate = useNavigate();
@@ -49,17 +53,22 @@ const MatchCard = () => {
         { tour_id: 9 }
       )
       .then((response) => {
-        setLiveCard(response.data.data.tour.matches);
+        let allMatches = response.data.data.tour.matches;
+        if (selectedCity && selectedCity !== "All") {
+          allMatches = allMatches.filter(
+            (match: any) => match.place.toLowerCase() === selectedCity.toLowerCase()
+          );
+        }
+        setLiveCard(allMatches);
         setLoading(false);
       })
       .catch((error) => {
         console.error("Error fetching match data:", error);
         setLoading(false);
       });
-  }, []);
+  }, [selectedCity]); 
 
   const singlePage = (id: any) => {
-    console.log("response of no.", id);
     navigate(`/matchStat/${id}`);
   };
 
@@ -71,34 +80,34 @@ const MatchCard = () => {
         liveCard.map((item) => {
           const mockCategory = "Individual Match (2024-2025)";
           return (
-          <div
-            className="col-lg-4 col-md-6 col-sm-12 mb-4"
-            key={item.id}
-            onClick={() => singlePage(item.no)}
-            style={{ cursor: 'pointer' }}
-          >
-            <div className="filter-card-container">
-              <MatchPointCard
-                category={mockCategory}
-                team1={item.teamA}
-                team2={item.teamB}
-                score1={item.electedToBat === item.teamA ? item.inning1.runs : item.inning2.runs}
-                score2={item.electedToBat === item.teamB ? item.inning1.runs : item.inning2.runs}
-                overs1={item.electedToBat === item.teamA ? item.inning1.overs : item.inning2.overs}
-                overs2={item.electedToBat === item.teamB ? item.inning1.overs : item.inning2.overs}
-                wicket1={item.electedToBat === item.teamA ? item.inning1.wickets : item.inning2.wickets}
-                wicket2={item.electedToBat === item.teamB ? item.inning1.wickets : item.inning2.wickets}
-                logo1={item.logo1}
-                logo2={item.logo2}
-                winMsg={item.tossWon}
-                electedToBat={item.electedToBat}
-                stadium={`${item.ground}, ${item.place}, ${item.date}, ${item.starts}`}
-                showStadiumInfo={true}
-              />
+            <div
+              className="col-lg-4 col-md-6 col-sm-12 mb-4"
+              key={item.id}
+              onClick={() => singlePage(item.no)}
+              style={{ cursor: "pointer" }}
+            >
+              <div className="filter-card-container">
+                <MatchPointCard
+                  category={mockCategory}
+                  team1={item.teamA}
+                  team2={item.teamB}
+                  score1={item.electedToBat === item.teamA ? item.inning1.runs : item.inning2.runs}
+                  score2={item.electedToBat === item.teamB ? item.inning1.runs : item.inning2.runs}
+                  overs1={item.electedToBat === item.teamA ? item.inning1.overs : item.inning2.overs}
+                  overs2={item.electedToBat === item.teamB ? item.inning1.overs : item.inning2.overs}
+                  wicket1={item.electedToBat === item.teamA ? item.inning1.wickets : item.inning2.wickets}
+                  wicket2={item.electedToBat === item.teamB ? item.inning1.wickets : item.inning2.wickets}
+                  logo1={item.logo1}
+                  logo2={item.logo2}
+                  winMsg={item.tossWon}
+                  electedToBat={item.electedToBat}
+                  stadium={`${item.ground}, ${item.place}, ${item.date}, ${item.starts}`}
+                  showStadiumInfo={true}
+                />
+              </div>
             </div>
-          </div>
-          )
-})
+          );
+        })
       ) : (
         <p>No match data available.</p>
       )}

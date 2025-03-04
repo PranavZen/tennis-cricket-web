@@ -17,11 +17,12 @@ const LiveMatchDropdown: React.FC<DropdownProps> = ({ selectedCity, handleCityCh
           onChange={handleCityChange}
         >
           <option value="All">All</option>
-          <option value="Kolkata">Kolkata</option>
+          <option value="Mumbles">Mumbles</option>
+          <option value="Mumbake">Mumbake</option>
           <option value="Mumbai">Mumbai</option>
-          <option value="Chennai">Chennai</option>
-          <option value="Bangalore">Bangalore</option>
-          <option value="Hyderabad">Hyderabad</option>
+          <option value="Kalyan">Kalyan</option>
+          <option value="Ambernath">Ambernath</option>
+          <option value="Badlapur">Badlapur</option>
         </select>
       </>
     </div>

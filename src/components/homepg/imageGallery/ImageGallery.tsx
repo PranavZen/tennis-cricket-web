@@ -16,7 +16,6 @@ const ImageGallery: React.FC = () => {
           <div className="row row-cols-2 row-cols-lg-4 mt-0 g-4 mt-4">
             <div className="col">
               <Link
-                data-fancybox
                 to="images\fluidImg1.png"
                 className="comon-links-divb05"
               >
@@ -25,6 +24,7 @@ const ImageGallery: React.FC = () => {
                     className="img-fluid"
                     src="images\fluidImg1.png"
                     alt="pbnm"
+                    data-fancybox="data-fancybox"
                     loading="lazy"
                   />
                 </figure>
