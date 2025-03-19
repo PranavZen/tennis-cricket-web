@@ -46,14 +46,14 @@ const ClaimScoreTab = () => {
             },
           }
         );
-        console.log("claimResponse", response);
+        // console.log("claimResponse", response);
         toast.success("Claim score submitted successfully!", {
           autoClose: 3000,
           style: {
             fontSize: "15px", // Set your desired font size here
           },
         });
-        console.log("values", values);
+        // console.log("values", values);
         resetForm();
         setShowTabs(false); // Hide the tab view after submission if needed
       } catch (error) {
@@ -77,7 +77,7 @@ const ClaimScoreTab = () => {
             },
           }
         );
-        console.log("rrrrr", response);
+        // console.log("rrrrr", response);
         setClaimScore(response.data.message.data);
         // console.log("1212111111", response);
         setLoading(false);

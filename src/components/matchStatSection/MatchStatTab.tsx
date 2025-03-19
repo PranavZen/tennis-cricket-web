@@ -29,7 +29,7 @@ const MatchStatTab: React.FC<MatchDataProps> = ({ matchData }) => {
               key={tab}
               className={`tab ${activeTab === tab ? "active" : ""}`}
               onClick={() => {
-                console.log("Tab clicked:", tab);
+                // console.log("Tab clicked:", tab);
                 setActiveTab(tab);
               }}
             >

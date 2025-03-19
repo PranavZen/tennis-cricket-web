@@ -60,7 +60,7 @@ const MatchesTab: React.FC = () => {
   }, []);
 
   const singlePage = (id: any) => {
-    console.log("response of no.", id)
+    // console.log("response of no.", id)
     navigate(`/matchStat/${id}`)
   }
 

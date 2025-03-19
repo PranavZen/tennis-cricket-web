@@ -28,7 +28,7 @@ const LeaderBoardTab: React.FC = () => {
         { tour_id: 9}
       )
       .then((response) => {
-        console.log("API Responseqwqwqwqw:", response.data);
+        // console.log("API Responseqwqwqwqw:", response.data);
         setBattersData(response.data.data.batters);
         setBowlersData(response.data.data.bowlers);
         setFieldingData(response.data.data.fielding);

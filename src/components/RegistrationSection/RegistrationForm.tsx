@@ -81,7 +81,7 @@ const RegistrationForm: React.FC = () => {
           "https://my.tc.popopower.com/api/get-states/101"
         );
         setState(response.data);
-        console.log("States Data:", response.data);
+        // console.log("States Data:", response.data);
       } catch (error) {
         console.error("Error fetching states:", error);
       }
@@ -98,7 +98,7 @@ const RegistrationForm: React.FC = () => {
             `https://my.tc.popopower.com/api/get-cities/${selectedState}`
           );
           setCity(response.data);
-          console.log("Cities Data:", response.data);
+          // console.log("Cities Data:", response.data);
         } catch (error) {
           console.error("Error fetching cities:", error);
         }

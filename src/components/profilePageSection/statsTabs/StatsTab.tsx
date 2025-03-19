@@ -88,7 +88,7 @@ const StatsTab: React.FC = () => {
     axios
       .get(`https://my.tc.popopower.com/api/get-player-stats/${player_id}`, {})
       .then((response) => {
-        console.log("Fetched Data: ", response.data.message.data);
+        // console.log("Fetched Data: ", response.data.message.data);
         const playerData: PlayerStats = response.data.message.data;
 
         localStorage.setItem("matches", playerData.batting.matches.toString());

@@ -25,7 +25,7 @@ interface UploadFileProps {
 
   const handleFileUpload = (file: File) => {
     if (!file) return;
-    console.log("file", file);
+    // console.log("file", file);
     const fileType = file.type.split("/")[1];
     if (!imagesTypes.includes(fileType)) {
       alert("Please upload a valid image file.");
@@ -69,10 +69,10 @@ interface UploadFileProps {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
       const file = e.target.files[0]; // Access the first file
-      console.log("File selected:", file);
+      // console.log("File selected:", file);
       handleFileUpload(file);
     } else {
-      console.log("No file selected.");
+      // console.log("No file selected.");
     }
   };
 

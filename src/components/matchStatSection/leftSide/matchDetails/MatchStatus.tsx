@@ -33,7 +33,7 @@ interface MatchDataProps {
 }
 
 const MatchStatus: React.FC<MatchDataProps> = ({ matchData }) => {
-  console.log("matchData", matchData);
+  // console.log("matchData", matchData);
 
   return (
     <>

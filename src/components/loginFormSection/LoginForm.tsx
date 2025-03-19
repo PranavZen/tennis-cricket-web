@@ -83,7 +83,7 @@ const LoginForm: React.FC = () => {
           }
         );
 
-        console.log("responseLoginwqwqwqqqqqqqqqqwqwqwqwqw", response.data);
+        // console.log("responseLoginwqwqwqqqqqqqqqqwqwqwqwqw", response.data);
 
         // localStorage.setItem("token", response.data.data.token);
         if (response.data.status === "success") {

@@ -23,7 +23,7 @@ const MatchStat = () => {
         }
       )
       .then((response) => {
-        console.log("response", response);
+        // console.log("response", response);
         setMatchData(response.data.data.tour.matches);
         setLoading(false);
       })

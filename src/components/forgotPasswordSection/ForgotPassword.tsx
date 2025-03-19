@@ -53,10 +53,10 @@ const ForgotPassword: React.FC = () => {
     values: { email: string; otp?: string },
     { resetForm }: { resetForm: () => void }
   ) => {
-    console.log("Submitted values:", values); // Debugging
+    // console.log("Submitted values:", values); // Debugging
     if (showOtpField) {
       if (values.otp === "123456") {
-        console.log("OTP verified successfully:", values.otp);
+        // console.log("OTP verified successfully:", values.otp);
         toast.success("OTP verified successfully! You can now log in.");
         setShowOtpField(false);
         resetForm();
