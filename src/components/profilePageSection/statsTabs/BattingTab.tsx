@@ -7,16 +7,17 @@ interface BattingStats {
 }
 
 interface Batting {
-  fifty: number;
-  hundred: number;
+  fifties: number;
+  hundreds: number;
   fours: number;
   sixes: number;
-  highest: number;
-  average: number;
+  highest_score: number;
+  batting_average: number;
   runs: number;
   balls: number;
   innings: number;
-  sr: number;
+  strike_rate: number;
+  matches: number;
 }
 
 const BattingTab: React.FC<BattingStats> = ({ batters }) => {
@@ -46,11 +47,11 @@ const BattingTab: React.FC<BattingStats> = ({ batters }) => {
       {/* {battingData ? ( */}
       <div className="stats-container">
         <div className="stat-box">
-          <span className="stat-number">{batters.fifty}</span>
+          <span className="stat-number">{batters.fifties}</span>
           <span className="stat-label">Fifty</span>
         </div>
         <div className="stat-box">
-          <span className="stat-number">{batters.hundred}</span>
+          <span className="stat-number">{batters.hundreds}</span>
           <span className="stat-label">Hundred</span>
         </div>
         <div className="stat-box">
@@ -62,11 +63,11 @@ const BattingTab: React.FC<BattingStats> = ({ batters }) => {
           <span className="stat-label">Sixes</span>
         </div>
         <div className="stat-box">
-          <span className="stat-number">{batters.highest}</span>
+          <span className="stat-number">{batters.highest_score}</span>
           <span className="stat-label">Highest</span>
         </div>
         <div className="stat-box">
-          <span className="stat-number">{Number(batters.average).toFixed(2) || "0.00"}</span>
+          <span className="stat-number">{Number(batters.batting_average).toFixed(2) || "0.00"}</span>
           <span className="stat-label">Average</span>
         </div>
         <div className="stat-box">
@@ -82,11 +83,11 @@ const BattingTab: React.FC<BattingStats> = ({ batters }) => {
           <span className="stat-label">Innings</span>
         </div>
         <div className="stat-box">
-          <span className="stat-number">{Number(batters.sr).toFixed(2)}</span>
+          <span className="stat-number">{Number(batters.strike_rate).toFixed(2)}</span>
           <span className="stat-label">SR</span>
         </div>
         <div className="stat-box">
-          <span className="stat-number">{190}</span>
+          <span className="stat-number">{batters.matches}</span>
           <span className="stat-label">Matches</span>
         </div>
       </div>

@@ -92,6 +92,16 @@ body {
   margin-bottom: 3rem;
   border-bottom: 2px solid rgb(229, 229, 229);
 }
+@media (max-width: 480px) {
+  .allWrapper .content .inner-tabs {
+    justify-content: flex-start;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-color: #1D7336;
+    gap: 3rem;
+    width: 100%;
+  }
+}
 .allWrapper .content .inner-tabs .tab-btn {
   font-size: 2rem;
   font-weight: 500;
@@ -108,9 +118,14 @@ body {
   border-left: none;
   color: #1d7336;
 }
+@media (max-width: 480px) {
+  .allWrapper .content .inner-tabs .tab-btn {
+    font-size: 1.5rem;
+  }
+}
 .allWrapper .content .form-container {
   max-width: 900px;
-  margin: 2rem auto;
+  margin: 0rem auto;
   padding: 2rem;
 }
 .allWrapper .content .form-container label {
@@ -148,7 +163,7 @@ body {
   display: flex;
   justify-content: space-between;
 }
-.allWrapper .content .form-container button {
+.allWrapper .content .form-container .claim-button {
   padding: 0.8rem 1.5rem;
   font-size: 1.4rem;
   color: #fff;
@@ -158,10 +173,10 @@ body {
   cursor: pointer;
   transition: background-color 0.3s ease-in-out;
 }
-.allWrapper .content .form-container button:hover {
+.allWrapper .content .form-container .claim-button:hover {
   background-color: #0a2e0c;
 }
-.allWrapper .content .form-container button:active {
+.allWrapper .content .form-container .claim-button:active {
   transform: scale(0.98);
 }
 .allWrapper .content .form-container div {
@@ -269,7 +284,7 @@ body {
 .status-table th,
 .status-table td {
   padding: 2rem;
-  text-align: left;
+  text-align: center;
   font-size: 1.5rem;
 }
 

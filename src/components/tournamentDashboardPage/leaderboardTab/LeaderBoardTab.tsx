@@ -24,8 +24,8 @@ const LeaderBoardTab: React.FC = () => {
   useEffect(() => {
     axios
       .post(
-        `http://ec2-65-2-77-140.ap-south-1.compute.amazonaws.com:8080/api/statistics/fetchTournamentStats`,
-        { tour_id: 9 }
+        `https://api.tenniscricket.in/api/statistics/fetchTournamentStats`,
+        { tour_id: 9}
       )
       .then((response) => {
         console.log("API Responseqwqwqwqw:", response.data);

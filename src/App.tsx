@@ -15,6 +15,8 @@ import MatchStat from "./components/matchStatSection/MatchStat";
 import MatchDetailCard from "./components/matchDetails/MatchDetailCard";
 import ProfilePage from "./components/profilePageSection/ProfilePage";
 import Slidertop from "./components/homepg/Slider/SliderTop";
+import ContactUs from "./components/contact/ContactUs";
+import AboutUs from "./components/AboutUs/AboutUs";
 
 function App() {
   return (
@@ -35,6 +37,8 @@ function App() {
         <Route path="/profilePage" element={<ProfilePage />} />
         <Route path="/matchDetailCard" element={<MatchDetailCard />} />
         <Route path="/matchStat/:id" element={<MatchStat />} />
+        <Route path="/contact-us" element={<ContactUs/>}/>
+        <Route path="/about-us" element={<AboutUs/>}/>
       </Routes>
 
       <Footer />

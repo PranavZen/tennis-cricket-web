@@ -38,7 +38,7 @@
   }
 }
 .navbar .navWrap .navbar-collapse {
-  justify-content: flex-end;
+  justify-content: end;
 }
 @media (max-width: 991px) {
   .navbar .navWrap .navbar-collapse {

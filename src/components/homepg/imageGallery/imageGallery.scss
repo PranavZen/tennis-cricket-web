@@ -1,274 +1,289 @@
 @import "../../../assets/scss/mixin";
 .background {
-    width: 100%;
-    // height: 677px;
-    height: auto;
-    background-color: #D6EDFF;
-  }
-  
-  .news-sectiondiv {
-    // background-image: url(https://my.ispl-t10.com/assets/image/foooter-bg.png);
-    // background-size: 100%;
-    // position: relative;
-    // padding: 6rem 0 8rem;
-    // .container {
-    //   margin: 0 auto !important;
-    //   @media (min-width: 576px) {
-    //     width: 540px;
-    //   }
-    //   @media (min-width: 768px) {
-    //     width: 720px;
-    //   }
-    //   @media (min-width: 992px) {
-    //     width: 960px;
-    //   }
-    //   @media (min-width: 1200px) {
-    //     width: 1140px;
-    //   }
-    // }
+  width: 100%;
+  // height: 677px;
+  height: auto;
+  background-color: #d6edff;
+}
 
-    .mindle-heading {
+.news-sectiondiv {
+  // background-image: url(https://my.ispl-t10.com/assets/image/foooter-bg.png);
+  // background-size: 100%;
+  // position: relative;
+  // padding: 6rem 0 8rem;
+  // .container {
+  //   margin: 0 auto !important;
+  //   @media (min-width: 576px) {
+  //     width: 540px;
+  //   }
+  //   @media (min-width: 768px) {
+  //     width: 720px;
+  //   }
+  //   @media (min-width: 992px) {
+  //     width: 960px;
+  //   }
+  //   @media (min-width: 1200px) {
+  //     width: 1140px;
+  //   }
+  // }
+
+  .mindle-heading {
     //   padding-top: 20px !important;
     //   padding-bottom: 20px !important;
-      display: inline-block;
-      display: flex;
-      justify-content: space-between;
-      width: 100%;
-      position: relative;
-      z-index: 1;
-      h6 {
-        @include subTitleTypo;
-      }
-      a {
-        font-family: 'Exo 2';
-        font-size: 2rem;
-        font-weight: bold;
-        color: #1D7336;
-      }
+    display: inline-block;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+    h6 {
+      @include subTitleTypo;
+    }
+    a {
+      font-family: "Exo 2";
+      font-size: 2rem;
+      font-weight: bold;
+      color: #1d7336;
+    }
     //   .light-tsext01 {
     //     top: 15px !important;
     //     color: #f2f7f3 !important;
     //     opacity: 15%;
     //   }
+  }
+
+  // .mindle-heading h5 {
+  //   font-family: "Font Awesome 5 Free";
+  //   color: #0047c0;
+  //   font-size: 28px;
+  // }
+
+  // .mindle-heading h1 {
+  //   text-transform: uppercase;
+  //   color: #ffffff;
+  //   font-size: 45px;
+  //   margin-top: 10px;
+  //   letter-spacing: 1px;
+  //   font-weight: 700;
+  // }
+
+  // .mindle-heading span {
+  //   text-transform: uppercase;
+  //   color: #19398a;
+  //   font-weight: 700;
+  // }
+
+  @media (max-width: 900px) {
+    .mindle-heading h1 {
+      font-size: 35px;
     }
 
-    // .mindle-heading h5 {
-    //   font-family: "Font Awesome 5 Free";
-    //   color: #0047c0;
-    //   font-size: 28px;
-    // }
-
-    // .mindle-heading h1 {
-    //   text-transform: uppercase;
-    //   color: #ffffff;
-    //   font-size: 45px;
-    //   margin-top: 10px;
-    //   letter-spacing: 1px;
-    //   font-weight: 700;
-    // }
-
-    // .mindle-heading span {
-    //   text-transform: uppercase;
-    //   color: #19398a;
-    //   font-weight: 700;
-    // }
-
-    @media (max-width: 900px) {
-      .mindle-heading h1 {
-        font-size: 35px;
-      }
-
-      .mindle-heading h1 span {
-        font-size: 35px;
-      }
+    .mindle-heading h1 span {
+      font-size: 35px;
     }
-    @media (max-width: 375px) {
-      .mindle-heading h1 {
-        font-size: 35px;
-      }
-
-      .mindle-heading h1 span {
-        font-size: 35px;
-      }
+  }
+  @media (max-width: 375px) {
+    .mindle-heading h1 {
+      font-size: 35px;
     }
 
-    .card-body h5 {
-      color: rgb(255, 255, 255);
-      font-size: 20px;
+    .mindle-heading h1 span {
+      font-size: 35px;
     }
-    .card-body {
-      border-radius: 10px;
-      padding: 1rem;
-    }
-    .outer-layer {
-      overflow: hidden;
-    }
+  }
 
-    .card-img-top {
-      width: 100%;
-      border-radius: 50% !important;
-    }
+  .card-body h5 {
+    color: rgb(255, 255, 255);
+    font-size: 20px;
+  }
+  .card-body {
+    border-radius: 10px;
+    padding: 1rem;
+  }
+  .outer-layer {
+    overflow: hidden;
+  }
 
+  .card-img-top {
+    width: 100%;
+    border-radius: 50% !important;
+  }
+
+  .comon-links-divb05 {
+    display: inline-block;
+    height: 250px;
+    overflow: hidden;
+    width: 100%;
+    border-radius: 8px;
+  }
+
+  .comon-links-divb05 figure {
+    width: 100%;
+    height: 250px;
+    margin: 0;
+    position: relative;
+  }
+
+  .comon-links-divb05 figure figcaption {
+    position: absolute;
+    width: 120px;
+    height: 37px;
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.5);
+    text-align: center;
+    bottom: 16px;
+    left: 19px;
+    color: #fff;
+    display: grid;
+    align-content: center;
+  }
+
+  .comon-links-divb05 figure img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+
+  @media (max-width: 668px) {
     .comon-links-divb05 {
-      display: inline-block;
-      height: 250px;
-      overflow: hidden;
+      height: 190px;
       width: 100%;
-      border-radius: 8px;
     }
 
     .comon-links-divb05 figure {
-      width: 100%;
-      height: 250px;
-      margin: 0;
-      position: relative;
+      height: 100%;
     }
+  }
+}
 
-    .comon-links-divb05 figure figcaption {
-      position: absolute;
-      width: 120px;
-      height: 37px;
-      border-radius: 8px;
-      background: rgba(0, 0, 0, 0.5);
-      text-align: center;
-      bottom: 16px;
-      left: 19px;
-      color: #fff;
-      display: grid;
-      align-content: center;
-    }
+.top-list-turnament {
+  display: inline-block;
+  width: 100%;
+  position: relative;
+  background-image: url(https://my.ispl-t10.com/assets/new_css/images/bg-st.jpg);
+  background-position: center;
+  background-size: cover;
+  padding: 8rem 0 14rem;
+  margin-top: 0;
 
-    .comon-links-divb05 figure img {
+  .bgi-text {
+    color: #fff !important;
+    opacity: 15%;
+  }
+  .bg-img {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    margin: auto;
+    img {
       object-fit: cover;
       width: 100%;
       height: 100%;
     }
-
-    @media (max-width: 668px) {
-      .comon-links-divb05 {
-        height: 190px;
-        width: 100%;
-      }
-
-      .comon-links-divb05 figure {
-        height: 100%;
-      }
+  }
+  .container {
+    position: relative;
+    z-index: 1;
+    margin: 0 auto !important;
+    @media (min-width: 576px) {
+      width: 540px;
+    }
+    @media (min-width: 768px) {
+      width: 720px;
+    }
+    @media (min-width: 992px) {
+      width: 960px;
+    }
+    @media (min-width: 1200px) {
+      width: 1140px;
+    }
+  }
+  .top-imgn {
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 100%;
+    top: -10px;
+    z-index: 2;
+    img {
+      object-fit: contain;
+      width: 100%;
     }
   }
 
-  .top-list-turnament {
+  .mindle-heading {
+    padding-top: 20px !important;
+    padding-bottom: 20px !important;
     display: inline-block;
     width: 100%;
     position: relative;
-    background-image: url(https://my.ispl-t10.com/assets/new_css/images/bg-st.jpg);
-    background-position: center;
-    background-size: cover;
-    padding: 8rem 0 14rem;
-    margin-top: 0;
-
-    .bgi-text {
-      color: #fff !important;
+    z-index: 1;
+    h1 {
+      text-shadow: none !important;
+      color: #ffffff;
+    }
+    .light-tsext01 {
+      top: 15px !important;
+      color: #f2f7f3 !important;
       opacity: 15%;
     }
-    .bg-img {
-      position: absolute;
-      left: 0;
-      right: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      display: inline-block;
-      margin: auto;
-      img {
-        object-fit: cover;
-        width: 100%;
-        height: 100%;
-      }
-    }
-    .container {
-      position: relative;
-      z-index: 1;
-      margin: 0 auto !important;
-      @media (min-width: 576px) {
-        width: 540px;
-      }
-      @media (min-width: 768px) {
-        width: 720px;
-      }
-      @media (min-width: 992px) {
-        width: 960px;
-      }
-      @media (min-width: 1200px) {
-        width: 1140px;
-      }
-    }
-    .top-imgn {
-      position: absolute;
-      left: 0;
-      right: 0;
-      width: 100%;
-      top: -10px;
-      z-index: 2;
-      img {
-        object-fit: contain;
-        width: 100%;
-      }
-    }
+  }
 
-    .mindle-heading {
-      padding-top: 20px !important;
-      padding-bottom: 20px !important;
-      display: inline-block;
-      width: 100%;
-      position: relative;
-      z-index: 1;
-      h1 {
-        text-shadow: none !important;
-        color: #ffffff;
-      }
-      .light-tsext01 {
-        top: 15px !important;
-        color: #f2f7f3 !important;
-        opacity: 15%;
-      }
-    }
+  .mindle-heading h5 {
+    color: #0047c0;
+    font-size: 28px;
+  }
 
-    .mindle-heading h5 {
-      color: #0047c0;
-      font-size: 28px;
-    }
+  .mindle-heading h1 {
+    text-transform: uppercase;
+    color: #ffffff;
+    font-size: 45px;
+    margin-top: 10px;
+    letter-spacing: 1px;
+    font-weight: 700;
+  }
+ 
+  .fancybox-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+  }
 
+  .fancybox-image {
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+
+
+  @media (max-width: 900px) {
     .mindle-heading h1 {
-      text-transform: uppercase;
-      color: #ffffff;
-      font-size: 45px;
-      margin-top: 10px;
-      letter-spacing: 1px;
-      font-weight: 700;
+      font-size: 35px;
     }
 
-    @media (max-width: 900px) {
-      .mindle-heading h1 {
-        font-size: 35px;
-      }
-
-      .mindle-heading h1 span {
-        font-size: 35px;
-      }
+    .mindle-heading h1 span {
+      font-size: 35px;
     }
-    @media (max-width: 375px) {
-      .mindle-heading h1 {
-        font-size: 35px;
-      }
-
-      .mindle-heading h1 span {
-        font-size: 35px;
-      }
+  }
+  @media (max-width: 375px) {
+    .mindle-heading h1 {
+      font-size: 35px;
     }
 
-    .mindle-heading span {
-      text-transform: uppercase;
-      color: #19398a;
-      font-weight: 700;
+    .mindle-heading h1 span {
+      font-size: 35px;
     }
+  }
+
+  .mindle-heading span {
+    text-transform: uppercase;
+    color: #19398a;
+    font-weight: 700;
+  }
 }

@@ -45,7 +45,7 @@
     }
 
     .navbar-collapse {
-      justify-content: flex-end;
+      justify-content: end;
 
       @include mid-991-tab {
         // background: linear-gradient(90deg, rgb(58, 98, 62) 19%, rgb(84, 143, 57) 100%);

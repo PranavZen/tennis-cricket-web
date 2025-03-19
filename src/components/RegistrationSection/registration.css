@@ -67,9 +67,6 @@
     font-size: 1.5rem;
   }
 }
-.Reg-form .form-fields label::after {
-  content: " * ";
-}
 .Reg-form .form-fields select,
 .Reg-form .form-fields option {
   color: black;

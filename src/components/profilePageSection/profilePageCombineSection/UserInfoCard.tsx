@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../../../components/profilePageSection/profilePageCombineSection/userInfoCard.scss";
+import axios from "axios";
 
 const UserInfoCard = () => {
   const [isModalOpen, setModalOpen] = useState(false);
@@ -12,11 +13,44 @@ const UserInfoCard = () => {
   const firstName = localStorage.getItem("firstName");
   const surname = localStorage.getItem("surname");
   const cityName = localStorage.getItem("cityName");
-  const profileImg = localStorage.getItem("profileImage");
+  // const profileImg = localStorage.getItem("profileImage");
   const battingStyle = localStorage.getItem("battingStyle");
   const bowlingStyle = localStorage.getItem("bowlingStyle");
-  const runs = localStorage.getItem("runs");
-  const wickets = localStorage.getItem("wickets");
+
+  // console.log("bowlingStylebowlingStyle", bowlingStyle);
+  const matches = localStorage.getItem("matches") ?? "0";
+  const runs = localStorage.getItem("runs") ?? "0";
+  const wickets = localStorage.getItem("wickets") ?? "0";
+
+  const profileImg = localStorage.getItem('profile-image')
+
+  // *****************************************************************
+  interface BattersStats {
+    matches: number;
+    runs: number;
+    // wickets: number;
+  }
+
+  interface BowlersStats {
+    wickets: number;
+  }
+
+  const [batters, setBatters] = useState<BattersStats | null>(null);
+  const [bowlers, setBowlers] = useState<BowlersStats | null>(null);
+
+  const player_id = localStorage.getItem("player_id");
+  useEffect(() => {
+    axios
+      .get(`https://my.tc.popopower.com/api/get-player-stats/${player_id}`, {})
+      .then((response) => {
+        setBatters(response.data.message.data.batting);
+        setBowlers(response.data.message.data.bowling)           
+      })
+      .catch((error) => {
+        console.error("Error fetching player stats:", error);
+        // setLoading(false);
+      });
+  }, []);
 
   return (
     <div className="background-image">
@@ -25,7 +59,7 @@ const UserInfoCard = () => {
           <div className="profile-container">
             <div className="profile-picture">
               <img
-                src={profileImage}
+                src={`https://my.tc.popopower.com/${profileImg}`}
                 alt="profile-picture"
                 onClick={openModal}
               />
@@ -35,28 +69,29 @@ const UserInfoCard = () => {
                 <h1 className="user-name">
                   {firstName} {surname}
                 </h1>
-                <p className="user-location">{cityName} 154 Views</p>
+                <p className="user-location">{cityName}</p>
+                {/* 154 Views */}
                 <p className="player-type">
-                  {battingStyle} | {bowlingStyle}
+                  {battingStyle === 'null' ? '' : battingStyle} | {bowlingStyle === 'null' ? '' : bowlingStyle}
                 </p>
               </div>
 
               <div className="score-container">
                 <ul className="score-list">
                   <li className="score-item">
-                    <div className="score-number">190</div>
+                    <div className="score-number">{batters?.matches}</div>
                     <div className="score-label">
                       <i className="fa-solid fa-handshake"></i> MATCHES
                     </div>
                   </li>
                   <li className="score-item">
-                    <div className="score-number">{runs}19</div>
+                    <div className="score-number">{batters?.runs}</div>
                     <div className="score-label">
                       <i className="fa-solid fa-chart-line"></i> RUNS
                     </div>
                   </li>
                   <li className="score-item">
-                    <div className="score-number">{wickets}3</div>
+                    <div className="score-number">{bowlers?.wickets}</div>
                     <div className="score-label">
                       <i className="fa-solid fa-bullseye"></i> WICKETS
                     </div>

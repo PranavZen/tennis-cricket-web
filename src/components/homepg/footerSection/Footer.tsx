@@ -60,7 +60,7 @@ const Footer = () => {
 
         <div className="footer-links">
           <a href="#">About</a>
-          <a href="#">Career</a>
+          {/* <a href="#">Career</a> */}
           <a href="#">Privacy Policy</a>
           <a href="#">Terms of Use</a>
           <a href="#">Feedback</a>
@@ -68,7 +68,6 @@ const Footer = () => {
         </div>
         </div>
 
-        {/* Footer Bottom Section */}
         <div className="footer-bottom">
           <p className="left-text">© TENNISCRICKET 2024 | All Rights Reserved</p>
           <p className="right-text"><span>Crafted by: Version-Next</span></p>

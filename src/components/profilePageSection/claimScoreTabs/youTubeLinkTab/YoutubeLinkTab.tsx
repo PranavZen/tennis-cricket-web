@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useFormikContext, Field, FieldArray } from "formik";
 import "../../../../components/profilePageSection/profilePage.scss";
+import ClaimButton from "../../../common/claimButton/ClaimButton";
 
 const YouTubeLinkForm = ({ tournamentIndex }: { tournamentIndex: number }) => {
   const formik = useFormikContext<any>();
@@ -141,13 +142,22 @@ const YouTubeLink = ({ onPrev, onSubmit }: { onPrev: () => void; onSubmit: () =>
   const formik = useFormikContext<any>();
 
   useEffect(() => {
-    if (!Array.isArray(formik.values.youtube_link) || formik.values.youtube_link.length === 0) {
-      formik.setFieldValue("youtube_link", [[{ link: "", timestamps: [{ from: "", to: "", remark: "" }] }]]);
-    }
-    if (!Array.isArray(formik.values.tournament_name)) {
-      formik.setFieldValue("tournament_name", [""]); // Set a default array if tournament_name is not an array
-    }
-  }, [formik]);
+  //   if (!Array.isArray(formik.values.youtube_link) || formik.values.youtube_link.length === 0) {
+  //     formik.setFieldValue("youtube_link", [[{ link: "", timestamps: [{ from: "", to: "", remark: "" }] }]]);
+  //   }
+  //   if (!Array.isArray(formik.values.tournament_name)) {
+  //     formik.setFieldValue("tournament_name", [""]); // Set a default array if tournament_name is not an array
+  //   }
+  // }, [formik]);
+  if (!Array.isArray(formik.values.tournament_name)) {
+    formik.setFieldValue("tournament_name", [""]); // Set a default array if tournament_name is not an array
+  }
+
+  // Ensure youtube_link is initialized correctly
+  if (!Array.isArray(formik.values.youtube_link) || formik.values.youtube_link.length === 0) {
+    formik.setFieldValue("youtube_link", [[{ link: "", timestamps: [{ from: "", to: "", remark: "" }] }]]);
+  }
+}, [formik]);
 
   return (
     <div className="form-container">
@@ -156,9 +166,9 @@ const YouTubeLink = ({ onPrev, onSubmit }: { onPrev: () => void; onSubmit: () =>
           {/* <h1>{`Match ${tournamentIndex + 1}`}</h1> */}
           <YouTubeLinkForm tournamentIndex={tournamentIndex} />
           <div className="row">
-            <div className="col-12 btn-style">
-              <button type="button" onClick={onPrev} disabled={formik.isSubmitting}>Previous</button>
-              <button type="button" onClick={() => { formik.handleSubmit(); }}>Claim Score</button>
+            <div className="btn-style">
+              <button className="claim-button" type="button" onClick={onPrev} disabled={formik.isSubmitting}>Previous</button>
+              <button className="claim-button" type="button" onClick={() => { formik.handleSubmit(); }}>Claim Score</button>
             </div>
           </div>
         </div>

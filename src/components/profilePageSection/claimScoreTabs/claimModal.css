@@ -10,31 +10,42 @@
   font-size: 2rem;
   font-weight: bold;
   text-align: center;
+  color: #0a2e0c;
 }
 .ant-modal .ant-modal-body {
   padding: 1rem 2rem;
   color: #333;
 }
-.ant-modal .ant-modal-body h3 {
-  margin-top: 20px;
-  font-size: 2rem;
-  color: #0056b3;
+.ant-modal .ant-modal-body .tournament-details {
+  margin-bottom: 3rem;
 }
-.ant-modal .ant-modal-body p {
+.ant-modal .ant-modal-body .tournament-details h3 {
+  font-size: 2rem;
+  color: #1d7336;
+  padding: 0 0 1rem;
+}
+.ant-modal .ant-modal-body .tournament-details p {
   font-size: 1.5rem;
   line-height: 2.5rem;
 }
 .ant-modal .ant-modal-body .youtube-links {
-  margin-top: 10px;
+  margin-bottom: 3rem;
+}
+.ant-modal .ant-modal-body .youtube-links h3 {
+  font-size: 2rem;
+  color: #1d7336;
+  padding: 0 0 1rem;
 }
 .ant-modal .ant-modal-body .youtube-links p {
-  font-weight: bold;
+  font-weight: 600;
+}
+.ant-modal .ant-modal-body .youtube-links .table th,
+.ant-modal .ant-modal-body .youtube-links .table td {
+  text-align: center;
 }
 .ant-modal .ant-modal-body .youtube-links a {
-  display: block;
-  color: #007bff;
+  color: #338bd3;
   text-decoration: none;
-  margin-top: 5px;
   transition: all 0.3s;
 }
 .ant-modal .ant-modal-body .youtube-links a:hover {
@@ -42,14 +53,20 @@
   color: #0056b3;
 }
 .ant-modal .ant-modal-body .performance-section {
-  border-radius: 5px;
-  margin-bottom: 20px;
+  margin-bottom: 3rem;
 }
 .ant-modal .ant-modal-body .performance-section h3 {
-  color: #333;
+  font-size: 2rem;
+  color: #1d7336;
+  padding: 0 0 1rem;
 }
 .ant-modal .ant-modal-body .performance-section p {
   font-size: 1.5rem;
+  font-weight: 600;
+}
+.ant-modal .ant-modal-body .performance-section .table th,
+.ant-modal .ant-modal-body .performance-section .table td {
+  text-align: center;
 }
 .ant-modal .ant-modal-footer {
   display: flex;

@@ -34,12 +34,12 @@ export const loginValidationSchema = Yup.object({
     .matches(/[^\w]/, "Password requires a symbol"),
 });
 
+
 export const registrationValidationSchema = Yup.object({
   first_name: Yup.string()
     .required("First name is required")
     .min(2, "First name should have at least 2 characters")
     .max(10, "First name should not be more than 10 characters"),
-
   last_name: Yup.string()
     .required("Last name is required")
     .min(2, "Last name should have at least 2 characters"),
@@ -61,17 +61,17 @@ export const registrationValidationSchema = Yup.object({
     .max(new Date(), "Date of birth cannot be in the future"),
 
   address: Yup.string().required("Address is required"),
-  // .max(200, "Address cannot exceed 200 characters"),
 
   team_name: Yup.string().required("Team name is required"),
 
-  playing_role: Yup.string().required("Playing Role is required"),
+  playing_role:Yup.string().required("Playing Role is required"),
 
-  batting_style: Yup.string().required("Batting Style is required"),
+  
+  // bowling_style: Yup.string().required("Bawling Style is required"),
 
-  bowling_style: Yup.string().required("Bawling Style is required"),
+  // batting_style: Yup.string().required("Batting Style is required"),
 
-  wicket_keeping: Yup.string().required("Please select a WicketKeeping"),
+  // wicket_keeping: Yup.string().required("Please select a WicketKeeping"),
 
   password: Yup.string()
     .required("Password is required")
@@ -97,7 +97,7 @@ export const registrationValidationSchema = Yup.object({
     .test(
       "fileSize",
       "File too large",
-      (value) => value && (value as File).size <= 1024 * 1024 // 1MB size limit
+      (value) => value && (value as File).size <= 1024 * 1024 
     )
     .test(
       "fileType",
@@ -112,7 +112,7 @@ export const registrationValidationSchema = Yup.object({
     .test(
       "fileSize",
       "File too large",
-      (value) => value && (value as File).size <= 1024 * 1024 // 1MB size limit
+      (value) => value && (value as File).size <= 1024 * 1024   
     )
     .test(
       "fileType",
@@ -120,12 +120,9 @@ export const registrationValidationSchema = Yup.object({
       (value) =>
         value && ["image/jpeg", "image/png"].includes((value as File).type)
     ),
-
-  // social_link:
-  // (Yup.string().url("Invalid URL format")),
-  // Yup.array()
-  // .required("SocialLink is required")
-  // .of(Yup.string().url("Invalid URL format")),
+    social_link: Yup.string()
+    .url("Invalid URL format")
+    .required("SocialLink is required"),
 
   // profilePhoto: Yup.mixed().required("Profile Photo is required"),
   // idCard: Yup.mixed().required("ID Card is required"),

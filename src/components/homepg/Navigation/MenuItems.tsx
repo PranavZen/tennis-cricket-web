@@ -9,7 +9,10 @@ const MenuItems: React.FC<MenuItemsProps> = ({ menuOpen }) => {
   return (
     <div className="col-md-6 col menu">
       {/* <div className="collapse navbar-collapse" id="navbarNav"> */}
-      <div className={`navbar-collapse ${menuOpen ? 'show' : 'collapse'}`} id="navbarNav">
+      <div
+        className={`navbar-collapse ${menuOpen ? "show" : "collapse"}`}
+        id="navbarNav"
+      >
         <ul className="navbar-nav">
           <li className="nav-item dropdown">
             <Link
@@ -28,20 +31,15 @@ const MenuItems: React.FC<MenuItemsProps> = ({ menuOpen }) => {
                 </Link>
               </li>
               <li>
-                <Link className="dropdown-item" to="/tournamentDashboard">
-                  Tournament Dashboard
-                </Link>
-              </li>
-              <li>
                 <Link className="dropdown-item" to="/domesticTournamnet">
-                  Domastic Tournament
+                  Domestic Tournament
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link className="dropdown-item" to="/matchStat">
                   Match Stat
                 </Link>
-              </li>
+              </li> */}
             </ul>
           </li>
           <li className="nav-item dropdown">
@@ -55,24 +53,14 @@ const MenuItems: React.FC<MenuItemsProps> = ({ menuOpen }) => {
               Tournament
             </Link>
             <ul className="dropdown-menu">
-              <li>
-                <Link className="dropdown-item" to="#">
-                  Action
-                </Link>
-              </li>
-              <li>
-                <Link className="dropdown-item" to="#">
-                  Another action
-                </Link>
-              </li>
-              <li>
-                <Link className="dropdown-item" to="#">
-                  Something else here
+            <li>
+                <Link className="dropdown-item" to="/tournamentDashboard">
+                  Tournament Dashboard
                 </Link>
               </li>
             </ul>
           </li>
-          <li className="nav-item dropdown">
+          {/* <li className="nav-item dropdown">
             <Link
               className="nav-link dropdown-toggle"
               to="#"
@@ -99,7 +87,7 @@ const MenuItems: React.FC<MenuItemsProps> = ({ menuOpen }) => {
                 </Link>
               </li>
             </ul>
-          </li>
+          </li> */}
           <li className="nav-item dropdown">
             <Link
               className="nav-link dropdown-toggle"
@@ -129,8 +117,13 @@ const MenuItems: React.FC<MenuItemsProps> = ({ menuOpen }) => {
             </ul>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to="#">
+            <Link className="nav-link" to="/contact-us">
               Contact Us
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link className="nav-link" to="/about-us">
+              About Us
             </Link>
           </li>
         </ul>

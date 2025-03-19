@@ -37,10 +37,10 @@ const TournamentDashboard: React.FC = () => {
     { id: "tab-2", label: "Leaderboard" },
     { id: "tab-3", label: "Points Table" },
     { id: "tab-4", label: "Stats" },
-    { id: "tab-5", label: "Sponsors" },
+    // { id: "tab-5", label: "Sponsors" },
     { id: "tab-6", label: "Teams" },
     { id: "tab-7", label: "Gallery" },
-    { id: "tab-8", label: "About Us" },
+    // { id: "tab-8", label: "About Us" },
   ];
 
   const cities = [
@@ -96,7 +96,7 @@ const TournamentDashboard: React.FC = () => {
 
   return (
     <section className="tournamentDashPage">
-      <Header subtitle="TournamentDashboard" className="innerpageHeading" />
+      <Header subtitle="Tournament Dashboard" className="innerpageHeading" />
       <div className="container">
         <div className="dashboard">
           <Tabs activeTab={activeTab} tabs={tabs} onTabClick={handleTabClick} />

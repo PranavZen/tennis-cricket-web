@@ -12,8 +12,11 @@ interface Bowling {
   runs: number;
   maidens: number;
   wickets: number;
-  average: number;
-  economy: number;
+  bowling_average: number;
+  bowling_economy_rate: number;
+  matches: number;
+  best_BBF: number;
+  bowling_strike_rate: number;
 }
 
 const BowlingTab: React.FC<BowlingStats> = ({ bowlers }) => {
@@ -29,10 +32,6 @@ const BowlingTab: React.FC<BowlingStats> = ({ bowlers }) => {
           <span className="stat-label">Balls</span>
         </div>
         <div className="stat-box">
-          <span className="stat-number">{bowlers.over}</span>
-          <span className="stat-label">Over</span>
-        </div>
-        <div className="stat-box">
           <span className="stat-number">{bowlers.runs}</span>
           <span className="stat-label">Runs</span>
         </div>
@@ -45,16 +44,24 @@ const BowlingTab: React.FC<BowlingStats> = ({ bowlers }) => {
           <span className="stat-label">Wickets</span>
         </div>
         <div className="stat-box">
-          <span className="stat-number">{Number(bowlers.average).toFixed(2) || "0.00"}</span>
+          <span className="stat-number">{Number(bowlers.bowling_average).toFixed(2) || "0.00"}</span>
           <span className="stat-label">Average</span>
         </div>
         <div className="stat-box">
-          <span className="stat-number">{Number(bowlers.economy).toFixed(2) || "0.00"}</span>
+          <span className="stat-number">{Number(bowlers.bowling_economy_rate).toFixed(2) || "0.00"}</span>
           <span className="stat-label">Economy</span>
         </div>
         <div className="stat-box">
-          <span className="stat-number">{190}</span>
+          <span className="stat-number">{bowlers.matches}</span>
           <span className="stat-label">Matches</span>
+        </div>
+        <div className="stat-box">
+          <span className="stat-number">{bowlers.best_BBF}</span>
+          <span className="stat-label">Best Bowling Figure</span>
+        </div>
+        <div className="stat-box">
+          <span className="stat-number">{bowlers.bowling_strike_rate}</span>
+          <span className="stat-label">Strike Rate</span>
         </div>
       </div>
     </div>

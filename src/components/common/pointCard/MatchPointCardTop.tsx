@@ -66,7 +66,7 @@ const MatchPointCardTop: React.FC<PointerCardProps> = ({
 
           <div className="scores-top-card">
             <div className="team-score team-left">
-              <img className="team-logo1" src={logo1} alt="Team 1 Logo" />
+              <img className="team-logo1" src="https://dummyimage.com/150x150/ffffff/000&text=Team+A" alt="Team 1 Logo" />
               <div className="score-details">
                 <span className="runs">
                   {score1 ? `${score1}/${wicket1 || "0"}` : ""}
@@ -76,7 +76,7 @@ const MatchPointCardTop: React.FC<PointerCardProps> = ({
             </div>
             {/* <div className="score-vs">Vs</div> */}
             <div className="team-score team-right">
-              <img className="team-logo2" src={logo2} alt="Team 2 Logo" />
+              <img className="team-logo2" src="https://dummyimage.com/150x150/ffffff/000&text=Team+B" alt="Team 2 Logo" />
               <div>
                 <span className="runs">
                   {score2 ? `${score2}/${wicket2 || "0"}` : ""}

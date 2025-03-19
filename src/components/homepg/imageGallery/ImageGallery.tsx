@@ -14,25 +14,33 @@ const ImageGallery: React.FC = () => {
             <a href="/">See all</a>
           </div>
           <div className="row row-cols-2 row-cols-lg-4 mt-0 g-4 mt-4">
-            <div className="col">
+            <div className="col modal-img">
               <Link
+                data-fancybox="gallery"
                 to="images\fluidImg1.png"
                 className="comon-links-divb05"
               >
                 <figure>
                   <img
-                    className="img-fluid"
+                    // className="img-fluid"
                     src="images\fluidImg1.png"
                     alt="pbnm"
-                    data-fancybox="data-fancybox"
                     loading="lazy"
+                    // style={{
+                    //   width: '100% !important', // Ensure it takes full width (though !important might not be necessary in inline styles)
+                    //   height: '100%',
+                    //   display: 'block',
+                    //   WebkitUserSelect: 'none', // Inline for -webkit-user-select
+                    //   backgroundPosition: 'center',
+                    //   backgroundRepeat: 'no-repeat',
+                    // }}
                   />
                 </figure>
               </Link>
             </div>
-            <div className="col">
+            <div className="col modal-img">
               <Link
-                data-fancybox
+                data-fancybox="gallery"
                 to="images\fluidImg2.png"
                 className="comon-links-divb05"
               >
@@ -46,7 +54,7 @@ const ImageGallery: React.FC = () => {
                 </figure>
               </Link>
             </div>
-            <div className="col">
+            <div className="col modal-img">
               <Link
                 data-fancybox
                 to="images\fluidImg3.png"
@@ -62,7 +70,7 @@ const ImageGallery: React.FC = () => {
                 </figure>
               </Link>
             </div>
-            <div className="col">
+            <div className="col modal-img">
               <Link
                 data-fancybox
                 to="images\fluidImg4.png"
@@ -78,7 +86,7 @@ const ImageGallery: React.FC = () => {
                 </figure>
               </Link>
             </div>
-            <div className="col">
+            <div className="col modal-img">
               <Link
                 data-fancybox
                 to="images\fluidImg5.png"
@@ -94,7 +102,7 @@ const ImageGallery: React.FC = () => {
                 </figure>
               </Link>
             </div>
-            <div className="col">
+            <div className="col modal-img">
               <Link
                 data-fancybox
                 to="images\fluidImg6.png"
@@ -110,7 +118,7 @@ const ImageGallery: React.FC = () => {
                 </figure>
               </Link>
             </div>
-            <div className="col">
+            <div className="col modal-img">
               <Link
                 data-fancybox
                 to="images\fluidImg4.png"
@@ -126,7 +134,7 @@ const ImageGallery: React.FC = () => {
                 </figure>
               </Link>
             </div>
-            <div className="col">
+            <div className="col modal-img">
               <Link
                 data-fancybox
                 to="images\fluidImg2.png"

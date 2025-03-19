@@ -24,6 +24,30 @@ const BattingPerformance = ({ onNext }: { onNext: () => void }) => {
       {/* <h2>Batting Performance</h2> */}
       <Form onSubmit={handleSubmit}>
         <div className="row">
+        <div className="col-md-6">
+            <label htmlFor="bat_matches">Matches:</label>
+            <Field
+              id="bat_matches"
+              name="bat_matches"
+              type="number"
+              placeholder="Enter matches"
+              onChange={formik.handleChange}
+              value={formik.values.bat_matches}
+            />
+            <ErrorMessage name="bat_matches" component="div" className="error" />
+          </div>
+          <div className="col-md-6">
+            <label htmlFor="bat_innings">Innings:</label>
+            <Field
+              id="bat_innings"
+              name="bat_innings"
+              type="number"
+              placeholder="Enter innings"
+              onChange={formik.handleChange}
+              value={formik.values.bat_innings}
+            />
+            <ErrorMessage name="bat_innings" component="div" className="error" />
+          </div>
           <div className="col-md-6">
             <label htmlFor="bat_runs">Run Scored:</label>
             <Field
@@ -79,6 +103,42 @@ const BattingPerformance = ({ onNext }: { onNext: () => void }) => {
             <ErrorMessage name="bat_sixes" component="div" className="error" />
           </div>
           <div className="col-md-6">
+            <label htmlFor="bat_fifty">Bat Fifty:</label>
+            <Field
+              id="bat_fifty"
+              name="bat_fifty"
+              type="number"
+              placeholder="Enter fifty"
+              onChange={formik.handleChange}
+              value={formik.values.bat_fifty}
+            />
+            <ErrorMessage name="bat_fifty" component="div" className="error" />
+          </div>
+          <div className="col-md-6">
+            <label htmlFor="bat_hundred">Hundred:</label>
+            <Field
+              id="bat_hundred"
+              name="bat_hundred"
+              type="number"
+              placeholder="Enter hundred"
+              onChange={formik.handleChange}
+              value={formik.values.bat_hundred}
+            />
+            <ErrorMessage name="bat_hundred" component="div" className="error" />
+          </div>
+          <div className="col-md-6">
+            <label htmlFor="bat_highest">Highest:</label>
+            <Field
+              id="bat_highest"
+              name="bat_highest"
+              type="number"
+              placeholder="Enter highest"
+              onChange={formik.handleChange}
+              value={formik.values.bat_highest}
+            />
+            <ErrorMessage name="bat_highest" component="div" className="error" />
+          </div>
+          <div className="col-md-6">
             <label htmlFor="bat_strike_rate">Strike Rate:</label>
             <Field
               id="bat_strike_rate"
@@ -90,6 +150,18 @@ const BattingPerformance = ({ onNext }: { onNext: () => void }) => {
             />
           </div>
           <div className="col-md-6">
+            <label htmlFor="bat_average">Average</label>
+            <Field 
+              id="bat_average"
+              name="bat_average"
+              type="number"
+              placeholder="Enter average"
+              onChange={formik.handleChange}
+              value={formik.values.bat_average}
+            />
+            <ErrorMessage name="bat_average" component="div" className="error" />
+          </div>
+          {/* <div className="col-md-6">
             <label htmlFor="bat_dismissal">Dismissal Type:</label>
             <Field
               as="select"
@@ -109,14 +181,15 @@ const BattingPerformance = ({ onNext }: { onNext: () => void }) => {
               className="error"
             />
           </div>
-        </div>
+        </div> */}
 
         <div className="row">
-          <div className="col-12 text-end">
-            <button type="submit" onClick={onNext}>
+          <div className="text-end">
+            <button className="claim-button" type="submit" onClick={onNext}>
               Next
             </button>
           </div>
+        </div>
         </div>
       </Form>
     </div>

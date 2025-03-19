@@ -105,6 +105,14 @@ body {
       margin: auto;
       margin-bottom: 3rem;
       border-bottom: 2px solid rgba(229, 229, 229);
+      @include mobile {
+        justify-content: flex-start;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch !important;
+        scrollbar-color: #1D7336;
+        gap: 3rem;
+        width: 100%;
+      }
       .tab-btn {
         font-size: 2rem;
         font-weight: 500;
@@ -121,6 +129,9 @@ body {
           border-left: none;
           color: #1d7336;
           // transition: all 0.3s ease;
+        }
+        @include mobile {
+          font-size: 1.5rem;
         }
       }
     }
@@ -163,7 +174,7 @@ body {
         display: flex;
         justify-content: space-between;
       }
-      button {
+      .claim-button {
         padding: 0.8rem 1.5rem;
         font-size: 1.4rem;
         color: #fff;
@@ -292,7 +303,7 @@ body {
 .status-table td {
   // border: 1px solid #ddd;
   padding: 2rem;
-  text-align: left;
+  text-align: center;
   font-size: 1.5rem;
 }
 

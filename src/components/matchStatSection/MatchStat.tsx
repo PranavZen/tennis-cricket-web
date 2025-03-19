@@ -16,7 +16,7 @@ const MatchStat = () => {
   useEffect(() => {
     axios
       .post(
-        `http://ec2-65-2-77-140.ap-south-1.compute.amazonaws.com:8080/api/statistics/fetchTournamentOverview`,
+        `https://api.tenniscricket.in/api/statistics/fetchTournamentOverview`,
         {
           tour_id: 9,
           match_id: id,

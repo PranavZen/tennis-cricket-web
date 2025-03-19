@@ -11,6 +11,7 @@ import axios from "axios";
 import { loginValidationSchema } from "../common/validation/Validation";
 import Spinner from "../../components/common/spinner/Spinner";
 import { notification } from "antd";
+import { relative } from "path";
 
 const LoginForm: React.FC = () => {
   const [showOtpField, setShowOtpField] = useState(false);
@@ -19,6 +20,7 @@ const LoginForm: React.FC = () => {
   const [isResending, setIsResending] = useState(false);
   const [showLoginWithOtpBtn, setShowLoginWithOtpBtn] = useState(true);
   const [isPasswordLogin, setIsPasswordLogin] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
   const [loading, setLoading] = useState(false);
@@ -81,25 +83,39 @@ const LoginForm: React.FC = () => {
           }
         );
 
-        // console.log("responseLoginwqwqw", response.data);
+        console.log("responseLoginwqwqwqqqqqqqqqqwqwqwqwqw", response.data);
+
         // localStorage.setItem("token", response.data.data.token);
-        if (response.data.status === 'success'){
+        if (response.data.status === "success") {
           notification.success({ message: "Login successfully!" });
           localStorage.setItem("token", response.data.data.token);
           localStorage.setItem("firstName", response.data.data.user.first_name);
           localStorage.setItem("surname", response.data.data.user.surname);
-          localStorage.setItem("cityName", response.data.data.user.cities_states_name);
-          localStorage.setItem("profileImage", response.data.data.user.profile_image);
-          localStorage.setItem("battingStyle", response.data.data.user.batting_style);
-          localStorage.setItem("bowlingStyle", response.data.data.user.bowling_style);
+          localStorage.setItem(
+            "cityName",
+            response.data.data.user.cities_states_name
+          );
+          localStorage.setItem(
+            "profile-image",
+            response.data.data.user.profile_image
+          );
+          localStorage.setItem(
+            "battingStyle",
+            response.data.data.user.batting_style
+          );
+          localStorage.setItem(
+            "bowlingStyle",
+            response.data.data.user.bowling_style
+          );
+          localStorage.setItem("player_id", response.data.data.user.id);
           // console.log("tokenresponse", response);
           resetForm();
           setTimeout(() => {
             setLoading(false);
             navigate("/profilePage");
-            // window.location.reload();
+            window.location.reload();
           }, 2000);
-        } else{
+        } else {
           notification.error({
             message:
               response.data.error_message ||
@@ -220,6 +236,10 @@ const LoginForm: React.FC = () => {
     setShowOtpField(false);
   };
 
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
   return (
     <>
       <section>
@@ -320,14 +340,36 @@ const LoginForm: React.FC = () => {
                               <div>
                                 <div className="input-field mx-auto mb-2">
                                   <label className="form-label">Password</label>
-                                  <Field
-                                    type="password"
-                                    name="password"
-                                    id="form2Example2"
-                                    className="form-control"
-                                    value={values.password}
-                                    onChange={handleChange}
-                                  />
+                                  <div style={{ position: "relative" }}>
+                                    <Field
+                                      type={showPassword ? "text" : "password"}
+                                      // type="password"
+                                      name="password"
+                                      id="form2Example2"
+                                      className="form-control"
+                                      value={values.password}
+                                      onChange={handleChange}
+                                    />
+                                    <div
+                                      style={{
+                                        position: "absolute",
+                                        top: "30%",
+                                        right: "11px",
+                                        fontSize: "1.5rem",
+                                      }}
+                                    >
+                                      <span onClick={togglePasswordVisibility}>
+                                        <i
+                                          className={`fa ${
+                                            showPassword
+                                              ? "fa-eye-slash"
+                                              : "fa-eye"
+                                          }`}
+                                        />
+                                      </span>
+                                    </div>
+                                  </div>
+
                                   <ErrorMessage
                                     name="password"
                                     component="div"
@@ -337,7 +379,7 @@ const LoginForm: React.FC = () => {
                                 <div className="mb-4 text-center">
                                   <div>
                                     <div className="form-check">
-                                      <Field
+                                      {/* <Field
                                         type="checkbox"
                                         name="rememberMe"
                                         id="form2Example31"
@@ -345,7 +387,7 @@ const LoginForm: React.FC = () => {
                                       <label className="form-check-label">
                                         {" "}
                                         Remember me{" "}
-                                      </label>
+                                      </label> */}
                                     </div>
                                   </div>
                                   <div>

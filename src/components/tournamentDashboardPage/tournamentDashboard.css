@@ -24,7 +24,6 @@ body {
   justify-content: flex-start;
   flex-wrap: nowrap;
   border-radius: 22px;
-  gap: 2.5rem;
   background-color: #fff;
   margin: auto;
   overflow-x: auto;
@@ -58,6 +57,7 @@ body {
   border: none;
   cursor: pointer;
   text-align: center;
+  padding: 10px;
   font-size: 1.8rem;
   font-family: "Work Sans";
   border-radius: 22px;

@@ -10,16 +10,17 @@ import SubTabs from "../../common/subTabs/SubTabs";
 import Spinner from "../../common/spinner/Spinner";
 
 interface BattingStats {
-  fifty: number;
-  hundred: number;
+  fifties: number;
+  hundreds: number;
   fours: number;
   sixes: number;
-  highest: number;
-  average: number;
+  highest_score: number;
+  batting_average: number;
   runs: number;
   balls: number;
   innings: number;
-  sr: number;
+  strike_rate: number;
+  matches: number;
 }
 
 interface BowlingStats {
@@ -29,13 +30,16 @@ interface BowlingStats {
   runs: number;
   maidens: number;
   wickets: number;
-  average: number;
-  economy: number;
+  bowling_average: number;
+  bowling_economy_rate: number;
+  matches: number;
+  best_BBF: number;
+  bowling_strike_rate: number;
 }
 
 interface PlayerStats {
-  batting_record: BattingStats;
-  bowling_record: BowlingStats; 
+  batting: BattingStats;
+  bowling: BowlingStats;
 }
 
 const StatsTab: React.FC = () => {
@@ -48,38 +52,51 @@ const StatsTab: React.FC = () => {
   const tabsData = [
     {
       label: "Batting",
-      component: isLoading ? <Spinner 
-      // runs={runs} setRuns={setRuns}
-      />
-       : (batters ? <BattingTab batters={batters} /> : <div>No Data</div>),
+      component: isLoading ? (
+        <Spinner
+        // runs={runs} setRuns={setRuns}
+        />
+      ) : batters ? (
+        <BattingTab batters={batters} />
+      ) : (
+        <div>No Data</div>
+      ),
     },
     {
       label: "Bowling",
-      component: isLoading ? <Spinner 
-      // wickets={wickets} setWickets={setWickets}
-      />
-       : (bowlers ? <BowlingTab bowlers={bowlers}/>  : <div>No Data</div>),
+      component: isLoading ? (
+        <Spinner
+        // wickets={wickets} setWickets={setWickets}
+        />
+      ) : bowlers ? (
+        <BowlingTab bowlers={bowlers} />
+      ) : (
+        <div>No Data</div>
+      ),
     },
-    {
-      label: "Fielding",
-      component: isLoading ? <Spinner /> : <FieldingTab />,
-    },
-    {
-      label: "Captain",
-      component: isLoading ? <Spinner /> : <CaptainTab />,
-    }
+    // {
+    //   label: "Fielding",
+    //   component: isLoading ? <Spinner /> : <FieldingTab />,
+    // },
+    // {
+    //   label: "Captain",
+    //   component: isLoading ? <Spinner /> : <CaptainTab />,
+    // }
   ];
-
+  const player_id = localStorage.getItem("player_id");
   useEffect(() => {
     axios
-      .post("http://ec2-65-2-77-140.ap-south-1.compute.amazonaws.com:8080/api/player/fetchPlayerStat", {
-        player_id: 3,
-      })
+      .get(`https://my.tc.popopower.com/api/get-player-stats/${player_id}`, {})
       .then((response) => {
-        console.log("Fetched Data: ", response.data.data);
-        const playerData: PlayerStats = response.data.data;
-        setBatters(playerData.batting_record);
-        setBowlers(playerData.bowling_record);
+        console.log("Fetched Data: ", response.data.message.data);
+        const playerData: PlayerStats = response.data.message.data;
+
+        localStorage.setItem("matches", playerData.batting.matches.toString());
+        localStorage.setItem("runs", playerData.batting.runs.toString());
+        localStorage.setItem("wickets", playerData.bowling.wickets.toString());
+
+        setBatters(playerData.batting);
+        setBowlers(playerData.bowling);
         setLoading(false);
         // setRuns(response.data.data.batting_record.runs);
         // setWickets(playerData.bowling_record);
@@ -91,7 +108,11 @@ const StatsTab: React.FC = () => {
       });
   }, []);
 
-  return <SubTabs tabs={tabsData} />;
+  return (
+    <>
+      <SubTabs tabs={tabsData} />
+    </>
+  );
 };
 
 export default StatsTab;
