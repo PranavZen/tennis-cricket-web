@@ -56,15 +56,15 @@ export const registrationValidationSchema = Yup.object({
     .required("Phone number is required")
     .matches(/^\d{10}$/, "Phone number must be exactly 10 digits"),
 
-  date_of_birth: Yup.date()
-    .required("DOB is required")
-    .max(new Date(), "Date of birth cannot be in the future"),
+  // date_of_birth: Yup.date()
+  //   .required("DOB is required")
+  //   .max(new Date(), "Date of birth cannot be in the future"),
 
-  address: Yup.string().required("Address is required"),
+  // address: Yup.string().required("Address is required"),
 
-  team_name: Yup.string().required("Team name is required"),
+  // team_name: Yup.string().required("Team name is required"),
 
-  playing_role:Yup.string().required("Playing Role is required"),
+  // playing_role:Yup.string().required("Playing Role is required"),
 
   
   // bowling_style: Yup.string().required("Bawling Style is required"),
@@ -87,9 +87,9 @@ export const registrationValidationSchema = Yup.object({
 
   blood_group: Yup.string().required("Blood group is required"),
 
-  state_name: Yup.string().required("State is required"),
-  city_name: Yup.string().required("City is required"),
-  zone_name: Yup.string().required("Zone is required"),
+  // state_name: Yup.string().required("State is required"),
+  // city_name: Yup.string().required("City is required"),
+  // zone_name: Yup.string().required("Zone is required"),
 
   doc_profile_photo: Yup.mixed()
     .nullable()

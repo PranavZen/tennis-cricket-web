@@ -265,7 +265,7 @@ const RegistrationForm: React.FC = () => {
 
         <Formik
           initialValues={initialValues}
-          // validationSchema={registrationValidationSchema}
+          validationSchema={registrationValidationSchema}
           onSubmit={handleSubmit}
         >
           {({ setFieldValue, values }) => (
