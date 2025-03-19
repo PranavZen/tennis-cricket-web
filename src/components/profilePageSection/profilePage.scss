@@ -325,3 +325,15 @@ body {
   font-weight: bold;
   text-transform: capitalize;
 }
+
+/* Hide number input spinners in Chrome, Safari, Edge, and Opera */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Hide number input spinners in Firefox */
+input[type=number] {
+  -moz-appearance: textfield; /* This will remove the spinner in Firefox */
+}
