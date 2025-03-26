@@ -5,11 +5,10 @@ import axios from "axios";
 const UserInfoCard = () => {
   const [isModalOpen, setModalOpen] = useState(false);
 
-  const profileImage = "images/fluidImg1.png";
-
   const openModal = () => setModalOpen(true);
   const closeModal = () => setModalOpen(false);
 
+  const userName = localStorage.getItem("userName");
   const firstName = localStorage.getItem("firstName");
   const surname = localStorage.getItem("surname");
   const cityName = localStorage.getItem("cityName");
@@ -67,6 +66,7 @@ const UserInfoCard = () => {
             <div className="info-score">
               <div className="user-info">
                 <h1 className="user-name">
+                  Id : {userName} <br/>
                   {firstName} {surname}
                 </h1>
                 <p className="user-location">{cityName}</p>
@@ -110,7 +110,7 @@ const UserInfoCard = () => {
             aria-hidden={!isModalOpen}
           >
             <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-              <img src={profileImage} alt="Enlarged Profile" />
+              <img src={`https://my.tc.popopower.com/${profileImg}`} alt="Enlarged Profile" />
             </div>
           </div>
         )}

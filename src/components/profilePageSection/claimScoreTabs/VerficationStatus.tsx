@@ -4,11 +4,12 @@ import "../../../components/profilePageSection/claimScoreTabs/claimModal.scss";
 import axios from "axios";
 import Spinner from "../../common/spinner/Spinner";
 import { Button, Modal } from "antd";
+import { Link } from "react-router-dom";
 
 interface ClaimScore {
   id: number;
   status: string;
-  user_comment: string;
+  maker_comment: string;
   tournament_result: {
     youtube_link: {
       link: string;
@@ -39,6 +40,7 @@ interface ClaimDetail {
   bowl_wicket: number;
   bowl_maidens: number;
   status: string;
+  tournament_date: string;
   tournament_result: {
     season: number;
     team_name: string;
@@ -52,6 +54,12 @@ interface ClaimDetail {
   }[];
 }
 
+interface Claim {
+  id: string; // or number depending on API response
+  status: string;
+  // Add other properties if necessary
+}
+
 const token = localStorage.getItem("token");
 
 const VerificationStatus = () => {
@@ -61,6 +69,10 @@ const VerificationStatus = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [singleData, setSingleData] = useState<number | null>(null);
   const [claimDetails, setClaimDetails] = useState<ClaimDetail[]>([]);
+  const [modalReappeal, setModalReappeal] = useState(false);
+  const [selectedClaim, setSelectedClaim] = useState<Claim | null>(null);
+  const [sentComment, setSentComment] = useState("");
+  const [userComment, setUserComment] = useState("");
 
   useEffect(() => {
     const fetchClaimScore = async () => {
@@ -76,7 +88,7 @@ const VerificationStatus = () => {
         if (response.data.status === "success") {
           setClaimScore(response.data.message.data);
         }
-        // console.log("1212111111", response);
+        // console.log("setClaimScore", response);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching claim score:", error);
@@ -100,6 +112,7 @@ const VerificationStatus = () => {
             }
           );
           setClaimDetails(response.data.message.data);
+          // console.log("setClaimDetails", response.data.message.data);
           setModalLoading(false);
         } catch (error) {
           console.error("Error fetching claim details:", error);
@@ -120,9 +133,56 @@ const VerificationStatus = () => {
     setIsModalOpen(false);
   };
 
+  const handleSubmitCommnet = async () => {
+    if (!selectedClaim?.id) {
+      console.error("Error: No claim ID available.");
+      return;
+    }
+
+    setModalLoading(true);
+    try {
+      const response = await axios.post(
+        `https://my.tc.popopower.com/api/reappeal-claim/${selectedClaim.id}`,
+        {
+          user_comment: userComment,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }      
+      );
+      setSentComment(response.data);
+      // console.log("API Response:", response);
+    } catch (error) {
+      console.error("Error submitting claim appeal:", error);
+    } finally {
+      setModalLoading(false);
+      setModalReappeal(false);
+      setUserComment("");
+
+      // window.location.reload();
+    }
+  };
+
   const handleCancel = () => {
     setIsModalOpen(false);
+    setModalReappeal(false);
   };
+
+  const openModal = (claim: any) => {
+    setSelectedClaim(claim);
+    setModalReappeal(true);
+  };
+
+  const closeModal = () => {
+    setModalReappeal(false);
+    setSelectedClaim(null);
+  };
+
+  const ifRejectedClaim = claimScore.some(
+    (claim) => claim.status === "rejected"
+  );
 
   return (
     <div className="verification-status">
@@ -133,26 +193,44 @@ const VerificationStatus = () => {
           <table className="status-table">
             <thead>
               <tr>
-                <th>Sr. No</th>
+                <th>Sr no</th>
                 <th>Status</th>
-                <th>User Comment</th>
+                {/* {ifRejectedClaim && <th></th>} */}
+                <th>Approver Comment</th>
                 <th>View More</th>
               </tr>
             </thead>
             <tbody>
               {claimScore.map((claim, index) => (
                 <tr key={claim.id}>
-                  <td>{index + 1}</td>
+                  <td>{index+1}</td>
                   <td>{claim.status}</td>
-                  <td>{claim.user_comment ? claim.user_comment : "-"}</td>
+                  {/* {ifRejectedClaim && (
+                    <td>
+                      {claim.status === "rejected" && (
+                        <button
+                          className="btn btn-danger"
+                          style={{
+                            width: "80px",
+                            height: "30px",
+                            fontSize: "12px",
+                          }}
+                          onClick={() => openModal(claim)}
+                        >
+                          Appeal
+                        </button>
+                      )}
+                    </td>
+                  )} */}
+                  <td>{claim.maker_comment ? claim.maker_comment : "-"}</td>
                   <td>
-                    <a
-                      href="#"
+                    <Link
+                      to="#"
                       onClick={() => claimInfo(claim.id)}
                       style={{ cursor: "pointer" }}
                     >
                       View More
-                    </a>
+                    </Link>
                   </td>
                 </tr>
               ))}
@@ -201,6 +279,13 @@ const VerificationStatus = () => {
                   <div className="col-md-6">
                     <p>
                       <strong>Status:</strong> {detail.status}
+                    </p>
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="col-md-6">
+                    <p>
+                      <strong>Tournament Date:</strong> {detail.tournament_date}
                     </p>
                   </div>
                 </div>
@@ -259,7 +344,6 @@ const VerificationStatus = () => {
                               target="_blank"
                               rel="noopener noreferrer"
                             >
-        
                               {linkObj.link !== ""
                                 ? `Link ${index + 1}`
                                 : "Link 1"}
@@ -394,6 +478,26 @@ const VerificationStatus = () => {
               </div>
             </div>
           ))
+        )}
+      </Modal>
+      <Modal
+        open={modalReappeal}
+        onOk={handleSubmitCommnet}
+        onCancel={handleCancel}
+        width={600}
+        height={200}
+      >
+        {modalLoading ? (
+          <Spinner />
+        ) : (
+          <div className="performance-section">
+            <h3>User Comment</h3>
+            <textarea
+              className="user-comment col-md-12"
+              value={userComment}
+              onChange={(e) => setUserComment(e.target.value)}
+            ></textarea>
+          </div>
         )}
       </Modal>
     </div>

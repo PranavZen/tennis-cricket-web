@@ -56,7 +56,7 @@
     }
 
     .performance-section {
-      margin-bottom: 3rem;
+      margin-bottom: 1rem;
       h3 {
         font-size: 2rem;
         color: #1d7336;
@@ -69,6 +69,22 @@
       .table th,
       .table td {
         text-align: center;
+      }
+    }
+
+    .performance-section {
+      .user-comment {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        resize: vertical;
+        height: 150px;
+      }
+      .user-comment:focus {
+        border-color: #4CAF50;
+        outline: none;
       }
     }
   }

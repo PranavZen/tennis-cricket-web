@@ -1,0 +1,171 @@
+// .allMatchPages {
+//     padding: 20px;
+//   }
+
+//   .innerpageHeading {
+//     text-align: center;
+//     font-size: 32px;
+//     margin-bottom: 20px;
+//   }
+
+//   .contactUsContainer {
+//     max-width: 800px;
+//     margin: 0 auto;
+//     padding: 20px;
+//   }
+
+//   .contactInfo {
+//     margin-top: 20px;
+//   }
+
+//   .contactInfo p {
+//     margin-bottom: 15px;
+//     font-size: 16px;
+//   }
+
+//   .contactDetails {
+//     margin-top: 30px;
+//   }
+
+//   .contactDetails p {
+//     margin-bottom: 10px;
+//   }
+
+//   .contactDetails a {
+//     color: #0066cc;
+//     text-decoration: none;
+//     &:hover {
+//       text-decoration: underline;
+//     }
+//   }
+
+.contactUs-container {
+  display: flex;
+  //   align-items: center;
+  justify-content: center;
+  padding: 3rem 0;
+  background-color: #fff;
+  margin: 2rem 0;
+  .left-container {
+    padding: 2rem;
+    max-width: 500px;
+    .contact-info {
+      p {
+        font-size: 1.5rem;
+        margin-bottom: 2px;
+      }
+      h3 {
+        font-weight: 600;
+        margin-bottom: 2px;
+      }
+      a {
+        color: #0a2e0c;
+        :hover {
+          color: #1d7336;
+        }
+      }
+    }
+    .contact-details {
+      padding: 1rem 0;
+      h2 {
+        margin-bottom: 0.5rem;
+        margin-top: 2rem;
+      }
+      .email {
+        margin-bottom: 1.5rem;
+        p {
+          font-size: 1.8rem;
+        }
+        i {
+          font-size: 1.5rem;
+        }
+        a {
+          font-size: 1.5rem;
+          &:hover {
+            text-decoration: underline;
+            color: #0a0e2a;
+          }
+        }
+      }
+      .phone-no {
+        margin-bottom: 1.5rem;
+        p {
+          font-size: 1.8rem;
+        }
+        i {
+          font-size: 1.5rem;
+        }
+        a {
+          font-size: 1.5rem;
+          &:hover {
+            text-decoration: underline;
+            color: #0a0e2a;
+          }
+        }
+      }
+    }
+  }
+
+  .contact-form {
+    background: #025b9a;
+    padding: 20px;
+    max-width: 500px;
+    margin: 0 auto;
+    color: #fff;
+    text-align: center;
+    border-radius: 8px;
+  }
+
+  h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .form-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background: #fff;
+    font-size: 16px;
+  }
+
+  textarea {
+    min-height: 100px;
+    margin-bottom: 10px;
+  }
+
+  .checkbox {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    margin-bottom: 15px;
+    input {
+      margin-right: 5px;
+    }
+  }
+
+  button {
+    width: 100%;
+    padding: 12px;
+    font-size: 18px;
+    background: #fff;
+    color: black;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    text-transform: uppercase;
+  }
+
+  button:hover {
+    // background: #0030cc;
+    background: rgb(218, 218, 221);
+  }
+}

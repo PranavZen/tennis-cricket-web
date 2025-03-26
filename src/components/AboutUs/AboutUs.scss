@@ -1,0 +1,291 @@
+.founders-section {
+  padding: 2rem;
+  background-color: #fff;
+  margin: 2rem 0;
+
+  .section-title {
+    font-size: 3.5rem;
+    font-weight: bold;
+    color: #153a8c;
+    border-bottom: 4px solid #fcb900;
+    display: inline-block;
+    margin-bottom: 1.5rem;
+  }
+
+  .founder {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+    justify-content: space-between;
+
+    .founder-image {
+      // width: 120px;
+      // height: 120px;
+      // border-radius: 50%;
+      // overflow: hidden;
+      // // background: #fcb900;
+      // display: flex;
+      // align-items: center;
+      // justify-content: center;
+      // margin-right: 1rem;
+
+      img {
+        width: 400px;
+        height: auto;
+      }
+    }
+
+    .founder-info {
+      max-width: 600px;
+
+      h3 {
+        font-size: 3rem;
+        margin-bottom: 0.5rem;
+
+        .name {
+          color: #153a8c;
+          font-weight: bold;
+        }
+
+        .role {
+          font-size: 2rem;
+          color: #333;
+          font-weight: bold;
+        }
+      }
+
+      p {
+        font-size: 1.5rem;
+        color: black;
+      }
+    }
+  }
+
+  .aboutus-section {
+    margin-bottom: 2rem;
+    p {
+      font-size: 1.5rem;
+      color: black;
+    }
+    .features-list {
+      display: flex;
+      gap: 8rem;
+      margin: 2.5rem;
+      ul {
+        li {
+          font-size: 1.5rem;
+          color: black;
+          position: relative;
+
+          &::before {
+            content: "•";
+            color: black;
+            font-size: 2rem;
+            position: absolute;
+            left: -12px;
+            top: -5px;
+          }
+        }
+      }
+    }
+  }
+
+  .contact-section {
+    margin-bottom: 2rem;
+    .mobile-images {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 4rem;
+      img {
+        width: 300px;
+        height: auto;
+      }
+    }
+  }
+
+  .youtube-section {
+    margin-bottom: 2rem;
+    .youtubeReach-img {
+      display: flex;
+      justify-content: center;
+      img {
+        width: 700px;
+        height: auto;
+      }
+    }
+  }
+
+  .services-section {
+    margin-bottom: 2rem;
+    .img-container {
+      text-align: center;
+      img {
+        width: 150px;
+        height: auto;
+        // margin-bottom: 2rem;
+      }
+      p {
+        font-size: 1.5rem;
+        color: black;
+        font-weight: 600;
+        padding: 1rem;
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  .broadcasting-section {
+    margin-bottom: 2rem;
+    .content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .details {
+        max-width: 600px;
+        p {
+          font-size: 1.5rem;
+          color: black;
+          padding: 1rem 1.5rem;
+        }
+      }
+      .broadcasting-img {
+        img {
+          width: 350px;
+          height: 350px;
+        }
+      }
+    }
+  }
+
+  .digital-section {
+    margin-bottom: 2rem;
+    .content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .details {
+        max-width: 600px;
+        p {
+          font-size: 1.5rem;
+          color: black;
+          padding: 1rem 1.5rem;
+        }
+      }
+    }
+    .digital-Advertisements {
+      img {
+        width: 400px;
+        height: auto;
+      }
+    }
+  }
+
+  .talent-section {
+    margin-bottom: 2rem;
+    .content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .details {
+        max-width: 600px;
+        p {
+          font-size: 1.5rem;
+          color: black;
+          padding: 1rem 1.5rem;
+        }
+      }
+      .talentMange-img {
+        img {
+          width: 350px;
+          height: 350px;
+        }
+      }
+    }
+  }
+
+  .player-section {
+    margin-bottom: 2rem;
+    .content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .details {
+        max-width: 600px;
+        p {
+          font-size: 1.5rem;
+          color: black;
+          padding: 1rem 1.5rem;
+        }
+      }
+      .playerPromotion-img {
+        img {
+          width: 350px;
+          height: auto;
+        }
+      }
+    }
+  }
+
+  .content-section {
+    margin-bottom: 2rem;
+    .content {
+      display: flex;
+      justify-content: space-between;
+      // align-items: center;
+      .details {
+        max-width: 600px;
+        p {
+          font-size: 1.5rem;
+          color: black;
+          padding: 1rem 1.5rem;
+          margin-bottom: 2rem;
+        }
+        .contentCreation2 {
+          img {
+            width: 350px;
+            height: auto;
+          }
+        }
+      }
+      .content-creation {
+        
+        .contentCreation1 {
+          img {
+            width: 350px;
+            height: auto;
+          }
+        }
+        // .contentCreation2 {
+        //   img {
+        //     width: 350px;
+        //     height: auto;
+        //   }
+        // }
+      }
+    }
+  }
+
+  .profile-section {
+    margin-bottom: 2rem;
+    .content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .details {
+        max-width: 600px;
+        p {
+          font-size: 1.5rem;
+          color: black;
+          padding: 1rem 1.5rem;
+        }
+      }
+      .playerProfile-img {
+        img {
+          width: 350px;
+          height: auto;
+        }
+      }
+    }
+  }
+}

@@ -83,12 +83,14 @@ const LoginForm: React.FC = () => {
           }
         );
 
-        // console.log("responseLoginwqwqwqqqqqqqqqqwqwqwqwqw", response.data);
+        console.log("login responseeeeeeeeee", response.data);
 
         // localStorage.setItem("token", response.data.data.token);
         if (response.data.status === "success") {
           notification.success({ message: "Login successfully!" });
           localStorage.setItem("token", response.data.data.token);
+          localStorage.setItem("userName", response.data.data.user.user_name);
+          console.log('loginid', response.data.data.user.user_name)
           localStorage.setItem("firstName", response.data.data.user.first_name);
           localStorage.setItem("surname", response.data.data.user.surname);
           localStorage.setItem(

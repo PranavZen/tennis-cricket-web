@@ -80,7 +80,10 @@ const Navigation = () => {
               </Link>
             </div>
             <MenuItems menuOpen={menuOpen} />
+
+            
             <LeftBox isLoggedIn={isLoggedIn} handleLogout={handleLogout}/>
+            
           </div>
         </div>
       </nav>

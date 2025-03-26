@@ -181,6 +181,9 @@ const RegistrationForm: React.FC = () => {
         formData
       );
 
+
+      console.log("bbbbbbbbbbbbb", response);
+
       if (response.data.status === "success") {
         resetForm();
         setTimeout(() => {

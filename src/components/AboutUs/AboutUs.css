@@ -1,0 +1,185 @@
+@charset "UTF-8";
+.founders-section {
+  padding: 2rem;
+  background-color: #fff;
+  margin: 2rem 0;
+}
+.founders-section .section-title {
+  font-size: 3.5rem;
+  font-weight: bold;
+  color: #153a8c;
+  border-bottom: 4px solid #fcb900;
+  display: inline-block;
+  margin-bottom: 1.5rem;
+}
+.founders-section .founder {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+  justify-content: space-between;
+}
+.founders-section .founder .founder-image {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+}
+.founders-section .founder .founder-image img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+.founders-section .founder .founder-info {
+  max-width: 600px;
+}
+.founders-section .founder .founder-info h3 {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+.founders-section .founder .founder-info h3 .name {
+  color: #153a8c;
+  font-weight: bold;
+}
+.founders-section .founder .founder-info h3 .role {
+  font-size: 2rem;
+  color: #333;
+  font-weight: bold;
+}
+.founders-section .founder .founder-info p {
+  font-size: 1.5rem;
+  color: black;
+}
+.founders-section .aboutus-section {
+  margin-bottom: 2rem;
+}
+.founders-section .aboutus-section p {
+  font-size: 1.5rem;
+  color: black;
+}
+.founders-section .aboutus-section .features-list {
+  display: flex;
+  gap: 8rem;
+  margin: 2.5rem;
+}
+.founders-section .aboutus-section .features-list ul li {
+  font-size: 1.5rem;
+  color: black;
+  position: relative;
+}
+.founders-section .aboutus-section .features-list ul li::before {
+  content: "•";
+  color: black;
+  font-size: 2rem;
+  position: absolute;
+  left: -12px;
+  top: -5px;
+}
+.founders-section .contact-section {
+  margin-bottom: 2rem;
+}
+.founders-section .youtube-section {
+  margin-bottom: 2rem;
+}
+.founders-section .services-section {
+  margin-bottom: 2rem;
+}
+.founders-section .broadcasting-section {
+  margin-bottom: 2rem;
+}
+.founders-section .broadcasting-section .content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.founders-section .broadcasting-section .content .details {
+  max-width: 600px;
+}
+.founders-section .broadcasting-section .content .details p {
+  font-size: 1.5rem;
+  color: black;
+  padding: 1rem 1.5rem;
+}
+.founders-section .digital-section {
+  margin-bottom: 2rem;
+}
+.founders-section .digital-section .content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.founders-section .digital-section .content .details {
+  max-width: 600px;
+}
+.founders-section .digital-section .content .details p {
+  font-size: 1.5rem;
+  color: black;
+  padding: 1rem 1.5rem;
+}
+.founders-section .talent-section {
+  margin-bottom: 2rem;
+}
+.founders-section .talent-section .content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.founders-section .talent-section .content .details {
+  max-width: 600px;
+}
+.founders-section .talent-section .content .details p {
+  font-size: 1.5rem;
+  color: black;
+  padding: 1rem 1.5rem;
+}
+.founders-section .player-section {
+  margin-bottom: 2rem;
+}
+.founders-section .player-section .content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.founders-section .player-section .content .details {
+  max-width: 600px;
+}
+.founders-section .player-section .content .details p {
+  font-size: 1.5rem;
+  color: black;
+  padding: 1rem 1.5rem;
+}
+.founders-section .content-section {
+  margin-bottom: 2rem;
+}
+.founders-section .content-section .content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.founders-section .content-section .content .details {
+  max-width: 600px;
+}
+.founders-section .content-section .content .details p {
+  font-size: 1.5rem;
+  color: black;
+  padding: 1rem 1.5rem;
+}
+.founders-section .profile-section {
+  margin-bottom: 2rem;
+}
+.founders-section .profile-section .content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.founders-section .profile-section .content .details {
+  max-width: 600px;
+}
+.founders-section .profile-section .content .details p {
+  font-size: 1.5rem;
+  color: black;
+  padding: 1rem 1.5rem;
+}/*# sourceMappingURL=AboutUs.css.map */

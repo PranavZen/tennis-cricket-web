@@ -65,7 +65,9 @@ const LeaderBoardTab: React.FC = () => {
       {displayData.length > 0 ? (
         displayData.map((user) => (
           <div key={user.id} className="board-content">
-            <div className="profile-photo">img</div>
+            <div className="profile-photo">
+              <img src="images\profile.png" alt="" />
+            </div>
             <div>
               <div className="profile-photo_name">
                 <h3>{user.name}</h3>
@@ -110,18 +112,18 @@ const LeaderBoardTab: React.FC = () => {
                         <td>{user.wicket}</td>
                         <td>{user.run}</td>
                       </>
-                    ) : selectedType === "Field" ? (
-                      <>
-                        {/* <td>{user.catches}</td>
-                        <td>{user.runOuts}</td> */}
-                      </>
+                    // ) : selectedType === "Field" ? (
+                    //   <>
+                    //     {/* <td>{user.catches}</td>
+                    //     <td>{user.runOuts}</td> */}
+                    //   </>
                     ) : null}
                   </tr>
                 </tbody>
               </table>
             </div>
 
-            <div>Rank</div>
+            {/* <div>Rank</div> */}
           </div>
         ))
       ) : (

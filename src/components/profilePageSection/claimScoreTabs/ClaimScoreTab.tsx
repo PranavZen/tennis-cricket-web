@@ -8,6 +8,7 @@ import VerificationStatus from "./VerficationStatus";
 import "../../../components/profilePageSection/profilePage.scss";
 import "react-toastify/dist/ReactToastify.css";
 import { toast } from "react-toastify";
+import { message, notification } from "antd";
 import axios from "axios";
 
 const ClaimScoreTab = () => {
@@ -25,6 +26,7 @@ const ClaimScoreTab = () => {
       tournament_name: [""],
       team_name: "",
       season: "",
+      tournament_date: "",
       // matches: [{ match_name: "", batting: {}, bowling: {}, youtube: {} }],
       matches: [],
       // youtube_link: [[""]],
@@ -41,26 +43,31 @@ const ClaimScoreTab = () => {
           {
             headers: {
               "Content-Type": "application/json",
-              // "Authorization": `Bearer ${'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiZDY2MjljMWQ5ODgwMDdmZTU2NWYxZGQ5MDc4YWRlYzA4M2M0NWNkNDVkZWQ5ZjI0ZmEyYTA4NzczYTEzZGQzOGI2NmEwYWY5NTc4ZmE4NDgiLCJpYXQiOjE3NDEzMzU5ODcuODcwNTY5LCJuYmYiOjE3NDEzMzU5ODcuODcwNTcsImV4cCI6MTc3Mjg3MTk4Ny44NjczMjksInN1YiI6IjExIiwic2NvcGVzIjpbXX0.GY4cqfVJhpuZ1NyjP_wtm_X9XbzLKOnQ760Nmc8np8Q1l9bloB87cbQTFQ67SALyijRkjf7G0172BykZZbhMbQJi8DW_Y321i6uXSxLYv49zt-dfLtbkDMXNQVjumQ7bpvUI1HNZTeJLdFB5BnShR6Y_a7c2QE7MI2JjPcEsEI5iCD1b0jSwYpN4ukB_fUUoppkraPDo4tvOcW22GM9fkUlipKPzJJo7iXow_NQ5Bwcww0BkEwHiwpuE9ug3ASxCjc6tNDAb19xDmkj3BupCoMHSzDgnQHY_npO0SF5IfvL-Zl8Mzm7c4ZRV7iuEAcVGC9dTzUxOPT_e5lwVGd6y_g4DUTAvLkxQ09t-q1qNNUXkhi03lWEtCOP2rCDyfftiuJsqoNfjOLEHd6tJQdgZsNs-Mz7L_SmrUU5NCpFeElX2c98prlH-D7WZCMNHOenpvpmmIWn8ltf_aYzf6K2gtj91-pqHgw-2QjC4FPYE8kMgcEAbayacC5w-dSo3zmgiCdJ9HGXXyfx881JWYswH8TKd3svZghcFgjbKQ61Wxda6faKV0doVmcW41e8qVNlnButWnV9OADyjUeneDogHDL8XYshpl3UmtxCnCe89VJcY77uUVyp_UdmJDYt469Q7eUegF2c5sQKaV8O3vrDitfCtmmhwn9ZnxZzDKXdnIDk'}`,
               Authorization: `Bearer ${token}`,
             },
           }
         );
-        // console.log("claimResponse", response);
-        toast.success("Claim score submitted successfully!", {
-          autoClose: 3000,
-          style: {
-            fontSize: "15px", // Set your desired font size here
-          },
-        });
-        // console.log("values", values);
-        resetForm();
-        setShowTabs(false); // Hide the tab view after submission if needed
+        // console.log("sssssssss", response.data)
+        // console.log('successmsg', response.data.message)
+        if (response.data.status === "success") {
+          notification.success({message:"Claim score submitted successfully!"})
+          // {
+          //   autoClose: 3000,
+          //   style: {
+          //     fontSize: "15px",
+          //   },
+          // });
+          resetForm();
+          setShowTabs(false);
+        } else if (response.data.message.status === "error") {
+          notification.error({ message: response.data.message.error });
+        } else {
+          notification.error({ message: response.data.message.error });
+        }
+        // resetForm();
+        // setShowTabs(false);
       } catch (error) {
-        toast.error("Failed to submit claim score. Please try again.", {
-          autoClose: 3000,
-        });
-        console.error("Error:", error);
+        // notification.error({message:"hey"})
       }
     },
   });
@@ -77,9 +84,7 @@ const ClaimScoreTab = () => {
             },
           }
         );
-        // console.log("rrrrr", response);
         setClaimScore(response.data.message.data);
-        // console.log("1212111111", response);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching claim score:", error);
@@ -108,20 +113,17 @@ const ClaimScoreTab = () => {
   const tabs = (matchIndex: number) => [
     {
       label: "Batting Performance",
-      component: <BattingPerformance onNext={handleNext} />, // Pass matchIndex if needed
+      component: <BattingPerformance onNext={handleNext} />,
     },
     {
       label: "Bowling Performance",
-      component: <BowlingPerformance onPrev={handlePrev} onNext={handleNext} />, // Pass matchIndex if needed
+      component: <BowlingPerformance onPrev={handlePrev} onNext={handleNext} />,
     },
     {
       label: "YouTube Link",
       component: (
-        <YouTubeLinkTab
-          onPrev={handlePrev} // Ensure to pass onPrev and onSubmit
-          onSubmit={formik.handleSubmit} // Pass the handleSubmit function here
-        />
-      ), // Pass matchIndex if needed
+        <YouTubeLinkTab onPrev={handlePrev} onSubmit={formik.handleSubmit} />
+      ),
     },
   ];
 
@@ -153,6 +155,14 @@ const ClaimScoreTab = () => {
                   />
                 </div>
                 <div className="col-md-6">
+                  <label>Tournament Date:</label>
+                  <Field
+                    name="tournament_date"
+                    type="date"
+                    className="input-box"
+                  />
+                </div>
+                <div className="col-md-6">
                   <label>Team Name:</label>
                   <Field
                     name="team_name"
@@ -175,37 +185,40 @@ const ClaimScoreTab = () => {
 
             {matches.map((match, index) => (
               <div key={match.id} className="match-section">
-                <div className="form-container">
-                  {/* <h2
+                {/* <div className="form-container">
+                  <h2>Enter Match Details</h2>
+                  <h2
                     style={{
                       marginBottom: "10px",
-                      paddingBottom: "25px", // Add padding
-                      color: "#1d7336", // Set the text color to green
+                      paddingBottom: "25px",
+                      color: "#1d7336",
                       fontWeight: 600,
                     }}
-                    // className="text-center"
                   >
                     Match {index + 1}
-                  </h2> */}
-                  <div
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "space-between",
-                      gap: "21rem",
-                    }}
-                  >
-                    {/* <div className="col-md-6">
-                      <label>Match Name:</label>
+                  </h2>
+
+                  <div className="row">
+                    <div className="col-md-6">
+                      <label>Match</label>
                       <Field
                         name={`matches[${index}].match_name`}
                         type="text"
-                        placeholder="Enter match name"
+                        placeholder="Enter match"
                         className="input-box"
                       />
-                    </div> */}
-
-                    {/* <div className="text-end form-container">
+                    </div>
+                    <div className="col-md-6">
+                      <label>Scoring Platform</label>
+                      <Field
+                        name={`matches[${index}].match_name`}
+                        type="text"
+                        placeholder="Enter Scoring Platform"
+                        className="input-box"
+                      />
+                    </div>
+                  </div> */}
+                  {/* <div className="text-end form-container">
                       {index === 0 && ( // Show "Add Another Match" only for the first match section
                         <button type="button" onClick={handleAddMatch}>
                           + Add Another Match
@@ -221,8 +234,8 @@ const ClaimScoreTab = () => {
                         </button>
                       )}
                     </div> */}
-                  </div>
-                </div>
+                {/* </div> */}
+
                 <SubTabs
                   tabs={tabs(index)}
                   activeTabIndex={currentStep}
