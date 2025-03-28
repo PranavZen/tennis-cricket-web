@@ -18,6 +18,7 @@ interface ClaimScore {
 }
 
 interface ClaimDetail {
+  matches: [];
   bat_matches: number;
   bat_innings: number;
   bat_runs: number;
@@ -40,7 +41,8 @@ interface ClaimDetail {
   bowl_wicket: number;
   bowl_maidens: number;
   status: string;
-  tournament_date: string;
+  tournament_start_date: string;
+  tournament_end_date: string;
   tournament_result: {
     season: number;
     team_name: string;
@@ -68,9 +70,13 @@ const VerificationStatus = () => {
   const [modalLoading, setModalLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [singleData, setSingleData] = useState<number | null>(null);
+  console.log("singleDatassssssssssssssssss", singleData);
   const [claimDetails, setClaimDetails] = useState<ClaimDetail[]>([]);
+  console.log("claimDetails", claimDetails);
   const [modalReappeal, setModalReappeal] = useState(false);
   const [selectedClaim, setSelectedClaim] = useState<Claim | null>(null);
+
+  console.log("qqqqqqqqq0", selectedClaim);
   const [sentComment, setSentComment] = useState("");
   const [userComment, setUserComment] = useState("");
 
@@ -88,7 +94,7 @@ const VerificationStatus = () => {
         if (response.data.status === "success") {
           setClaimScore(response.data.message.data);
         }
-        // console.log("setClaimScore", response);
+        console.log("setClaimScore", response.data.message.data);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching claim score:", error);
@@ -112,7 +118,7 @@ const VerificationStatus = () => {
             }
           );
           setClaimDetails(response.data.message.data);
-          // console.log("setClaimDetails", response.data.message.data);
+          console.log("setClaimDetails", response);
           setModalLoading(false);
         } catch (error) {
           console.error("Error fetching claim details:", error);
@@ -125,6 +131,7 @@ const VerificationStatus = () => {
   }, [singleData]);
 
   const claimInfo = (id: number): void => {
+    console.log("claimInfoIDDDD", claimInfo);
     setIsModalOpen(true);
     setSingleData(id);
   };
@@ -134,15 +141,13 @@ const VerificationStatus = () => {
   };
 
   const handleSubmitCommnet = async () => {
-    if (!selectedClaim?.id) {
+    if (!selectedClaim) {
       console.error("Error: No claim ID available.");
       return;
     }
-
-    setModalLoading(true);
     try {
       const response = await axios.post(
-        `https://my.tc.popopower.com/api/reappeal-claim/${selectedClaim.id}`,
+        `https://my.tc.popopower.com/api/reappeal-claim/${selectedClaim}`,
         {
           user_comment: userComment,
         },
@@ -150,14 +155,12 @@ const VerificationStatus = () => {
           headers: {
             Authorization: `Bearer ${token}`,
           },
-        }      
+        }
       );
       setSentComment(response.data);
-      // console.log("API Response:", response);
     } catch (error) {
       console.error("Error submitting claim appeal:", error);
     } finally {
-      setModalLoading(false);
       setModalReappeal(false);
       setUserComment("");
 
@@ -171,6 +174,8 @@ const VerificationStatus = () => {
   };
 
   const openModal = (claim: any) => {
+    alert(claim);
+    console.log("aaaa", claim);
     setSelectedClaim(claim);
     setModalReappeal(true);
   };
@@ -195,49 +200,52 @@ const VerificationStatus = () => {
               <tr>
                 <th>Sr no</th>
                 <th>Status</th>
-                {/* {ifRejectedClaim && <th></th>} */}
+                {ifRejectedClaim && <th></th>}
                 <th>Approver Comment</th>
                 <th>View More</th>
               </tr>
             </thead>
             <tbody>
-              {claimScore.map((claim, index) => (
-                <tr key={claim.id}>
-                  <td>{index+1}</td>
-                  <td>{claim.status}</td>
-                  {/* {ifRejectedClaim && (
+              {claimScore.length > 0 &&
+                claimScore.map((claim, index) => (
+                  <tr key={claim.id}>
+                    <td>{index + 1}</td>
+                    <td>{claim.status}</td>
+                    {ifRejectedClaim && (
+                      <td>
+                        {claim.status === "rejected" && (
+                          <button
+                            className="btn btn-danger"
+                            style={{
+                              width: "80px",
+                              height: "30px",
+                              fontSize: "12px",
+                            }}
+                            onClick={() => openModal(claim.id)}
+                          >
+                            Appeal
+                          </button>
+                        )}
+                      </td>
+                    )}
+                    <td>{claim.maker_comment ? claim.maker_comment : "-"}</td>
+
                     <td>
-                      {claim.status === "rejected" && (
-                        <button
-                          className="btn btn-danger"
-                          style={{
-                            width: "80px",
-                            height: "30px",
-                            fontSize: "12px",
-                          }}
-                          onClick={() => openModal(claim)}
-                        >
-                          Appeal
-                        </button>
-                      )}
+                      <Link
+                        to="#"
+                        onClick={() => claimInfo(claim.id)}
+                        style={{ cursor: "pointer" }}
+                      >
+                        View More
+                      </Link>
                     </td>
-                  )} */}
-                  <td>{claim.maker_comment ? claim.maker_comment : "-"}</td>
-                  <td>
-                    <Link
-                      to="#"
-                      onClick={() => claimInfo(claim.id)}
-                      style={{ cursor: "pointer" }}
-                    >
-                      View More
-                    </Link>
-                  </td>
-                </tr>
-              ))}
+                  </tr>
+                ))}
             </tbody>
           </table>
         </div>
       )}
+
       <Modal
         title="User Claimed Data"
         open={isModalOpen}
@@ -246,240 +254,192 @@ const VerificationStatus = () => {
         width={800}
       >
         {modalLoading ? (
-          <Spinner />
+          <>
+            {" "}
+            <Spinner />{" "}
+          </>
         ) : (
-          claimDetails.map((detail) => (
-            <div className="modal-wrapper">
-              <div
-                className="tournament-details"
-                key={detail.tournament_result[0]?.season}
-              >
-                <h3>Tournament Details</h3>
-                <div className="row">
-                  <div className="col-md-6">
-                    <p>
-                      <strong>Season:</strong>{" "}
-                      {detail.tournament_result[0]?.season}
-                    </p>
-                  </div>
-                  <div className="col-md-6">
-                    <p>
-                      <strong>Team:</strong>{" "}
-                      {detail.tournament_result[0]?.team_name}
-                    </p>
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="col-md-6">
-                    <p>
-                      <strong>Tournament:</strong>{" "}
-                      {detail.tournament_result[0]?.tournament_name}
-                    </p>
-                  </div>
-                  <div className="col-md-6">
-                    <p>
-                      <strong>Status:</strong> {detail.status}
-                    </p>
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="col-md-6">
-                    <p>
-                      <strong>Tournament Date:</strong> {detail.tournament_date}
-                    </p>
-                  </div>
-                </div>
-              </div>
+          <>
+           {claimDetails.map((elem: any, detailIndex: number) => (
+  <div className="modal-wrapper" key={detailIndex}>
+    <div className="tournament-details">
+      <h3>Tournament Details</h3>
+      <div className="row">
+        <div className="col-md-6">
+          <p><strong>Season:</strong> {elem.season}</p>
+        </div>
+        <div className="col-md-6">
+          <p><strong>Team Name:</strong> {elem.team_name}</p>
+        </div>
+        <div className="col-md-6">
+          <p><strong>Tournament Name:</strong> {elem.tournament_name}</p>
+        </div>
+        <div className="col-md-6">
+          <p><strong>Status:</strong> {elem.status}</p>
+        </div>
+        <div className="col-md-6">
+          <p><strong>Start Date:</strong> {elem.tournament_start_date}</p>
+        </div>
+        <div className="col-md-6">
+          <p><strong>End Date:</strong> {elem.tournament_end_date}</p>
+        </div>
+      </div>
+    </div>
 
-              {/* <div className="youtube-links">
-                {detail.tournament_result[0]?.youtube_link.map((linkObj) => (
-                  <div key={linkObj.link}>
-                    <p>
-                      <strong>Remark:</strong> {linkObj.remark}
-                    </p>
-                    <p>
-                      <strong>Time From:</strong> {linkObj.time_from}
-                    </p>
-                    <a
-                      href={linkObj.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <p>
-                        <strong>Youtube Link: </strong>
-                        {linkObj.link}
-                      </p>
-                    </a>
-                  </div>
-                ))}
-              </div> */}
-              <div className="youtube-links">
-                <h3>Youtube Link</h3>
-                <table className="table table-bordered">
-                  <thead>
-                    <tr>
-                      <th>
-                        <p>Serial No.</p>
-                      </th>
-                      <th>
-                        <p>Remark</p>
-                      </th>
-                      <th>
-                        <p>YouTube Link</p>
-                      </th>
-                      <th>
-                        <p>Timestamp Ranges</p>
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {detail.tournament_result[0]?.youtube_link.map(
-                      (linkObj, index) => (
-                        <tr key={linkObj.link}>
-                          <td>{index + 1}</td>
-                          <td>{linkObj.remark}</td>
-                          <td>
-                            <a
-                              href={linkObj.link}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              {linkObj.link !== ""
-                                ? `Link ${index + 1}`
-                                : "Link 1"}
-                            </a>
-                          </td>
-                          <td>
-                            {linkObj.time_from
-                              .split(",")
-                              .map((timestampFrom: string, idx: number) => (
-                                <span key={idx}>
-                                  {timestampFrom.trim()} -{" "}
-                                  {linkObj.time_to.split(",")[idx].trim()}
-                                  {idx <
-                                    linkObj.time_from.split(",").length - 1 &&
-                                    ", "}
-                                </span>
-                              ))}
-                          </td>
-                        </tr>
-                      )
-                    )}
-                  </tbody>
-                </table>
-              </div>
+    {/* 🔁 Loop over matches */}
+    {claimDetails.map((claim: any, claimIndex: number) => (
+  <div key={`claim-${claimIndex}`}>
+    {claim.matches.map((match: any, matchIndex: number) => (
+      <div key={`match-${matchIndex}`} className="mt-4">
+        {/* ✅ Match Heading */}
+        <h4
+          style={{
+            marginTop: "30px",
+            marginBottom: "15px",
+            fontWeight: "bold",
+            color: "#1d7336",
+          }}
+        >
+          {/* Match {matchIndex + 1} */}
+        </h4>
 
-              <div className="performance-section">
-                <h3>Batting Performance</h3>
-                <table className="table table-bordered">
-                  <thead>
-                    <tr>
-                      <th>
-                        <p>Matches</p>
-                      </th>
-                      <th>
-                        <p>Innings</p>
-                      </th>
-                      <th>
-                        <p>Wickets</p>
-                      </th>
-                      <th>
-                        <p>Runs</p>
-                      </th>
-                      <th>
-                        <p>Balls</p>
-                      </th>
-                      <th>
-                        <p>Fours</p>
-                      </th>
-                      <th>
-                        <p>Sixes</p>
-                      </th>
-                      <th>
-                        <p>Fifty</p>
-                      </th>
-                      <th>
-                        <p>Hundred</p>
-                      </th>
-                      <th>
-                        <p>Highest</p>
-                      </th>
-                      <th>
-                        <p>Strike Rate</p>
-                      </th>
-                      <th>
-                        <p>Average</p>
-                      </th>
+        {/* ✅ YouTube Links */}
+        {/* <div className="youtube-links">
+          <h3>Youtube Link</h3>
+          <table className="table table-bordered">
+            <thead>
+              <tr>
+                <th>Sr No.</th>
+                <th>YouTube Link</th>
+                <th>Timestamp Ranges</th>
+                <th>Remark</th>
+              </tr>
+            </thead>
+            <tbody>
+              {match.youtube_links?.length > 0 ? (
+                match.youtube_links.map((yt: any, ytIndex: number) =>
+                  yt.timestamps.map((ts: any, tsIndex: number) => (
+                    <tr key={`yt-${ytIndex}-ts-${tsIndex}`}>
+                      <td>{ytIndex + 1}</td>
+                      <td>
+                        <a href={yt.link} target="_blank" rel="noreferrer">
+                          {yt.link}
+                        </a>
+                      </td>
+                      <td>{ts.from} - {ts.to}</td>
+                      <td>{ts.remark}</td>
                     </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>{detail.bat_matches}</td>
-                      <td>{detail.bat_innings}</td>
-                      <td>{detail.bowl_wickets}</td>
-                      <td>{detail.bat_runs}</td>
-                      <td>{detail.bat_balls}</td>
-                      <td>{detail.bat_fours}</td>
-                      <td>{detail.bat_sixes}</td>
-                      <td>{detail.bat_fifty}</td>
-                      <td>{detail.bat_hundred}</td>
-                      <td>{detail.bat_highest}</td>
-                      <td>{detail.bat_strike_rate}</td>
-                      <td>{detail.bat_average}</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
+                  ))
+                )
+              ) : (
+                <tr>
+                  <td colSpan={4}>No YouTube links found</td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </div> */}
 
-              <div className="performance-section">
-                <h3>Bowling Performance</h3>
-                <table className="table table-bordered">
-                  <thead>
-                    <tr>
-                      <th>
-                        <p>Matches</p>
-                      </th>
-                      <th>
-                        <p>Innings</p>
-                      </th>
-                      <th>
-                        <p>Wickets</p>
-                      </th>
-                      <th>
-                        <p>Runs</p>
-                      </th>
-                      <th>
-                        <p>Balls</p>
-                      </th>
-                      <th>
-                        <p>Economy Rate</p>
-                      </th>
-                      <th>
-                        <p>BBF</p>
-                      </th>
-                      <th>
-                        <p>Overs</p>
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>{detail.bowl_matches}</td>
-                      <td>{detail.bowl_innings}</td>
-                      <td>{detail.bowl_wickets}</td>
-                      <td>{detail.bowl_runs}</td>
-                      <td>{detail.bowl_balls}</td>
-                      <td>{detail.bowl_economy_rate}</td>
-                      <td>{detail.bowl_bbf}</td>
-                      <td>{detail.bowl_maidens}</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          ))
+        
+
+        {/* ✅ Batting Performance */}
+        <div className="performance-section">
+          <h3>Batting Performance</h3>
+          <table className="table table-bordered">
+            <thead>
+              <tr>
+                <th>Matches</th>
+                <th>Innings</th>
+                <th>Runs</th>
+                <th>Balls</th>
+                <th>Fours</th>
+                <th>Sixes</th>
+                <th>Fifty</th>
+                <th>Hundred</th>
+                <th>Highest</th>
+                <th>Strike Rate</th>
+                <th>Average</th>
+                <th>Not Out</th>
+              </tr>
+            </thead>
+            <tbody>
+              {match.batting?.length > 0 ? (
+                match.batting.map((bat: any, i: number) => (
+                  <tr key={`bat-${i}`}>
+                    <td>{bat.bat_matches}</td>
+                    <td>{bat.bat_innings}</td>
+                    <td>{bat.bat_runs}</td>
+                    <td>{bat.bat_balls}</td>
+                    <td>{bat.bat_fours}</td>
+                    <td>{bat.bat_sixes}</td>
+                    <td>{bat.bat_fifty}</td>
+                    <td>{bat.bat_hundred}</td>
+                    <td>{bat.bat_highest}</td>
+                    <td>{bat.bat_strike_rate}</td>
+                    <td>{bat.bat_average}</td>
+                    <td>{bat.bat_not_out}</td>
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <td colSpan={12}>No batting data available</td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </div>
+
+        {/* ✅ Bowling Performance */}
+        <div className="performance-section">
+          <h3>Bowling Performance</h3>
+          <table className="table table-bordered">
+            <thead>
+              <tr>
+                <th>Matches</th>
+                <th>Innings</th>
+                <th>Wickets</th>
+                <th>Runs</th>
+                <th>Balls</th>
+                <th>Economy Rate</th>
+                <th>BBF</th>
+                <th>Overs</th>
+              </tr>
+            </thead>
+            <tbody>
+              {match.bowling?.length > 0 ? (
+                match.bowling.map((bowl: any, i: number) => (
+                  <tr key={`bowl-${i}`}>
+                    <td>{bowl.bowl_matches}</td>
+                    <td>{bowl.bowl_innings}</td>
+                    <td>{bowl.bowl_wickets}</td>
+                    <td>{bowl.bowl_runs}</td>
+                    <td>{bowl.bowl_balls}</td>
+                    <td>{bowl.bowl_economy_rate}</td>
+                    <td>{bowl.bowl_bbf}</td>
+                    <td>{bowl.bowl_maidens}</td>
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <td colSpan={8}>No bowling data available</td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    ))}
+  </div>
+))}
+
+
+  </div>
+))}
+
+          </>
         )}
       </Modal>
+
       <Modal
         open={modalReappeal}
         onOk={handleSubmitCommnet}
@@ -487,18 +447,14 @@ const VerificationStatus = () => {
         width={600}
         height={200}
       >
-        {modalLoading ? (
-          <Spinner />
-        ) : (
-          <div className="performance-section">
-            <h3>User Comment</h3>
-            <textarea
-              className="user-comment col-md-12"
-              value={userComment}
-              onChange={(e) => setUserComment(e.target.value)}
-            ></textarea>
-          </div>
-        )}
+        <div className="performance-section">
+          <h3>User Comment</h3>
+          <textarea
+            className="user-comment col-md-12"
+            value={userComment}
+            onChange={(e) => setUserComment(e.target.value)}
+          ></textarea>
+        </div>
       </Modal>
     </div>
   );

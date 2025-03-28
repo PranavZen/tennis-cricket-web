@@ -1,180 +1,214 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useFormikContext, Field, FieldArray } from "formik";
 import "../../../../components/profilePageSection/profilePage.scss";
-import ClaimButton from "../../../common/claimButton/ClaimButton";
+import { Link } from "react-router-dom";
 
-const YouTubeLinkForm = ({ tournamentIndex }: { tournamentIndex: number }) => {
+interface YouTubeLinkTabProps {
+  matchIndex: number;
+  onPrev: () => void;
+  onSubmit: (e?: React.FormEvent<HTMLFormElement>) => void;
+}
+
+const YouTubeLinkForm: React.FC<YouTubeLinkTabProps> = ({
+  matchIndex,
+  onPrev,
+  onSubmit,
+}) => {
   const formik = useFormikContext<any>();
+  const match = formik.values.matches[matchIndex];
 
   const handleAddYouTubeLink = () => {
-    const newYouTubeLinks = formik.values.youtube_link ? [...formik.values.youtube_link] : [];
-    if (!newYouTubeLinks[tournamentIndex]) newYouTubeLinks[tournamentIndex] = [];
-    newYouTubeLinks[tournamentIndex].push({ link: "", timestamps: [{ from: "", to: "", remark: "" }] });
-    formik.setFieldValue("youtube_link", newYouTubeLinks);
+    const newLinks = [
+      ...match.youtube_link,
+      { link: "", timestamps: [{ from: "", to: "", remark: "" }] },
+    ];
+    formik.setFieldValue(`matches[${matchIndex}].youtube_link`, newLinks);
+  };
+
+  const handleRemoveYouTubeLink = (youtubeIndex: number) => {
+    const newLinks = [...match.youtube_link];
+    newLinks.splice(youtubeIndex, 1);
+    formik.setFieldValue(`matches[${matchIndex}].youtube_link`, newLinks);
   };
 
   const handleAddTimestamp = (youtubeIndex: number) => {
-    const newYouTubeLinks = formik.values.youtube_link ? [...formik.values.youtube_link] : [];
-    if (!newYouTubeLinks[tournamentIndex][youtubeIndex].timestamps) newYouTubeLinks[tournamentIndex][youtubeIndex].timestamps = [];
-    newYouTubeLinks[tournamentIndex][youtubeIndex].timestamps.push({ from: "", to: "", remark: "" });
-    formik.setFieldValue("youtube_link", newYouTubeLinks);
+    const updatedLinks = [...match.youtube_link];
+    updatedLinks[youtubeIndex].timestamps.push({
+      from: "",
+      to: "",
+      remark: "",
+    });
+    formik.setFieldValue(`matches[${matchIndex}].youtube_link`, updatedLinks);
+  };
+
+  const handleRemoveTimestamp = (
+    youtubeIndex: number,
+    timestampIndex: number
+  ) => {
+    const updatedLinks = [...match.youtube_link];
+    updatedLinks[youtubeIndex].timestamps.splice(timestampIndex, 1);
+    formik.setFieldValue(`matches[${matchIndex}].youtube_link`, updatedLinks);
   };
 
   return (
-    <div className="tournament-form">
-      <FieldArray name={`youtube_link[${tournamentIndex}]`}>
+    <div className="form-container">
+      <FieldArray name={`matches[${matchIndex}].youtube_link`}>
         {() => (
           <>
-            {formik.values.youtube_link && formik.values.youtube_link[tournamentIndex]?.map((entry: { link: string, timestamps: { from: string, to: string, remark: string }[] }, youtubeIndex: number) => (
-              <div key={youtubeIndex} className="youtube-link">
-                <div className="row">
-                  {/* YouTube Link Input */}
-                  <div className="col-md-12">
-                    <label htmlFor={`youtube_link[${tournamentIndex}][${youtubeIndex}].link`}>YouTube Link</label>
-                    <Field
-                      id={`youtube_link[${tournamentIndex}][${youtubeIndex}].link`}
-                      name={`youtube_link[${tournamentIndex}][${youtubeIndex}].link`}
-                      type="text"
-                      placeholder="Add YouTube link"
-                      className="input-box"
-                    />
+            {match.youtube_link?.map(
+              (
+                entry: {
+                  link: string;
+                  timestamps: { from: string; to: string; remark: string }[];
+                },
+                youtubeIndex: number
+              ) => (
+                <div key={youtubeIndex} className="youtube-link">
+                  <div className="row">
+                    <div className="col-md-12">
+                      <label>YouTube Link</label>
+                      <Field
+                        name={`matches[${matchIndex}].youtube_link[${youtubeIndex}].link`}
+                        type="text"
+                        placeholder="Add YouTube link"
+                        className="input-box"
+                      />
+                    </div>
+
+                    <div className="col-md-12 text-end">
+                      {youtubeIndex > 0 && (
+                        <Link
+                          to="#"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            handleRemoveYouTubeLink(youtubeIndex);
+                          }}
+                          className="link"
+                        >
+                          - Remove YouTube Link
+                        </Link>
+                      )}
+                      {youtubeIndex === match.youtube_link.length - 1 && (
+                        <a
+                          href="#"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            handleAddYouTubeLink();
+                          }}
+                          className="link"
+                        >
+                          + Add YouTube Link
+                        </a>
+                      )}
+                    </div>
+
+                    <FieldArray
+                      name={`matches[${matchIndex}].youtube_link[${youtubeIndex}].timestamps`}
+                    >
+                      {() => (
+                        <>
+                          {entry.timestamps?.map(
+                            (timestamp, timestampIndex) => (
+                              <div key={timestampIndex} className="timestamp">
+                                <div className="row">
+                                  <div className="col-md-4">
+                                    <label>Timestamp From</label>
+                                    <Field
+                                      name={`matches[${matchIndex}].youtube_link[${youtubeIndex}].timestamps[${timestampIndex}].from`}
+                                      type="text"
+                                      placeholder="Enter start time (HH:MM:SS)"
+                                      className="input-box"
+                                    />
+                                  </div>
+                                  <div className="col-md-4">
+                                    <label>Timestamp To</label>
+                                    <Field
+                                      name={`matches[${matchIndex}].youtube_link[${youtubeIndex}].timestamps[${timestampIndex}].to`}
+                                      type="text"
+                                      placeholder="Enter end time (HH:MM:SS)"
+                                      className="input-box"
+                                    />
+                                  </div>
+                                  <div className="col-md-4">
+                                    <label>Remark</label>
+                                    <Field
+                                      name={`matches[${matchIndex}].youtube_link[${youtubeIndex}].timestamps[${timestampIndex}].remark`}
+                                      type="text"
+                                      placeholder="Enter remark"
+                                      className="input-box"
+                                    />
+                                  </div>
+
+                                  <div className="col-md-12 text-end">
+                                    {timestampIndex > 0 && (
+                                      <a
+                                        href="#"
+                                        onClick={(e) => {
+                                          e.preventDefault();
+                                          handleRemoveTimestamp(
+                                            youtubeIndex,
+                                            timestampIndex
+                                          );
+                                        }}
+                                        className="link"
+                                      >
+                                        - Remove Timestamp
+                                      </a>
+                                    )}
+                                    {timestampIndex ===
+                                      entry.timestamps.length - 1 && (
+                                      <a
+                                        href="#"
+                                        onClick={(e) => {
+                                          e.preventDefault();
+                                          handleAddTimestamp(youtubeIndex);
+                                        }}
+                                        className="link"
+                                      >
+                                        + Add Timestamp
+                                      </a>
+                                    )}
+                                  </div>
+                                </div>
+                              </div>
+                            )
+                          )}
+                        </>
+                      )}
+                    </FieldArray>
                   </div>
-
-                  {/* Remove and Add YouTube Link Options */}
-                  <div className="col-md-12 text-end">
-                    {youtubeIndex > 0 && (
-                      <a
-                        href="#"
-                        onClick={(e) => {
-                          e.preventDefault();
-                          const newYouTubeLinks = formik.values.youtube_link ? [...formik.values.youtube_link] : [];
-                          newYouTubeLinks[tournamentIndex].splice(youtubeIndex, 1);
-                          formik.setFieldValue("youtube_link", newYouTubeLinks);
-                        }}
-                        className="link"
-                      >
-                        - Remove YouTube Link
-                      </a>
-                    )}
-                    {youtubeIndex === formik.values.youtube_link[tournamentIndex].length - 1 && (
-                      <a href="#" onClick={(e) => { e.preventDefault(); handleAddYouTubeLink(); }} className="link">
-                        + Add YouTube Link
-                      </a>
-                    )}
-                  </div>
-
-                  {/* Timestamp Fields */}
-                  <FieldArray name={`youtube_link[${tournamentIndex}][${youtubeIndex}].timestamps`}>
-                    {() => (
-                      <>
-                        {formik.values.youtube_link[tournamentIndex][youtubeIndex].timestamps?.map((timestamp:any, timestampIndex:any) => (
-                          <div key={timestampIndex} className="timestamp">
-                            <div className="row">
-                              <div className="col-md-4">
-                                <label htmlFor={`youtube_link[${tournamentIndex}][${youtubeIndex}].timestamps[${timestampIndex}].from`}>Timestamp From</label>
-                                <Field
-                                  id={`youtube_link[${tournamentIndex}][${youtubeIndex}].timestamps[${timestampIndex}].from`}
-                                  name={`youtube_link[${tournamentIndex}][${youtubeIndex}].timestamps[${timestampIndex}].from`}
-                                  type="text"
-                                  placeholder="Enter start time (HH:MM:SS)"
-                                  className="input-box"
-                                />
-                              </div>
-                              <div className="col-md-4">
-                                <label htmlFor={`youtube_link[${tournamentIndex}][${youtubeIndex}].timestamps[${timestampIndex}].to`}>Timestamp To</label>
-                                <Field
-                                  id={`youtube_link[${tournamentIndex}][${youtubeIndex}].timestamps[${timestampIndex}].to`}
-                                  name={`youtube_link[${tournamentIndex}][${youtubeIndex}].timestamps[${timestampIndex}].to`}
-                                  type="text"
-                                  placeholder="Enter end time (HH:MM:SS)"
-                                  className="input-box"
-                                />
-                              </div>
-
-                              <div className="col-md-4">
-                                <label htmlFor={`youtube_link[${tournamentIndex}][${youtubeIndex}].timestamps[${timestampIndex}].remark`}>Remark</label>
-                                <Field
-                                  id={`youtube_link[${tournamentIndex}][${youtubeIndex}].timestamps[${timestampIndex}].remark`}
-                                  name={`youtube_link[${tournamentIndex}][${youtubeIndex}].timestamps[${timestampIndex}].remark`}
-                                  placeholder="Enter remark"
-                                  className="input-box"
-                                />
-                              </div>
-
-                              <div className="col-md-12 text-end">
-                                {timestampIndex > 0 && (
-                                  <a
-                                    href="#"
-                                    onClick={(e) => {
-                                      e.preventDefault();
-                                      const newYouTubeLinks = formik.values.youtube_link ? [...formik.values.youtube_link] : [];
-                                      newYouTubeLinks[tournamentIndex][youtubeIndex].timestamps.splice(timestampIndex, 1);
-                                      formik.setFieldValue("youtube_link", newYouTubeLinks);
-                                    }}
-                                    className="link"
-                                  >
-                                    - Remove Timestamp
-                                  </a>
-                                )}
-                                {timestampIndex === formik.values.youtube_link[tournamentIndex][youtubeIndex].timestamps.length - 1 && (
-                                  <a href="#" onClick={(e) => { e.preventDefault(); handleAddTimestamp(youtubeIndex); }} className="link">
-                                    + Add Timestamp
-                                  </a>
-                                )}
-                              </div>
-                            </div>
-                          </div>
-                        ))}
-                      </>
-                    )}
-                  </FieldArray>
                 </div>
-              </div>
-            ))}
+              )
+            )}
           </>
         )}
       </FieldArray>
-    </div>
-  );
-};
 
-const YouTubeLink = ({ onPrev, onSubmit }: { onPrev: () => void; onSubmit: () => void }) => {
-  const formik = useFormikContext<any>();
-
-  useEffect(() => {
-  //   if (!Array.isArray(formik.values.youtube_link) || formik.values.youtube_link.length === 0) {
-  //     formik.setFieldValue("youtube_link", [[{ link: "", timestamps: [{ from: "", to: "", remark: "" }] }]]);
-  //   }
-  //   if (!Array.isArray(formik.values.tournament_name)) {
-  //     formik.setFieldValue("tournament_name", [""]); // Set a default array if tournament_name is not an array
-  //   }
-  // }, [formik]);
-  if (!Array.isArray(formik.values.tournament_name)) {
-    formik.setFieldValue("tournament_name", [""]); // Set a default array if tournament_name is not an array
-  }
-
-  // Ensure youtube_link is initialized correctly
-  if (!Array.isArray(formik.values.youtube_link) || formik.values.youtube_link.length === 0) {
-    formik.setFieldValue("youtube_link", [[{ link: "", timestamps: [{ from: "", to: "", remark: "" }] }]]);
-  }
-}, [formik]);
-
-  return (
-    <div className="form-container">
-      {formik.values.tournament_name.map((_: string, tournamentIndex: number) => (
-        <div key={tournamentIndex} className="tournament-form">
-          {/* <h1>{`Match ${tournamentIndex + 1}`}</h1> */}
-          <YouTubeLinkForm tournamentIndex={tournamentIndex} />
-          <div className="row">
-            <div className="btn-style">
-              <button className="claim-button" type="button" onClick={onPrev} disabled={formik.isSubmitting}>Previous</button>
-              <button className="claim-button" type="button" onClick={() => { formik.handleSubmit(); }}>Claim Score</button>
-            </div>
-          </div>
+      {/* ✅ Action Buttons at the bottom */}
+      <div className="row">
+        <div className="btn-style">
+          <button
+            className="claim-button"
+            type="button"
+            onClick={onPrev}
+            disabled={formik.isSubmitting}
+          >
+            Previous
+          </button>
+          {matchIndex === formik.values.matches.length - 1 && (
+            <button
+              className="claim-button"
+              type="button"
+              onClick={() => onSubmit()}
+              disabled={formik.isSubmitting}
+            >
+              Claim Score
+            </button>
+          )}
         </div>
-      ))}
+      </div>
     </div>
   );
 };
 
-export default YouTubeLink;
+export default YouTubeLinkForm;
