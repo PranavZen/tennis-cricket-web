@@ -7,176 +7,39 @@ import YouTubeLinkTab from "../../../components/profilePageSection/claimScoreTab
 import VerificationStatus from "./VerficationStatus";
 import "../../../components/profilePageSection/profilePage.scss";
 import "react-toastify/dist/ReactToastify.css";
-import { notification } from "antd";
+import { toast } from "react-toastify";
+import { message, notification } from "antd";
 import axios from "axios";
-
-interface Timestamp {
-  from: string;
-  to: string;
-  remark: string;
-}
-
-interface YouTubeLink {
-  link: string;
-  timestamps: Timestamp[];
-}
-
-interface Batting {
-  bat_matches: string;
-  bat_innings: string;
-  bat_runs: string;
-  bat_balls: string;
-  bat_fours: string;
-  bat_sixes: string;
-  bat_fifty: string;
-  bat_hundred: string;
-  bat_highest: string;
-  bat_strike_rate: string;
-  bat_average: string;
-  bat_not_out: string;
-}
-
-interface Bowling {
-  bowl_matches: string;
-  bowl_innings: string;
-  bowl_wickets: string;
-  bowl_runs: string;
-  bowl_balls: string;
-  bowl_bbf: string;
-  bowl_maidens: string;
-  bowl_economy_rate: string;
-}
-
-interface Match {
-  matches: "";
-  scoring_platform: string;
-  batting: Batting;
-  bowling: Bowling;
-  youtube_link: YouTubeLink[];
-}
 
 const ClaimScoreTab = () => {
   const [showTabs, setShowTabs] = useState(false);
-  // const [matches, setMatches] = useState<Match[]>([
-  //   {
-  //     matches: "",
-  //     scoring_platform: "",
-  //     batting: {
-  //       bat_matches: 0,
-  //       bat_innings: 0,
-  //       bat_runs: 0,
-  //       bat_balls: 0,
-  //       bat_fours: 0,
-  //       bat_sixes: 0,
-  //       bat_fifty: 0,
-  //       bat_hundred: 0,
-  //       bat_highest: 0,
-  //       bat_strike_rate: "0.00",
-  //       bat_average: 0,
-  //       bat_not_out: 0,
-  //     },
-  //     bowling: {
-  //       bowl_matches: 0,
-  //       bowl_innings: 0,
-  //       bowl_wickets: 0,
-  //       bowl_runs: 0,
-  //       bowl_balls: 0,
-  //       bowl_bbf: "",
-  //       bowl_maidens: 0,
-  //       bowl_economy_rate: 0,
-  //     },
-  //     youtube_link: [
-  //       {
-  //         link: "",
-  //         timestamps: [
-  //           {
-  //             from: "",
-  //             to: "",
-  //             remark: "",
-  //           },
-  //         ],
-  //       },
-  //     ],
-  //   },
-  // ]);
-  // const [currentStep, setCurrentStep] = useState(0);
-  const [tabStates, setTabStates] = useState<{ [matchIndex: number]: number }>({});
+  const [matches, setMatches] = useState([{ id: 1 }]);
+  const [currentStep, setCurrentStep] = useState(0);
   const [claimScore, setClaimScore] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // const handleNext = () => setCurrentStep((prevStep) => prevStep + 1);
-  // const handlePrev = () => setCurrentStep((prevStep) => prevStep - 1);
+  const handleNext = () => setCurrentStep((prevStep) => prevStep + 1);
+  const handlePrev = () => setCurrentStep((prevStep) => prevStep - 1);
 
   const formik = useFormik({
     initialValues: {
-      tournament_name: "",
+      tournament_name: [""],
       team_name: "",
       season: "",
-      tournament_start_date: "",
-      tournament_end_date: "",
-      matches: [
-        {
-          matches: "",
-          scoring_platform: "",
-          batting: {
-            bat_matches: "",
-            bat_innings: "",
-            bat_runs: "",
-            bat_balls: "",
-            bat_fours: "",
-            bat_sixes: "",
-            bat_fifty: "",
-            bat_hundred: "",
-            bat_highest: "",
-            bat_strike_rate: "",
-            bat_average: "",
-            bat_not_out: "",
-          },
-          bowling: {
-            bowl_matches: "",
-            bowl_innings: "",
-            bowl_wickets: "",
-            bowl_runs: "",
-            bowl_balls: "",
-            bowl_bbf: "",
-            bowl_maidens: "",
-            bowl_economy_rate: "",
-          },
-          youtube_link: [
-            { link: "", timestamps: [{ from: "", to: "", remark: "" }] },
-          ],
-        },
+      tournament_date: "",
+      // matches: [{ match_name: "", batting: {}, bowling: {}, youtube: {} }],
+      matches: [],
+      // youtube_link: [[""]],
+      youtube_link: [
+        [{ link: "", timestamps: [{ from: "", to: "", remark: "" }] }],
       ],
     },
     onSubmit: async (values, { resetForm }) => {
-      const isFormEmpty =
-    !values.tournament_name ||
-    !values.team_name ||
-    !values.season ||
-    !values.tournament_start_date ||
-    !values.tournament_end_date ||
-    values.matches.some(
-      (match) =>
-        !match.matches ||
-        !match.scoring_platform ||
-        Object.values(match.batting).some((val) => val === "" || val === null) ||
-        Object.values(match.bowling).some((val) => val === "" || val === null) ||
-        match.youtube_link.some((link) => !link.link || link.timestamps.some(ts => !ts.from || !ts.to || !ts.remark))
-    );
-
-  if (isFormEmpty) {
-    notification.error({
-      message: "Please fill all the details to claim your score",
-    });
-    return; // 🚫 Stop form submission
-  }
-
       try {
         const token = localStorage.getItem("token");
         const response = await axios.post(
           "https://my.tc.popopower.com/api/claim-score",
           values,
-          // formattedValues,
           {
             headers: {
               "Content-Type": "application/json",
@@ -184,10 +47,16 @@ const ClaimScoreTab = () => {
             },
           }
         );
+        // console.log("sssssssss", response.data)
+        // console.log('successmsg', response.data.message)
         if (response.data.status === "success") {
-          notification.success({
-            message: "Claim score submitted successfully!",
-          });
+          notification.success({message:"Claim score submitted successfully!"})
+          // {
+          //   autoClose: 3000,
+          //   style: {
+          //     fontSize: "15px",
+          //   },
+          // });
           resetForm();
           setShowTabs(false);
         } else if (response.data.message.status === "error") {
@@ -195,6 +64,8 @@ const ClaimScoreTab = () => {
         } else {
           notification.error({ message: response.data.message.error });
         }
+        // resetForm();
+        // setShowTabs(false);
       } catch (error) {
         // notification.error({message:"hey"})
       }
@@ -224,121 +95,38 @@ const ClaimScoreTab = () => {
   }, [token]);
 
   const handleAddMatch = () => {
-    const newMatch: Match = {
-      matches: "",
-      scoring_platform: "",
-      batting: {
-        bat_matches: "",
-        bat_innings: "",
-        bat_runs: "",
-        bat_balls: "",
-        bat_fours: "",
-        bat_sixes: "",
-        bat_fifty: "",
-        bat_hundred: "",
-        bat_highest: "",
-        bat_strike_rate: "",
-        bat_average: "",
-        bat_not_out: "",
-      },
-      bowling: {
-        bowl_matches: "",
-        bowl_innings: "",
-        bowl_wickets: "",
-        bowl_runs: "",
-        bowl_balls: "",
-        bowl_bbf: "",
-        bowl_maidens: "",
-        bowl_economy_rate: "",
-      },
-      youtube_link: [
-        {
-          link: "",
-          timestamps: [{ from: "", to: "", remark: "" }],
-        },
-      ],
-    };
-  
-    const newMatchClone = JSON.parse(JSON.stringify(newMatch));
-    const updatedMatches = [...formik.values.matches, newMatchClone];
-    formik.setFieldValue("matches", updatedMatches);
-
-    setTabStates((prev) => ({
-      ...prev,
-      [updatedMatches.length - 1]: 0, // new match index, tab 0 (Batting)
-    }));
+    const newMatch = { id: matches.length + 1 };
+    setMatches([...matches, newMatch]);
+    formik.setFieldValue("matches", [
+      ...formik.values.matches,
+      { match_name: "", batting: {}, bowling: {}, youtube: {} },
+    ]);
   };
-  
 
   const handleRemoveMatch = (index: number) => {
-    const updatedMatches = [...formik.values.matches];
-    updatedMatches.splice(index, 1);
-    formik.setFieldValue("matches", updatedMatches);
+    const newMatches = [...matches];
+    newMatches.splice(index, 1);
+    setMatches(newMatches);
+    formik.setFieldValue("matches", newMatches);
   };
-  
-
-  // const tabs = (matchIndex: number) => [
-  //   {
-  //     label: "Batting Performance",
-  //     component: (
-  //       <BattingPerformance matchIndex={matchIndex} onNext={handleNext} />
-  //     ),
-  //   },
-  //   {
-  //     label: "Bowling Performance",
-  //     component: (
-  //       <BowlingPerformance
-  //         matchIndex={matchIndex}
-  //         onPrev={handlePrev}
-  //         onNext={handleNext}
-  //       />
-  //     ),
-  //   },
-  //   {
-  //     label: "YouTube Link",
-  //     component: (
-  //       <YouTubeLinkTab
-  //         matchIndex={matchIndex}
-  //         // tournamentIndex={0}
-  //         onPrev={handlePrev}
-  //         onSubmit={formik.handleSubmit}
-  //       />
-  //     ),
-  //   },
-  // ];
 
   const tabs = (matchIndex: number) => [
     {
       label: "Batting Performance",
-      component: (
-        <BattingPerformance
-          matchIndex={matchIndex}
-          onNext={() => setTabStates((prev) => ({ ...prev, [matchIndex]: 1 }))}
-        />
-      ),
+      component: <BattingPerformance onNext={handleNext} />,
     },
     {
       label: "Bowling Performance",
-      component: (
-        <BowlingPerformance
-          matchIndex={matchIndex}
-          onPrev={() => setTabStates((prev) => ({ ...prev, [matchIndex]: 0 }))}
-          onNext={() => setTabStates((prev) => ({ ...prev, [matchIndex]: 2 }))}
-        />
-      ),
+      component: <BowlingPerformance onPrev={handlePrev} onNext={handleNext} />,
     },
     {
       label: "YouTube Link",
       component: (
-        <YouTubeLinkTab
-          matchIndex={matchIndex}
-          onPrev={() => setTabStates((prev) => ({ ...prev, [matchIndex]: 1 }))}
-          onSubmit={formik.handleSubmit}
-        />
+        <YouTubeLinkTab onPrev={handlePrev} onSubmit={formik.handleSubmit} />
       ),
     },
   ];
-  
+
   return (
     <>
       {!showTabs ? (
@@ -360,24 +148,16 @@ const ClaimScoreTab = () => {
                 <div className="col-md-6">
                   <label>Tournament Name:</label>
                   <Field
-                    name="tournament_name"
+                    name="tournament_name[0]"
                     type="text"
                     className="input-box"
                     placeholder="Enter tournament name"
                   />
                 </div>
                 <div className="col-md-6">
-                  <label>Tournament Start Date:</label>
+                  <label>Tournament Date:</label>
                   <Field
-                    name="tournament_start_date"
-                    type="date"
-                    className="input-box"
-                  />
-                </div>
-                <div className="col-md-6">
-                  <label>Tournament End Date:</label>
-                  <Field
-                    name="tournament_end_date"
+                    name="tournament_date"
                     type="date"
                     className="input-box"
                   />
@@ -403,16 +183,10 @@ const ClaimScoreTab = () => {
               </div>
             </div>
 
-            <div className="form-container">
-              <h2 style={{ color: "#1d7336", fontWeight: 600 }}>
-                Enter Match Details
-              </h2>
-            </div>
-            {
-            // Array.isArray(formik.values.matches) &&
-            formik.values.matches.map((match, index) => (
-              <div key={index} className="match-section">
-                <div className="form-container">
+            {matches.map((match, index) => (
+              <div key={match.id} className="match-section">
+                {/* <div className="form-container">
+                  <h2>Enter Match Details</h2>
                   <h2
                     style={{
                       marginBottom: "10px",
@@ -428,52 +202,44 @@ const ClaimScoreTab = () => {
                     <div className="col-md-6">
                       <label>Match</label>
                       <Field
-                        name={`matches[${index}].matches`}
-                        type="number"
+                        name={`matches[${index}].match_name`}
+                        type="text"
                         placeholder="Enter match"
                         className="input-box"
-                        // value={match.matches}
                       />
                     </div>
                     <div className="col-md-6">
                       <label>Scoring Platform</label>
                       <Field
-                        name={`matches[${index}].scoring_platform`}
+                        name={`matches[${index}].match_name`}
                         type="text"
                         placeholder="Enter Scoring Platform"
                         className="input-box"
-                        // value={match.scoring_platform}
                       />
                     </div>
-                  </div>
-                  <div className="text-end">
-                    {index === 0 && (
-                      <button
-                        type="button"
-                        onClick={handleAddMatch}
-                        style={{ color: "#1d7336", fontSize: "1.5rem" }}
-                      >
-                        + Add Another Match
-                      </button>
-                    )}
-                    {index > 0 && (
-                      <button
-                        type="button"
-                        onClick={() => handleRemoveMatch(index)}
-                        style={{ color: "#1d7336", fontSize: "1.5rem" }}
-                      >
-                        - Remove Match
-                      </button>
-                    )}
-                  </div>
-                </div>
+                  </div> */}
+                  {/* <div className="text-end form-container">
+                      {index === 0 && ( // Show "Add Another Match" only for the first match section
+                        <button type="button" onClick={handleAddMatch}>
+                          + Add Another Match
+                        </button>
+                      )}
+                      {index > 0 && ( // Show "Remove Match" for all subsequent matches
+                        <button
+                          type="button"
+                          onClick={() => handleRemoveMatch(index)}
+                          style={{ backgroundColor: "red", color: "white" }}
+                        >
+                          - Remove Match
+                        </button>
+                      )}
+                    </div> */}
+                {/* </div> */}
 
                 <SubTabs
                   tabs={tabs(index)}
-                  // activeTabIndex={currentStep}
-                  // onTabChange={(step) => setCurrentStep(step)}
-                  activeTabIndex={tabStates[index] || 0} // default to 0
-                  onTabChange={(step) => setTabStates((prev) => ({ ...prev, [index]: step }))}
+                  activeTabIndex={currentStep}
+                  onTabChange={(step) => setCurrentStep(step)}
                 />
               </div>
             ))}
